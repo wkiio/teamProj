@@ -332,7 +332,7 @@
                 </div>
                <div class="form-group">
                     <label for="inputName">링크(URL)</label>
-                    <input type="text" class="form-control" id="inputUrl">
+                    <input type="text" class="form-control123" id="inputUrl">
                 </div>
                 <div class="form-group">
                     <label for="inputName">썸네일주소</label>
@@ -378,8 +378,34 @@
     var noo;
     var istrue=false;
     $(function(){
-    	
+    	showtable();
         console.log(istrue);
+    	
+    	
+    	
+    	 $("#clickbutton_modal").click(function(){
+			var title = $(".modal #inputContext").val();
+			var url = $(".modal #inputUrl").val();
+			var thumbnail =  $(".modal #inputThumbnail").val();  			
+			
+			$.ajax({
+				type:"POST",
+				data : {'no' : noo,'title' : title, 'url' : url, 'thumbnail' : thumbnail,"${_csrf.parameterName}" : "${_csrf.token}"},
+				url:"<c:url value='/babyupdate.kosmo'/>",
+				dataType:"json",
+				success :function(data){  
+					$('.babyTable').empty();				
+					showtable();
+	    			
+				}   						
+			});
+			
+			
+		}); 
+    });
+    
+    
+    var showtable = function(){
     	$.ajax({
     		data : {"${_csrf.parameterName}" : "${_csrf.token}"}, 
     		type: "POST",
@@ -401,6 +427,7 @@
     				var tno = td.eq(0).text();
     				noo = tno;
     				//alert(noo);
+    				
     				$.ajax({
     					type:"POST",
     					data : {'no' : tno,"${_csrf.parameterName}" : "${_csrf.token}"},
@@ -419,40 +446,8 @@
     				$("#exampleModal").modal();    				    				
     			});
     		}
-    		
     	});
-    	
-    	console.log(istrue);
-    	if(istrue){
-    		
-    	}
-    	
-    	
-    	
-    	
-    	 $("#clickbutton_modal").click(function(){
-			var title = $(".modal #inputContext").val();
-			var url = $(".modal #inputUrl").val();
-			var thumbnail =  $(".modal #inputThumbnail").val();  			
-			
-			$.ajax({
-				type:"POST",
-				data : {'no' : noo,'title' : title, 'url' : url, 'thumbnail' : thumbnail,"${_csrf.parameterName}" : "${_csrf.token}"},
-				url:"<c:url value='/babyupdate.kosmo'/>",
-				dataType:"json",
-				success :function(data){  
-					$('.babyTable').empty();
-					var html = "<tr>";
-	    			$.each(data,function(index,baby){    				
-	    				html+="<td>"+baby['NO']+"</td>"+"<td>"+baby['TITLE']+"</td>"+"<td>"+baby['URL']+"</td>"+"<td>"+baby['THUMBNAIL']+"</td></tr>";    				
-	    			});    			
-	    			$('.babyTable').html(html);    		
-				}   						
-			});
-			
-			
-		}); 
-    });
+    };
     
     </script>
     

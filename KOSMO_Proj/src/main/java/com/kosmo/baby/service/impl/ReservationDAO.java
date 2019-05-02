@@ -18,7 +18,7 @@ public class ReservationDAO implements ReservationService{
 
 	@Override
 	public List<ReservationDTO> selectList(Map map) {
-		return template.selectList("selectList",map);
+		return template.selectList("rselectList",map);
 	}
 
 	@Override

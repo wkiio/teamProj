@@ -43,4 +43,8 @@
 		delete from carpool_border where cp_no=#{cp_no}
 	</delete>
 	
+	<select id="CBoardCount" resultType="int">
+		select count(*) from CARPOOL_BORDER
+	</select>
+	
 </mapper>

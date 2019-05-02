@@ -16,6 +16,9 @@ public interface MembersService {
 	List<MembersDTO> selectList(Map map);	
 	//검색용
 	MembersDTO selectOne(Map map);	
+	//카풀인원수
+	int carMember(Map map);
+	
 	//입력수정삭제용
 	int delete(Map map);
 	int insert(Map map);

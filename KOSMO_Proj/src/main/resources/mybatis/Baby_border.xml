@@ -25,5 +25,9 @@
 	<update id="babyUpdate" parameterType="java.util.Map">
 		update baby_border set title=#{title}, url=#{url}, thumbnail=#{thumbnail} where no = #{no}
 	</update>
+	
+	<select id="bBoardCount" resultType="int">
+		select count(*) from baby_border
+	</select>
 
 </mapper>
