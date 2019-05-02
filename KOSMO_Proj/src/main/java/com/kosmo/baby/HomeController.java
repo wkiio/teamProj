@@ -88,7 +88,7 @@ public class HomeController {
 	@RequestMapping("/calendar.kosmo")
 	public String calendar() {
 		
-		return "calendar.tiles";
+		return "calendar2.tiles";
 	}
 	
 	@RequestMapping("/carpool2.kosmo")
