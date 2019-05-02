@@ -14,7 +14,16 @@ public class Carpool_borderDTO {
 	private String price;
 	private String id;
 	private String name;
+	private String status;
 	
+	
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public String getCp_no() {
 		return cp_no;
 	}
