@@ -73,5 +73,10 @@ public class MembersDAO implements MembersService{
 	public boolean mypageCheck(Map map) {
 		return (Integer)template.selectOne("mypageCheck",map)== 1 ? true : false ;
 	}
+
+	@Override
+	public int carMember(Map map) {
+		return template.selectOne("carmemberCount",map);
+	}
 	
 }

@@ -62,4 +62,8 @@ public class MembersServiceimpl implements MembersService{
 		return dao.mypageCheck(map);
 	}
 
+	@Override
+	public int carMember(Map map) {
+		return dao.carMember(map);
+	}
 }

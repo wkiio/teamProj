@@ -50,6 +50,12 @@ public class Carpool_borderDAO implements Carpool_borderService{
 		return template.insert("adminInsert",map);
 	}
 
+	@Override
+	public int CBoardCount(Map map) {
+		// TODO Auto-generated method stub
+		return template.selectOne("CBoardCount", map);
+	}
+
 	
 
 }

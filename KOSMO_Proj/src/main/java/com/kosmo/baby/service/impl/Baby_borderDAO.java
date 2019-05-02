@@ -47,6 +47,11 @@ public class Baby_borderDAO implements Baby_borderService{
 		return template.selectOne("babySelectOne",map);
 	}
 	
+	@Override
+	public int boardCount(Map map) {
+		return (Integer)template.selectOne("bBoardCount",null);
+	}
+	
 	
 
 }

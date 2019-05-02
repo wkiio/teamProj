@@ -39,7 +39,10 @@ public class Baby_borderServiceimpl implements Baby_borderService{
 		return dao.selectOne(map);
 
 	}
-	
+	@Override
+	public int boardCount(Map map) {
+		return dao.boardCount(map);
+	}
 	
 
 }

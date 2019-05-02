@@ -28,6 +28,13 @@
 		SELECT COUNT(*) FROM members WHERE id=#{id}
 	</select>  
 	
+		
+	<!-- 카풀 인원수 -->
+	<select id="carmemberCount" resultType="int">
+		select count(*) from members where Partnerstatus = 1; 
+	</select>  
+	
+	
 	<!-- 회원가입용 SQL -->
 	<!-- 두 번째 INTO는 카풀여부를 체크했을때 들어오는 if문입니다. -->
 	<!-- 카풀을 체크하는 순간 input type=hidden으로 들어온 partnerstatus는 0에서 1이되며, 그 순간 partner_members 테이블에도 들어갑니다-->
