@@ -1,0 +1,210 @@
+/*----공용-------------*/
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: 0.75rem;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group>input,
+.form-label-group>label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+  height: auto;
+  border-radius: 2rem;
+}
+
+.form-label-group>label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  cursor: text;
+  /* Match the input under the label */
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+.form-label-group input:focus {
+  border-color: #007bff;
+} 
+.form-label-group input:placeholder-shown~label,
+.input-group label {
+  color: transparent;
+} 
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  background-color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown)~label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+}
+
+/*---------------------로그인---------------------------------------------------*/
+.login,
+.image {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url(/baby/Bootstrap/images/sumnail1.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.login-heading {
+  font-weight: 300;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  border-radius: 2rem;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.btn-login:hover {
+	background-color: #005cbf;
+	border-color: #005cbf;
+}
+
+#kakao-login-btn {
+	padding-top: 50px;
+}
+
+/*---------------------회원가입---------------------------------------------------*/
+.card-signin {
+  border: 1;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.card-signin .card-title {
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+.card-signin .card-body {
+  padding: 2rem;
+}
+
+.form-signin {
+  width: 100%;
+}
+.btn-singup{
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  border-radius: 2rem;
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.btn-singup:hover {
+	background-color: #005cbf;
+	border-color: #005cbf;
+}
+
+.form-signin .btn,.form-signin #sel1 {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  padding: 1rem;
+  transition: all 0.2s;
+}
+.input-group-prepend {
+	padding: 0;
+}
+.input-group-prepend #sel1{
+  height:auto;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.form-label-group, .form-inline {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group input {
+  height: auto;
+  border-radius: 2rem;
+  background-color: transparent !important;
+}
+
+.form-label-group input,
+.form-label-group label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
+
+.form-label-group label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #495057;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+.input-group #tel {
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+.input-group #email~label {
+  width: 80%;
+}
+.input-group #email2 {
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  height: auto;
+}
+.input-group #tel~label {
+  top: 0;
+  left: 70px;
+}
+
+.input-group #addr1 {
+	border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.input-group #addr2 {
+	border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.text-muted {
+  margin-top: auto;
+}
+.checkbox-inline {
+  padding-right: 1rem;
+}
+.card-carpool {
+  border: 1px solid aqua;
+  margin-bottom: 2rem;
+  display: none;
+}
+
+.small {
+  color: #007bff;
+}

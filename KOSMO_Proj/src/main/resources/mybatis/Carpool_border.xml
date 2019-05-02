@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper  
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace속성 : 매퍼파일의 완전한 경로 .xml은 생략 -->
+<!-- ★ibatis와는 다르게 id값에 .(dot)를 사용할 수 없다. -->
+
+<!-- ==================================================================== -->
+<!-- 		컬럼 순서는 CP_NO,STARTPOINT(출발위치),ENDPOINT(도착위치),			  -->
+<!-- 		TYPE,CONTENT,START_XPOS(출발위도),START_YPOS(출발경도),			  -->
+<!-- 		END_XPOS(도착위도),END_YPOS(도착경도),ID,TIME,PRICE  입니다.		  -->
+<!-- 		컬럼 순서에 유의하며 SQL문을 작성해주세요 								  -->
+<!-- ==================================================================== -->
+
+<mapper namespace="mybatis.Carpool_border">
+	<!-- 요기 안에다 쿼리문 작성하시면 됩니다 -->
+	<insert id="carInsert" parameterType="java.util.Map">
+		INSERT INTO CARPOOL_BORDER VALUES(SEQ_carpool_border.NEXTVAL,#{startpoint},#{endpoint},
+		#{type},#{content},#{start_xpos},#{start_ypos},#{end_xpos},#{end_ypos},
+		#{id},default,#{time},#{price})
+	</insert>
+	<select resultType="Carpool_borderDTO" id="carList">
+		SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id
+	</select>
+
+	<select resultType="Carpool_borderDTO" id="carview" parameterType="java.util.Map">
+		SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id where CP_NO=#{cp_no}
+	</select>
+	
+	<insert id="adminInsert" parameterType="java.util.Map">
+		INSERT INTO reservation VALUES(SEQ_reservation.NEXTVAL,0,default,#{id},#{cp_no})
+	</insert>
+	
+	<update id="Carupdate" parameterType="java.util.Map" >
+		update carpool_border set startpoint=#{startpoint}, endpoint=#{endpoint}
+		,type=#{type},content=#{content},start_Xpos=#{start_xpos},start_Ypos=#{start_ypos},end_Xpos=#{end_xpos},end_Ypos=#{end_ypos}
+		,id=#{id},time=#{time},price=#{price} where cp_no = #{cp_no}
+	</update>
+	
+	<delete id="cardelete" parameterType="java.util.Map">
+		delete from carpool_border where cp_no=#{cp_no}
+	</delete>
+	
+</mapper>

@@ -1,0 +1,303 @@
+#right_full_box {
+	/* float: left; */
+	height : 700px;
+	position: relative;
+	left: 0px;
+	width: 100%;
+	
+}
+
+#right_full_box #city_list {
+	width: 365px;
+	height: 100%;
+	z-index: 999;
+	position: relative;
+	left: 0px;
+	background: #fff;
+	display: block;
+}
+
+#right_full_box #city_list .list_title {
+	width: 365px;
+	height: 50px;
+	background: #1a7ad9;
+	line-height: 50px;
+	color: #fff;
+	padding-left: 10px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#right_full_box #city_list .list_title .list_title_option_menu
+	{
+	position: relative;
+	font-size: 12px;
+	color: #fff;
+	top: 12px;
+	right: 15px;
+	font-weight: normal;
+	cursor: pointer;
+	width: 76px;
+	height: 26px;
+	line-height: 26px;
+	text-align: center;
+	border: solid 1px #fff;
+	background: url(../img/sub10/w_arrow_down.png) no-repeat 62px 10px;
+	padding-right: 6px;
+}
+
+#right_full_box #city_list .list_search_full_box {
+	background: #fff;
+}
+
+#right_full_box #city_list .list_search_full_box .list_search_box
+	{
+	height: 45px;
+	border-bottom: solid #dadada 1px;
+	padding-top: 10px;
+	background: #fff;
+	text-align: center;
+}
+
+#right_full_box #city_list .list_search_full_box .list_search_box #keyword
+	{
+	width: 328px;
+	height: 31px;
+	border: solid #c8c8ca 1px;
+	padding-left: 5px;
+	font-family: 'nanum';
+	font-size: 14px;
+	background: url(Bootstrap/images/search/search_icon.png) no-repeat;
+	background-position: 300px 4px;
+}
+
+#right_full_box #city_list .list_search_full_box .list_category_box
+	{
+	background: #f7f7f7;
+	height: 55px;
+	/*padding-top: 8px;*/
+}
+
+#right_full_box #city_list .list_search_full_box .list_category_box .list_cat_item
+	{
+	width: 68px;
+	text-align: center;
+	cursor: pointer;
+}
+
+#right_full_box #city_list .list_search_full_box .list_category_box li span
+	{
+	width: 68px;
+	height: 100%;
+	text-align: center;
+	cursor: pointer;
+	
+}
+
+#right_full_box #city_list .list_search_full_box .list_category_box li
+	{   /* 카테고리 이미지 설정 */  
+	width: 60px;
+	height: 100%;
+	text-align: center;
+	cursor: pointer;
+	float:left;
+	list-style:none;
+}
+
+#right_full_box #city_list .list_search_full_box .list_category_box .tourist.on
+	{
+	background: url(../images/search/ic_1.png) no-repeat;
+}
+
+#right_full_box #city_list .list_search_full_box .list_category_box .tourist
+	{
+	background: url(../images/search/ic_1.png) no-repeat;
+}
+
+#right_full_box #city_list .list_search_full_box .list_category_box .food.on
+	{
+	background: url(../images/search/ic_2.png) no-repeat;
+}
+
+#right_full_box #city_list .list_search_full_box .list_category_box .food
+	{
+	background: url(../images/search/ic_2.png) no-repeat;
+}
+
+#right_full_box #city_list .list_search_full_box .list_category_box .shop.on
+	{
+	background: url(../images/search/ic_3.png) no-repeat;
+}
+
+#right_full_box #city_list .list_search_full_box .list_category_box .shop
+	{
+	background: url(../images/search/ic_3.png) no-repeat;
+}
+
+#right_full_box #city_list .list_search_full_box .list_category_box .hotel.on
+	{
+	background: url(../images/search/ic_4.png) no-repeat;
+}
+
+#right_full_box #city_list .list_search_full_box .list_category_box .hotel
+	{
+	background: url(../images/search/ic_4.png) no-repeat;
+}
+
+#right_full_box #city_list .list_search_full_box .list_category_box .zzim.on
+	{
+	background: url(../images/search/ic_5.png) no-repeat;
+}
+
+#right_full_box #city_list .list_search_full_box .list_category_box .zzim
+	{
+	background: url(../images/search/ic_5.png) no-repeat;
+}
+
+#right_full_box #city_list .list_box.connectedSortable
+	{
+	overflow-y: scroll;
+	background: #fff;
+	height: 578px;
+}
+
+#right_full_box #city_list .list_box.connectedSortable .day_spot_item
+	{
+	padding: 15px;
+	cursor: move;
+	border-bottom: solid #a7a7a7 1px;
+	background: #fff;
+	width: 100%;
+	position: relative;
+}
+
+#right_full_box #city_list .list_box.connectedSortable .day_spot_item:last-child
+	{
+	padding: 15px;
+	cursor: move;
+	border-bottom: solid #a7a7a7 0px;
+	background: #fff;
+	width: 100%;
+	position: relative;
+}
+
+#right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .img_box
+	{
+	width: 82px;
+	height: 75px;
+	position: relative;
+	cursor: pointer;
+}
+
+#right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .img_box img
+	{
+	width: 82px;
+	height: 75px;
+}
+
+#right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .info_box
+	{
+	padding-left: 10px;
+	width: 153px;
+}
+
+#right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .info_box .title
+	{
+	cursor: pointer;
+	font-size: 14px;
+}
+
+#right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .info_box .sub
+	{
+	font-size: 12px;
+	color: #808080;
+	padding-top: 5px;
+}
+
+#right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .info_box .sub .tooltip_clip_cnt.fl
+	{
+	height: 19px;
+	padding-left: 18px;
+	line-height: 19px;
+	background: url(../img/sub10/list_clip_icon.png) no-repeat;
+}
+
+#right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .info_box .sub .tooltip_cnt_line.fl
+	{
+	width: 6px;
+	height: 13px;
+	margin-top: 3px;
+	border-right: solid 1px #d9d9d9;
+	margin-right: 5px;
+}
+
+#right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .info_box .sub .tooltip_review_rate.fl
+	{
+	height: 19px;
+	padding-left: 18px;
+	line-height: 19px;
+	background: url(../img/sub10/list_review_icon.png) no-repeat;
+}
+
+#right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .info_box .sub.include_pn_day
+	{
+	font-size: 12px;
+	color: #808080;
+	padding-top: 8px;
+	color: #1a7ad9;
+}
+
+#right_full_box #city_list .list_box.connectedSortable .day_spot_item.ui-draggable .spot_to_inspot
+	{
+	cursor: pointer;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+
+#right_full_box #city_list .list_box.connectedSortable .total_view_item
+	{
+	height: 106px;
+	background: #f0f0f0;
+	font-size: 12px;
+	color: #363636;
+	padding-top: 26px;
+	border-bottom: solid #dcdcdc 1px;
+	text-align: center;
+	cursor: pointer;
+}
+
+#right_full_box #city_list .list_box.connectedSortable .total_view_item .total_view_sub_text
+	{
+	font-size: 11px;
+	color: #555555;
+	line-height: 18px;
+	padding-top: 5px;
+}
+
+#right_full_box #city_list .item h5 {
+	padding-left: 13px;
+	font-size: 16px;
+}
+
+#right_full_box .fr {
+	height: 824px;
+	position: relative;
+	width: 80%;
+	overflow: hidden;
+}
+
+#right_full_box .frmap {
+    margin-left: 365px;
+	background: url(Bootstrap/images/search/background.png) no-repeat;
+}
+
+#right_full_box .frmap {
+    height: 824px;
+    position: relative;
+    width: 80%;
+    
+}
+
+
+

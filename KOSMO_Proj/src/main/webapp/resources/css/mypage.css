@@ -1,0 +1,228 @@
+/*---- 마이페이지 공용 -----*/
+.input-area {
+    display: inline-block;
+    width: 360px;
+    height: 50px;
+    border: 1px solid #e1e1e1;
+    vertical-align: middle;
+    background: #fff;
+    position: relative;
+    text-align: left;
+}
+.input-area input[type="password"] {
+	height: 40px;
+	border: 1px solid #e1e1e1;
+	color: #999;
+	background: #fff;
+	-webkit-appearance: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+.input-area input[type="text"] {
+    background: #fff;
+    -webkit-appearance: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+.input-area input:placeholder-shown {
+    color: #999;
+}
+.yellowBt {
+	display: inline-block;
+	background: #23b8bc;
+	color: #fff;
+	text-align: center
+}
+.yellowBt:hover {
+	background-color: #157577;
+    transition: all .1s ease-in-out;
+}
+.grayBt {
+	display: inline-block;
+	background: #888;
+	color: white;
+	text-align: center
+}
+.grayBt:hover {
+	background: black;
+	transition: all .1s ease-in-out;
+}
+
+/*-----------마이 페이지 1 -----------*/
+.myCardList {
+    box-sizing: border-box;
+    padding: 70px 0 80px;
+    border: 1px solid #e1e1e1;
+    background: #f5f5f5;
+}
+.myCardList .txt1.secret {
+    font-size: 20px;
+    line-height: 28px;
+}
+.myCardList .txt1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 44px;
+    letter-spacing: -1px;
+}
+.myCardList .input-area {
+    margin-bottom: 10px;
+}
+.myCardList .input-area input {
+    border: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 1rem;
+}
+
+.myCardList .yellowBt {
+    width: 180px;
+    height: 50px;
+    box-sizing: border-box;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-top: 10px;
+}
+
+/*-----------마이페이지 2-------------------------------------------------------------------------------------------*/
+.myInfoRevise .reviseTit {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.myInfoRevise .reviseTit .requiredTxt {
+    float: right;
+    font-size: 16px;
+}
+.myInfoRevise .reviseTit .requiredTxt span {
+    color: #f15921;
+}
+.writeType1 {
+    border-top: 2px solid #777;
+}
+.writeType1 ul {
+    padding: 0;
+}
+.writeType1 ul li {
+    border-bottom: 1px solid #e1e1e1;
+    display	: table;
+    width: 100%;
+    height: 80px;
+}
+.writeType1 ul li .left {
+    display: table-cell;
+    vertical-align: middle;
+    background: #f9f9f9;
+    width: 15%;
+}
+.writeType1 ul li .left .tit.star {
+    position: relative;
+    padding-right: 11px;
+    display: inline-block;
+}
+.writeType1 ul li .left .tit {
+    font-size: 18px;
+    color: #222;
+    line-height: 28px;
+}
+.writeType1 ul li .left .tit.star:after {
+    display: block;
+    content: "*";
+    color: #f15921;
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+}
+
+.writeType1 ul li .right {
+    display: table-cell;
+    vertical-align: middle;
+    background: #fff;
+    padding-left: 15px;
+}
+.writeType1 ul li .right .txt {
+    font-size: 16px;
+    color: #666;
+    font-family: 'NotoSans-Light', '맑은 고딕', 'Malgun Gothic', sans-serif;
+}
+.writeType1 ul li:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.myInfoRevise .blackBt {
+    padding: 12px 20px;
+    background: #555;
+    border-radius: 20px;
+    display: inline-block;
+    color: #fff;
+    font-size: 16px;
+    margin-left: 10px;
+    line-height: 1;
+}
+
+.writeType1 ul li .right .radioBox {
+    display: inline-block;
+    margin-right: 25px;
+}
+.radioBox {
+    text-align: left;
+}
+.radioBox label {
+    font-size: 16px;
+    color: #666;
+    vertical-align: middle;
+    margin-bottom: 0;
+}
+
+.writeType1 ul li .right.inputArea {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.writeType1 ul li .right .input-area {
+    width: auto;
+    height: auto;
+    padding: 0px;
+}
+.writeType1 ul li .right .input-area input {
+    border: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.writeType1 ul li .right .form-inline #select {
+    height: 35.6px;
+}
+
+.writeType1 ul li .right .grayBt {
+    display: block;
+    float: left;
+    height: 35.6px;
+    padding: 3px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+}
+
+.writeType1 .yellowBt {
+    width: 180px;
+    height: 50px;
+    box-sizing: border-box;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.writeType1 .yellowBt:hover {
+    background-color: #157577;
+    transition: all .1s ease-in-out;
+}
+
+
+
+

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration  
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+ <!-- myBatis 환경설정파일
+     1]데이타베이스 연결정보 설정
+     2]매퍼파일의 위치정보 설정
+ -->
+<configuration>	
+	<!-- 자바빈 별칭:매퍼파일에서 환경설정 파일로 위치됨. -->
+	<typeAliases>
+		<typeAlias type="com.kosmo.baby.service.Carpool_borderDTO" alias="Carpool_borderDTO"/>
+		<typeAlias alias="Chart_DTO" type="com.kosmo.baby.service.Chart_DTO"/>	
+		<typeAlias alias="MembersDTO" type="com.kosmo.baby.service.MembersDTO"/>	
+	</typeAliases>
+	
+	
+	<!-- 매퍼파일(SQL쿼리 결과와 자바빈 매핑) 정보 설정 -->	
+  
+	<mappers>
+		<mapper resource="mybatis/Members.xml" />
+		<mapper resource="mybatis/Baby_border.xml" />
+		<mapper resource="mybatis/Partner.xml" />
+		<mapper resource="mybatis/Carpool_border.xml" />
+		<mapper resource="mybatis/Chart_API.xml"/>
+		<mapper resource="mybatis/Reservation.xml" />
+		
+	</mappers>
+
+</configuration>

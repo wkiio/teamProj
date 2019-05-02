@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper  
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace속성 : 매퍼파일의 완전한 경로 .xml은 생략 -->
+<!-- ★ibatis와는 다르게 id값에 .(dot)를 사용할 수 없다. -->
+
+<!-- ==================================================================== -->
+<!-- 		컬럼 순서는 ID,PWD,NAME,ADDR,EMAIL,TEL,AUTHKEY(이메일 인증키),		  -->
+<!-- 		ENABLED(이메일 인증 완료와 시큐리티, 기본값0),						  -->
+<!-- 		PARTNERSTATUS(제휴 여부, 기본값0), AUTHORITY(시큐리티 권한)입니다. 	  -->
+<!-- 		컬럼 순서에 유의하며 SQL문을 작성해주세요 								  -->
+<!-- ==================================================================== -->
+
+<mapper namespace="mybatis.Members">
+	<!-- 로그인용 SQL -->
+	<select id="isMember" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM members WHERE id=#{id} AND pwd=#{pwd}
+	</select>
+	
+	<!-- id 중복확인용 SQL -->
+ 	<!-- <select id="idCheck" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM members WHERE id=#{id}
+	</select>  -->  
+	<select id="idCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM members WHERE id=#{id}
+	</select>  
+	
+	<!-- 회원가입용 SQL -->
+	<!-- 두 번째 INTO는 카풀여부를 체크했을때 들어오는 if문입니다. -->
+	<!-- 카풀을 체크하는 순간 input type=hidden으로 들어온 partnerstatus는 0에서 1이되며, 그 순간 partner_members 테이블에도 들어갑니다-->
+	 <insert id="signup" parameterType="java.util.Map">
+		INSERT
+		<if test="partnerstatus==1"> ALL </if>
+			INTO members VALUES(#{id},#{pwd},#{name},#{addr},#{email},#{tel},#{authkey},0,#{partnerstatus},default)
+		<if test="partnerstatus==1"> 
+			INTO partner_members values(SEQ_PARTNER_MEMBERS.nextval,#{id},#{carnumber},#{cartype},#{career},'0',0,0)
+			select * from dual</if>
+	</insert>
+	
+	<!-- 관리자페이지 회원관리용 -->
+   <select id="selectList" parameterType="java.util.Map" resultType="MembersDTO">
+      SELECT * FROM members
+   </select>
+   	<!-- 관리자 페이지 삭제용 -->
+   <delete id="memberdelete" parameterType="java.util.Map">
+      delete from members where id=#{id}
+   </delete>
+   
+  	 <!-- 마이페이지 비밀번호 체크용 -->
+   <select id="mypageCheck" parameterType="java.util.Map" resultType="int">
+   		SELECT COUNT(*) FROM members WHERE id=#{id} AND pwd=#{pwd}
+   </select>
+   
+   	<!-- 마이페이지 목록용 -->
+   <select id="mypage" parameterType="java.util.Map" resultType="MembersDTO">
+      SELECT * FROM members WHERE id=#{id}
+   </select>
+   
+   
+	
+	<!-- 이메일 인증완료 SQL -->
+	<!-- 이메일에서 받은 링크를 누르면 enabled가 0에서 1로 바뀝니다. -->
+	<update id="emailConfirm" parameterType="java.util.Map">
+		UPDATE members SET enabled = CASE WHEN authkey = #{authkey} THEN 1 ELSE 0 END WHERE email = #{email}
+	</update>
+	
+</mapper>

@@ -1,0 +1,34 @@
+/*
+ * S9Soft Juso Suggest Style sheet (single)
+ * 2018-11-04
+*/
+.ui-autocomplete {
+	font-size: 0.85rem;
+	height: 340px;
+	max-height: 340px;
+	overflow-y: auto;
+	/* prevent horizontal scrollbar */
+	overflow-x: hidden;
+	width: 419.987px;
+	background-color: white;
+}
+.ui-widget {
+	/* border-color: blue; */
+	border-width: 3px;
+	border-top: 1px;
+	padding-top: 2px;
+	padding-left: 2px;
+	padding-bottom: 2px;
+}
+.ui-menu-item {
+	border-bottom: 1px dotted gray;
+	height: 45px;
+}
+.ui-menu-item jbn {
+	font-size: 0.8em;
+	color: white;
+	padding: 1px;
+	border: 1px hidden #000000;
+	border-radius: 2px;
+	background-color: #007bff;
+}
