@@ -82,7 +82,6 @@ public class Carpool_borderController {
 		List<Map> collections = new Vector<Map>();
 		for(Carpool_borderDTO dto : list) {
 			Map record = new HashMap();
-			System.out.println("서치워드 :"+dto.getSerchword_one());
 			record.put("cp_no",dto.getCp_no());
 			record.put("content",dto.getContent());
 			record.put("end_xpos",dto.getEnd_xpos());
