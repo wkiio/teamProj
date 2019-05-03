@@ -15,7 +15,23 @@ public class Carpool_borderDTO {
 	private String id;
 	private String name;
 	private String status;
+	private String serchword_one;
+	private String serchword_two;
 	
+	
+	public String getSerchword_one() {
+		return serchword_one;
+	}
+	public void setSerchword_one(String serchword_one) {
+		this.serchword_one = serchword_one;
+	}
+	public String getSerchword_two() {
+		return serchword_two;
+	}
+	public void setSerchword_two(String serchword_two) {
+		this.serchword_two = serchword_two;
+	}
+
 	
 	
 	public String getStatus() {

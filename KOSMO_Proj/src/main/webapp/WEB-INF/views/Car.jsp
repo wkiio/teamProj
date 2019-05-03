@@ -32,16 +32,16 @@
 						<!-- 출발지, 도착지 입력 -->
 						<div class="form-group">
 							<img class="form-image" src="/baby/Bootstrap/images/2.jpg" title="출발지" alt="출발지">
-							<input class="form-control" type="text" name="src_key_1" 
+							<input class="form-control" type="text" name="serchword_one" 
 								title="출발지를 입력해주세요" placeholder="서울">
 						</div>
 						<div class="form-group">
 							<img class="form-image" src="/baby/Bootstrap/images/3.jpg" title="도착지" alt="도착지">
-							<input class="form-control" type="text" name="src_key_2" 
+							<input class="form-control" type="text" name="serchword_two" 
 								title="도착지를 입력해주세요" placeholder="경기도">
 						</div>
 					</div>
-					<input type="submit" value="검색" class="btn btn-secondary">
+					<input id="searchsubmit" value="검색" class="btn btn-secondary">
 				</div>
 			</form>
 			<div class="btn-group btn-group-toggle ml-auto" data-toggle="buttons">
@@ -82,6 +82,9 @@
 <script>
 
    var clickchange = 1;
+   var firstsearch;
+   var secondsearch;
+   
 
   $(function(){
 	 
@@ -106,12 +109,20 @@
 			 console.log("clickchange" + clickchange );  
 			 firsttable();
 		});
-	 
+
+		 $("#searchsubmit").click(function(){
+			console.log("오냐????"); 
+			firstsearch = $("input[name='serchword_one']").val();
+			secondsearch = $("input[name='serchword_two']").val();
+			 firsttable();
+			console.log("firstsearch : " + firstsearch);
+			console.log("secondsearch : " + secondsearch);
+		 });
  });/////function
  
  var firsttable = function(){
 	 $.ajax({
-		 data : {"${_csrf.parameterName}" : "${_csrf.token}"},
+		 data : {"${_csrf.parameterName}" : "${_csrf.token}", 'firstsearch' : firstsearch, 'secondsearch' : secondsearch},
 		 type : "POST",
 		 url : "<c:url value = '/Carindex1.kosmo'/>",
 		 dataType : "json",
