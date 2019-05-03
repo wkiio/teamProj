@@ -10,7 +10,7 @@
 <!-- ==================================================================== -->
 <!-- 		컬럼 순서는 CP_NO,STARTPOINT(출발위치),ENDPOINT(도착위치),			  -->
 <!-- 		TYPE,CONTENT,START_XPOS(출발위도),START_YPOS(출발경도),			  -->
-<!-- 		END_XPOS(도착위도),END_YPOS(도착경도),ID,TIME,PRICE  입니다.		  -->
+<!-- 		END_XPOS(도착위도),END_YPOS(도착경도),ID,TIME,PRICE,STATUS 입니다.  -->
 <!-- 		컬럼 순서에 유의하며 SQL문을 작성해주세요 								  -->
 <!-- ==================================================================== -->
 
@@ -19,7 +19,7 @@
 	<insert id="carInsert" parameterType="java.util.Map">
 		INSERT INTO CARPOOL_BORDER VALUES(SEQ_carpool_border.NEXTVAL,#{startpoint},#{endpoint},
 		#{type},#{content},#{start_xpos},#{start_ypos},#{end_xpos},#{end_ypos},
-		#{id},default,#{time},#{price})
+		#{id},default,#{time},#{price},default)
 	</insert>
 	<select resultType="Carpool_borderDTO" id="carList">
 		SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id
