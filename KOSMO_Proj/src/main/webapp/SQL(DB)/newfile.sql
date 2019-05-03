@@ -13,7 +13,7 @@ DROP TABLE map CASCADE CONSTRAINTS;
 DROP TABLE code CASCADE CONSTRAINTS;
 DROP TABLE partner_members CASCADE CONSTRAINTS;
 DROP TABLE members CASCADE CONSTRAINTS;
-DROP TABLE BAR_CHART CASCADE CONSTRAINTS;
+DROP TABLE visit;
 
 DROP SEQUENCE SEQ_Baby_Border;
 DROP SEQUENCE SEQ_Calender;
@@ -24,6 +24,7 @@ DROP SEQUENCE SEQ_Map;
 DROP SEQUENCE SEQ_Partner_Members;
 DROP SEQUENCE SEQ_Reservation;
 DROP SEQUENCE SEQ_ReView;
+DROP TRIGGER  TRG_RESER;
 
 CREATE SEQUENCE SEQ_Baby_Border
 NOCYCLE
@@ -107,6 +108,9 @@ CREATE TABLE carpool_border
 	carseat char(1) DEFAULT '0' CONSTRAINTS carseat_CK CHECK (carseat = '0' OR carseat = '1'),
 	time nvarchar2(50) NOT NULL,
 	price number NOT NULL,
+	-- 0 : 현재 예약되지 않음
+	-- 1 : 예약중
+	status char(1) DEFAULT '0' CONSTRAINTS status_CK CHECK (status = '0' OR status = '1'),
 	PRIMARY KEY (cp_no)
 );
 
@@ -216,9 +220,8 @@ CREATE TABLE review
 	PRIMARY KEY (rv_no)
 );
 
-CREATE TABLE BAR_CHART(
-MONTH NVARCHAR2(15) not null,
-VISITNUMBER NVARCHAR2(1000) not null
+CREATE TABLE VISIT (
+	V_DATE DATE
 );
 
 
@@ -294,6 +297,23 @@ ALTER TABLE review
     on delete cascade
 ;
 
+-- 트리거
+
+CREATE TRIGGER TRG_RESER
+AFTER INSERT OR DELETE
+ON reservation
+FOR EACH ROW --행단위 트리거
+DECLARE
+BEGIN
+	IF INSERTING THEN
+		UPDATE carpool_border SET status = '1'
+		WHERE cp_no = :NEW.cp_no;
+	ELSIF DELETING THEN
+		UPDATE carpool_border SET status = '0'
+		WHERE cp_no = :OLD.cp_no;
+	END IF;
+END;
+/
 
 
 -- 관리자 아이디넣기
@@ -306,20 +326,13 @@ insert into members values('kim','1234','김길동','천호동','01012345678','a
 insert into members values('park','1234','박길동','천호동','01012345678','adf@nate.com',0,1,0,default);
 insert into members values('choi','1234','최길동','천호동','01012345678','adf@nate.com',0,1,0,default);
 
-insert into carpool_border values(10,'강남역','역삼역','태워주세요','연락처 010-1234-5678',37.498184,127.028484,37.500474,127.036082,'lee',0,sysdate,10000);
-insert into carpool_border values(11,'강남역','역삼역','태워주세요','연락처 010-1234-5678',37.498184,127.028484,37.500474,127.036082,'park',0,sysdate,10000);
-insert into carpool_border values(12,'강남역','역삼역','태워주세요','연락처 010-1234-5678', 37.498184,127.028484,37.500474,127.036082,'choi',0,sysdate,10000);
+insert into carpool_border values(10,'강남역','역삼역','태워주세요','연락처 010-1234-5678',37.498184,127.028484,37.500474,127.036082,'lee',0,sysdate,10000,'0');
+insert into carpool_border values(11,'강남역','역삼역','태워주세요','연락처 010-1234-5678',37.498184,127.028484,37.500474,127.036082,'park',0,sysdate,10000,'0');
+insert into carpool_border values(12,'강남역','역삼역','태워주세요','연락처 010-1234-5678', 37.498184,127.028484,37.500474,127.036082,'choi',0,sysdate,10000,'0');
 
-insert into reservation values(10,0,'0','lee',10);
-insert into reservation values(11,0,'0','park',11);
-insert into reservation values(12,0,'0','choi',12);
-
-insert into BAR_CHART(MONTH,VISITNUMBER) VALUES('1월달','30');
-insert into BAR_CHART(MONTH,VISITNUMBER) VALUES('2월달','40');
-insert into BAR_CHART(MONTH,VISITNUMBER) VALUES('3월달','10');
-insert into BAR_CHART(MONTH,VISITNUMBER) VALUES('4월달','33');
-insert into BAR_CHART(MONTH,VISITNUMBER) VALUES('5월달','66');
-insert into BAR_CHART(MONTH,VISITNUMBER) VALUES('6월달','77');
+--insert into reservation values(1,0,'0','lee',10);
+--insert into reservation values(2,0,'0','park',11);
+--insert into reservation values(3,0,'0','choi',12);
 
 insert into baby_border(no,title,url,thumbnail) values(1,'설명 아직 미정','https://www.youtube.com/watch?v=gcAbeTWjHvQ','http://img.youtube.com/vi/gcAbeTWjHvQ/mqdefault.jpg');
 insert into baby_border(no,title,url,thumbnail) values(2,'설명 아직 미정','https://www.youtube.com/watch?v=pe1asLzVQBQ','http://img.youtube.com/vi/pe1asLzVQBQ/mqdefault.jpg');
@@ -331,7 +344,8 @@ insert into baby_border(no,title,url,thumbnail) values(7,'설명 아직 미정',
 insert into baby_border(no,title,url,thumbnail) values(8,'설명 아직 미정','https://www.youtube.com/watch?v=M4x-SWwc6dI','http://img.youtube.com/vi/M4x-SWwc6dI/mqdefault.jpg');
 insert into baby_border(no,title,url,thumbnail) values(9,'설명 아직 미정','https://www.youtube.com/watch?v=ZnLQKTXAtMs','http://img.youtube.com/vi/ZnLQKTXAtMs/mqdefault.jpg');
 
+alter trigger TRG_RESER enable;
+
 commit;
 
 purge recyclebin;
-
