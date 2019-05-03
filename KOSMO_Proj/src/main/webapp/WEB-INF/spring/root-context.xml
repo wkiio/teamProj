@@ -39,6 +39,11 @@
          </props>
       </property>
    </bean>
+   
+   
+    <bean name="visitCountDAO"  id="visitCountDAO" class="com.kosmo.baby.service.impl.VisitCountDAO"/> 
+    <bean name="visitCountServiceimpl"  id="visitCountServiceimpl" class="com.kosmo.baby.service.impl.VisitCountServiceimpl"/> 
+   
 	
 		
 </beans>

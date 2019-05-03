@@ -48,7 +48,12 @@ public class Carpool_borderServiceimpl implements Carpool_borderService{
 		return dao.adminInsert(map);
 	}
 
-	
+	@Override
+	public int CBoardCount(Map map) {
+		// TODO Auto-generated method stub
+		return dao.CBoardCount(map);
+	}
+
 	
 
 }

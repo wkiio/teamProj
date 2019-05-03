@@ -130,14 +130,13 @@ public class MembersController {
 		sendMail.setTo(map.get("email").toString());
 		sendMail.send();
 		
-		
-		return "/admin_page/admin_index";
+		return "signup_after.tiles";
 	}
 	
 	@RequestMapping("/emailConfirm.kosmo")
 	public String emailConfirm(@RequestParam Map map) throws Exception{
 		service.emailConfirm(map);
-		return "index.tiles";
+		return "signup_OK.tiles";
 	}
 	
 	@ResponseBody
