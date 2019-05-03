@@ -25,7 +25,7 @@ public class ReservationController {
 	public String baby_admin(@RequestParam Map map,Model model) {
 		List<ReservationDTO> recode= service.selectList(map);
 		
-		
+		model.addAttribute("car_list",recode);
 		
 		return "/admin_page/car_admin";
 	}

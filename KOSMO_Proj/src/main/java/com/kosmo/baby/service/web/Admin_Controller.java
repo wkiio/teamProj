@@ -20,8 +20,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kosmo.baby.service.MembersDTO;
 import com.kosmo.baby.service.ReservationDTO;
 import com.kosmo.baby.service.ReservationService;
+import com.kosmo.baby.service.impl.Baby_borderServiceimpl;
+import com.kosmo.baby.service.impl.Carpool_borderServiceimpl;
+import com.kosmo.baby.service.impl.Chart_DAO;
 import com.kosmo.baby.service.impl.MembersServiceimpl;
 import com.kosmo.baby.service.impl.ReservationServiceimpl;
+import com.kosmo.baby.service.impl.VisitCountServiceimpl;
 
 @Controller
 public class Admin_Controller {
@@ -34,6 +38,45 @@ public class Admin_Controller {
 	
 	@Resource(name="reservationServiceimpl")
 	private ReservationServiceimpl reservationService;
+	
+	//서비스 주입
+	@Resource(name="visitCountServiceimpl")
+	private VisitCountServiceimpl visitCountServiceimpl;
+	
+	//서비스 주입
+	@Resource(name="baby_borderServiceimpl")
+	private Baby_borderServiceimpl baby_borderServiceimpl;
+	
+	@Resource(name="chart_DAO")
+	private Chart_DAO chart_DAO;	
+	
+	//서비스 주입
+	@Resource(name="carpool_borderServiceimpl")
+	private Carpool_borderServiceimpl carpool_borderServiceimpl;
+	
+
+	@RequestMapping("/admin_index.kosmo")
+	public String admim(Model model) {
+		
+		//int member = memberService.(null);
+		int todayCount = visitCountServiceimpl.getTodayCount(null);
+		int memberCount = chart_DAO.MemberCount(null);
+		int carmemberCount = chart_DAO.CarpoolCount(null);
+		
+		
+		
+		//게시물수 = 카풀게시판+육아게시판
+		int bBoardCount = baby_borderServiceimpl.boardCount(null);
+		int cBoardCount = carpool_borderServiceimpl.CBoardCount(null);
+		
+		model.addAttribute("todayCount", todayCount);
+		model.addAttribute("memberCount", memberCount);
+		model.addAttribute("carmemberCount", carmemberCount);
+		model.addAttribute("boardCount", bBoardCount+cBoardCount	);
+		
+		
+		return "/admin_page/admin_index";
+	}
 
 	
 	@RequestMapping("/memberTable.kosmo")

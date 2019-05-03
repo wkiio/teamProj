@@ -10,6 +10,9 @@ public interface Baby_borderService {
 	
 	Baby_borderDTO selectOne(Map map);
 	
+	int boardCount(Map map);
+	
+	
 	//입력 수정 삭제용
 	int insert(Map map);
 	int delete(Map map);
