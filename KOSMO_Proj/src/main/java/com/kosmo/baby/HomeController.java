@@ -21,30 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/index.kosmo", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "index.tiles";
-	}
-/*	
-	@RequestMapping("/babyinfo.kosmo")
-	public String bayInfo() {
-		
-		return "babyInfo.tiles";
-		
-	}*/
+
 	
 	@RequestMapping("/login_page.kosmo")
 	public String login_page() {
@@ -88,7 +65,7 @@ public class HomeController {
 	@RequestMapping("/calendar.kosmo")
 	public String calendar() {
 		
-		return "calendar2.tiles";
+		return "calendar.tiles";
 	}
 	
 	@RequestMapping("/carpool2.kosmo")
@@ -103,10 +80,7 @@ public class HomeController {
 	public String car1() {
 		return "Car1.tiles";
 	}
-	@RequestMapping("/admin_index.kosmo")
-	public String admim() {
-		return "/admin_page/admin_index";
-	}
+	
 	
 	@RequestMapping("/serviceclick.kosmo")
 	public String serviceclick() {

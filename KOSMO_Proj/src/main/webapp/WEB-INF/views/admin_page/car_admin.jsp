@@ -406,7 +406,6 @@ section{
 									<div class="tab-pane fade active show" id="nav-home"
 										role="tabpanel" aria-labelledby="nav-home-tab"
 										aria-expanded="true">
-
 										<section id="cartable"  style="border: 3px solid rgba(0,0,0,0.1);">
 											<!--for demo wrap-->
 											<h1>현재 예약현황</h1>
@@ -414,7 +413,7 @@ section{
 												<table cellpadding="0" cellspacing="0" border="0">
 													<thead>
 														<tr>
-															<th>이용고객</th>
+															<th>이용고객(탑승자->운전자)</th>
 															<th>출발</th>
 															<th>도착</th>
 															<th>상태</th>
@@ -426,144 +425,43 @@ section{
 											<div class="tbl-content">
 												<table cellpadding="0" cellspacing="0" border="0">
 													<tbody>
-														 <tr data-toggle="collapse" data-target="#demo1" class="accordion-toggle">															
-															<td>탑승자이름 -> 운전자 이름</td>
-															<td>가산디지털단지역</td>
-															<td>강남역</td>
+														<c:forEach var="car" items="${car_list}" >
+														 <tr class="demo${car.RS_NO}">																
+															<td> ${car.TNAME }-> ${car.DNAME} </td>
+															<td>${car.STARTPOINT}</td>
+															<td>${car.ENDPOINT} </td>
 															<td>예약진행중</td>														  	  
 														</tr>
-													<tr>
-														<td colspan="4" class="hiddenRow">
-															<div class="accordian-body collapse" id="demo1" style="border: 3px solid #2d2a2a;">															
-																<table>
-																	<tr>
-																		<td>탑승자   :</td>
-																		<td>최성준</td>
-																		<td>운전자    :  </td>
-																		<td>택시기사</td>
-																		<td>차량 : </td>
-																		<td>중형차</td>
-																	</tr>
-																	<tr>
-																		<td>금액   :</td>
-																		<td>5천원</td>
-																		<td>날짜   :</td>
-																		<td>2019.04.25</td>
-																		<td colspan='2' rowspan='2' style="border-left:2px solid #2d2a2a;background-color: red">사진.jpg</td>
-																	</tr>
-																	
-																	<tr>
-																		<td colspan='2' style="text-align: left;">추가내용 :
-																			다 내꺼</td>
-																	</tr>
-																</table>
-
-															</div>
-														</td>
-													</tr>
-													 <tr data-toggle="collapse" data-target="#demo2" class="accordion-toggle">
-															<td>2</td>
-															<td>수원역</td>
-															<td>양재역</td>
-															<td>예약진행중</td>
-														</tr>
 														<tr>
-														<td colspan="4" class="hiddenRow">
-															<div class="accordian-body collapse" id="demo2" style="border: 3px solid #2d2a2a;">															
-																<table>
+														<td class="SlideDownup" id="demo${car.RS_NO}" colspan="4">
+															<div style="border: 1px solid #2d2a2a;">															
+																<table >
 																	<tr>
 																		<td>탑승자   :</td>
-																		<td>최성준</td>
+																		<td>${ car.TNAME}</td>
 																		<td>운전자    :  </td>
-																		<td>택시기사</td>
+																		<td>${car.DNAME}</td>
 																		<td>차량 : </td>
-																		<td>중형차</td>
+																		<td>${car.CARTYPE}</td>
 																	</tr>
 																	<tr>
 																		<td>금액   :</td>
-																		<td>5천원</td>
+																		<td>${car.PRICE}</td>
 																		<td>날짜   :</td>
-																		<td>2019.04.25</td>
-																		<td colspan='2' rowspan='2' style="border-left:2px solid #2d2a2a;background-color: red">사진.jpg</td>
+																		<td>${car.TIME}</td>
+																		<td colspan='2' rowspan='2' style="border-left:1px solid #2d2a2a;background-color: red">사진.jpg</td>
 																	</tr>
 																	
 																	<tr>
 																		<td colspan='2' style="text-align: left;">추가내용 :
-																			다 내꺼</td>
+																			${car.CONTENT}</td>
 																	</tr>
 																</table>
-
 															</div>
 														</td>
 													</tr>
+														</c:forEach>
 													
-														<tr>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-														</tr>
-														<tr>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>															
-															<td>#</td>
-														</tr>
-														<tr>
-															<td>#</td>
-															<td>#</td>														
-															<td>#</td>
-															<td>#</td>
-														</tr>
-														<tr>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-														</tr>
-														<tr>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-														</tr>
-														<tr>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-														</tr>
-														<tr>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-														</tr>
-														<tr>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-														</tr>
-														<tr>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-														</tr>
-														
-														<tr>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-														</tr>
-														<tr>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-															<td>#</td>
-														</tr>
 														<tr>
 															<td>#</td>
 															<td>#</td>
@@ -575,7 +473,6 @@ section{
 											</div>
 										</section>
 
-
 										<!-- follow me template -->
 										<div class="made-with-love">
 											Made with <i>♥</i> by <a target="_blank"
@@ -586,21 +483,8 @@ section{
 									</div>
 									<div class="tab-pane fade" id="nav-profile" role="tabpanel"
 										aria-labelledby="nav-profile-tab" aria-expanded="false">
-
 									</div>
-
-								</div>
-							
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
+								</div>                        
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -646,26 +530,26 @@ section{
     <script>
     
     $(function(){
+    	$('.SlideDownup').hide();
     	
-     	$('.tbl-content tbody tr').click(function(){    		
-    		var tr = $(this);
-			var td = tr.children();    		
-    		//alert("클릭한값은?"+td.eq(0).text());
+    	var temptitle;
+    	
+    	
+    	$('.tbl-content tbody tr').click(function(){    		
+    		$('.SlideDownup').hide();    		
+    		var no = $(this).attr("class");    		 
+    		
+    		var bb = "#" + no + "";
+    		if(temptitle != no){
+    			$(bb).show();
+    			temptitle = no;
+    		}
+    		else
+    			temptitle="";
     		
     		
     	});
     
-    	 /* $( "#accordion" ).accordion({collapsible: true,active:false,animate:2000}); */
-    	 
-    	 
-    	 
-    	/*  $('.accordian-body').on('show.bs.collapse', function () {    	    		
-    		    $(this).closest("table")    		    	
-    		        .find(".collapse.in")
-    		        .not(this)
-    		        .collapse('toggle')
-    		})
-    	 */
     	
     });
     

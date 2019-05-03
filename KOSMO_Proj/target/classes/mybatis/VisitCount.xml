@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper  
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace속성 : 매퍼파일의 완전한 경로 .xml은 생략 -->
+<!-- ★ibatis와는 다르게 id값에 .(dot)를 사용할 수 없다. -->
+
+<!-- ==================================================================== -->
+<!-- 		컬럼 순서는 RS_NO,SCORE,FINISH,ID,CP_NO 입니다					  -->
+<!-- 		컬럼 순서에 유의하며 SQL문을 작성해주세요 								  -->
+<!-- ==================================================================== -->
+
+<mapper namespace="mybatis.VisitCount">
+	<select id="getTotalCount" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM VISIT
+	</select>
+	<!-- 	
+	<select id="getTotalCount" parameterType="com.kosmo.baby.service.impl.VisitCountVO" resultType="int">
+		SELECT COUNT(*) FROM VISIT
+	</select> -->
+	
+	<select id="getTodayCount" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) AS TodayCnt FROM VISIT
+		WHERE TO_DATE(V_DATE, 'YYYY-MM-DD') = TO_DATE(sysdate, 'YYYY-MM-DD')
+	</select>
+	<insert id="insertVisit" parameterType="java.util.Map" >
+		INSERT INTO VISIT (V_DATE) VALUES (sysdate)
+	</insert>
+	
+</mapper>
