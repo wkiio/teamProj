@@ -33,12 +33,12 @@
 						<div class="form-group">
 							<img class="form-image" src="/baby/Bootstrap/images/2.jpg" title="출발지" alt="출발지">
 							<input class="form-control" type="text" name="serchword_one" 
-								title="출발지를 입력해주세요" placeholder="서울">
+								title="출발지를 입력해주세요" placeholder="출발위치 검색">
 						</div>
 						<div class="form-group">
 							<img class="form-image" src="/baby/Bootstrap/images/3.jpg" title="도착지" alt="도착지">
 							<input class="form-control" type="text" name="serchword_two" 
-								title="도착지를 입력해주세요" placeholder="경기도">
+								title="도착지를 입력해주세요" placeholder="도착위치 검색">
 						</div>
 					</div>
 					<input id="searchsubmit" value="검색" class="btn btn-secondary">

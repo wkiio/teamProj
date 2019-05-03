@@ -23,16 +23,16 @@
 	</insert>
 	<select parameterType="java.util.Map" resultType="Carpool_borderDTO" id="carList">
 		SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id
-		 <if test = "(firstsearch != null) == (secondsearch==null)">
-			WHERE startpoint LIKE '%' || #{firstsearch} || '%' 
-		</if>
-			<if test="(secondsearch!=null) == (firstsearch==null)">
+		<if test= "((secondsearch != null) and !secondsearch.equals('')) and firstsearch.equals('')">
 			WHERE endpoint LIKE '%' || #{secondsearch} || '%' 
 		</if>
-		 <if test ="(firstsearch !=null) == (secondsearch!=null)">
+		<if test = "(firstsearch != null) and !firstsearch.equals('') and secondsearch.equals('')">
+         WHERE startpoint LIKE '%' || #{firstsearch} || '%' 
+     	 </if>
+		 <if test ="((secondsearch != null) and !secondsearch.equals('')) and ((firstsearch != null) and !firstsearch.equals(''))">
 			WHERE (startpoint LIKE '%' || #{firstsearch} || '%' 
 			AND endpoint LIKE '%' || #{secondsearch} || '%') 
-		</if> 
+		</if>
 		ORDER BY CP_NO DESC
 	</select>
 
