@@ -53,7 +53,7 @@
 								<li class="has-children"><a href="#">Sub Menu</a>
 									<ul class="dropdown">
 										<li><a href="daum.kosmo">Menu One</a></li>
-										<li><a href="#">Menu Two</a></li>
+										<li><a href="aiApi.kosmo">Menu Two</a></li>
 										<li><a href="#">Menu Three</a></li>
 									</ul></li>
 							</ul></li>
