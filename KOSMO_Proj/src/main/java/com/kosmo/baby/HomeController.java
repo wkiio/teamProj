@@ -37,9 +37,6 @@ public class HomeController {
 	@RequestMapping("/aiApi.kosmo")
 	public String ai_API() {
 		
-		new AiApi();
-		
-		
 		return "aiApi.tiles";
 	}
 	
