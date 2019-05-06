@@ -15,13 +15,23 @@
 </stlye>
 
 
-<div class="site-section" style="height:auto; padding:2em;">
+<div class="site-section" style="height:auto; padding:2em;z-index=3" >
      <div class ="row">
         	<div class="col-md-6">
-        		<div  id="이미지1" class = "col-md-offset-1 col-md-5 " style="z-index:25;" >
+        	<%-- 	<div   class = "col-md-offset-1 col-md-5 " style="z-index:25;" >
         			<img id="이미지2" class="image_one1" alt="이미지" src= "<c:url value='/resources/Baby/유모차2.jpg'/>" style="height:250px;z-index: 15;" />	
-        		</div>     	
-        	</div>
+        		</div>    --%>
+			<div style="position: absolute;">
+				<div id="이미지1"  style="position: relative;z-index:25; top: 30px; left: 80px;">
+					<img  id="이미지2" src="<c:url value='/resources/Baby/유모차2.jpg'/>" style="height:250px;z-index: 15;" ></img>
+				</div>
+			</div>
+			<div style="position: absolute;">
+				<div style="position: relative; top: 30px; left: 80px;">
+					<img src="<c:url value='/resources/Baby/유모차2.jpg'/>" style="height:250px;z-index: 15;"></img>
+				</div>
+			</div>
+		</div>
         <div   class="col-md-6" style="z-index=10">
         		<div  id = "이미지받기">
         			<p style="height:150px;width:150px;background-color: red">Drop here</p>
@@ -29,10 +39,33 @@
         	</div>
      </div>
      
+     
+     <!-- 모달창(가격같은거) -->
+     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 9000">
+		  <div class="modal-dialog" role="document" >
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">육아 게시판 수정하기</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		       	<h2>여기에 가격표시해주기</h2>
+		      </div>
+		      <div class="modal-footer">		        
+		        <button type="button" class="btn btn-primary" id="clickbutton_modal" data-dismiss="modal">수정</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
     
 </div>
 
-
+<!-- Bootstrap JS-->
+    <script src="admin_assets/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="admin_assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    
 <script>
 
 var getAiImage;
@@ -49,6 +82,7 @@ $(function(){
         $( this )
         // ui.draggable.remove();
     	var filepath = $('#이미지2').attr("src");
+    	ui.draggable.remove();
     	filepath = filepath.substring(5,filepath.length);
     	console.log(filepath);
     	 $.ajax({
@@ -86,7 +120,9 @@ var NaverApiSearch = function(){
 			console.log("네이버:" + data);
 			$.each(data.items,function(index,value){
 				console.log("번 : " + value['title']); 
+				
 			});
+			$("#exampleModal").modal();		
 		}
 	});
 	
