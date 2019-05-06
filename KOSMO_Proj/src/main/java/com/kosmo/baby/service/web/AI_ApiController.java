@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmo.baby.service.AiApi;
+import com.kosmo.baby.service.impl.NaverSearchApi;
 
 
 
@@ -25,6 +26,9 @@ public class AI_ApiController {
 	
 	@Resource(name="aiApi")
 	private AiApi ai;
+	
+	@Resource(name="naverSearchApi")
+	private NaverSearchApi n_api;
 	
 	/*
 	String path = req.getServletContext().getRealPath("/Upload");
@@ -64,18 +68,30 @@ public class AI_ApiController {
 		System.out.println(jsonObj.get("return_object"));
 		JSONObject jsonObj1 =  (JSONObject) jsonObj.get("return_object");
 		System.out.println("jsonObj1" + jsonObj1.toJSONString());
-		//JsonParser Parser = new JsonParser();
-		//JsonObject jsonObj = (JsonObject) Parser.parse(getJsonAi);
-		//JsonArray memberArray = (JsonArray) jsonObj.get("return_object");
-
-		//System.out.println(jsonObj.get("return_object"));
 		
 		
-		//return jsonObj.toJSONString();
+		
 		return jsonObj1.toJSONString();
 	}
 	 
 	
+	@ResponseBody
+	@RequestMapping(value="/gotoSearch.kosmo" , produces="text/html; charset=UTF-8")
+	public String naver_Api(@RequestParam Map map,HttpServletRequest req,
+			HttpServletResponse resp) {
+		
+		System.out.println("naver_map : " + map);
+		
+		n_api.NaverSerachApiv("유모차");
+		String responsevalue = n_api.getSearchReturn();
+		
+		System.out.println(responsevalue);
+		
+		
+		
+		
+		return "";
+	}
 	
 	
 	

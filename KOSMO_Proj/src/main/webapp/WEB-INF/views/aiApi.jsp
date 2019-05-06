@@ -19,7 +19,7 @@
      <div class ="row">
         	<div class="col-md-6">
         		<div  id="이미지1" class = "col-md-offset-1 col-md-5 " style="z-index:25;" >
-        			<img id="이미지2" class="image_one1" alt="이미지" src= "<c:url value='/resources/Baby/한지민.jpg'/>" style="height:250px;z-index: 15;" />	
+        			<img id="이미지2" class="image_one1" alt="이미지" src= "<c:url value='/resources/Baby/유모차3.jpg'/>" style="height:250px;z-index: 15;" />	
         		</div>     	
         	</div>
         <div   class="col-md-6" style="z-index=10">
@@ -35,6 +35,7 @@
 
 <script>
 
+var getAiImage;
 
 
 
@@ -56,36 +57,34 @@ $(function(){
     		url : " <c:url value='gotoAI.kosmo'/>",
     		dataType : "json",
     		success:function(data){
-    			console.log(data);
-    			//console.log(data[0].class);
-    			//console.log("f"+ data.data[)
-    			/* console.log("일단 성공했따?");
-    			console.log("받은 데이타:"+ data);
-    			var b = JSON.stringify(data);
-    			console.log(b);
-    			alert("값은?" + b); */
+    			console.log(data);    			
     			
     		 	 $.each(data,function(index,value){
-    				console.log(value[0].class);    				
-    			});  
-    			//var b = data;
-    			//alert(data.return_object["class"]);
-    			
-    			
-    			
-    			//alert(b[0].confidence);
-    			//var myJson = JSON.stringify(data.return_object);
-    			//alert(myJson);
-    			
+    				console.log(value[0].class);    	
+    				getAiImage = value[0].class;
+    			});
+
+     			NaverApiSearch();
     		}
-    		
-    	}); 
-      
+    	});       
       }
-    });
+    });	
+}); //function()
+
+var NaverApiSearch = function(){
+	$.ajax({
+		data : {"${_csrf.parameterName}" : "${_csrf.token}", "getAiImage" : getAiImage}, 
+		type : "POST",
+		url : "<c:url value='gotoSearch.kosmo'/>",
+		dataType : "json",
+		success:function(data){
+			console.log(data);
+		}
+	});
 	
 	
-}); 
+};
+
 	
 
 
