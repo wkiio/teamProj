@@ -3,25 +3,24 @@ package com.kosmo.baby.service;
 
 public class CalenderDTO {
 	private String calno;
-	private String title;
+	private String caltitle;
 	private java.util.Date startdate;
 	private java.util.Date enddate;
-	private String content;
-	private String type;
+	private String calcontent;
+	private String caltype;
 	private String id;
-
 	
-	public String getCalNo() {
+	public String getCalno() {
 		return calno;
 	}
-	public void setCalNo(String calNo) {
-		this.calno = calNo;
+	public void setCalno(String calno) {
+		this.calno = calno;
 	}
-	public String getTitle() {
-		return title;
+	public String getCaltitle() {
+		return caltitle;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setCaltitle(String caltitle) {
+		this.caltitle = caltitle;
 	}
 	public java.util.Date getStartdate() {
 		return startdate;
@@ -35,17 +34,17 @@ public class CalenderDTO {
 	public void setEnddate(java.util.Date enddate) {
 		this.enddate = enddate;
 	}
-	public String getContent() {
-		return content;
+	public String getCalcontent() {
+		return calcontent;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setCalcontent(String calcontent) {
+		this.calcontent = calcontent;
 	}
-	public String getType() {
-		return type;
+	public String getCaltype() {
+		return caltype;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setCaltype(String caltype) {
+		this.caltype = caltype;
 	}
 	public String getId() {
 		return id;
@@ -53,6 +52,7 @@ public class CalenderDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
+	
 	
 	
 

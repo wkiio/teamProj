@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <link href='/baby/resources/fullcalendar/core/main.css' rel='stylesheet' />
 <link href='/baby/resources/fullcalendar/daygrid/main.css' rel='stylesheet' />
 <link href='/baby/resources/fullcalendar/timegrid/main.css' rel='stylesheet' />
@@ -14,6 +14,7 @@
 <script src='/baby/resources/fullcalendar/list/main.js'></script>
 <script src='/baby/resources/fullcalendar/core/locales/ko.js'></script>
 <script src='/baby/resources/fullcalendar/interaction/main.js'></script>
+
 <style>
 td.fc-sun .fc-day-number {
   color: red;
@@ -28,6 +29,7 @@ td.fc-sat .fc-day-number {
 
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
+		var startDay,endDay;
 		var calendarEl = document.getElementById('calendar');
 
     	var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -35,32 +37,73 @@ td.fc-sat .fc-day-number {
 	      	locale:'ko',
 	      	eventLimit: true,
 	      	selectable: true,
+	      	selectHelper: true,
 	      	header: {
 	            left: 'prev,next today',
 	            center: 'title',
 	            right: 'dayGridMonth,timeGridWeek,timeGridDay'
 			},
           	select: function(info) {
-            	alert('selected ' + info.start + ' to ' + info.end);
-            	$('#startDate').val(info.startStr)
-            	console.log(info.endStr);
-            	console.log(info.endStr.length-1);
-            	console.log(info.endStr.indexOf(3));
-            	$('#endDate').val(info.endStr)
-            	//$('#schduleForm').modal();
+          		var inv;
+          		var str;
+          		startDay=info.start;
+          		endDay=info.end;
+            	str = info.endStr.substr(info.endStr.length-2)
+            	inv = parseInt(str)-1;
+            	if(inv<10){
+            		str =info.endStr.substr(0,info.endStr.length-1)+inv
+            	}
+            	else{
+            		str =info.endStr.substr(0,info.endStr.length-2)+inv
+            	}
+            	alert('selected ' + info.startStr + ' to ' + str);
+            	$('.modal').find('form')[0].reset();
+            	$('#startStr').val(info.startStr)
+            	$('#endStr').val(str)
+            	$('#startdate').val(startDay) 
+            	$('#enddate').val(endDay) 
             	calendar.addEvent({
-					title: '이벤트',
-					start: info.start,
-					end: info.end,
+					title: $('#caltitle').val(),
+					start: info.startStr,
+					end: info.endStr,
 					allDay: true
 				});
+            	$('#schduleForm').modal();
+            	
           	}
 			
     	});
 		calendar.render();
+		
+		$('#submitbtn').click(function(){
+			
+			 $.ajax({
+				url:"<c:url value='/fcinput.kosmo'/>",
+				data:$('#frmSchdule').serialize(),
+				type:'post',
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				dataType:'text',
+				success:function(data){
+					calendar.addEvent({
+						title: $('#caltitle').val(),
+						start: startDay,
+						end: endDay,
+						allDay: true
+					});
+					
+				}
+			});
+			$('#schduleForm').modal('hide');
+			
+		});
+		
+		
   });
-</script>
 
+</script>
+<sec:authorize access="isAuthenticated()">
+      <sec:authentication property="principal.username" var="id" />
+</sec:authorize>
 <div class="site-section" style="padding: 2em;">
 	<div class="container">
 		<div id='calendar'></div>		
@@ -75,25 +118,28 @@ td.fc-sat .fc-day-number {
 					<h4 class="modal-title">일정등록</h4>
 				</div>
 				<div class="modal-body">
-					<form class='form-margin40' role='form' action="#" method='post' id='frmSchdule'>
+					<form class='form-margin40' role='form' method='post' id='frmSchdule'>
 						<div class='form-group'>
 							<label>제목</label> 
-							<input type='text' class='form-control' id='summary' name='summary' placeholder="예: 오후 7시에 멕시코 음식점에서 저녁식사">
+							<input type='text' class='form-control' id='caltitle' name='caltitle' placeholder="예: 오후 7시에 멕시코 음식점에서 저녁식사">
 						</div>
 						<div class='form-group'>
 							<label>시작날짜</label> 
-							<input class='form-control startDate' type="text" id='startDate' name='startDate' readonly="readonly">
+							<input class='form-control startDate' type="text" id='startStr' name='startStr'>
 						</div>
 						<div class='form-group'>
 							<label>종료날짜</label> 
-							<input class='form-control startDate' type="text" id='endDate' name='endDate'>
+							<input class='form-control startDate' type="text" id='endStr' name='endStr'>
 						</div>
+						<input type="hidden" id='startdate' name='startdate'>
+						<input type="hidden" id='enddate' name='enddate'>
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						<div class='form-group'>
 							<label>내용</label>
-							<textarea rows="7" class='form-control' id="description" name='description'></textarea>
+							<textarea rows="7" class='form-control' id="calcontent" name='calcontent'></textarea>
 						</div>
 						<div class='modal-footer'>
-							<input type="button" class='btn btn-sm btn-warning' value="확인"/> 
+							<input type="button" class='btn btn-sm btn-warning' id='submitbtn' value="확인"/> 
 							<input type="reset" class='btn btn-sm btn-warning' value="초기화" /> 
 							<input type='button' class='btn btn-sm btn-warning' data-dismiss='modal' value="취소" />
 						</div>
