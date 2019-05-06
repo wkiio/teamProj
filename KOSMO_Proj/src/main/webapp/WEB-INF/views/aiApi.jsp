@@ -19,7 +19,7 @@
      <div class ="row">
         	<div class="col-md-6">
         		<div  id="이미지1" class = "col-md-offset-1 col-md-5 " style="z-index:25;" >
-        			<img id="이미지2" class="image_one1" alt="이미지" src= "<c:url value='/resources/Baby/유모차3.jpg'/>" style="height:250px;z-index: 15;" />	
+        			<img id="이미지2" class="image_one1" alt="이미지" src= "<c:url value='/resources/Baby/유모차2.jpg'/>" style="height:250px;z-index: 15;" />	
         		</div>     	
         	</div>
         <div   class="col-md-6" style="z-index=10">
@@ -57,11 +57,16 @@ $(function(){
     		url : " <c:url value='gotoAI.kosmo'/>",
     		dataType : "json",
     		success:function(data){
-    			console.log(data);    			
-    			
-    		 	 $.each(data,function(index,value){
-    				console.log(value[0].class);    	
-    				getAiImage = value[0].class;
+    			//console.log(data);   
+    			console.log(data.tags[0]);
+    		 	 $.each(data.tags,function(index,value){
+    		 		if(value == "carriage")
+    		 			getAiImage = "유모차";
+    		 			console.log("캐리어가 있따?");
+    		 		//console.log(value);
+    		 		 //console.log(value.tags[index]);
+    				/* console.log(value[0].class);    	
+    				getAiImage = value[0].class; */
     			});
 
      			NaverApiSearch();
@@ -78,7 +83,10 @@ var NaverApiSearch = function(){
 		url : "<c:url value='gotoSearch.kosmo'/>",
 		dataType : "json",
 		success:function(data){
-			console.log(data);
+			console.log("네이버:" + data);
+			$.each(data.items,function(index,value){
+				console.log("번 : " + value['title']); 
+			});
 		}
 	});
 	

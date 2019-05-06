@@ -54,7 +54,7 @@ public class NaverSearchApi {
 	        serachText = text1;
 	        try {
 	            String tt = URLEncoder.encode(serachText, "UTF-8");
-	            String apiURL = "https://openapi.naver.com/v1/search/shop?query="+ tt; // json 결과
+	            String apiURL = "https://openapi.naver.com/v1/search/shop?query="+ tt + "&display=40"; // json 결과
 	            //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 결과
 	            URL url = new URL(apiURL);
 	            HttpURLConnection con = (HttpURLConnection)url.openConnection();
@@ -75,7 +75,7 @@ public class NaverSearchApi {
 	                response.append(inputLine);
 	            }
 	            br.close();
-	            System.out.println(response.toString());
+	            //System.out.println(response.toString());
 	            searchReturn = response.toString();
 	        } catch (Exception e) {
 	            System.out.println(e);

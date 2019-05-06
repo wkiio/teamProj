@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmo.baby.service.AiApi;
+import com.kosmo.baby.service.impl.MsApi;
 import com.kosmo.baby.service.impl.NaverSearchApi;
 
 
@@ -29,6 +30,9 @@ public class AI_ApiController {
 	
 	@Resource(name="naverSearchApi")
 	private NaverSearchApi n_api;
+	
+	@Resource(name="msApi")
+	private MsApi ms_api;
 	
 	/*
 	String path = req.getServletContext().getRealPath("/Upload");
@@ -52,26 +56,29 @@ public class AI_ApiController {
 		String getJsonAi = ai.getM_responBody();
 		System.out.println("getJsonAi: " + getJsonAi);
 		
-		JSONParser parser = new JSONParser(); 
-		Object obj = null;
-		try {
-			obj = parser.parse( getJsonAi );
+		
+		////////////////////////////////////////////////
+		
+		ms_api.startApi(fileRealPath);
+		System.out.println("ms: " + ms_api.getMs_Api());
+		
+		JSONParser parser = new JSONParser(); 		
+		Object obj = null;			 
+		 			 
+		 try {
+			obj = parser.parse( ms_api.getMs_Api() );
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 
 		JSONObject jsonObj = (JSONObject) obj; 
-		System.out.println("jsonObj? : " +jsonObj);
-		
-		
-		System.out.println(jsonObj.get("return_object"));
-		JSONObject jsonObj1 =  (JSONObject) jsonObj.get("return_object");
-		System.out.println("jsonObj1" + jsonObj1.toJSONString());
-		
-		
+		System.out.println("jsonObj.toJSONString(): " + jsonObj.toJSONString());
+		JSONObject jsonObj1 =  (JSONObject) jsonObj.get("description");
+		System.out.println("jsonObj1.toJSONString() : " + jsonObj1.toJSONString());
 		
 		return jsonObj1.toJSONString();
+		//return jsonObj1.toJSONString();
 	}
 	 
 	
@@ -79,18 +86,34 @@ public class AI_ApiController {
 	@RequestMapping(value="/gotoSearch.kosmo" , produces="text/html; charset=UTF-8")
 	public String naver_Api(@RequestParam Map map,HttpServletRequest req,
 			HttpServletResponse resp) {
-		
+		System.out.println("========================================================");
 		System.out.println("naver_map : " + map);
 		
-		n_api.NaverSerachApiv("유모차");
+		String a = (String) map.get("getAiImage");
+		n_api.NaverSerachApiv(a);
 		String responsevalue = n_api.getSearchReturn();
 		
 		System.out.println(responsevalue);
 		
+		JSONParser parser = new JSONParser(); 		
+		Object obj = null;			 
+		 			 
+		 try {
+			obj = parser.parse( responsevalue );
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		JSONObject jsonObj = (JSONObject) obj; 
+		System.out.println("jsonObj.toJSONString() : " + jsonObj.toJSONString());
+	
+		//JSONObject jsonObj1 =  (JSONObject) jsonObj.get("total");
+		//System.out.println("jsonObj1.toJSONString() : " + jsonObj1.toJSONString());
 		
 		
 		
-		return "";
+		return jsonObj.toJSONString();
 	}
 	
 	
