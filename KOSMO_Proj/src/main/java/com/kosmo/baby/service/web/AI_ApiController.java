@@ -61,10 +61,18 @@ public class AI_ApiController {
 		System.out.println("jsonObj? : " +jsonObj);
 		
 		
+		System.out.println(jsonObj.get("return_object"));
+		JSONObject jsonObj1 =  (JSONObject) jsonObj.get("return_object");
+		System.out.println("jsonObj1" + jsonObj1.toJSONString());
+		//JsonParser Parser = new JsonParser();
+		//JsonObject jsonObj = (JsonObject) Parser.parse(getJsonAi);
+		//JsonArray memberArray = (JsonArray) jsonObj.get("return_object");
+
+		//System.out.println(jsonObj.get("return_object"));
 		
 		
-		
-		return jsonObj.toJSONString();
+		//return jsonObj.toJSONString();
+		return jsonObj1.toJSONString();
 	}
 	 
 	

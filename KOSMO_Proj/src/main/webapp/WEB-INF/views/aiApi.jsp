@@ -56,8 +56,26 @@ $(function(){
     		url : " <c:url value='gotoAI.kosmo'/>",
     		dataType : "json",
     		success:function(data){
-    			console.log("일단 성공했따?");
+    			console.log(data);
+    			//console.log(data[0].class);
+    			//console.log("f"+ data.data[)
+    			/* console.log("일단 성공했따?");
     			console.log("받은 데이타:"+ data);
+    			var b = JSON.stringify(data);
+    			console.log(b);
+    			alert("값은?" + b); */
+    			
+    		 	 $.each(data,function(index,value){
+    				console.log(value[0].class);    				
+    			});  
+    			//var b = data;
+    			//alert(data.return_object["class"]);
+    			
+    			
+    			
+    			//alert(b[0].confidence);
+    			//var myJson = JSON.stringify(data.return_object);
+    			//alert(myJson);
     			
     		}
     		
