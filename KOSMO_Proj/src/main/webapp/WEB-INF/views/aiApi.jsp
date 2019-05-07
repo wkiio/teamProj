@@ -189,8 +189,7 @@ section{
 		    </div>
 		  </div>
 		</div>
-    
-</div>
+   
 
 <!-- Bootstrap JS-->
     <script src="admin_assets/vendor/bootstrap-4.1/popper.min.js"></script>
