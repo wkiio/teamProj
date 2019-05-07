@@ -63,9 +63,6 @@ thead td {
 			<tbody id='tbody'></tbody>
 		</table>
 		
-		
-		
-		
 		<!-- 일정 생성 modal -->
 		<div class="modal fade" id="schduleForm" role="dialog" style="z-index:2001">
 			<div class="modal-dialog">
@@ -108,10 +105,7 @@ thead td {
 				</div>
 			</div>
 		</div>
-		
-		
-		
-		
+
 		<!-- 일정 수정 modal -->
 		<div class="modal fade" id="schduleFormModify" role="dialog">
 			<div class="modal-dialog">
