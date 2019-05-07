@@ -50,6 +50,10 @@ public class AI_ApiController {
 		String fileRealPath=req.getServletContext().getRealPath(file);		
 		System.out.println("fileRealPath: " + fileRealPath);
 		
+		//////////////////////////////////////
+		//쓰레기같은 국산ai
+		
+		
 		ai.setM_fileName(fileRealPath);
 		ai.setM_typeName(fileType);
 		ai.AiApiStart();
@@ -58,7 +62,7 @@ public class AI_ApiController {
 		
 		
 		////////////////////////////////////////////////
-		
+		//ms aiapi
 		ms_api.startApi(fileRealPath);
 		System.out.println("ms: " + ms_api.getMs_Api());
 		
