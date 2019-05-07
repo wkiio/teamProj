@@ -37,7 +37,7 @@ public class HomeController {
 	@RequestMapping("/aiApi.kosmo")
 	public String ai_API() {
 		
-		return "aiApi.tiles";
+		return "aiApi(babyfair).tiles";
 	}
 	
 	@RequestMapping("/sign_up_page.kosmo")

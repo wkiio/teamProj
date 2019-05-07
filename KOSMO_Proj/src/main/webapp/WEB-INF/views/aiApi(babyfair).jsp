@@ -11,8 +11,8 @@
 	
 .modal-ku {
   width: 1000px;
-  height: 800px;
-  margin-left: -400px;
+  height: 650px;
+  margin-left: -250px;
   
 }
 
@@ -26,13 +26,13 @@ table{
  color : #d9ff9e;
  }
 .tbl-content{
-  height:600px;
+  height:500px;
   overflow-x:auto;
   margin-top: 0px;
 
 }
 th{
-  padding: 20px 15px;
+  padding: 5px 3px;
   text-align: left;
   font-weight: 900;
   font-size: 20px;
@@ -58,14 +58,14 @@ body{
   font-family: 'Roboto', sans-serif;
 }
 section{
-  margin: 50px;
+  margin: 10px;
 }
 
 
 /* follow me template */
 .made-with-love {
-  margin-top: 40px;
-  padding: 10px;
+  margin-top:10px;
+  padding: 2px;
   clear: left;
   text-align: center;
   font-size: 10px;
@@ -118,27 +118,69 @@ section{
     padding: 0 4px !important;
 }
 
+/*이미지 둥그렇게 image_one*/
+.image_one{
+  border: 3px solid #fcabab;
+  border-radius: 30px;
+}
+
+.image_two{
+  border: 4px solid #5f84b7;
+  border-radius: 30px;
+}
+
 
 </style>
   	
 
 <div class="site-section" style="height:auto; padding:2em;z-index=3" >
      <div class ="row">     
-        	<div class="col-md-6" >
-        	 	<div   class = "col-md-6" style="z-index:25;display:inline; " >
-        			<img id="이미지2" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/유모차2.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	     
-        				
+     	<div class="offset-md-1 col-md-4" style="margin-top: 30px">
+     		<div class="row">
+     		<h3>행사 타이틀 : 수원베이비엑스포</h3>  
+     		<h3>기  간  : 5.16(목)-5.19(일)&emsp;&emsp;&emsp;&emsp;</h3>  
+     		<h3>시  간  : 10:00 ~ 18:00&emsp;&emsp;&emsp;&emsp;&emsp;</h3> 
+     		<h3>장  소  : 광교 수원컨벤션센터 </h3>  
+     		</div>
+     	</div>
+     	<div class="col-md-7" > <!-- style="text-align: center;" -->
+     		<img alt="행사이미지" class="image_two" src= "<c:url value='/resources/Baby/수원베이비엑스포.jpg'/>" style="height:300px;width:800px;" />	
+     	</div>
+        	 <div class="offset-md-1 col-md-11" >        	 
+     		<h2>전시 품목(브랜드)</h2>
+        	 	<div class = "col-md-6" style="z-index:25;display:inline; " >
+        			<img id="이미지2" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/유모차2.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	             				
         		</div>    
-        		<div   class = "col-md-6" style="z-index:25;display:inline; " >
+        		<div class = "col-md-6" style="z-index:25;display:inline; " >
         			<img id="이미지3" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/한지민.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
+        		</div>   
+        		<div   class = "col-md-6" style="z-index:25;display:inline; " >
+        			<img id="이미지4" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/아기매트.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
+        		</div>   
+        		<div   class = "col-md-6" style="z-index:25;display:inline; " >
+        			<img id="이미지5" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/아기베개.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
+        		</div>   
+        		<div   class = "col-md-6" style="z-index:25;display:inline; " >
+        			<img id="이미지6" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/아기집.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
+        		</div>   
+        		<div   class = "col-md-6" style="z-index:25;display:inline; " >
+        			<img id="이미지7" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/아기힙시트.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
+        		</div>   
+        		<div   class = "col-md-6" style="z-index:25;display:inline; " >
+        			<img id="이미지8" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/아기튜브.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
+        		</div>   
+        		<div   class = "col-md-6" style="z-index:25;display:inline; " >
+        			<img id="이미지9" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/임산부복.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
+        		</div>   
+        		<div   class = "col-md-6" style="z-index:25;display:inline; " >
+        			<img id="이미지10" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/카시트.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
         		</div>    
         		
 			</div>
-       		 <div   class="col-md-6" style="z-index=10">
-        		<div  id = "이미지받기">
-        			<p style="height:150px;width:150px;background-color: red">Drop here</p>
-        		</div>     	
-        	</div>
+       		 <div   class="col-md-12" style="z-index=10;text-align: center;margin-top: 20px">
+       		 <h2>전시품목 가격 알아보기</h2>        		
+        	   <p align="center" id = "이미지받기" style="height:150px;width:150px;border: 3px solid #5f84b7;margin:0 auto;">여기에 제품을 끌어보세요!</p>        		
+        	</div> 
      </div>
      
      
@@ -153,13 +195,13 @@ section{
 		        </button>
 		      </div>
 		      <div class="modal-body">
-					<div>
+					
 						<section id="cartable">
 									<!--for demo wrap-->
 									<div class="tbl-header">
-										<table cellpadding="0" cellspacing="0" border="0">
+										<table cellpadding="0" cellspacing="0" border="0" style="text-align: center;">
 											<thead>
-												<tr>
+												<tr >
 													<th>이미지</th>
 													<th>이름</th>
 													<th>가격</th>
@@ -179,7 +221,7 @@ section{
 
 								</section>
 
-							</div>
+							
 
 						</div>
 					
@@ -217,7 +259,6 @@ $(function(){
         //$( this );
         //ui.attr("src");
         var $item = ui.draggable.clone();
-        alert('들어감');
 		$item.remove();         
 		
         // ui.draggable.remove();
