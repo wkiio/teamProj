@@ -43,13 +43,25 @@ td.fc-sat .fc-day-number {
 	            center: 'title',
 	            right: 'dayGridMonth,timeGridWeek,timeGridDay'
 			},
+			events: [
+		        {
+		          title: 'simple event',
+		          start: '2019-05-02T12:30:00',
+		          end: '2019-05-13T10:45:00',
+		          color: 'green'
+		        },
+		        {
+		          title: 'event with URL',
+		          start: '2019-05-03'
+		        }
+		      ],
           	select: function(info) {
           		var inv;
           		var str;
-          		startDay=info.start;
-          		endDay=info.end;
+          		startDay=info.startStr;
+          		endDay=info.endStr;
             	str = info.endStr.substr(info.endStr.length-2)
-            	inv = parseInt(str)-1;
+            	inv = parseInt(str)==1?1:parseInt(str)-1;
             	if(inv<10){
             		str =info.endStr.substr(0,info.endStr.length-1)+inv
             	}
@@ -58,23 +70,19 @@ td.fc-sat .fc-day-number {
             	}
             	alert('selected ' + info.startStr + ' to ' + str);
             	$('.modal').find('form')[0].reset();
+            	
             	$('#startStr').val(info.startStr)
             	$('#endStr').val(str)
             	$('#startdate').val(startDay) 
             	$('#enddate').val(endDay) 
-            	calendar.addEvent({
-					title: $('#caltitle').val(),
-					start: info.startStr,
-					end: info.endStr,
-					allDay: true
-				});
+            	
             	$('#schduleForm').modal();
             	
           	}
 			
     	});
 		calendar.render();
-		
+		/* 
 		$('#submitbtn').click(function(){
 			
 			 $.ajax({
@@ -96,7 +104,7 @@ td.fc-sat .fc-day-number {
 			$('#schduleForm').modal('hide');
 			
 		});
-		
+		 */
 		
   });
 
