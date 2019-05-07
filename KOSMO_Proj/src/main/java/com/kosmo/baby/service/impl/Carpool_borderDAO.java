@@ -19,7 +19,8 @@ public class Carpool_borderDAO implements Carpool_borderService{
 
 	@Override
 	public List<Carpool_borderDTO> selectList(Map map) {
-		System.out.println("DAO");
+		System.out.println("Map : "+map);
+		System.out.println();
 		return template.selectList("carList",map);
 	}
 

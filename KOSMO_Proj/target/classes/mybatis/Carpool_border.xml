@@ -21,12 +21,24 @@
 		#{type},#{content},#{start_xpos},#{start_ypos},#{end_xpos},#{end_ypos},
 		#{id},default,#{time},#{price},default)
 	</insert>
-	<select resultType="Carpool_borderDTO" id="carList">
+	<select parameterType="java.util.Map" resultType="Carpool_borderDTO" id="carList">
 		SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id
+		<if test= "((secondsearch != null) and !secondsearch.equals('')) and firstsearch.equals('')">
+			WHERE endpoint LIKE '%' || #{secondsearch} || '%' 
+		</if>
+		<if test = "(firstsearch != null) and !firstsearch.equals('') and secondsearch.equals('')">
+         WHERE startpoint LIKE '%' || #{firstsearch} || '%' 
+     	 </if>
+		 <if test ="((secondsearch != null) and !secondsearch.equals('')) and ((firstsearch != null) and !firstsearch.equals(''))">
+			WHERE (startpoint LIKE '%' || #{firstsearch} || '%' 
+			AND endpoint LIKE '%' || #{secondsearch} || '%') 
+		</if>
+		ORDER BY CP_NO DESC
 	</select>
 
 	<select resultType="Carpool_borderDTO" id="carview" parameterType="java.util.Map">
-		SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id where CP_NO=#{cp_no}
+		SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id where CP_NO=#{cp_no} 
+
 	</select>
 	
 	<insert id="adminInsert" parameterType="java.util.Map">
