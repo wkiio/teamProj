@@ -99,7 +99,19 @@ public class HomeController {
 	public String daum() {
 		return "daum.tiles";
 	}
-	
+	@RequestMapping("/word.kosmo")
+	public String word() {
+		return "word.tiles";
+	}
+	@RequestMapping("/wordcloud.kosmo")
+	public String wordcloud()throws Exception {
+		
+		return "wordCloud.tiles";
+	}
+	@RequestMapping("/carload.kosmo")
+	public String carload()throws Exception{
+		return "carload.tiles";
+	}
 	
 
 	

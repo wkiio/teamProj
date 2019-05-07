@@ -64,6 +64,7 @@ public class Carpool_borderController {
 	//리스트 보여주기
 	@RequestMapping(value="/Carindex.kosmo", produces="text/html; charset=UTF-8")
 	public String carindex(@RequestParam Map map,Model model)throws Exception{
+		System.out.println(map.get("serchword_one"));
 		List<Carpool_borderDTO> list = service.selectList(map);
 
 		return "Car.tiles";
@@ -72,8 +73,14 @@ public class Carpool_borderController {
 	@ResponseBody
 	@RequestMapping(value="/Carindex1.kosmo", produces="text/html; charset=UTF-8")
 	public String carindex1(@RequestParam Map map,Model model)throws Exception{
+		
+		System.out.println(map);
+		System.out.println("firstsearch : " + map.get("firstsearch"));
+		
 		List<Carpool_borderDTO> list = service.selectList(map);
+		
 		List<Map> collections = new Vector<Map>();
+		
 		for(Carpool_borderDTO dto : list) {
 			Map record = new HashMap();
 			record.put("cp_no",dto.getCp_no());
@@ -107,6 +114,10 @@ public class Carpool_borderController {
 		System.out.println("글쓴이 입니다 : " + list.getId());
 		System.out.println("상세보기 시간");
 		System.out.println(list.getTime());
+		System.out.println(list.getStart_xpos());
+		System.out.println(list.getStart_ypos());
+		System.out.println(list.getEnd_xpos());
+		System.out.println(list.getEnd_ypos());
 		model.addAttribute("dto", list);
 		return "CarView.tiles";
 	}

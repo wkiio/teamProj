@@ -15,9 +15,7 @@ public class Carpool_borderDTO {
 	private String id;
 	private String name;
 	private String status;
-	
-	
-	
+
 	public String getStatus() {
 		return status;
 	}
