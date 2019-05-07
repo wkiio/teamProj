@@ -2,49 +2,49 @@ package com.kosmo.baby.service;
 
 
 public class CalenderDTO {
-	private String calno;
-	private String caltitle;
-	private java.util.Date startdate;
-	private java.util.Date enddate;
-	private String calcontent;
-	private String caltype;
+	private String cal_no;
+	private String title;
+	private String startdate;
+	private String enddate;
+	private String content;
+	private String type;
 	private String id;
 	
-	public String getCalno() {
-		return calno;
+	public String getCal_no() {
+		return cal_no;
 	}
-	public void setCalno(String calno) {
-		this.calno = calno;
+	public void setCal_no(String cal_no) {
+		this.cal_no = cal_no;
 	}
-	public String getCaltitle() {
-		return caltitle;
+	public String getTitle() {
+		return title;
 	}
-	public void setCaltitle(String caltitle) {
-		this.caltitle = caltitle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
-	public java.util.Date getStartdate() {
+	public String getStartdate() {
 		return startdate;
 	}
-	public void setStartdate(java.util.Date startdate) {
+	public void setStartdate(String startdate) {
 		this.startdate = startdate;
 	}
-	public java.util.Date getEnddate() {
+	public String getEnddate() {
 		return enddate;
 	}
-	public void setEnddate(java.util.Date enddate) {
+	public void setEnddate(String enddate) {
 		this.enddate = enddate;
 	}
-	public String getCalcontent() {
-		return calcontent;
+	public String getContent() {
+		return content;
 	}
-	public void setCalcontent(String calcontent) {
-		this.calcontent = calcontent;
+	public void setContent(String content) {
+		this.content = content;
 	}
-	public String getCaltype() {
-		return caltype;
+	public String getType() {
+		return type;
 	}
-	public void setCaltype(String caltype) {
-		this.caltype = caltype;
+	public void setType(String type) {
+		this.type = type;
 	}
 	public String getId() {
 		return id;
@@ -52,7 +52,6 @@ public class CalenderDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	
 	
 	
 
