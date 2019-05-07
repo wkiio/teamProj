@@ -135,7 +135,7 @@
 					<input type="hidden" value="${dto.end_xpos }" id="e_xpos" name="e_xpos">
 					<input type="hidden" value="${dto.end_ypos }" id="e_ypos" name="e_ypos">
 					<input type="hidden" value="${dto.cp_no }" id="cp_no" name="cp_no">
-					<input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					<input type="hidden" value="${dto.startpoint }" id="startpoint" name="startpoint">
 					<input type="hidden" value="${dto.endpoint }" id="endpoint" name="endpoint">
 					<input type="hidden" value="${dto.time}" id="time" name="time">

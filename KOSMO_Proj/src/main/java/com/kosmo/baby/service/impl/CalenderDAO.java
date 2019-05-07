@@ -30,8 +30,8 @@ public class CalenderDAO implements CalenderService{
 
 	@Override
 	public int insert(Map map) {
-		//캘린더 입력
-		return 0;
+		System.out.println("DAO");
+		return template.insert("calinput",map);
 	}
 
 	@Override
