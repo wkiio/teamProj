@@ -7,15 +7,15 @@
       <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
       <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<style>
-h1{
-  font-size: 30px;
-  color: #fff;
-  text-transform: uppercase;
-  font-weight: 900;
-  text-align: center;
-  background-color: #302f2f;
+	
+	
+.modal-ku {
+  width: 1000px;
+  height: 800px;
+  margin-left: -400px;
   
 }
+
 table{
   width:100%;
   table-layout: fixed;
@@ -23,10 +23,10 @@ table{
 }
 .tbl-header{
  background-color: #302f2f;
- color : #ffffff;
+ color : #d9ff9e;
  }
 .tbl-content{
-  height:300px;
+  height:600px;
   overflow-x:auto;
   margin-top: 0px;
 
@@ -123,23 +123,18 @@ section{
   	
 
 <div class="site-section" style="height:auto; padding:2em;z-index=3" >
-     <div class ="row">
-        	<div class="col-md-6">
-        	<%-- 	<div   class = "col-md-offset-1 col-md-5 " style="z-index:25;" >
-        			<img id="이미지2" class="image_one1" alt="이미지" src= "<c:url value='/resources/Baby/유모차2.jpg'/>" style="height:250px;z-index: 15;" />	
-        		</div>    --%>
-			<div style="position: absolute;">
-				<div id="이미지1"  style="position: relative;z-index:25; top: 30px; left: 80px;">
-					<img  id="이미지2" src="<c:url value='/resources/Baby/유모차2.jpg'/>" style="height:250px;z-index: 15;" ></img>
-				</div>
+     <div class ="row">     
+        	<div class="col-md-6" >
+        	 	<div   class = "col-md-6" style="z-index:25;display:inline; " >
+        			<img id="이미지2" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/유모차2.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	     
+        				
+        		</div>    
+        		<div   class = "col-md-6" style="z-index:25;display:inline; " >
+        			<img id="이미지3" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/한지민.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
+        		</div>    
+        		
 			</div>
-			<div style="position: absolute;">
-				<div style="position: relative; top: 30px; left: 80px;">
-					<img src="<c:url value='/resources/Baby/유모차2.jpg'/>" style="height:250px;z-index: 15;"></img>
-				</div>
-			</div>
-		</div>
-        <div   class="col-md-6" style="z-index=10">
+       		 <div   class="col-md-6" style="z-index=10">
         		<div  id = "이미지받기">
         			<p style="height:150px;width:150px;background-color: red">Drop here</p>
         		</div>     	
@@ -148,9 +143,9 @@ section{
      
      
      <!-- 모달창(가격같은거) -->
-     <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 9000">
-		  <div class="modal-dialog modal-lg" role="document" >
-		    <div class="modal-content">
+     <div class="modal fade bd-example	" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 9000">
+		  <div class="modal-dialog " role="document" >
+		    <div class="modal-content modal-ku">
 		      <div class="modal-header">
 		        <h5 class="modal-title" id="exampleModalLabel">실시간 네이버 쇼핑 가격</h5>
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -176,24 +171,7 @@ section{
 									<div class="tbl-content">
 										<table cellpadding="0" cellspacing="0" border="0">
 											<tbody class="serach_shopping">
-										 		<%-- <tr>
-										          <td><img src="<c:url value='/resources/Baby/한지민.jpg'/>" style="height:100px;width:100px;z-index: 15;"></img></td>
-										          <td>#</td>
-										          <td>##</td>
-										          <td>##</td>
-										        </tr>
-										        <tr>
-										         <td><img src="<c:url value='/resources/Baby/한지민.jpg'/>" style="height:100px;width:100px;z-index: 15;"></img></td>
-										          <td>#</td>
-										          <td>##</td>
-										          <td>##</td>
-										        </tr>
-										        <tr>
-										          <td>#</td>
-										          <td>#</td>
-										          <td>#</td>
-										          <td>#</td>
-										        </tr>        --%>
+										  
 											</tbody>
 										</table>
 									</div>
@@ -222,26 +200,31 @@ section{
 
 var getAiImage;
 
-//boolean to revert check
 
-var isRevert = true;
-
-var iiiimage = $('#이미지1');
-console.log(iiiimage);
 
 $(function(){
-	$( "#이미지1" ).draggable();
+	$('.image_one').draggable({helper: 'clone'});
+	
+	
+	
+	
+	
+	// $( "#이미지2" ).draggable({  helper: 'clone'});
 
     $( "#이미지받기" ).droppable({
     	 activeClass: "active",
          hoverClass:  "hover",
       drop: function( event, ui ) {
-        $( this );
-        
-        $("#exampleModal").modal();
+        //$( this );
+        //ui.attr("src");
+        var $item = ui.draggable.clone();
+        alert('들어감');
+		$item.remove();         
+		
         // ui.draggable.remove();
-    	var filepath = $('#이미지2').attr("src");
-    	ui.draggable.remove();
+    	//var filepath = $('#이미지2').attr("src");
+    	var filepath = $item	.attr("src");
+    	//ui.draggable.remove();
     	filepath = filepath.substring(5,filepath.length);
     	console.log(filepath);
     	 $.ajax({
@@ -255,8 +238,9 @@ $(function(){
     		 	 $.each(data.tags,function(index,value){
     		 		if(value == "carriage")
     		 			getAiImage = "유모차";
-    		 			console.log("캐리어가 있따?");
-    		 		//console.log(value);
+    		 		else if(value == "person")
+    		 			getAiImage = "한지민";
+    		 		console.log(value);
     		 		 //console.log(value.tags[index]);
     				/* console.log(value[0].class);    	
     				getAiImage = value[0].class; */
@@ -266,7 +250,7 @@ $(function(){
     		}
     	});       
       }
-    });	
+    });	 
 }); //function()
 
 var NaverApiSearch = function(){
@@ -279,16 +263,23 @@ var NaverApiSearch = function(){
 			console.log("네이버:" + data);
 			var html = "<tr>";
 			$.each(data.items,function(index,value){
-				console.log("상품이름 : " + value['title'] + " , " + "가격 : " + value['lprice']); 				
+				console.log("상품이름 : " + value['title'] + " , " + "가격 : " + value['lprice']);
+				html+="<td><img src="+ value['image'] +" " +"style=\"height:200px;width:200px;z-index:15;\"> "+ "</img></td>";	
+	    		html+="<td>" + value['title'] + "</td>" + "<td>" + value['lprice'] +"원" + "</td>";
+	    		//<button onclick="window.open('address')">button</button>
+	    		html +="<td>" + "<button type=\"button\" class=\"btn btn-info\" onclick=\"window.open("+"\'" + value['link']+"\'"+")\">"+"링크연결"+"</button></td></tr>";
+				
+				//console.log(html);
 			});			
-			//$("#exampleModal").modal();		
+			$('.serach_shopping').html(html);  
+			
+			$("#exampleModal").modal();		
 		}
 	});
 	
 	
 };
 
-	
 
 
 </script>
