@@ -53,8 +53,9 @@
 								<li class="has-children"><a href="#">Sub Menu</a>
 									<ul class="dropdown">
 										<li><a href="daum.kosmo">Menu One</a></li>
-										<li><a href="#">Menu Two</a></li>
-										<li><a href="#">Menu Three</a></li>
+										<li><a href="word.kosmo">Menu Two</a></li>
+										<li><a href="wordcloud.kosmo">Menu Three</a></li>
+										<li><a href="carload.kosmo">Menu For</a></li>
 									</ul></li>
 							</ul></li>
 						<li class="has-children"><a href="serviceclick.kosmo">서비스</a>
