@@ -3,7 +3,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
    <!-- 카풀map시작-->
-   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fc37be4712f8b89b167cddbc490382f"></script>
+   <script src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=b5cc2a5e-34c4-441b-96f9-0a2639aabc1a"></script>
+   
+   <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fc37be4712f8b89b167cddbc490382f"></script> -->
 <style>
 
 .carview_title {
@@ -142,7 +144,7 @@
 					<input type="hidden" value="${dto.type }" id="type" name="type">
 					<input type="hidden" value="${dto.price }" id="price" name="price">
 					<input type="hidden" value="${dto.content}" id="content" name="content">
-					<div class="table-responsive">
+					<div class="table-responsive" style="overflow-x:hidden;">
 						<table class="table table-bordered">
 							<thead class="table-borderless">
 								<tr>
@@ -179,7 +181,11 @@
 						</table>
 					</div>
 					<!-- 지도 -->
-					<div id="map" class="box_map"></div>
+					<!-- <div id="map" class="box_map"></div> -->
+					<div id="initmap">
+						<div id="map_div"></div>
+						<p id="result"></p>
+					</div>
 					<!-- 추가내용 -->
 					<div class="carview_coment">
 						<h2>추가내용</h2>
@@ -220,4 +226,4 @@
 
 </script>
 
-<script src="Bootstrap/js/CarpoolMap.js"></script>
+<script src="Bootstrap/js/Carload.js"></script>

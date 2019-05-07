@@ -74,6 +74,7 @@ public class Carpool_borderController {
 	public String carindex1(@RequestParam Map map,Model model)throws Exception{
 		List<Carpool_borderDTO> list = service.selectList(map);
 		List<Map> collections = new Vector<Map>();
+		
 		for(Carpool_borderDTO dto : list) {
 			Map record = new HashMap();
 			record.put("cp_no",dto.getCp_no());
@@ -107,6 +108,10 @@ public class Carpool_borderController {
 		System.out.println("글쓴이 입니다 : " + list.getId());
 		System.out.println("상세보기 시간");
 		System.out.println(list.getTime());
+		System.out.println(list.getStart_xpos());
+		System.out.println(list.getStart_ypos());
+		System.out.println(list.getEnd_xpos());
+		System.out.println(list.getEnd_ypos());
 		model.addAttribute("dto", list);
 		return "CarView.tiles";
 	}
