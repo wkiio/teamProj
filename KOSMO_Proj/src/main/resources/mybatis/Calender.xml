@@ -16,7 +16,7 @@
 
 <mapper namespace="mybatis.Members">
 	<select id="calList" parameterType="java.util.Map" resultType="CalenderDTO">
-		SELECT * FROM calender
+		SELECT * FROM calender WHERE id=#{id} OR id='admin'
 	</select>
 	<insert id="calinput" parameterType="java.util.Map">
 		INSERT INTO calender VALUES(SEQ_Calender.NEXTVAL,#{caltitle},#{startdate},#{enddate},#{calcontent},'타입',#{id})

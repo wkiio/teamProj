@@ -4,7 +4,6 @@ package com.kosmo.baby.service.web;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.Vector;
 
 
@@ -32,6 +31,8 @@ public class CalenderController {
 	@ResponseBody
 	@RequestMapping(value="/fcevent.kosmo", produces = "application/text; charset=utf8")
 	public String fcevent(@RequestParam Map map,Model model,Authentication auth) throws Exception{
+		UserDetails user = (UserDetails)auth.getPrincipal();
+		map.put("id", user.getUsername());
 		List<CalenderDTO> list = service.selectList(map);
 		//List컬렉션을 JSO형태로 변환
 		List<Map> collections = new Vector<Map>();
@@ -42,7 +43,9 @@ public class CalenderController {
 			if(dto.getEnddate()!=null) {
 				record.put("end", dto.getEnddate());
 			}
-			
+			if(dto.getId().equals("admin")) {
+				record.put("color", "gray");
+			}
 			collections.add(record);
 		}
 		System.out.println(JSONArray.toJSONString(collections));
@@ -59,13 +62,9 @@ public class CalenderController {
 			map.put("startdate", map.get("startdate").toString().concat("T"+map.get("startTime")));
 			map.put("enddate", map.get("enddate").toString().concat("T"+map.get("endTime")));
 		}
-		System.out.println(map.get("startdate"));
-		System.out.println(map.get("enddate"));
-		
-		System.out.println(map.get("caltitle"));
 		service.insert(map);
 		
-		return "한글";
+		return "저장완료";
 	}
 
 }

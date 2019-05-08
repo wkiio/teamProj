@@ -34,7 +34,7 @@ td.fc-sat .fc-day-number {
 document.addEventListener('DOMContentLoaded', function() {
 	var startDay,endDay,allday;
 	var startDT,endDT;
-	var jcevents=[];
+	var calendar;
 	$.ajax({
 		url:"<c:url value='/fcevent.kosmo'/>",
 		data:{"${_csrf.parameterName}":"${_csrf.token}"},
@@ -44,12 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
 			createCalendar(data);
 		}
 		
-	});
-	
+	});	
 	
 	function createCalendar(event) {
 		var calendarEl = document.getElementById('calendar');
-		var calendar = new FullCalendar.Calendar(calendarEl, {
+		calendar = new FullCalendar.Calendar(calendarEl, {
 	      	plugins: [ 'dayGrid','timeGrid','list','interaction' ],
 	      	locale:'ko',
 	      	eventLimit: true,

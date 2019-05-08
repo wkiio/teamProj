@@ -30,6 +30,12 @@ public class HomeController {
 		return "login_page.tiles";	
 	}
 	
+	@RequestMapping("/aiApi.kosmo")
+	public String ai_API() {
+		return "aiApi(babyfair).tiles";
+	}
+	
+	
 	@RequestMapping("/find_Id.kosmo")
 	public String find_id() {
 		return "find_Id.tiles";
