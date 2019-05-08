@@ -380,9 +380,6 @@
     $(function(){
     	showtable();
         console.log(istrue);
-    	
-    	
-    	
     	 $("#clickbutton_modal").click(function(){
 			var title = $(".modal #inputContext").val();
 			var url = $(".modal #inputUrl").val();

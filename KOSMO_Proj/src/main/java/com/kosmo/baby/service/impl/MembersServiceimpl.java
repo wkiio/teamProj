@@ -66,4 +66,14 @@ public class MembersServiceimpl implements MembersService{
 	public int carMember(Map map) {
 		return dao.carMember(map);
 	}
+
+	@Override
+	public MembersDTO findId(Map map) {
+		return dao.findId(map);
+	}
+
+	@Override
+	public MembersDTO findPwd(Map map) {
+		return null;
+	}
 }

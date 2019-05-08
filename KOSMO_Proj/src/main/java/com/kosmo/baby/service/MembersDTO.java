@@ -10,10 +10,14 @@ public class MembersDTO {
 	private String enabled;
 	private String name;
 	private String partnerstatus;
+	private String photo;
 	
-	
-	
-	
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 	public String getPartnerstatus() {
 		return partnerstatus;
 	}

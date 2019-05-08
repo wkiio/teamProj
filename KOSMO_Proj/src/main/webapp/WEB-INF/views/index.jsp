@@ -47,7 +47,6 @@
               <h2 class="display-1 line-height-1 site-section-heading mb-4 pb-3" style="color:#8bc34a" >Aran</h2>
             <p class="text-black lead"><em>&ldquo;아란이란 ? 아름답게 자란 에서 특정 음절을 따서 지은 이름으로 순 우리말입니다..&rdquo;</em></p>
              <p class="text-black lead"><em>&ldquo;그러한 마음을 가진 부모님들이 오셔서 좋은 정보 공유해갔으면 좋겠습니다.&rdquo;</em></p>
-            <p class="lead text-black">&mdash; <em>by 안태준...</em></p>
           </div>
         </div>
       </div>

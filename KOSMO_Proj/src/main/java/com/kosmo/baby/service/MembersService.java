@@ -12,6 +12,10 @@ public interface MembersService {
 	boolean emailConfirm(Map map);
 	//마이페이지 비밀번호 체크용
 	boolean mypageCheck(Map map);
+	//아이디 찾기
+	MembersDTO findId(Map map);
+	//비밀번호 찾기
+	MembersDTO findPwd(Map map);
 	//목록용
 	List<MembersDTO> selectList(Map map);	
 	//검색용

@@ -66,6 +66,11 @@
       SELECT * FROM members WHERE id=#{id}
    </select>
    
+   <!-- 아이디 찾기용 -->
+   <select id="findId" parameterType="java.util.Map" resultType="MembersDTO">
+   		SELECT id FROM members WHERE name=#{name} AND email=#{email}
+   </select>
+   
    
 	
 	<!-- 이메일 인증완료 SQL -->
