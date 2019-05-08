@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kosmo.baby.service.AiApi;
+
 /**
  * Handles requests for the application home page.
  */
@@ -25,9 +27,12 @@ public class HomeController {
 	
 	@RequestMapping("/login_page.kosmo")
 	public String login_page() {
-		
-		return "login_page.tiles";
-		
+		return "login_page.tiles";	
+	}
+	
+	@RequestMapping("/find_Id.kosmo")
+	public String find_id() {
+		return "find_Id.tiles";
 	}
 	
 	@RequestMapping("/sign_up_page.kosmo")

@@ -146,7 +146,7 @@
 .form-label-group input {
   height: auto;
   border-radius: 2rem;
-  background-color: transparent !important;
+  background-color: transparent;
 }
 
 .form-label-group input,

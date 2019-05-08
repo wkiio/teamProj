@@ -148,4 +148,20 @@ public class MembersController {
 		System.out.println("check: " + check);
 		return check;
 	}
+	
+	@RequestMapping("/findId.kosmo")
+	public String findId(@RequestParam Map map,Model model) throws Exception{
+		System.out.println("아이디를 찾는 메소드로 들어왔다.");
+		service.findId(map);
+		boolean flag = service.findId(map)==null ? false : true;
+		if(flag){
+			MembersDTO dto = service.findId(map);
+			model.addAttribute("id",dto.getId());
+			
+		}
+		else {
+			model.addAttribute("findError","찾는 유저가 없습니다!");
+		}
+		return "findidresult.tiles";
+	}
 }
