@@ -283,7 +283,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row col-md-11 " style="padding-top:20px">                        	
+                        <div class="row col-md-11 " style="padding-top:20px">                  	
 							
 							<div class="table-responsive">
                                     <table id="tablego"class="table table-borderless table-data3" style="text-align: center;">
