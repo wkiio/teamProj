@@ -30,6 +30,11 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping("/find_Id.kosmo")
+	public String find_id() {
+		return "find_Id.tiles";
+	}
+	
 	@RequestMapping("/sign_up_page.kosmo")
 	public String sign_up_page() {
 		

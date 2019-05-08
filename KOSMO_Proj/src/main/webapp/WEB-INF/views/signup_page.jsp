@@ -4,6 +4,7 @@
 
 <script>
 	$(function() {
+	
 		//아이디 중복 체크
 		$("#id_check").click(function(){
 			console.log($('#id').val());
@@ -40,6 +41,10 @@
 			$('#id').val('').focus();
 		}
 		});
+		
+
+		
+		
 		
 		//비밀번호를 숫자 영문자 특수문자 8자리 이상으로 조합하게하기
 		$("#pwd").change(function(){
@@ -128,19 +133,41 @@
 									<button id="id_check" class="btn btn-singup">중복 체크</button>
 								</div>
 							</div>
+							<small>&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;아이디는 3자 이상, 10자 이하로 입력해야 합니다.</small>
 						</div>
 						<div class="form-label-group">
 							<input type="password" id="pwd" name="pwd" class="form-control" placeholder="비밀번호" required>
 							<label for="pwd">비밀번호</label>
+							<small>&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;비밀번호는 영문자, 특수준자, 숫자의 조합으로 8자리 이상 입력해야 합니다.</small>
 						</div>
+						
 						<div class="form-label-group">
 							<input type="password" id="pwdsubmit" class="form-control" placeholder="확인용 비밀번호" required>
 							<label for="pwdsubmit">확인용 비밀번호</label>
+							<small>&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;위의 비밀번호와 동일하게 입력해주세요</small>
 						</div>
 						<div class="form-label-group">
 							<input type="text" id="name" name="name" class="form-control" placeholder="이름" required>
 							<label for="name">이름</label>
 						</div>
+						
+						
+						
+						
+						<div class="form-label-group">
+							<div class="input-group">
+								<input type="text" id="photo" name="photo" class="form-control" placeholder="사진파일" required>
+								<div class="input-group-append">
+									<a id="photo_upload" class="btn btn-singup"  data-toggle="modal" data-target="#photo" style="color:white">사진 업로드</a>
+								</div>
+							</div>
+							<small>&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;본인의 증명사진을 올려주시기 바랍니다.</small>
+						</div>
+						
+						
+						
+						
+						
 						<div class="form-label-group">
 							<div class="input-group">
 								<input type="email" id="email" name="email" class="form-control" placeholder="이메일" required>
@@ -214,7 +241,6 @@
 						</div>
 						<input type="hidden" value="0" name="partnerstatus" id="partnerstatus"/>
 						<button class="btn btn-lg btn-singup btn-block text-uppercase" type="submit">회원 가입</button>
-						<a class="d-block text-center text-muted mt-2 small" href="#">로그인</a>
 						<hr class="my-4">
 						
 					</form>
@@ -222,7 +248,44 @@
 			</div>
 		</div>
 	</div>	
+	
+		<div class="modal fade" id="photomodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+		  <div class="modal-dialog" role="document" >
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">사진 등록하기</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <form enctype="myltipart/form-data" >
+		      	<div class="modal-body">
+               		<div class="form-group">
+                  	  <input type="file" class="form-control123" id="photoinput">
+                    	<small></small>
+               	 	</div>
+		      	</div>
+		      </form>
+		      <div class="modal-footer">		        
+		        <button type="button" class="btn btn-primary" id="clickbutton_modal" data-dismiss="modal">확인</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 </div>
+<script>
+
+$(function() {
+	
+	$('#photo_upload').click(function(){
+		$('#photomodal').modal();
+	}) 
+})
+	
+
+
+
+</script>
 
 
 
