@@ -25,14 +25,31 @@ td.fc-sat .fc-day-number {
 .fc-event .fc-title {
   color: white;
 }
+.fc-event .fc-time {
+  color: white;
+}
 </style>
 
 <script>
-	document.addEventListener('DOMContentLoaded', function() {
-		var startDay,endDay;
+document.addEventListener('DOMContentLoaded', function() {
+	var startDay,endDay,allday;
+	var startDT,endDT;
+	var jcevents=[];
+	$.ajax({
+		url:"<c:url value='/fcevent.kosmo'/>",
+		data:{"${_csrf.parameterName}":"${_csrf.token}"},
+		type:'post',
+		dataType:'json',
+		success:function(data){
+			createCalendar(data);
+		}
+		
+	});
+	
+	
+	function createCalendar(event) {
 		var calendarEl = document.getElementById('calendar');
-
-    	var calendar = new FullCalendar.Calendar(calendarEl, {
+		var calendar = new FullCalendar.Calendar(calendarEl, {
 	      	plugins: [ 'dayGrid','timeGrid','list','interaction' ],
 	      	locale:'ko',
 	      	eventLimit: true,
@@ -43,70 +60,86 @@ td.fc-sat .fc-day-number {
 	            center: 'title',
 	            right: 'dayGridMonth,timeGridWeek,timeGridDay'
 			},
-			events: [
-		        {
-		          title: 'simple event',
-		          start: '2019-05-02T12:30:00',
-		          end: '2019-05-13T10:45:00',
-		          color: 'green'
-		        },
-		        {
-		          title: 'event with URL',
-		          start: '2019-05-03'
-		        }
-		      ],
-          	select: function(info) {
-          		var inv;
-          		var str;
-          		startDay=info.startStr;
-          		endDay=info.endStr;
-            	str = info.endStr.substr(info.endStr.length-2)
-            	inv = parseInt(str)==1?1:parseInt(str)-1;
-            	if(inv<10){
-            		str =info.endStr.substr(0,info.endStr.length-1)+inv
-            	}
-            	else{
-            		str =info.endStr.substr(0,info.endStr.length-2)+inv
-            	}
-            	alert('selected ' + info.startStr + ' to ' + str);
-            	$('.modal').find('form')[0].reset();
-            	
-            	$('#startStr').val(info.startStr)
-            	$('#endStr').val(str)
-            	$('#startdate').val(startDay) 
-            	$('#enddate').val(endDay) 
-            	
-            	$('#schduleForm').modal();
-            	
-          	}
+			events: event,
+	      	select: function(info) {
+	      		//모달창 리셋
+	      		$('.modal').find('form')[0].reset();
+	      		
+	      		if(info.startStr.includes("T")){
+	      			//2019-05-07T06:00:00+09:00
+	      			startDT = info.startStr.split('+')[0].split('T');
+	      			endDT = info.endStr.split('+')[0].split('T');
+	      			$('#startStr').val(startDT[0])
+	            	$('#endStr').val(endDT[0])
+	            	$('#startTime').val(startDT[1]);
+					$('#endTime').val(endDT[1]);
+					startDay = startDT[0];
+	          		endDay = endDT[0];
+	          		allday = false;
+	      		}
+	      		else{
+	          		startDay = info.startStr;
+	          		endDay = info.endStr;
+	      			var str = info.endStr.substr(info.endStr.length-2)
+	            	var inv = parseInt(str)==1?1:parseInt(str)-1;
+	            	if(inv<10){
+	            		str = info.endStr.substr(0,info.endStr.length-1)+inv
+	            	}
+	            	else{
+	            		str = info.endStr.substr(0,info.endStr.length-2)+inv
+	            	}
+	            	$('#startStr').val(info.startStr)
+	            	$('#endStr').val(str)
+	            	allday = true;
+	      		}
+	        	
+	        	alert('selected ' + startDay + ' to ' + endDay);           	
+	        	$('#startdate').val(startDay) 
+	        	$('#enddate').val(endDay) 
+	        	
+	        	$('#schduleForm').modal();
+	        	
+	      	}
 			
-    	});
+		});
 		calendar.render();
-		/* 
-		$('#submitbtn').click(function(){
-			
-			 $.ajax({
-				url:"<c:url value='/fcinput.kosmo'/>",
-				data:$('#frmSchdule').serialize(),
-				type:'post',
-				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-				dataType:'text',
-				success:function(data){
+		
+	};
+	
+	
+	
+	$('#submitbtn').click(function(){		
+		 $.ajax({
+			url:"<c:url value='/fcinput.kosmo'/>",
+			data:$('#frmSchdule').serialize(),
+			type:'post',
+			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+			dataType:'text',
+			success:function(data){
+				if(allday){
 					calendar.addEvent({
 						title: $('#caltitle').val(),
 						start: startDay,
 						end: endDay,
 						allDay: true
 					});
-					
 				}
-			});
-			$('#schduleForm').modal('hide');
-			
+				else{
+					calendar.addEvent({
+						title: $('#caltitle').val(),
+						start: startDT[0]+'T'+startDT[1],
+						end: endDT[0]+'T'+endDT[1]
+					});
+				}	
+			}
 		});
-		 */
+		$('#schduleForm').modal('hide');
 		
-  });
+	});
+	
+	
+});
+
 
 </script>
 <sec:authorize access="isAuthenticated()">
@@ -132,8 +165,16 @@ td.fc-sat .fc-day-number {
 							<input type='text' class='form-control' id='caltitle' name='caltitle' placeholder="예: 오후 7시에 멕시코 음식점에서 저녁식사">
 						</div>
 						<div class='form-group'>
+							<label>시작시간</label>
+							<input class='form-control' type="time" id='startTime' name='startTime'>
+						</div>
+						<div class='form-group'>
 							<label>시작날짜</label> 
 							<input class='form-control startDate' type="text" id='startStr' name='startStr'>
+						</div>
+						<div class='form-group'>
+							<label>종료시간</label>
+							<input class='form-control' type="time" id='endTime' name='endTime'>
 						</div>
 						<div class='form-group'>
 							<label>종료날짜</label> 

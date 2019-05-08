@@ -15,9 +15,9 @@
 <!-- ==================================================================== -->
 
 <mapper namespace="mybatis.Members">
-	
-	<!-- 두 번째 INTO는 카풀여부를 체크했을때 들어오는 if문입니다. -->
-	<!-- 카풀을 체크하는 순간 input type=hidden으로 들어온 partnerstatus는 0에서 1이되며, 그 순간 partner_members 테이블에도 들어갑니다-->
+	<select id="calList" parameterType="java.util.Map" resultType="CalenderDTO">
+		SELECT * FROM calender
+	</select>
 	<insert id="calinput" parameterType="java.util.Map">
 		INSERT INTO calender VALUES(SEQ_Calender.NEXTVAL,#{caltitle},#{startdate},#{enddate},#{calcontent},'타입',#{id})
 	</insert>
