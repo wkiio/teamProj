@@ -1,15 +1,27 @@
 package com.kosmo.baby.service.web;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.ServletContext;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.text.Document;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.DefaultResourceLoader;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.Authentication;
@@ -24,6 +36,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.kosmo.baby.HomeController;
 import com.kosmo.baby.command.FileUpDownUtils;
 import com.kosmo.baby.command.UploadCommand;
 import com.kosmo.baby.service.MailHandler;
@@ -38,10 +51,17 @@ import com.kosmo.baby.service.impl.MembersServiceimpl;
 @Controller
 public class MembersController {
 	
-	String aaa;
+	private static final Logger logger = LoggerFactory.getLogger(MembersController.class);
+	
+	@Autowired 
+	private ResourceLoader resourceLoader;
+		
 	
 	@Inject
 	private JavaMailSender mailSender;
+	
+	@Autowired
+	ServletContext servletContext;
 	
 	
 	//서비스 주입
@@ -55,32 +75,7 @@ public class MembersController {
 	private UploadCommand uploadCommand;
 	
 	
-	/*
-	 * 시큐리티 적용 전 메소드
-	@RequestMapping("/Login.kosmo")
-	public String isMember(@RequestParam Map map, HttpSession session, Model model) throws Exception {
-		boolean flag = service.isMember(map);
-		if (flag) { // 아이디 비밀번호를 체크한다.
-			session.setAttribute("id", map.get("id")); // true로 들어오면 세션영역에 아이디 저장
-			if (map.get("id").equals("admin")) { // 들어온 아이디가 admin이라면
-				model.addAttribute("adminlogin","관리자로 로그인 하셨습니다.");
-				return "/admin_page/admin_index"; // 관리자 페이지로 보낸다
-			} //관리자 여부 로그인 if
-			
-			else { // 들어온 아이디가 일반회원이라면
-				model.addAttribute("memberslogin",map.get("name")+" 님. 어서오세요");
-				return "index.tiles"; //인덱스로 보낸다
-			} //일반회원 로그인 else
-		} //flag if문
-		
-		
-		else { // 아이디 비밀번호가 틀렸을경우
-			model.addAttribute("loginfail","아이디와 비밀번호가 다릅니다."); 
-			return "login_page.tiles"; //로그인페이지로 다시 보냄
-		}
-		
-	}
-	*/
+	
 	//마이페이지 전용
 	@RequestMapping("/loginout.kosmo")
 	public String logout(HttpSession session) throws Exception{
@@ -94,9 +89,6 @@ public class MembersController {
 		map.put("id", user.getUsername());
 		
 		boolean flag = service.mypageCheck(map);
-		
-		
-		
 		
 		
 		if(flag) {
@@ -130,7 +122,7 @@ public class MembersController {
 	{
 		System.out.println("받아온 파일이름" + map.get("name"));
 		System.out.println(map);
-		aaa = (String) map.get("name");
+	
 		
 		return "gg";
 	}
@@ -142,31 +134,39 @@ public class MembersController {
 			HttpServletRequest req,	
 			@RequestParam(required=false) String career,@RequestParam(required=false) String cartype) throws Exception{
 		
+		
+		
 		MultipartFile ff = rhhh.getFile("file");
 		System.out.println("ff: " + ff);
 		
+		Set pathSet = req.getSession().getServletContext().getResourcePaths("/resources");
+		
+		System.out.println(pathSet);
+		
+		System.out.println("한지민?"+req.getSession().getServletContext().getResource("/resources/한지민.jpg").getPath());
+		
+
+		//System.out.println(resourceLoader.getResource("classpath:config.properties").getURI().getPath()); 
+
+		System.out.println(resourceLoader.getResource("resources/css/style.css").getURI().getPath());
+		
+		
+		String imagePath = req.getSession().getServletContext().getRealPath("");
+		
+		
+		
 		
 		//경로찾기
-		System.out.println("???");
+		System.out.println("??? ::" + servletContext.getRealPath("/"));
 		String phisicalPath=req.getServletContext().getRealPath("/resources/memberPhoto");
-		System.out.println("phisicalPath:" + phisicalPath);
-		//String aa = upload.getOriginalFilename()
-		//MultipartFile upload=cmd.getUpload();
 		
-		//System.out.println("upload1:" + ugggggggggggggggggggpload1);
 		
-//D:\CSJ\WorkSpace\.metadata\.plugins\org.eclipse.wst.server.core\tmp4\wtpwebapps\KOSMO_Proj\resources\memberPhoto
-//D:\CSJ\WorkSpace\.metadata\.plugins\org.eclipse.wst.server.core\tmp3\wtpwebapps\KOSMO_Proj\resources\memberPhoto
-		
-		//D:\CSJ\WorkSpace\.metadata\.plugins\org.eclipse.wst.server.core\tmp3\wtpwebapps\KOSMO_Proj\resources\memberPhoto
-		//D:\CSJ\study\.metadata\.plugins\org.eclipse.wst.server.core\tmp3\wtpwebapps\KOSMO_Proj\resources\memberPhoto
-		
-		//System.out.println("dd:"+upload.getOriginalFilename());
 		//2]File객체 생성
 		//2-1] 파일 중복시 이름 변경
+		String ffff = "C:\\Users\\CSJ\\git\\teamProj1\\KOSMO_Proj\\src\\main\\webapp\\resources\\memberPhoto";
 		String newFileName=FileUpDownUtils.getNewFileName(phisicalPath, ff.getOriginalFilename());
 		File file = new File(phisicalPath+File.separator+newFileName);
-		System.out.println(file);
+		System.out.println("vxcbdfg:" + file);
 		//3]업로드 처리		
 		ff.transferTo(file);
 		

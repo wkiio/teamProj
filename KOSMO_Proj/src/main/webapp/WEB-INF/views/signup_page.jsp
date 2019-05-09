@@ -11,35 +11,11 @@
                <h5 class="card-title text-center">회원가입</h5>
                <form class="form-signin" method="post" action="Signup.kosmo?${_csrf.parameterName}=${_csrf.token}" autocomplete="off" enctype="multipart/form-data">
                   <input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                 
+                                       
                   <div class="form-label-group">
                      <div class="input-group">
-                        <input type="text" id="id" name="id" class="form-control" placeholder="아이디" required autofocus>
-                        <label for="id">아이디</label>
-                        <div class="input-group-append">
-                           <button id="id_check" class="btn btn-singup">중복 체크</button>
-                        </div>
-                     </div>
-                     <small>&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;아이디는 3자 이상, 10자 이하로 입력해야 합니다.</small>
-                  </div>
-                  <div class="form-label-group">
-                     <input type="password" id="pwd" name="pwd" class="form-control" placeholder="비밀번호" required>
-                     <label for="pwd">비밀번호</label>
-                     <small>&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;비밀번호는 영문자, 특수준자, 숫자의 조합으로 8자리 이상 입력해야 합니다.</small>
-                  </div>
-                  
-                  <div class="form-label-group">
-                     <input type="password" id="pwdsubmit" class="form-control" placeholder="확인용 비밀번호" required>
-                     <label for="pwdsubmit">확인용 비밀번호</label>
-                     <small>&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;위의 비밀번호와 동일하게 입력해주세요</small>
-                  </div>
-                  <div class="form-label-group">
-                     <input type="text" id="name" name="name" class="form-control" placeholder="이름" required>
-                     <label for="name">이름</label>
-                  </div>
-                  
-                  <div class="form-label-group">
-                     <div class="input-group">
-                        <input type=file id="photo" name="file" class="form-control" placeholder="사진파일" >
+                        <input type=text id="photo" name="file" class="form-control" placeholder="사진파일" >
                          <div class="input-group-append">
                            <a id="photo_upload" class="btn btn-singup"  data-target="#photo" style="color:white">사진 업로드</a>
                         </div> 
@@ -47,52 +23,7 @@
                      <small>&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;본인의 증명사진을 올려주시기 바랍니다.</small>
                   </div>
                   
-                  <div class="form-label-group">
-                     <div class="input-group">
-                        <input type="email" id="email" name="email" class="form-control" placeholder="이메일" required>
-                        <label for="email">이메일</label>
-                        <div class="input-group-append">
-                           <select class="form-control" id="email2">
-                              <option>E-Mail 선택</option>
-                              <option>naver.com</option>
-                              <option>hanmail.net</option>
-                              <option>gmail.com</option>
-                              <option>nate.com</option>
-                           </select>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="form-label-group">
-                     <div class="input-group">
-                        <div class="input-group-prepend">
-                           <select class="form-control" id="sel1" name="telfront">
-                              <option selected="selected">010</option>
-                              <option>011</option>
-                              <option>019</option>
-                              <option>016</option>
-                           </select>
-                        </div>
-                        <input type="text" id="tel" class="form-control" name="telback" placeholder="전화번호" required> 
-                           <label for="tel">전화번호</label>
-                     </div>
-                  </div>
-                  <div class="form-label-group">
-                     <div class="input-group">
-                        <input type="text" id="addr0" name="addr0" class="form-control" placeholder="우편번호" required>
-                        <label for="addr0">우편번호</label>
-                        <div class="input-group-append">
-                           <button id="addrSearch" class="btn btn-singup">주소 검색</button>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="form-label-group">
-                     <input type="text" id="addr1" name="addr1" class="form-control"  placeholder="지번주소" required>
-                     <label for="addr1">지번주소</label>
-                  </div>
-                  <div class="form-label-group">
-                     <input type="text" id="addr2" name="addr2" class="form-control"  placeholder="상세주소" required>
-                     <label for="addr2">상세주소</label>
-                  </div>
+                
                   <div class="form-inline">
                      <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="carpool_check">
@@ -171,164 +102,44 @@ function getname(obj)
  
 
 $(function() {
-	   
-    //아이디 중복 체크
-    $("#id_check").click(function(){
-       console.log($('#id').val());
-       if($('#id').val().length >=3 && $('#id').val().length <=10){
-       //Ajax로 요청
-       $.ajax({
-          url:"<c:url value='/idCheck.kosmo'/>",
-          data: {
-             'id' : $('#id').val(),
-             "${_csrf.parameterName}":"${_csrf.token}"
-             },
-          dataType:'text',
-          type:'post',
-          success:function(data){
-             console.log("sdddd");
-             if(data=="true") {
-                alert('사용가능한 아이디 입니다');
-                $('#pwd').focus()
-             }
-             else {
-                alert('중복된 아이디 입니다');
-                $('#id').val('');
-                $('#id').focus()
-             }
-             
-          }/* ,
-          error:function(request,status,error){
-             console.log('code:%s,message:%s,error:%s,status:%s',request.status,request.responseText,error,status);
-          } */
-       });
-    }
-    else {
-       alert('아이디는 3자 이상, 10자 이하 사용해야 합니다.')
-       $('#id').val('').focus();
-    }
-    });
-    
-
-    
-    
-    
-    //비밀번호를 숫자 영문자 특수문자 8자리 이상으로 조합하게하기
-    $("#pwd").change(function(){
-        checkPassword($('#pwd').val());
-    });
-    function checkPassword(pwd){          
-        if(!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,16}$/.test(pwd)){            
-            alert('숫자+영문자+특수문자 조합으로 8자리 이상 사용해야 합니다.');
-            $('#pwd').val('').focus();
-            return false;
-        }    
-        var checkNumber = password.search(/[0-9]/g);
-        var checkEnglish = password.search(/[a-z]/ig);
-        if(checkNumber <0 || checkEnglish <0){
-            alert("숫자와 영문자를 혼용하여야 합니다.");
-            $('#pwd').val('').focus();
-            return false;
-        }
-        return true;
-    }
-    //비밀번호 입력칸과 비밀번호 확인칸이 동일하지 않으면 다시 입력하게하기
-    $('#pwdsubmit').change(function(){
-       checkPwdSubmit($('#pwd').val(),$('#pwdsubmit').val());
-    });
-    function checkPwdSubmit(pwd,pwdsubmit){
-       if(pwd != pwdsubmit){
-          alert('비밀번호와 동일하게 입력해야 합니다.');
-          $('#pwdsubmit').val('').focus();
-          return false;
-       }
-       
-       return true;
-    }
-    
-   
-
+	
  
-     //사진업로드 눌렀을
+      //사진업로드 눌렀을
      $('#photo_upload').click(function(){
         $('#photomodal').modal();
      });
      
      $('#clickbutton_modal').click(function(){
     	 
-    	 filename = document.getElementById("photoinput").files[0].name;      
-    	 console.log('파일은?' + filename);
-    	  $.ajax({
-              url:"<c:url value='/imageupload.kosmo'/>",
-              data: {
-                 'name' : filename,
-                 "${_csrf.parameterName}":"${_csrf.token}"
-                 },
-              type:'POST',
-              success:function(data){
-                 console.log("sdddd");                
-                 
-              }
-             
-           });
+    	 filename1 = document.getElementById("photoinput").files[0];
+    	 //console.log('파일은1?' + filename);
+    	 var form = new FormData();
+         form.append("image", filename1);
+    	 
+         //https://api.imgur.com/3/album/" + albumID + "/images
+         $.ajax({ 
+        	//url:"https://api.imgur.com/3/image",
+        	url : "https://api.imgur.com/3/account/csj910226",
+        	type: "POST",
+        	data : form,
+        	headers: { Authorization: 'Client-ID c473572e81fbb73' },      
+        	processData: false,
+        	mimeType : "multipart/form-data",
+            contentType : false,
+            success:function(data){
+                console.log("sdddd");                       
+                console.log('ff' + JSON.parse(data).data.link);
+             }
+        	
+        	 
+         });
+         
+    	
   	   $('#photo').val(filename);  	
-     });
+     }); 
      
+});
      
- 
-
-    
-    
-    
-    //휴대폰 번호 유효성체크 
-    $('#tel').keypress(function(evt){
-       var code = evt.which?evt.which:event.keyCode;
-       if(code < 48 || code > 57){
-          return false;
-       }
-    });
-    
-    //이메일 선택용
-    $('#email2').change(function(){
-       $("#email2 option:gt(0):selected").each(function() {
-          var email = $('#email').val();
-          if(email.includes("@")){
-             $('#email').val(email.split('@')[0]+"@"+$(this).html());
-          }
-          else {
-             $('#email').val(email+"@"+$(this).html());
-          }
-       });
-    });
-    
-    //제휴 회원용 입력창 토글용
-    $('#carpool_check').click(function(){
-       $(".card-carpool").fadeToggle("slow");
-    });   
-    
-    //제휴 회원용 입력창 토글용
-    $('.form-signin').submit(function(){
-      if($('#carpool_check').prop('checked')){
-         //카풀등록 체크시
-         $('#partnerstatus').attr('value',"1")
-      }
-      else {
-         //카풀등록 체크 안했을시
-         $('#partnerstatus').attr('value',"0")
-      }
-   });
- });
-
-
-
-
-
-
-
-
-
-
-
+   
 </script>
-
 
