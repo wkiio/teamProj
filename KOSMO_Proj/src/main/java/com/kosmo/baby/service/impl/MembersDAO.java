@@ -78,7 +78,7 @@ public class MembersDAO implements MembersService{
 	public int carMember(Map map) {
 		return template.selectOne("carmemberCount",map);
 	}
-
+;
 	@Override
 	public MembersDTO findId(Map map) {
 		return template.selectOne("findId",map);
@@ -86,7 +86,7 @@ public class MembersDAO implements MembersService{
 
 	@Override
 	public MembersDTO findPwd(Map map) {
-		return null;
+		return template.selectOne("findPwd",map);
 	}
 	
 }

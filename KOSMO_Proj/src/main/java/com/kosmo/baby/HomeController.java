@@ -23,6 +23,11 @@ import com.kosmo.baby.service.AiApi;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	   @RequestMapping("/aiApi.kosmo")
+	   public String ai_API() {
+	      
+	      return "aiApi(babyfair).tiles";
+	   }
 
 	
 	@RequestMapping("/login_page.kosmo")
@@ -33,6 +38,10 @@ public class HomeController {
 	@RequestMapping("/find_Id.kosmo")
 	public String find_id() {
 		return "find_Id.tiles";
+	}
+	@RequestMapping("/find_Pwd.kosmo")
+	public String find_Pwd() {
+		return "find_Pwd.tiles";
 	}
 	
 	@RequestMapping("/sign_up_page.kosmo")

@@ -182,6 +182,7 @@
 									</select>
 								</div>
 							</div>
+							<small>&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;추후 이메일 인증을 위해 정확히 입력 해주시기 바랍니다.</small>
 						</div>
 						<div class="form-label-group">
 							<div class="input-group">
@@ -235,8 +236,9 @@
 								<label class="checkbox-inline"><input type="radio" id="cartype" name="cartype" value="소형차">소형차</label>
 								<label class="checkbox-inline"><input type="radio" id="cartype" name="cartype" value="중형차">중형차</label>
 								<label class="checkbox-inline"><input type="radio" id="cartype" name="cartype" value="대형차">대형차</label>
-								<h2>차 번호</h2><small>카풀 매칭시 이용자에게 알려주어 도달 시 찾기 용이하게 합니다.</small>
+								<h2>차 번호</h2>
 								<input type="text" id="carnumber" name="carnumber" class="form-control"  placeholder="차 번호를 입력하세요">
+								<small>&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;카풀 매칭시 이용자에게 알려주어 도달 시 찾기 용이하게 합니다.</small>
 							</div>
 						</div>
 						<input type="hidden" value="0" name="partnerstatus" id="partnerstatus"/>

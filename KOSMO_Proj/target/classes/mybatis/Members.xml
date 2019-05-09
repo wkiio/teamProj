@@ -71,6 +71,11 @@
    		SELECT id FROM members WHERE name=#{name} AND email=#{email}
    </select>
    
+   <!-- 비밀번호 찾기용 -->
+   <select id="findPwd" parameterType="java.util.Map" resultType="MembersDTO">
+   		SELECT id,pwd FROM members WHERE name=#{name} AND email=#{email} AND id=#{id}
+   </select>
+   
    
 	
 	<!-- 이메일 인증완료 SQL -->
