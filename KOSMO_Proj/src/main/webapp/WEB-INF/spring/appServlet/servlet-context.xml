@@ -38,6 +38,14 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+ 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- max upload size in bytes -->
+        <beans:property name="maxUploadSize" value="20971520" /> <!-- 20MB -->
+        <!-- max size of file in memory (in bytes) -->
+        <beans:property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->	
+	</beans:bean>
+   
+	
 	
 	<!-- 리소스파일(.properties) 사용을 위한 설정 --> 
 	<context:property-placeholder location="classpath:kosmo/kosmo.properties"/>
