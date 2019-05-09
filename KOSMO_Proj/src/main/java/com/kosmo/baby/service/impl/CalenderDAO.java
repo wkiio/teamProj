@@ -35,9 +35,8 @@ public class CalenderDAO implements CalenderService{
 
 	@Override
 	public int update(Map map) {
-		//캘린더 수정용
-		
-		return 0;
+		//캘린더 수정용	
+		return template.update("calupdate",map);
 	}
 	
 	

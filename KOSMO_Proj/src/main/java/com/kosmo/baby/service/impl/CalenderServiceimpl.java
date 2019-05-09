@@ -34,8 +34,7 @@ public class CalenderServiceimpl implements CalenderService{
 
 	@Override
 	public int update(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.update(map);
 	}
 	
 	

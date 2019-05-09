@@ -38,6 +38,7 @@ public class CalenderController {
 		List<Map> collections = new Vector<Map>();
 		for(CalenderDTO dto : list) {
 			Map record = new HashMap();
+			record.put("id", dto.getCal_no());
 			record.put("title", dto.getTitle());
 			record.put("start", dto.getStartdate());
 			if(dto.getEnddate()!=null) {
@@ -46,6 +47,7 @@ public class CalenderController {
 			if(dto.getId().equals("admin")) {
 				record.put("color", "gray");
 			}
+			record.put("description", dto.getContent());
 			collections.add(record);
 		}
 		System.out.println(JSONArray.toJSONString(collections));
@@ -57,14 +59,33 @@ public class CalenderController {
 	public String fcinput(@RequestParam Map map,Model model,Authentication auth) throws Exception{
 		UserDetails user = (UserDetails)auth.getPrincipal();
 		map.put("id", user.getUsername());
-		System.out.println("깐트롤러");
+		System.out.println("입력시작");
+		
 		if(!map.get("startTime").toString().equals("")) {
 			map.put("startdate", map.get("startdate").toString().concat("T"+map.get("startTime")));
 			map.put("enddate", map.get("enddate").toString().concat("T"+map.get("endTime")));
 		}
 		service.insert(map);
 		
-		return "저장완료";
+		System.out.println("입력완료");
+		System.out.println(map.get("no"));
+		return map.get("no").toString();
 	}
+	
+	
+	@ResponseBody
+	@RequestMapping(value="/fcupdate.kosmo", produces = "application/text; charset=utf8")
+	public String fcupdate(@RequestParam Map map,Model model) throws Exception{
+		if(!map.get("startTime").toString().equals("")) {
+			map.put("modifstartStr", map.get("modifstartStr").toString().concat("T"+map.get("modifstartTime")));
+			map.put("modifendStr", map.get("modifendStr").toString().concat("T"+map.get("modifendTime")));
+		}
+		service.update(map);
+		
+		return "";
+	}
+	
+	
+	
 
 }

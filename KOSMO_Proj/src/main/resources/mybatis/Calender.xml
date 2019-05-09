@@ -20,6 +20,14 @@
 	</select>
 	<insert id="calinput" parameterType="java.util.Map">
 		INSERT INTO calender VALUES(SEQ_Calender.NEXTVAL,#{caltitle},#{startdate},#{enddate},#{calcontent},'타입',#{id})
+		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
+			SELECT SEQ_Calender.CURRVAL FROM dual
+		</selectKey>
 	</insert>
-
+	
+	<update id="calupdate" parameterType="java.util.Map">
+		UPDATE calender SET title=#{modiftitle}, startdate=#{modifstartStr}, enddate=#{modifendStr},
+		 content=#{modifcontent}, type='타입' WHERE cal_no=#{modifyEventId}
+	</update>
+	
 </mapper>
