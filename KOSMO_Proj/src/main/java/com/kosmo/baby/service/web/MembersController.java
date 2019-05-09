@@ -164,4 +164,21 @@ public class MembersController {
 		}
 		return "findidresult.tiles";
 	}
+	
+	@RequestMapping("/findPwd.kosmo")
+	public String findPwd(@RequestParam Map map,Model model) throws Exception{
+		System.out.println("비밀번호를 찾는 메소드로 들어왔다.");
+		service.findPwd(map);
+		boolean flag = service.findPwd(map)==null ? false : true;
+		if(flag){
+			MembersDTO dto = service.findPwd(map);
+			model.addAttribute("id",dto.getId());
+			model.addAttribute("pwd",dto.getPwd());
+			
+		}
+		else {
+			model.addAttribute("findError","이런 정보가 틀렸습니다. 비밀번호를 찾을수가 없어요");
+		}
+		return "findidresult.tiles";
+	}
 }
