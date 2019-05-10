@@ -136,52 +136,45 @@ public class MembersController {
 		
 		
 		
-		MultipartFile ff = rhhh.getFile("file");
+		MultipartFile ff = rhhh.getFile("photo");
 		System.out.println("ff: " + ff);
 		
-		Set pathSet = req.getSession().getServletContext().getResourcePaths("/resources");
+		//Set pathSet = req.getSession().getServletContext().getResourcePaths("/resources");
 		
-		System.out.println(pathSet);
+		//System.out.println(pathSet);
 		
-		System.out.println("한지민?"+req.getSession().getServletContext().getResource("/resources/한지민.jpg").getPath());
+		//System.out.println("한지민?"+req.getSession().getServletContext().getResource("/resources/한지민.jpg").getPath());
 		
 
 		//System.out.println(resourceLoader.getResource("classpath:config.properties").getURI().getPath()); 
 
-		System.out.println(resourceLoader.getResource("resources/css/style.css").getURI().getPath());
+	//	System.out.println(resourceLoader.getResource("resources/css/style.css").getURI().getPath());
 		
 		
-		String imagePath = req.getSession().getServletContext().getRealPath("");
-		
-		
-		
+		//String imagePath = req.getSession().getServletContext().getRealPath("");
 		
 		//경로찾기
 		System.out.println("??? ::" + servletContext.getRealPath("/"));
 		String phisicalPath=req.getServletContext().getRealPath("/resources/memberPhoto");
-		
+		System.out.println("phisicalPath:" + phisicalPath);
 		
 		//2]File객체 생성
 		//2-1] 파일 중복시 이름 변경
-		String ffff = "C:\\Users\\CSJ\\git\\teamProj1\\KOSMO_Proj\\src\\main\\webapp\\resources\\memberPhoto";
+		//String ffff = "C:\\Users\\CSJ\\git\\teamProj1\\KOSMO_Proj\\src\\main\\webapp\\resources\\memberPhoto";
 		String newFileName=FileUpDownUtils.getNewFileName(phisicalPath, ff.getOriginalFilename());
 		File file = new File(phisicalPath+File.separator+newFileName);
-		System.out.println("vxcbdfg:" + file);
+		System.out.println("vxcbdfg:" + file.toPath());
 		//3]업로드 처리		
 		ff.transferTo(file);
+		
+		map.put("photo", file.toString() );
 		
 		
 		//파일업로드 끝
 		
-		
-		
-		
-		
-		
-		
 		//telfront는 010, 011같은 selectbox
 		//telback은 유저가 입력한 전화번호
-		/*map.put("tel", map.get("telfront").toString()+map.get("telback"));
+		map.put("tel", map.get("telfront").toString()+map.get("telback"));
 		System.out.println();
 		
 		//프로토콜
@@ -195,6 +188,7 @@ public class MembersController {
 		//인증키 만들기
 		String key =new TempKey().getKey(20, false);
 		map.put("authkey", key);
+		
 			
 		service.insert(map);
 		
@@ -204,7 +198,7 @@ public class MembersController {
 					new StringBuffer().append("<h1>육아육아해사이트 회원가입 이메일 인증 : "+map.get("id")+"님</h1>").append("<a href='http://localhost:8080/baby/emailConfirm.kosmo?email=").append(map.get("email").toString()).append("&authkey=").append(key).append("' target='_blenk'>이메일 인증 확인</a>").toString());
 		sendMail.setFrom("csj910226@gmail.com", "육아육아해");
 		sendMail.setTo(map.get("email").toString());
-		sendMail.send();*/
+		sendMail.send();
 		
 		return "signup_after.tiles";
 	}

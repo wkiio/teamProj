@@ -9,7 +9,7 @@
 			<div class="card card-signin flex-row my-5">
 				<div class="card-body">
 					<h5 class="card-title text-center">회원가입</h5>
-					<form class="form-signin" method="post" action="Signup.kosmo" autocomplete="off" onSubmit="return false;">
+					<form class="form-signin" method="post" action="Signup.kosmo?${_csrf.parameterName}=${_csrf.token}" autocomplete="off" enctype="multipart/form-data">
 						<input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						<div class="form-label-group">
 							<div class="input-group">
@@ -36,9 +36,6 @@
 							<input type="text" id="name" name="name" class="form-control" placeholder="이름" required>
 							<label for="name">이름</label>
 						</div>
-						
-						
-						
 						
 						<div class="form-label-group">
 							<div class="input-group">
@@ -145,7 +142,7 @@
 		      <form enctype="myltipart/form-data" >
 		      	<div class="modal-body">
                		<div class="form-group">
-                  	  <input type="file" class="form-control123" id="photoinput">
+                  	  <input type="file" name="photo" class="form-control123" id="photoinput">
                     	<small></small>
                	 	</div>
 		      	</div>
@@ -174,8 +171,33 @@ function getname(obj)
 
 
 
-
-	$(function() {	
+	/* 	
+	filename1 = document.getElementById("photoinput").files[0];
+   	 filename = document.getElementById("photoinput").files[0].name; 
+   	 $('#photo').val(filename);  
+   	 console.log(filename);
+   	 //console.log('파일은1?' + filename);
+   	 	var form = new FormData();
+        form.append("image", filename1);
+       
+        //https://api.imgur.com/3/album/" + albumID + "/images
+         $.ajax({ 
+       	//url:"https://api.imgur.com/3/image",
+       	url : "https://api.imgur.com/3/image",
+       	type: "POST",
+       	data : form,
+       	headers: { Authorization: 'Client-ID c473572e81fbb73' },      
+       	processData: false,
+       	mimeType : "multipart/form-data",
+           contentType : false,
+           success:function(data){
+               console.log("sdddd");                       
+               console.log('ff' + JSON.parse(data).data.link);
+            }       	
+        }); 
+		 */
+ $(function() {			
+		
 		//아이디 중복 체크
 		$("#id_check").click(function(){
 			console.log($('#id').val());
@@ -212,9 +234,6 @@ function getname(obj)
 			$('#id').val('').focus();
 		}
 		});
-		
-
-		
 		
 		
 		//비밀번호를 숫자 영문자 특수문자 8자리 이상으로 조합하게하기
@@ -257,37 +276,28 @@ function getname(obj)
      });
      
      $('#clickbutton_modal').click(function(){
-    	 
-    	 filename1 = document.getElementById("photoinput").files[0];
     	 filename = document.getElementById("photoinput").files[0].name; 
-    	 $('#photo').val(filename);  
-    	 console.log(filename);
-    	 //console.log('파일은1?' + filename);
-    	 var form = new FormData();
-         form.append("image", filename1);
-        
-         //https://api.imgur.com/3/album/" + albumID + "/images
-       /*   $.ajax({ 
-        	//url:"https://api.imgur.com/3/image",
-        	url : "https://api.imgur.com/3/image",
-        	type: "POST",
-        	data : form,
-        	headers: { Authorization: 'Client-ID c473572e81fbb73' },      
-        	processData: false,
-        	mimeType : "multipart/form-data",
-            contentType : false,
-            success:function(data){
-                console.log("sdddd");                       
-                console.log('ff' + JSON.parse(data).data.link);
-             }
-        	
+    	 $('#photo').val(filename);      	
+    	 $("#photo").replaceWith( $("#photoinput").clone(true) );
+    	 $('#photo').val(filename);   
+    	 console.log('aa' + document.getElementById("photo").files[0]);
+    	 var a = document.getElementById("photo").files;
+    	 a = document.getElementById("photoinput").files;
+    	 if(document.getElementById("photo").files[0] == null)
+    		 document.getElementById("photo").files[0] = document.getElementById("photoinput").files[0];
+    	 //console.log('zxcx' + dd);
+    	// document.getElementById("photo").files[0] = document.getElementById("photoinput").files[0];
+    	 console.log("fff" + document.getElementById("photoinput").files[0]);
+       	
+    	 
+    	
         	 
-         }); */
+      }); 
+         
          
     	
   	 	
-     }); 
-		
+   
 		
 		
 		
