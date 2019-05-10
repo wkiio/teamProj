@@ -23,8 +23,7 @@ public class CalenderServiceimpl implements CalenderService{
 
 	@Override
 	public int delete(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.delete(map);
 	}
 
 	@Override

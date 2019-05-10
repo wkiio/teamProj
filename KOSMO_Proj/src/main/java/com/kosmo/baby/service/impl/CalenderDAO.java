@@ -25,7 +25,7 @@ public class CalenderDAO implements CalenderService{
 	@Override
 	public int delete(Map map) {
 		//캘린더 삭제
-		return 0;
+		return template.delete("caldelete",map);
 	}
 
 	@Override

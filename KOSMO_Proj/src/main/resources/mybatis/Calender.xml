@@ -30,4 +30,9 @@
 		 content=#{modifcontent}, type='타입' WHERE cal_no=#{modifyEventId}
 	</update>
 	
+	
+	<delete id="caldelete" parameterType="java.util.Map">
+		DELETE FROM calender WHERE cal_no=#{modifyEventId}	
+	</delete>
+	
 </mapper>

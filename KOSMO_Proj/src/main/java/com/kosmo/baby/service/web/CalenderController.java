@@ -25,18 +25,18 @@ public class CalenderController {
 	@Resource(name="calenderServiceimpl")
 	private CalenderServiceimpl service;
 	
-
-	
-	
 	@ResponseBody
 	@RequestMapping(value="/fcevent.kosmo", produces = "application/text; charset=utf8")
 	public String fcevent(@RequestParam Map map,Model model,Authentication auth) throws Exception{
 		UserDetails user = (UserDetails)auth.getPrincipal();
 		map.put("id", user.getUsername());
+		
 		List<CalenderDTO> list = service.selectList(map);
+		System.out.println();
 		//List컬렉션을 JSO형태로 변환
 		List<Map> collections = new Vector<Map>();
 		for(CalenderDTO dto : list) {
+			System.out.println(dto.getTitle());
 			Map record = new HashMap();
 			record.put("id", dto.getCal_no());
 			record.put("title", dto.getTitle());
@@ -56,10 +56,13 @@ public class CalenderController {
 	
 	@ResponseBody
 	@RequestMapping(value="/fcinput.kosmo", produces = "application/text; charset=utf8")
-	public String fcinput(@RequestParam Map map,Model model,Authentication auth) throws Exception{
+	public String fcinput(@RequestParam Map map,Authentication auth) throws Exception{
 		UserDetails user = (UserDetails)auth.getPrincipal();
 		map.put("id", user.getUsername());
 		System.out.println("입력시작");
+		System.out.println(map.get("title"));
+		System.out.println(map);
+		System.out.println(map.size());
 		
 		if(!map.get("startTime").toString().equals("")) {
 			map.put("startdate", map.get("startdate").toString().concat("T"+map.get("startTime")));
@@ -75,17 +78,26 @@ public class CalenderController {
 	
 	@ResponseBody
 	@RequestMapping(value="/fcupdate.kosmo", produces = "application/text; charset=utf8")
-	public String fcupdate(@RequestParam Map map,Model model) throws Exception{
-		if(!map.get("startTime").toString().equals("")) {
+	public String fcupdate(@RequestParam Map map) throws Exception{
+		System.out.println("수정시작");
+		if(!map.get("modifstartTime").toString().equals("")) {
 			map.put("modifstartStr", map.get("modifstartStr").toString().concat("T"+map.get("modifstartTime")));
 			map.put("modifendStr", map.get("modifendStr").toString().concat("T"+map.get("modifendTime")));
 		}
 		service.update(map);
-		
-		return "";
+		System.out.println("수정끝");
+		return "수정끝";
 	}
 	
 	
+	@ResponseBody
+	@RequestMapping(value="/fcdelete.kosmo", produces = "application/text; charset=utf8")
+	public String fcdelete(@RequestParam Map map) throws Exception{
+		System.out.println("삭제시작");
+		service.delete(map);
+		System.out.println("삭제끝");
+		return "삭제끝";
+	}
 	
 
 }
