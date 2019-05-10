@@ -3,7 +3,7 @@
 
     <style>
 .map_wrap, .map_wrap * {margin:0; padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
-.map_wrap {position:relative;width:100%;height:350px;}
+.map_wrap {position:relative;width:100%;height:800px;}
 #category {position:absolute;top:10px;left:10px;border-radius: 5px; border:1px solid #909090;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);background: #fff;overflow: hidden;z-index: 2;}
 #category li {float:left;list-style: none;width:50px;px;border-right:1px solid #acacac;padding:6px 0;text-align: center; cursor: pointer;}
 #category li.on {background: #eee;}
@@ -67,6 +67,57 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fc37be4712f8b89b167cddbc490382f&libraries=services"></script>
 <script>
+
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+mapOption = {
+    center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+    level: 3 // 지도의 확대 레벨
+};  
+//DB의 정보를 가져옵니다
+var addrs = "${addrs}";
+
+
+for (var i=0;i<addrs.length;i++){
+	//console.log(addrs[i].addr)
+	console.log('안녕하세요'+i)
+}
+
+
+//지도를 생성합니다    
+var map = new daum.maps.Map(mapContainer, mapOption); 
+
+//주소-좌표 변환 객체를 생성합니다
+var geocoder = new daum.maps.services.Geocoder();
+
+
+
+//주소로 좌표를 검색합니다
+//for int i=0; i<=addrs.length;i++
+geocoder.addressSearch('경기도 수원시 권선구 서둔동 243-7', function(result, status) {
+
+// 정상적으로 검색이 완료됐으면 
+ if (status === daum.maps.services.Status.OK) {
+
+    var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+
+    // 결과값으로 받은 위치를 마커로 표시합니다
+    var marker = new daum.maps.Marker({
+        map: map,
+        position: coords
+    });
+
+    // 인포윈도우로 장소에 대한 설명을 표시합니다
+    var infowindow = new daum.maps.InfoWindow({
+        content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+    });
+    infowindow.open(map, marker);
+
+    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+    map.setCenter(coords);
+} 
+});    
+
+
 // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
 var placeOverlay = new daum.maps.CustomOverlay({zIndex:1}), 
     contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다 
@@ -83,7 +134,8 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 var map = new daum.maps.Map(mapContainer, mapOption); 
 
 // 장소 검색 객체를 생성합니다
-var ps = new daum.maps.services.Places(map); 
+var ps = new daum.maps.services.Places(map);
+
 
 // 지도에 idle 이벤트를 등록합니다
 daum.maps.event.addListener(map, 'idle', searchPlaces);
