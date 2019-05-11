@@ -39,7 +39,7 @@
 						
 						<div class="form-label-group">
 							<div class="input-group">
-								<input type="text" id="photo" name="photo" class="form-control" placeholder="사진파일" required>
+								<input type="text" id="photo" name="photo" class="form-control" placeholder="사진파일" required>		
 								<div class="input-group-append">
 									<a id="photo_upload" class="btn btn-singup" data-target="#photo" style="color:white">사진 업로드</a>
 								</div>
@@ -121,7 +121,7 @@
 							</div>
 						</div>
 						<input type="hidden" value="0" name="partnerstatus" id="partnerstatus"/>
-						<button class="btn btn-lg btn-singup btn-block text-uppercase" type="submit">회원 가입</button>
+						<button class="btn btn-lg btn-singup btn-block text-uppercase" type="submit" id="clickmember">회원 가입</button>
 						<hr class="my-4">
 						
 					</form>
@@ -142,7 +142,7 @@
 		      <form enctype="myltipart/form-data" >
 		      	<div class="modal-body">
                		<div class="form-group">
-                  	  <input type="file" name="photo" class="form-control123" id="photoinput">
+                  	  <input type="file" name="photoinput" class="form-control123" id="photoinput">
                     	<small></small>
                	 	</div>
 		      	</div>
@@ -196,8 +196,15 @@ function getname(obj)
             }       	
         }); 
 		 */
- $(function() {			
-		
+		 
+ function changeimage(){
+	 $("#photo").replaceWith( $("#photoinput").clone(true) );
+	
+	 return true;
+ }
+		 
+		 
+ $(function() {					
 		//아이디 중복 체크
 		$("#id_check").click(function(){
 			console.log($('#id').val());
@@ -277,17 +284,50 @@ function getname(obj)
      
      $('#clickbutton_modal').click(function(){
     	 filename = document.getElementById("photoinput").files[0].name; 
-    	 $('#photo').val(filename);      	
+    	 fileobject = document.getElementById("photoinput").files[0];
+    	 console.log(fileobject);
+    	 
+    	 var formData = new FormData();
+    	 formData.append("photoinput",$("input[name=photoinput]")[0].files[0]);
+    	 console.log(formData); 
+    	 //$("#photo").replaceWith( $("#photoinput").clone(true) );
+    	 
+    	 $.ajax({
+    		 url : "imageupload.kosmo?${_csrf.parameterName}=${_csrf.token}",
+    		 processData: false,
+             contentType: false,
+	         data: formData,
+	         type: 'POST',
+	         dataType : 'text',
+	         success : function(data){
+	        	 console.log("받음");
+	         }    		 
+    	 });
+    	 
+    	
+    	 
+    	 
+    	 $('#photo').val(filename); 
+    	 
+    	 
+    	 
+    /* 	// $('#photo').val(filename);      	
     	 $("#photo").replaceWith( $("#photoinput").clone(true) );
+    	// document.getElementById("upload").style.display ='none';
+    	//$('#upload').css('display','none');
+    	// $('#upload').val(fileobject);
+    	//console.log(document.getElementById("photo").files[0]);
+    	
     	 $('#photo').val(filename);   
-    	 console.log('aa' + document.getElementById("photo").files[0]);
-    	 var a = document.getElementById("photo").files;
-    	 a = document.getElementById("photoinput").files;
-    	 if(document.getElementById("photo").files[0] == null)
-    		 document.getElementById("photo").files[0] = document.getElementById("photoinput").files[0];
+    	 //console.log('aa' + document.getElementById("photo").files[0]);
+    	 //var a = document.getElementById("photo").files;
+    	// a = document.getElementById("photoinput").files;
+    	 
+    		 document.getElementById("photo").files[0] = document.getElementById("photoinput").files[0]; 
+    	  console.log(document.getElementById("photo").files[0]); 
     	 //console.log('zxcx' + dd);
     	// document.getElementById("photo").files[0] = document.getElementById("photoinput").files[0];
-    	 console.log("fff" + document.getElementById("photoinput").files[0]);
+    	 //console.log("fff" + document.getElementById("photoinput").files[0]); */
        	
     	 
     	

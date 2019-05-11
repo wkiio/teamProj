@@ -56,6 +56,7 @@ public class MembersController {
 	@Autowired 
 	private ResourceLoader resourceLoader;
 		
+	MultipartFile getImageFile;
 	
 	@Inject
 	private JavaMailSender mailSender;
@@ -118,10 +119,12 @@ public class MembersController {
 	
 	@ResponseBody
 	@RequestMapping("/imageupload.kosmo")
-	public String ss(@RequestParam Map map,UploadCommand cmd, HttpServletRequest req,MultipartFile file)
+	public String ss(@RequestParam Map map,UploadCommand cmd, HttpServletRequest req,MultipartFile file,MultipartHttpServletRequest rhhh)
 	{
-		System.out.println("받아온 파일이름" + map.get("name"));
+		System.out.println("받아온 파일이름" + map.get("photoinput"));
 		System.out.println(map);
+		getImageFile = rhhh.getFile("photoinput");
+		
 	
 		
 		return "gg";
@@ -136,7 +139,7 @@ public class MembersController {
 		
 		
 		
-		MultipartFile ff = rhhh.getFile("photo");
+		MultipartFile ff = getImageFile;
 		System.out.println("ff: " + ff);
 		
 		//Set pathSet = req.getSession().getServletContext().getResourcePaths("/resources");
