@@ -47,6 +47,25 @@ public class CalenderController {
 			if(dto.getId().equals("admin")) {
 				record.put("color", "gray");
 			}
+			else if(dto.getType().equals("중요")) {
+				record.put("color", "#872901");
+			}
+			else if(dto.getType().equals("생일")) {
+				record.put("color", "#a36a00");
+			}
+			else if(dto.getType().equals("기념일")) {
+				record.put("color", "#bcb900");
+			}
+			else if(dto.getType().equals("예방접종")) {
+				record.put("color", "#5ebc00");
+			}
+			else if(dto.getType().equals("약속")) {
+				record.put("color", "#2f00bc");
+			}
+			else if(dto.getType().equals("행사")) {
+				record.put("color", "#a00196");
+			}
+			
 			record.put("description", dto.getContent());
 			collections.add(record);
 		}
@@ -60,10 +79,7 @@ public class CalenderController {
 		UserDetails user = (UserDetails)auth.getPrincipal();
 		map.put("id", user.getUsername());
 		System.out.println("입력시작");
-		System.out.println(map.get("title"));
-		System.out.println(map);
-		System.out.println(map.size());
-		
+		System.out.println(map.get("title"));		
 		if(!map.get("startTime").toString().equals("")) {
 			map.put("startdate", map.get("startdate").toString().concat("T"+map.get("startTime")));
 			map.put("enddate", map.get("enddate").toString().concat("T"+map.get("endTime")));
