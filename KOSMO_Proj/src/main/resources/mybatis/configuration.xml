@@ -25,6 +25,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/Chart_API.xml"/>
 		<mapper resource="mybatis/Reservation.xml" />
 		<mapper resource="mybatis/VisitCount.xml" />
+		<mapper resource="mybatis/BabyFair.xml" />
 	</mappers>
 
 </configuration>

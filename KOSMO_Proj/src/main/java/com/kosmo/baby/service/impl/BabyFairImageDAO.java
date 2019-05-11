@@ -6,11 +6,13 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.kosmo.baby.service.BabyFairImageDTO;
 import com.kosmo.baby.service.BabyFairImageService;
 import com.kosmo.baby.service.Baby_borderDTO;
 
+@Repository
 public class BabyFairImageDAO implements BabyFairImageService{
 
 	
