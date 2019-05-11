@@ -168,34 +168,6 @@ function getname(obj)
     console.log('파일은?' + filename);
 
 }
-
-
-
-	/* 	
-	filename1 = document.getElementById("photoinput").files[0];
-   	 filename = document.getElementById("photoinput").files[0].name; 
-   	 $('#photo').val(filename);  
-   	 console.log(filename);
-   	 //console.log('파일은1?' + filename);
-   	 	var form = new FormData();
-        form.append("image", filename1);
-       
-        //https://api.imgur.com/3/album/" + albumID + "/images
-         $.ajax({ 
-       	//url:"https://api.imgur.com/3/image",
-       	url : "https://api.imgur.com/3/image",
-       	type: "POST",
-       	data : form,
-       	headers: { Authorization: 'Client-ID c473572e81fbb73' },      
-       	processData: false,
-       	mimeType : "multipart/form-data",
-           contentType : false,
-           success:function(data){
-               console.log("sdddd");                       
-               console.log('ff' + JSON.parse(data).data.link);
-            }       	
-        }); 
-		 */
 		 
  function changeimage(){
 	 $("#photo").replaceWith( $("#photoinput").clone(true) );
@@ -303,43 +275,9 @@ function getname(obj)
 	        	 console.log("받음");
 	         }    		 
     	 });
-    	 
-    	
-    	 
-    	 
     	 $('#photo').val(filename); 
-    	 
-    	 
-    	 
-    /* 	// $('#photo').val(filename);      	
-    	 $("#photo").replaceWith( $("#photoinput").clone(true) );
-    	// document.getElementById("upload").style.display ='none';
-    	//$('#upload').css('display','none');
-    	// $('#upload').val(fileobject);
-    	//console.log(document.getElementById("photo").files[0]);
-    	
-    	 $('#photo').val(filename);   
-    	 //console.log('aa' + document.getElementById("photo").files[0]);
-    	 //var a = document.getElementById("photo").files;
-    	// a = document.getElementById("photoinput").files;
-    	 
-    		 document.getElementById("photo").files[0] = document.getElementById("photoinput").files[0]; 
-    	  console.log(document.getElementById("photo").files[0]); 
-    	 //console.log('zxcx' + dd);
-    	// document.getElementById("photo").files[0] = document.getElementById("photoinput").files[0];
-    	 //console.log("fff" + document.getElementById("photoinput").files[0]); */
-       	
-    	 
-    	
         	 
       }); 
-         
-         
-    	
-  	 	
-   
-		
-		
 		
 		//휴대폰 번호 유효성체크 
 		$('#tel').keypress(function(evt){

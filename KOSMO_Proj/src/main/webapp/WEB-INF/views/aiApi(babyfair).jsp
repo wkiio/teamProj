@@ -2,11 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
  <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
          rel = "stylesheet">
       <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
       <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<style>
+	
+
 	
 	
 .modal-ku {
@@ -127,6 +131,9 @@ section{
 .image_two{
   border: 4px solid #5f84b7;
   border-radius: 30px;
+  
+
+  
 }
 
 
@@ -146,40 +153,53 @@ section{
      	<div class="col-md-7" > <!-- style="text-align: center;" -->
      		<img alt="행사이미지" class="image_two" src= "<c:url value='/resources/Baby/수원베이비엑스포.jpg'/>" style="height:300px;width:800px;" />	
      	</div>
-        	 <div class="offset-md-1 col-md-11" >        	 
-     		<h2>전시 품목(브랜드)</h2>
+     	
+        	 <div class="col-md-12" style="text-align: center;" >        	 
+     			<h2 style="text-align: center;"	>전시 품목(브랜드)</h2>
         	 	<div class = "col-md-6" style="z-index:25;display:inline; " >
         			<img id="이미지2" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/유모차2.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	             				
         		</div>    
         		<div class = "col-md-6" style="z-index:25;display:inline; " >
-        			<img id="이미지3" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/한지민.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
+        			<img id="이미지3" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/임산부복.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
         		</div>   
         		<div   class = "col-md-6" style="z-index:25;display:inline; " >
         			<img id="이미지4" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/아기매트.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
         		</div>   
         		<div   class = "col-md-6" style="z-index:25;display:inline; " >
-        			<img id="이미지5" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/아기베개.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
+        			<img id="이미지5" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/아기과자.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
         		</div>   
         		<div   class = "col-md-6" style="z-index:25;display:inline; " >
-        			<img id="이미지6" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/아기집.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
+        			<img id="이미지6" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/아기하우스.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
         		</div>   
         		<div   class = "col-md-6" style="z-index:25;display:inline; " >
         			<img id="이미지7" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/아기힙시트.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
         		</div>   
         		<div   class = "col-md-6" style="z-index:25;display:inline; " >
-        			<img id="이미지8" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/아기튜브.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
+        			<img id="이미지8" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/카시트2.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
+        		</div>   
+        		<%-- <div   class = "col-md-6" style="z-index:25;display:inline; " >
+        			<img id="이미지9" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/아기젖병.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
         		</div>   
         		<div   class = "col-md-6" style="z-index:25;display:inline; " >
-        			<img id="이미지9" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/임산부복.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
-        		</div>   
-        		<div   class = "col-md-6" style="z-index:25;display:inline; " >
-        			<img id="이미지10" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/카시트.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
+        			<img id="이미지10" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/아기침대.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
         		</div>    
+        		<div   class = "col-md-6" style="z-index:25;display:inline; " >
+        			<img id="이미지10" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/아기베개.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
+        		</div>   
+        		<div   class = "col-md-6" style="z-index:25;display:inline; " >
+        			<img id="이미지10" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/체온계.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
+        		</div>   
+        		<div   class = "col-md-6" style="z-index:25;display:inline; " >
+        			<img id="이미지10" class="image_one" alt="이미지" src= "<c:url value='/resources/Baby/아기침대.jpg'/>" style="height:150px;width:150px;z-index: 15;" />	
+        		</div>    --%>
+        		
         		
 			</div>
        		 <div   class="col-md-12" style="z-index=10;text-align: center;margin-top: 20px">
        		 <h2>전시품목 가격 알아보기</h2>        		
-        	   <p align="center" id = "이미지받기" style="height:150px;width:150px;border: 3px solid #5f84b7;margin:0 auto;">여기에 제품을 끌어보세요!</p>        		
+        	 <!--   <p align="center" id = "이미지받기" style="height:150px;width:150px;border: 3px solid #5f84b7;margin:0 auto;">여기에 제품을 끌어보세요!</p> -->
+        	   <p align="center" id = "이미지받기" style="margin:0 auto;">여기에 제품을 끌어보세요!</p>
+        	   <i id = "이미지받기" class="fas fa-shopping-bag fa-10x"style="color:red;"></i>	
         	</div> 
      </div>
      
@@ -242,6 +262,45 @@ section{
 var getAiImage;
 
 
+function checkImage(data) {
+	
+	//indexOf는 맞으면 0 아니면 -1을 반환한다;
+	
+	console.log('data : ' + data);
+	console.log("??? : " + data.indexOf("riding"));
+	
+	
+	if((data.indexOf("carriage") != -1 ) && (data.indexOf("riding") != -1) ) //유모차
+		return "유모차";	
+	else if( (data.indexOf("wearing") != -1 )&& (data.indexOf("clothing") != -1) && (data.indexOf("underwear") != -1) )//임산부복
+		return "임산부복";   
+	else if( (data.indexOf("plate") != -1 )&& (data.indexOf("bed") != -1) && (data.indexOf("young") != -1) )//아기매트
+		return "아기매트";   
+	else if( (data.indexOf("bed") != -1 )&& (data.indexOf("baby") != -1) && (data.indexOf("lying") != -1) )//아기베개
+		return "아기베개";   
+	else if( (data.indexOf("holding") != -1 )&& (data.indexOf("wearing") != -1) && (data.indexOf("person") != -1) )//힙시트
+		return "힙시트";   
+	else if( (data.indexOf("playing") != -1 )&& (data.indexOf("water") != -1) && (data.indexOf("sitting") != -1) )//아기튜브
+		return "아기튜브";   
+	else if( (data.indexOf("food") != -1 )&& (data.indexOf("refrigerator") != -1) )//아기과자	
+		return "아기과자";   
+	
+	else if( (data.indexOf("sitting") != -1 )&& (data.indexOf("holding") != -1) && (data.indexOf("bed") != -1) && (data.indexOf("teeth") == -1) && (data.indexOf("room") == -1) && (data.indexOf("video") == -1) )//카시트
+		return "카시트";   
+	
+	else if( (data.indexOf("standing") != -1 )&& (data.indexOf("board") != -1) && (data.indexOf("holding") != -1) )//아기하우스
+		return "아기하우스";   
+	else if( (data.indexOf("toothbrush") != -1 )&& (data.indexOf("baby") != -1) && (data.indexOf("teeth") != -1) )//아기젖병
+		return "아기젖병";   
+	else if( (data.indexOf("game") != -1 )&& (data.indexOf("video") != -1) && (data.indexOf("young") != -1) )//체온계
+		return "체온계";   
+	else if( (data.indexOf("bed") != -1 )&& (data.indexOf("large") != -1) && (data.indexOf("room") != -1) )//아기침대
+		return "아기침대";   
+	
+	
+}; 
+var imagecheck;
+
 
 $(function(){
 	$('.image_one').draggable({helper: 'clone'});
@@ -273,18 +332,17 @@ $(function(){
     		url : " <c:url value='gotoAI.kosmo'/>",
     		dataType : "json",
     		success:function(data){
-    			//console.log(data);   
-    			console.log(data.tags[0]);
-    		 	 $.each(data.tags,function(index,value){
-    		 		if(value == "carriage")
-    		 			getAiImage = "유모차";
-    		 		else if(value == "person")
-    		 			getAiImage = "한지민";
-    		 		console.log(value);
-    		 		 //console.log(value.tags[index]);
-    				/* console.log(value[0].class);    	
-    				getAiImage = value[0].class; */
+    			//var abc = JSON.stringify(data.tags);
+    			//console.log("data.tags:" + data.tags);
+    			//console.log(checkImage(data.tags));
+    			var aa = new Array();
+    			$.each(data.tags,function(index,value){
+    				aa[index] = value;    				
     			});
+    			
+    	
+    			getAiImage = checkImage(aa);
+    			console.log("getAiImage:"+ getAiImage);
 
      			NaverApiSearch();
     		}
@@ -303,7 +361,7 @@ var NaverApiSearch = function(){
 			console.log("네이버:" + data);
 			var html = "<tr>";
 			$.each(data.items,function(index,value){
-				console.log("상품이름 : " + value['title'] + " , " + "가격 : " + value['lprice']);
+				//console.log("상품이름 : " + value['title'] + " , " + "가격 : " + value['lprice']);
 				html+="<td><img src="+ value['image'] +" " +"style=\"height:200px;width:200px;z-index:15;\"> "+ "</img></td>";	
 	    		html+="<td>" + value['title'] + "</td>" + "<td>" + value['lprice'] +"원" + "</td>";
 	    		//<button onclick="window.open('address')">button</button>
