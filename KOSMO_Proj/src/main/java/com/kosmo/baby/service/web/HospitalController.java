@@ -1,15 +1,19 @@
 package com.kosmo.baby.service.web;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.annotation.Resource;
 
+import org.json.simple.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.google.gson.JsonArray;
 import com.kosmo.baby.service.HospitalDTO;
 import com.kosmo.baby.service.ReservationDTO;
 import com.kosmo.baby.service.impl.HospitalServiceimpl;
@@ -25,12 +29,39 @@ public class HospitalController {
 	
 	@RequestMapping("/daum.kosmo")
 	public String baby_admin(@RequestParam Map map,Model model) {
-		List<HospitalDTO> recode= service.selectList(map);
-		System.out.println(model.addAttribute("addrs",recode.get(0).getAddr()));
-//		model.addAttribute("addrs",recode.toString());
+		List<HospitalDTO> hospitals= service.selectList(map);
 		
+		List<Map> collections = new Vector<Map>();
+		for(HospitalDTO dto : hospitals) {
+			Map recode = new HashMap();
+			
+			
+			
+			recode.put("h_no", dto.getH_no());
+			recode.put("name", dto.getName());
+			recode.put("tel",dto.getTel());
+			recode.put("addr",dto.getAddr());
+			recode.put("mon",dto.getMon());
+			recode.put("tue", dto.getTue());
+			recode.put("wed",dto.getWed());
+			recode.put("thu",dto.getThu());
+			recode.put("fri",dto.getFri());
+			recode.put("sat",dto.getSat());
+			recode.put("sun",dto.getSun());
+			recode.put("holiday",dto.getHoliday());
+			recode.put("emergency",dto.getEmergency());
+			recode.put("code",dto.getCode());
+			
+			
+			
+			
+			collections.add(recode);
+			
+		}
+		model.addAttribute("addrs",collections);
+		model.addAttribute("addrsJSON",JSONArray.toJSONString(collections));
 		
-		return "daum.tiles";
+		return "daumapi.tiles";
 	}
 
 }

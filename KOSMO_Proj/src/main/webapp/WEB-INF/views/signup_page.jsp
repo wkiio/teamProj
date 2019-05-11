@@ -156,7 +156,7 @@
 						
 						<div class="form-label-group">
 							<div class="input-group">
-								<input type="text" id="photo" name="photo" class="form-control" placeholder="사진파일" required>
+								<input type="text" id="photo" name="photo" class="form-control" placeholder="사진파일">
 								<div class="input-group-append">
 									<a id="photo_upload" class="btn btn-singup"  data-toggle="modal" data-target="#photo" style="color:white">사진 업로드</a>
 								</div>

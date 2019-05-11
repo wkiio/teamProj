@@ -39,29 +39,21 @@
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
     <ul id="category">
         <li id="BK9" data-order="0"> 
-            <span class="category_bg bank"></span>
-            은행
+            <span id="hospital" class="category_bg bank"></span>
+            소아과
         </li>       
         <li id="MT1" data-order="1"> 
-            <span class="category_bg mart"></span>
-            마트
+            <span id="emergency" class="category_bg mart"></span>
+            응급실
         </li>  
         <li id="PM9" data-order="2"> 
-            <span class="category_bg pharmacy"></span>
-            약국
+            <span id="dentist" class="category_bg pharmacy"></span>
+            소아치과
         </li>  
         <li id="OL7" data-order="3"> 
-            <span class="category_bg oil"></span>
-            주유소
-        </li>  
-        <li id="CE7" data-order="4"> 
-            <span class="category_bg cafe"></span>
-            카페
-        </li>  
-        <li id="CS2" data-order="5"> 
-            <span class="category_bg store"></span>
-            편의점
-        </li>      
+            <span id="ob" class="category_bg oil"></span>
+            산부인과
+        </li>        
     </ul>
 </div>
 
@@ -73,27 +65,21 @@ mapOption = {
     center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
     level: 3 // 지도의 확대 레벨
 };  
-//DB의 정보를 가져옵니다
-var addrs = "${addrs}";
-
-
-for (var i=0;i<addrs.length;i++){
-	//console.log(addrs[i].addr)
-	console.log('안녕하세요'+i)
-}
-
 
 //지도를 생성합니다    
 var map = new daum.maps.Map(mapContainer, mapOption); 
-
 //주소-좌표 변환 객체를 생성합니다
 var geocoder = new daum.maps.services.Geocoder();
 
-
+//DB의 정보를 가져옵니다
+var addrs = ${addrs};
+var addr = {};
+$.each(addr,function(index,value){
+    	console.log(value['addr']);
+    	
 
 //주소로 좌표를 검색합니다
-//for int i=0; i<=addrs.length;i++
-geocoder.addressSearch('경기도 수원시 권선구 서둔동 243-7', function(result, status) {
+geocoder.addressSearch(value['addr'], function(result, status) {
 
 // 정상적으로 검색이 완료됐으면 
  if (status === daum.maps.services.Status.OK) {
@@ -108,14 +94,16 @@ geocoder.addressSearch('경기도 수원시 권선구 서둔동 243-7', function
 
     // 인포윈도우로 장소에 대한 설명을 표시합니다
     var infowindow = new daum.maps.InfoWindow({
-        content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+        content: '<div style="width:150px;text-align:center;">'+value['name']+'</div>'
     });
     infowindow.open(map, marker);
 
     // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-    map.setCenter(coords);
+    //map.setCenter(coords);
 } 
-});    
+});   
+
+});
 
 
 // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
