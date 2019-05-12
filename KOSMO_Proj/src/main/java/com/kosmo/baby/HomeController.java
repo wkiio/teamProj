@@ -23,17 +23,15 @@ import com.kosmo.baby.service.AiApi;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	@RequestMapping("/login_page.kosmo")
+	public String login_page() {
+		return "login_page.tiles";	
+	}
 	   @RequestMapping("/aiApi.kosmo")
 	   public String ai_API() {
 	      
 	      return "aiApi(babyfair).tiles";
 	   }
-
-	
-	@RequestMapping("/login_page.kosmo")
-	public String login_page() {
-		return "login_page.tiles";	
-	}
 	
 	@RequestMapping("/find_Id.kosmo")
 	public String find_id() {

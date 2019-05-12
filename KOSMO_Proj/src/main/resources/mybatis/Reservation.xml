@@ -15,8 +15,8 @@
 <mapper namespace="mybatis.Reservation">
 
 	<select id="rselectList" parameterType="java.util.Map" resultType="java.util.Map">
-		SELECT rs_no,m1.name as tname,m2.name as dname,c.startpoint as startpoint,c.endpoint as endpoint,p.cartype as cartype,c.price as price,c.time as time,c.content as content
+      SELECT rs_no,m1.name as tname,m2.name as dname,c.startpoint as startpoint,c.endpoint as endpoint,p.cartype as cartype,c.price as price,c.time as time,c.content as content
       FROM reservation r JOIN carpool_border c ON r.cp_no = c.cp_no JOIN members m1 ON r.id = m1.id JOIN members m2 ON m2.id=c.id JOIN partner_members p ON  p.id = m2.id
-	</select>
+   </select>
 
 </mapper>
