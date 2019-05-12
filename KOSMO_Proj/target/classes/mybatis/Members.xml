@@ -41,7 +41,7 @@
 	 <insert id="signup" parameterType="java.util.Map">
 		INSERT
 		<if test="partnerstatus==1"> ALL </if>
-			INTO members VALUES(#{id},#{pwd},#{name},#{addr},#{email},#{tel},#{photo},#{authkey},0,#{partnerstatus},default)
+			INTO members VALUES(#{id},#{pwd},#{name},#{addr},#{email},#{tel},#{authkey},0,#{partnerstatus},default)
 		<if test="partnerstatus==1"> 
 			INTO partner_members values(SEQ_PARTNER_MEMBERS.nextval,#{id},#{carnumber},#{cartype},#{career},'0',0,0)
 			select * from dual</if>
@@ -69,11 +69,6 @@
    <!-- 아이디 찾기용 -->
    <select id="findId" parameterType="java.util.Map" resultType="MembersDTO">
    		SELECT id FROM members WHERE name=#{name} AND email=#{email}
-   </select>
-   
-   <!-- 비밀번호 찾기용 -->
-   <select id="findPwd" parameterType="java.util.Map" resultType="MembersDTO">
-   		SELECT id,pwd FROM members WHERE name=#{name} AND email=#{email} AND id=#{id}
    </select>
    
    

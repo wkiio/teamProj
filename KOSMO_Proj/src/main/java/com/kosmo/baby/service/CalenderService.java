@@ -8,7 +8,7 @@ public interface CalenderService {
 	//CRUD 작업용
 	
 	//목록
-	List<Map> selectList(Map map);	
+	List<CalenderDTO> selectList(Map map);	
 	
 	//입력 수정 삭제
 	int delete(Map map);

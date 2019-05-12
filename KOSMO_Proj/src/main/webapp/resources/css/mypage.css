@@ -45,7 +45,8 @@
 	display: inline-block;
 	background: #888;
 	color: white;
-	text-align: center
+	text-align: center;
+	border: none;
 }
 .grayBt:hover {
 	background: black;
@@ -85,7 +86,6 @@
     box-sizing: border-box;
     font-size: 16px;
     border-radius: 5px;
-    padding-top: 10px;
 }
 
 /*-----------마이페이지 2-------------------------------------------------------------------------------------------*/

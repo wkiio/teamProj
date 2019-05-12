@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en">
+<html>
   <head>
   	
     <title>육아육아해</title>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper  
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace속성 : 매퍼파일의 완전한 경로 .xml은 생략 -->
+<!-- ★ibatis와는 다르게 id값에 .(dot)를 사용할 수 없다. -->
+
+<!-- ==================================================================== -->
+<!-- 		컬럼 순서는 ID,PWD,NAME,ADDR,EMAIL,TEL,AUTHKEY(이메일 인증키),		  -->
+<!-- 		ENABLED(이메일 인증 완료와 시큐리티, 기본값0),						  -->
+<!-- 		PARTNERSTATUS(제휴 여부, 기본값0), AUTHORITY(시큐리티 권한)입니다. 	  -->
+<!-- 		컬럼 순서에 유의하며 SQL문을 작성해주세요 								  -->
+<!-- ==================================================================== -->
+
+<mapper namespace="mybatis.Members">
+	<select id="calList" parameterType="java.util.Map" resultType="CalenderDTO">
+		SELECT * FROM calender WHERE id=#{id} OR id='admin'
+	</select>
+	<insert id="calinput" parameterType="java.util.Map">
+		INSERT INTO calender VALUES(SEQ_Calender.NEXTVAL,#{caltitle},#{startdate},#{enddate},#{calcontent},#{type},#{id})
+		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
+			SELECT SEQ_Calender.CURRVAL FROM dual
+		</selectKey>
+	</insert>
+	
+	<update id="calupdate" parameterType="java.util.Map">
+		UPDATE calender SET title=#{modiftitle}, startdate=#{modifstartStr}, enddate=#{modifendStr},
+		 content=#{modifcontent}, type=#{modiftype} WHERE cal_no=#{modifyEventId}
+	</update>
+	
+	
+	<delete id="caldelete" parameterType="java.util.Map">
+		DELETE FROM calender WHERE cal_no=#{modifyEventId}	
+	</delete>
+	
+</mapper>

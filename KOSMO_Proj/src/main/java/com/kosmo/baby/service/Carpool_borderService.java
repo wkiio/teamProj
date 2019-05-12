@@ -14,7 +14,7 @@ public interface Carpool_borderService {
 	int delete(Map map);
 	int insert(Map map);
 	int update(Map map);
-	
+
 	//게시물 개수
 	int CBoardCount(Map map);
 

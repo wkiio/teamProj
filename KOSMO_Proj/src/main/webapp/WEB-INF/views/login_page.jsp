@@ -44,7 +44,7 @@
 								
 								<div class="text-center">
 									<a class="small" href="<c:url value='/find_Id.kosmo'/>">아이디 찾기</a> | 
-									<a class="small" href="<c:url value='/find_Pwd.kosmo'/>">비밀번호 찾기</a> | 
+									<a class="small" href="#">비밀번호 찾기</a> | 
 									<a class="small" href="<c:url value='/sign_up_page.kosmo'/>">회원 가입</a>
 								</div>
 								<a id="kakao-login-btn">카톡버튼</a>

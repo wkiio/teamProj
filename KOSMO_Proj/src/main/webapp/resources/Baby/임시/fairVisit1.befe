@@ -1,0 +1,913 @@
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>베페 베이비페어</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />	
+<meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+<!--파비콘 추가 -->
+<link rel="SHORTCUT ICON" href="/images/favicon.ico">
+<!--네이버 소유 메타태그 추가 :: 2018.01.15-->
+<meta name="naver-site-verification" content="2674be6bdef8c0043d24d8cff853a4225943e266"/>
+<meta name="description" content="1년 365일 베페. 임신/출산/육아 정보 및 이벤트/체험단/산모교실/코엑스 베페 베이비페어 등 제공">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="베페">
+<meta property="og:description" content="1년 365일 베페. 임신/출산/육아 정보 및 이벤트/체험단/산모교실/코엑스 베페 베이비페어 등 제공">
+<meta property="og:image" content="https://www.befe.co.kr/images/common/befe_logo.jpg">
+<meta property="og:url" content="https://www.befe.co.kr">
+
+<link rel="stylesheet" type="text/css" href="/common/css/befe_base.css" />
+<link rel="stylesheet" type="text/css" href="/common/css/befe_layout.css" />
+<link type="text/css" rel="stylesheet" href="/common/css/befe_popup.css" />
+<link rel="stylesheet" type="text/css" href="/common/css/jquery.smartPop.css" />
+<link rel="stylesheet" type="text/css" href="/common/js/plugins/jquery.ui.smoothness/jquery-ui-1.9.1.smoothness.min.css" />
+<!-- <link rel="stylesheet" type="text/css" href="/common/js/plugins/jquery.ui.blitzer/jquery-ui-1.9.1.blitzer.min.css" /> -->
+<script type="text/javascript" src="/common/js/lib/jquery-1.8.2.min.js" /></script>
+<script type="text/javascript" src="/common/js/plugins/jquery.ui/jquery-ui-1.9.1.custom.min.js"/></script>
+<script type="text/javascript" src="/common/js/plugins/jquery.form.js"/></script>
+<script type="text/javascript" src="/common/js/plugins/jquery.ui.etc.js"/></script>
+<script type="text/javascript" src="/common/js/base.string.js"/></script>
+<script type="text/javascript" src="/common/js/jquery.smartPop.js"/></script>
+<script type="text/javascript" src="/common/js/jquery.filestyle.js"/></script>
+<script type="text/javascript" src="/common/js/common.js"/></script>
+<script type="text/javascript" src="/common/js/sns.js"/></script>
+<script type="text/javascript" src="/common/js/befe_cmmnui.js"/></script>
+<script type="text/javascript" src="/common/js/plugins/jquery.smooth-scroll.min.js"/></script>
+<script type="text/javascript" src="/common/js/plugins/jquery.carouFredSel-6.1.0-packed.js"/></script>
+<script type="text/javascript" src="/common/js/plugins/jquery.infinitescroll.min.js"/></script>
+<!-- 신 우편번호  -->
+<script src="/common/js/postSearch.js"></script>
+<link rel="stylesheet" type="text/css" href="/common/css/befe_addr.css" />
+
+
+<link rel="stylesheet" type="text/css" href="/common/css/befe_exhibition.css" />
+<link rel="stylesheet" type="text/css" href="/common/css/befe_customer.css" />
+</head>
+<body>
+	<!-- @ BEFE_Header @ -->
+	
+
+
+
+
+
+<style>
+.newpoint {cursor:pointer;}
+</style>
+
+
+<script  language="JavaScript" type="text/javascript">
+ var host = location.host.toLowerCase();
+ var currentAddress = location.href;
+
+ // if (host.indexOf("www") == -1)
+// {
+//  currentAddress = currentAddress.replace("//","//www.");
+
+ // if(host.indexOf("https") == -1 ) {
+ //   currentAddress = currentAddress.replace("http", "https");
+//  }
+
+ // location.href = currentAddress;
+ //}
+
+ if (document.location.protocol == 'http:') {
+	
+			 document.location.href = document.location.href.replace('http:', 'https:');
+  }
+
+
+//String url = request.getRequestURL().toString();
+//    if(url.startsWith("http://") ) {
+//    url = url.replaceAll("http://", "https://");
+//    response.sendRedirect(url);
+//}
+</script>
+ 
+
+
+	
+		
+		
+		
+		
+	
+		
+		
+		
+		
+	
+		
+		
+		
+		
+	
+		
+		
+		
+		
+	
+
+
+
+
+ 
+
+
+
+<script type="text/javascript">
+	$(function(){
+	
+		// 로그인 팝업
+		$("#befe_header .jqFrmLoginBtn").click(function(){
+			login();
+			return false;
+		});
+	
+	});
+	
+	function ie8SafePreventEvent(e) {
+		if (e.preventDefault){
+			e.preventDefault();
+		} else {
+	    	e.stop();
+	    }
+
+		e.returnValue = false;
+		e.stopPropagation();
+	}
+</script>
+
+
+<!-- DEPTH1 메뉴 -->
+<div id="header_warp">
+	<div id="befe_header">
+		<!-- gnbmenu -->
+		<ul class="gnbmenu">
+			<li class="gnb gnb01"><a href="/board/brand/fbSubMain.befe" >브랜드</a></li>
+			<li class="gnb gnb02"><a href="/parenting/webZine.befe" >웹진</a></li>
+			<li class="gnb gnb03"><a href="/befeTv/List.befe" >티비</a></li>
+			<li class="gnb gnb04"><a href="/cul/schoolList.befe"  >맘스쿨</a></li>
+			<li class="logo"><a href="https://www.befe.co.kr">베페</a></li>
+			<li class="gnb gnb07" class="on">
+				<a href="/exhibition/fairMain_en.befe?lang=en" class="lang"><img src="/images/common/eng.png" alt="영문"></a>
+				<a href="/exhibition/fairMain.befe?lang=ko" class="lang3"><img src="/images/common/kor.png" alt="국문"></a>
+				<a href="/exhibition/fairMain_ch.befe?lang=ch" class="lang2"><img src="/images/common/ch.png" alt="중문"></a>
+				<a href="/exhibition/fairMain.befe?lang=ko" id="kor" class="on">전시회</a>
+			</li>
+			<li class="gnb gnb06"><a href="/event/eventMain.befe" >이벤트</a></li>
+			<li class="gnb gnb05"><a href="http://mall.befe.co.kr"  target="_blank">베페몰</a></li>
+		</ul>
+		<!-- //gnbmenu -->
+		<!-- 로그인 영역 -->
+		<div id="header_search">
+			
+				
+				
+					<table cellspacing="0" cellpadding="0" style="height:40px; width:150px">
+						<tr>
+							<td class="newpoint" onClick="login();" style="height:15px;background:#6b1686;font-size:11px;color:#fff;text-align:center;border:1px solid #1c1c1c;padding: 2px 0 0 0 !important"><span style="color:#fff;text-align:center;font-size:11px;font-family:dotum;">로그인</span></td>
+						</tr>
+						<tr>
+							<td class="newpoint" onClick = "location.href='/member/join.befe'" style="height:15px;background:#fff;font-size:11px;color:#000;text-align:center;border:1px solid #1c1c1c;padding: 2px 0 0 0 !important"><span style="font-size:11px;color:#000;text-align:center;font-family:dotum;">회원가입</span></td>
+						</tr>
+					</table>
+				
+			
+		</div>
+	</div>
+	
+	
+</div>
+
+
+
+
+<script>
+$(function(){ 
+	 // 전시관리 시작
+
+	 var fnobj = {		//함수 정의 
+	 	"header_banner" : //메인 롤링 신상품 
+	 		function(o){	
+	 			var str = "";
+	 			$.each(o,function(i,j){   
+	 				if(i==1){ return false;}	//1개만
+	 					str += '<a '+clickTarget(j.DIS_TYPE, j.POPX, j.POPY, j.LINK_URL,j.PLACE_CD,j.SITE_TYPE,j.ADDET_SEQ)+'><img src="'+imgMake(j.ATCH_FILE_ID,"file_"+j.PLACE_CD)+'" alt=""  width="182" height="47" /></a>';
+	 			});     
+
+	 			$("#header_banner").html(str);
+	 			
+	 	}
+	 };
+	 xmlparse("010101","header_banner",fnobj);
+	 
+});   
+</script>
+
+<input type="hidden" id="ONX" value="0">
+<!-- Post It을 위한 Form -->
+<form name="loveitfrm" id="loveitfrm" method="post">
+	<input type="hidden" name="bfbrd_seq" id="hid_bfbrdseq"/><!-- my board seq  -->
+	<input type="hidden" name="con_type" id="hid_contype"/>
+	<input type="hidden" name="con_bfbrd_seq" id="hid_conbfbrdseq"/><!-- have board seq  -->
+	<input type="hidden" name="con_bbs_seq" id="hid_conbbsseq"/>
+	<input type="hidden" name="content" id="hid_content"/>
+	<input type="hidden" name="con_table" id="hid_contable"/>
+	<input type="hidden" name="itColumn" value="" id="hid_column"/>
+	<input type="hidden" name="con_menu_seq" value="" id="hid_menuseq"/>
+	<input type="hidden" name="link_url" value="" id="hid_linkurl"/><!-- 이동할주소를 넣어야 함 -->
+	<input type="hidden" id="txt_dummy1"/>
+	<input type="hidden" id="txt_dummy2"/>
+	<input type="hidden" id="txt_dummy3"/>
+	<input type="hidden" id="txt_dummy4"/>
+</form>
+<!-- 파일삭제  -->
+<form name="filefrm" id="filefrm" method="post">
+	<input type="hidden" name="atchFileId" id="file_atch"/>
+	<input type="hidden" name="fileSn" id="file_sn"/>
+	<input type="hidden" name="returnUrl" id="file_url"/>
+</form>
+
+<div class="subMenuWrap">
+	<div class="subMenu960Box">
+		<div class="subMenu subMenu01" style="display:none;"  >
+			<ul class="subMenu_con">
+				<li><a href="http://www.befe.co.kr/brand/brandSearchList.befe"><img src="/images/menu/submenu01_01_off.png" alt="브랜드 전체보기" /></a></li>
+				<li><a href="http://www.befe.co.kr/brand/brandTodayList.befe"><img src="/images/menu/submenu01_02_off.png" alt="투데이 브랜드" /></a></li>
+				<li><a href="http://www.befe.co.kr/board/brand/newProductList.befe"><img src="/images/menu/submenu01_03_off.png" alt="브랜드 신상품" /></a></li>
+				<li>
+					<a href="http://www.befe.co.kr/people/powereditor/lounge_Main.befe"><img src="/images/menu/submenu04_01_off.png" alt="파워에디터" /></a>
+					<ul class="depth3">
+						<li ><a href="http://www.befe.co.kr/people/powereditor/lounge_Main.befe">파워에디터 라운지</a></li>
+						<li ><a href="http://www.befe.co.kr/people/powereditor/selection_Main.befe">파워에디터 선발</a></li>
+						<li ><a href="http://www.befe.co.kr/people/powereditor/myEditor_list.befe">마이 에디터 룸</a></li>
+					</ul>
+				</li>   
+			</ul>
+		</div>
+		
+		<div class="subMenu subMenu02" style="display:none;"  >
+		</div>
+		
+		<div class="subMenu subMenu03" style="display:none;"  ><!-- 웹진 -->
+		</div>
+		
+		<div class="subMenu subMenu04" style="display:none;"  >
+		</div>
+		
+		<div class="subMenu subMenu05" style="display:none;"  >
+		</div>
+		
+		<div class="subMenu subMenu06" style="display:none;"  >
+			<ul class="subMenu_con">
+				<li>
+					<a href="/event/eventIngList.befe"><img src="/images/menu/submenu06_01_off.png" alt="베페이벤트" /></a>
+					<ul class="depth3">
+						<li ><a href="/event/eventIngList.befe">진행중 이벤트</a></li>
+						<li ><a href="/event/eventEndList.befe">지난 이벤트</a></li>
+						<li ><a href="/event/eventWinList.befe">당첨자 발표</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="/event/brandIngList.befe"><img src="/images/menu/submenu06_02_off.png" alt="브랜드 이벤트" /></a>
+					<ul class="depth3">
+						<li ><a href="/event/brandIngList.befe">진행중 이벤트</a></li>
+						<li ><a href="/event/brandEndList.befe">지난 이벤트</a></li>
+						<li ><a href="/event/brandWinList.befe">당첨자 발표</a></li>
+					</ul>
+				</li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		
+		<div class="subMenu subMenu07" >
+			<ul class="subMenu_con ko">
+				<li>
+					<a href="/exhibition/fairInfo1.befe"><img src="/images/menu/submenu07_01_off.png" alt="전시회소개" /></a>
+					<ul class="depth3">
+						<li ><a href="/exhibition/fairInfo1.befe">전시소개</a></li>
+						<li ><a href="/exhibition/fairInfo2.befe">전시개요</a></li>
+						<li ><a href="/exhibition/fairInfo7.befe">전시특징</a></li>
+						<li ><a href="/exhibition/fairInfo3.befe">전시품목</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="/exhibition/fairEntry1.befe"><img src="/images/menu/submenu07_02_off.png" alt="브랜드 이벤트" /></a>
+					<ul class="depth3">
+						<li ><a href="/exhibition/fairEntry1.befe">전시부스/부대시설</a></li>
+						<li ><a href="/exhibition/fairEntry2.befe">참가신청/규정</a></li>
+						<li ><a href="/exhibition/fairEntry3.befe">공식협찬사</a></li>
+						<li ><a href="/exhibition/fairEntry4.befe">주요추진일정</a></li>
+						<li ><a href="/exhibition/fairEntry5.befe">양식다운로드</a></li>
+						<li ><a href="/exhibition/fairEntry6.befe">협력업체</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="/exhibition/fairVisit1.befe"><img src="/images/menu/submenu07_03_on.png" alt="브랜드 이벤트" /></a>
+					<ul class="depth3">
+						<li  class="on"><a href="/exhibition/fairVisit1.befe">입장절차</a></li>
+						<li ><a href="/exhibition/fairVisit2.befe" >오시는길</a></li>
+						<li ><a href="/exhibition/fairVisit3.befe" >주차안내</a></li>
+						<li ><a href="/exhibition/fairVisit4.befe" >셔틀버스</a></li>
+						<li ><a href="/exhibition/fairVisit5.befe" >유모차대여</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="/exhibition/fairLately1.befe"><img src="/images/menu/submenu07_04_off.png" alt="브랜드 이벤트" /></a>
+					<ul class="depth3">
+						<li ><a href="/exhibition/fairLately1.befe">갤러리</a></li>
+						<li ><a href="/exhibition/fairLately2.befe">동영상</a></li>
+						<li ><a href="/exhibition/fairLately3.befe">결과보고서</a></li>
+					</ul>
+				</li>
+			</ul>		
+				
+			<ul class="subMenu_con en">
+				<li>
+					<a href="/exhibition/fairInfo1_en.befe?lang=en"><img src="/images/menu/submenu07_01_en_off.png" alt="About BeFe" /></a>
+					<ul class="depth3">
+						<li ><a href="/exhibition/fairInfo1_en.befe?lang=en">BeFe Overview</a></li>
+						<li ><a href="/exhibition/fairInfo3_en.befe?lang=en">BeFe BABY FAIR</a></li>
+						<li ><a href="/exhibition/fairInfo2_en.befe?lang=en">BeFe Business Segments</a></li>
+						<li ><a href="/exhibition/fairInfo4_en.befe?lang=en">Floor Plan</a></li>
+						<!--<li ><a href="/exhibition/fairInfo5_en.befe?lang=en">List of Exhibitors</a></li>-->
+					</ul>
+				</li>
+				<li>
+					<a href="/exhibition/fairEntry1_en.befe?lang=en"><img src="/images/menu/submenu07_02_en_off.png" alt="Exhibitors" /></a>
+					<ul class="depth3">
+						<li ><a href="/exhibition/fairEntry1_en.befe?lang=en">Booth Information</a></li>
+						<li ><a href="/exhibition/fairEntry4_en.befe?lang=en">Schedule</a></li>
+						<li ><a href="/exhibition/fairEntry2_en.befe?lang=en">Regulations</a></li>						
+					</ul>
+				</li>
+				<li>
+					<a href="/member/join.befe"><img src="/images/menu/submenu07_03_en_on.png" alt="Visitors" /></a>
+					<ul class="depth3">
+						<li  class="on"><a href="/member/join.befe?lang=en">Register to visit</a></li>
+						<li ><a href="http://www.coex.co.kr/eng/visitors/directions-map-1" target="_blank">Getting to COEX</a></li>						
+					</ul>
+				</li>
+				<li>
+					<a href="/exhibition/fairLately1_en.befe?lang=en"><img src="/images/menu/submenu07_04_en_off.png" alt="See our show" /></a>
+					<ul class="depth3">
+						<li ><a href="/exhibition/fairLately1_en.befe?lang=en">Photo Gallery</a></li>
+						<li ><a href="/exhibition/fairLately2_en.befe?lang=en">Video</a></li>
+						<li ><a href="/exhibition/fairLately3_en.befe?lang=en">Show Report</a></li>
+					</ul>
+				</li>							
+			</ul>
+			<ul class="subMenu_con ch">
+				<li>
+					<a href="/exhibition/fairInfo1_ch.befe?lang=ch"><img src="/images/menu/submenu07_01_ch_off.png" alt="BeFe 介绍" /></a>
+					<ul class="depth3">
+						<li ><a href="/exhibition/fairInfo1_ch.befe?lang=ch">公司简介</a></li>
+						<li ><a href="/exhibition/fairInfo3_ch.befe?lang=ch">展览介绍</a></li>
+						<li ><a href="/exhibition/fairInfo2_ch.befe?lang=ch">事业简介</a></li>
+						<li ><a href="/exhibition/fairInfo4_ch.befe?lang=ch">展览图</a></li>
+					<!--	<li ><a href="/exhibition/fairInfo5_en.befe?lang=ch">参展商名单</a></li>-->
+					</ul>
+				</li>
+				<li>
+					<a href="/exhibition/fairEntry1_ch.befe?lang=ch"><img src="/images/menu/submenu07_02_ch_off.png" alt="参展企业" /></a>
+					<ul class="depth3">
+						<li ><a href="/exhibition/fairEntry1_ch.befe?lang=ch">展位/配套设施 </a></li>
+						<li ><a href="/exhibition/fairEntry4_ch.befe?lang=ch">主要推进日程</a></li>
+						<li ><a href="/exhibition/fairEntry2_ch.befe?lang=ch">参加企业规定</a></li>						
+					</ul>
+				</li>
+				<li>
+					<a href="/member/join.befe?lang=ch"><img src="/images/menu/submenu07_03_ch_on.png" alt="参观指南" /></a>
+					<ul class="depth3">
+						<li  class="on"><a href="/member/join.befe?lang=ch">入场指南</a></li>
+						<li ><a href="http://www.coex.co.kr/chn/visitors/directions-map-1" target="_blank">位置交通</a></li>						
+					</ul>
+				</li>
+				<li>
+					<a href="/exhibition/fairLately1_ch.befe?lang=ch"><img src="/images/menu/submenu07_04_ch_off.png" alt="今年展会" /></a>
+					<ul class="depth3">
+						<li ><a href="/exhibition/fairLately1_ch.befe?lang=ch">画廊</a></li>
+						<li ><a href="/exhibition/fairLately2_ch.befe?lang=ch">视频</a></li>
+						<li ><a href="/exhibition/fairLately3_ch.befe?lang=ch">参展成果</a></li>
+					</ul>
+				</li>							
+			</ul>
+		</div>
+		<div style="display:none;">
+			<!-- lnb 자동화를 위한 메뉴 -->
+			<a href="/customerCenter.befe">고객센터</a>
+			<a href="/util/sitemap.befe">사이트맵</a>
+			<a href="/foot/conditions.befe">BeFe 이용정책</a>
+			<a href="/aboutUs/companyOverview.befe">회사소개</a>
+			<a href="/aboutUs/companyOverview.befe">개요</a>
+		</div>
+		<!-- <a href="#" class="close" style="display:none;"><img src="/images/menu/btn_close.png" alt="" /></a> -->
+	</div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+	
+	if(!window.closevar){
+		$("#contents_warp").mouseover(function(){ 
+			if(window.closevar != 0){
+				$(".gnb07").trigger("mouseover");
+			}
+		});
+	}
+	
+	
+	
+	if(!window.closevar){
+		$("#contents_warp").mouseover(function(){  
+			if(window.closevar != 0){
+				$(".gnb07").trigger("mouseover");
+			}
+		}); 
+	}
+	
+	
+	showClosebtn($.map($(".gnb").find("a"),function(o,idx){
+		if($(o).hasClass("on")){
+			return (idx+1);
+		}
+	}));
+
+	function allCloseMenu(){
+		var check = false;
+		$(".subMenu").each(function(){
+			if($(this).css("display") != "none"){
+				check = true;
+			}
+		});
+		//$(".subMenu").css("display","none");
+		return check;
+	}
+
+	function showClosebtn(objI){
+		if($('.subMenu0'+objI).length > 0){
+			var closeTop = $('.subMenu0'+objI).position().top+$('.subMenu0'+objI).height();		//닫기 버튼 높이값
+//alert(closeTop);     
+			if(closeTop <= 1){		//높이값 혹시 몰라서 저장해둠
+				closeTop = {
+					1: 119,
+					2: 119,
+					3: 119,
+					4: 119,
+					5: 119,
+					6: 119,
+					7: 159
+				}[objI];
+			}
+
+			$(".close").css({
+				"top": closeTop,
+				"display":"block"
+			});
+
+			window.closevar = 1;
+		}
+	}
+
+	/* for (var i = 1; i < 8; i += 1) {
+		var gubunClass = ".gnb0"+i;
+
+		$(gubunClass).mouseover({i : i},function(event){
+			$(".close").css("display","none");
+
+			if(allCloseMenu()){
+				$(".subMenu").css("display","none");
+				$('.subMenu0'+event.data.i).css("display","block");
+
+			}else{
+				$('.subMenu0'+event.data.i).show("slow");
+
+			}
+			showClosebtn(event.data.i);
+		});
+	} */
+
+	$(".close").click(function(){
+		$(".close").fadeOut("normal"); 
+		$(".subMenu").delay(500).hide("normal");
+		window.closevar = 0;
+	});
+
+});
+
+
+</script>
+
+	<!-- @ BEFE_Header end @ -->
+	<!-- @ BEFE_Contents @ -->
+	<div id="contents_warp" class="board_wrap">
+		<div id="befe_contents">
+			<div class="page_title clearfix">
+				<h2 class="fl"><img src="/images/title/h2_exhibition_go01.gif" alt="입장 절차" /></h2>				
+				<!-- @ BEFE_lineNB @ -->
+				<!--
+<div class="localNB" style="display:none;">
+	
+		<a href="/">HOME</a>
+		
+			&gt;
+			
+			<a href="#befe" class="tempLinemap">
+			전시회
+			</a>
+			
+		
+		
+			&gt;
+			
+			<a href="#befe" class="tempLinemap">
+			참관안내
+			</a>
+			
+		
+		
+			&gt;
+			<strong>
+			
+			입장절차
+			
+			</strong>
+		
+		
+	
+</div>
+<script type="text/javascript">
+$(function(){
+
+	var oLinemap = {}
+		,$eLinemap = $(".localNB");
+
+	if ($("img[src$='/images/title/h2_brand.gif']").size() > 0) {
+		// 브랜드
+		var name = $.trim($(".board_lnbBox .board_lnb_h3 a").html())
+			,url = $(".detail_info_dl dd strong a").attr("href")
+			,sLinemap = ""
+			,brandBoardItemTit = $(".brandboard_ItemTit .ItemTit")
+			,brandBoardLnb = $(".board_lnb a.on")
+			,prodItemTit = $(".brandboard_ItemTit strong");
+		
+		if (name != "") {
+			// 조건 타는 순서 중요..
+			if (brandBoardLnb.size() == 2) {
+				sLinemap = '<a href=" /">HOME</a>'
+				+ ' &gt; <a href="/board/brand/fbSubMain.befe">브랜드</a>'
+				+ ' &gt; <a href="' + url + '">' + name + '</a>'
+				+ ' &gt; <a href="' + brandBoardLnb.eq(0).attr("href") + '">' + $.trim(brandBoardLnb.eq(0).text()) + '</a>'
+				+ ' &gt; <strong>' + $.trim(brandBoardLnb.eq(1).text()).replace("- ", "") + '</strong>';
+				
+			} else if (brandBoardLnb.size() == 1) {
+				sLinemap = '<a href=" /">HOME</a>'
+				+ ' &gt; <a href="/board/brand/fbSubMain.befe">브랜드</a>'
+				+ ' &gt; <a href="' + url + '">' + name + '</a>'
+				+ ' &gt; <strong>' + $.trim(brandBoardLnb.eq(0).text()) + '</strong>';
+				
+			} else  if (brandBoardItemTit.size() > 0) {
+				sLinemap = '<a href=" /">HOME</a>'
+				+ ' &gt; <a href="/board/brand/fbSubMain.befe">브랜드</a>'
+				+ ' &gt; <a href="' + url + '">' + name + '</a>'
+				+ ' &gt; <strong>' + $.trim(brandBoardItemTit.text()) + '</strong>';
+				
+			} else if (prodItemTit.size() > 0) {
+				sLinemap = '<a href=" /">HOME</a>'
+				+ ' &gt; <a href="/board/brand/fbSubMain.befe">브랜드</a>'
+				+ ' &gt; <a href="' + url + '">' + name + '</a>'
+				+ ' &gt; <strong>' + $.trim(prodItemTit.text()) + '</strong>';
+				
+			} else {
+				sLinemap = '<a href=" /">HOME</a>'
+				+ ' &gt; <a href="/board/brand/fbSubMain.befe">브랜드</a>'
+				+ ' &gt; <strong>' + name + '</strong>';
+			}
+
+			//sLinemap = '<a href=" /">HOME</a>'
+			//+ ' &gt; <a href="/board/brand/fbSubMain.befe">브랜드</a>'
+			//+ ' &gt; <strong>' + name + '</strong>';
+
+			$eLinemap.html(sLinemap);
+		}
+
+	} else if ($("img[src$='/images/title/h2_momdaddy.gif']").size() > 0) {
+		// 맘대디
+		var name = $.trim($(".board_lnbBox .board_lnb_h3 a").html())
+			,url = $(".detail_info_dl dd strong a").attr("href")
+			,sLinemap = ""
+			,brandBoardItemTit = $(".brandboard_ItemTit .ItemTit")
+			,brandBoardLnb = $(".board_lnb a.on")
+			,prodItemTit = $(".brandboard_ItemTit strong");
+
+		if (name != "") {
+			// 조건 타는 순서 중요..
+			if (brandBoardLnb.size() == 2) {
+				sLinemap = '<a href=" /">HOME</a>'
+				+ ' &gt; <a href="/board/momdaddy/fmdSubMain.befe">맘&amp;대디</a>'
+				+ ' &gt; <a href="' + url + '">' + name + '</a>'
+				+ ' &gt; <a href="' + brandBoardLnb.eq(0).attr("href") + '">' + $.trim(brandBoardLnb.eq(0).text()) + '</a>'
+				+ ' &gt; <strong>' + $.trim(brandBoardLnb.eq(1).text()).replace("- ", "") + '</strong>';
+				
+			} else if (brandBoardLnb.size() == 1) {
+				sLinemap = '<a href=" /">HOME</a>'
+				+ ' &gt; <a href="/board/momdaddy/fmdSubMain.befe">맘&amp;대디</a>'
+				+ ' &gt; <a href="' + url + '">' + name + '</a>'
+				+ ' &gt; <strong>' + $.trim(brandBoardLnb.eq(0).text()) + '</strong>';
+				
+			} else  if (brandBoardItemTit.size() > 0) {
+				sLinemap = '<a href=" /">HOME</a>'
+				+ ' &gt; <a href="/board/momdaddy/fmdSubMain.befe">맘&amp;대디</a>'
+				+ ' &gt; <a href="' + url + '">' + name + '</a>'
+				+ ' &gt; <strong>' + $.trim(brandBoardItemTit.text()) + '</strong>';
+				
+			} else if (prodItemTit.size() > 0) {
+				sLinemap = '<a href=" /">HOME</a>'
+				+ ' &gt; <a href="/board/momdaddy/fmdSubMain.befe">맘&amp;대디</a>'
+				+ ' &gt; <a href="' + url + '">' + name + '</a>'
+				+ ' &gt; <strong>' + $.trim(prodItemTit.text()) + '</strong>';
+				
+			} else {
+				sLinemap = '<a href=" /">HOME</a>'
+				+ ' &gt; <a href="/board/momdaddy/fmdSubMain.befe">맘&amp;대디</a>'
+				+ ' &gt; <strong>' + name + '</strong>';
+			}
+
+			//sLinemap = '<a href=" /">HOME</a>'
+			//+ ' &gt; <a href="/board/momdaddy/fmdSubMain.befe">맘&amp;대디</a>'
+			//+ ' &gt; <strong>' + name + '</strong>';
+			
+			$eLinemap.html(sLinemap);
+		}
+
+	} else if ($.trim($eLinemap.html()) != "") {
+		$(".utilmenu a, .subMenuWrap a").each(function(){
+			if ($(this).find("img").size() > 0) {
+				oLinemap[ $.trim($(this).find("img:eq(0)").attr("alt")).split(" ").join("") ] = $(this).attr("href");
+			} else {
+				oLinemap[ $.trim($(this).text()).split(" ").join("") ] = $(this).attr("href");
+			}
+		});
+
+		$(".gnbmenu a").each(function(){
+			oLinemap[ $.trim($(this).text()).split(" ").join("") ] = $(this).attr("href");
+		});
+
+		$("a.tempLinemap").each(function(){
+			var url = oLinemap[ $.trim($(this).text()).split(" ").join("") ];
+			if ( url != null && url != "" && url != undefined ) {
+				$(this).attr("href", url);
+			}
+		});
+	}
+ 
+	$eLinemap.fadeIn(300);
+
+});
+</script>-->
+				<!-- @ BEFE_lineNB end @ -->
+			</div>
+			<!-- @ BEFE_PageContents @ -->
+			<div class="board_con03">
+				<div class="board_Box03">
+					<div class="w695 mgAuto mgt18 mgb18">	
+						<!-- 2012-01-03 modify -->
+<div class="userguideBox"><br><h4 class="userguideBox"><img alt="베페 온라인 회원 (Hall A, B 양쪽 모두 입장가능)" src="http://www.befe.co.kr/images/title/h4_customer_use10_1.gif"></h4><div class="userguideBox"><img alt="" src="http://www.befe.co.kr/images/customer/customer_use10_1img.gif"> </div><ul class="use_txtList use10_list mgb50"><li>무료입장을 위해 베페 홈페이지 가입 또는 기존회원의 경우 회원정보를 최신으로 수정해주세요.</li>
+<li>Hall A, B 입구 회원전용 등록대에 신분증 제출 &gt; 명찰발급 &gt; 전시장 입장</li>
+<li>무료입장은 가입자 본인만 가능하며, 동반자가 있으실 경우 별도로 가입을 해주셔야 합니다.</li>
+<li>온라인/모바일 회원은 전시기간 중 1일 무료입장 및 당일 재입장이 가능합니다.</li>
+<li>1일 이상 무료입장을 원하시는 경우, 베페 앱에 개인별로 부여되는 바코드를 통해 입장 가능합니다.</li>
+<li>무인등록대(Hall A, B 전시장 입구) <br>무인등록대를 이용하시면  기다리는 불편함 없이 본인이 직접 명찰 출력 후 입장할 수 있습니다.</li>
+</ul><h4><img alt="모바일 무료 초청장 소지자(Hall A, B 양쪽 모두 입장 가능)" src="http://www.befe.co.kr/images/title/h4_customer_use10_2.gif"></h4><div class="userguideBox"><img alt="" src="http://www.befe.co.kr/images/customer/customer_use10_2img.gif"></div><ul class="use_txtList use10_list mgb50">
+<li>베페 앱 실행 &gt; 로그인 &gt; 단축메뉴 바코드 아이콘 터치 &gt; Hall A, B 입구 회원전용 등록대에 바코드 스캔 <br> &gt; 명찰발급 &gt; 전시장 입장</li>
+<li>무료입장을 위해 베페 앱 다운로드 후 회원가입 또는 기존회원의 경우 회원정보를 최신으로 수정해주세요.</li>
+<li>무료입장은 가입자 본인만 가능하며, 동반자가 있으실 경우 별도로 가입을 해주셔야 합니다.</li>
+<li>무인등록대(Hall A, B 전시장 입구) <br>무인등록대를 이용하시면  기다리는 불편함 없이 본인이 직접 명찰 출력 후 입장할 수 있습니다.</li>
+</ul><ul></ul><h4 class="mgt50"><img alt="VIP 초청장 소지자(Hall A, B 양쪽 모두 입장가능)" src="http://www.befe.co.kr/images/title/h4_customer_use10_5.gif"></h4><img alt="" src="http://www.befe.co.kr/images/customer/customer_use10_4img.gif"><h4 class="mgt50"><img alt="유료입장권 구매자(Hall B 입구로만 입장)" src="http://www.befe.co.kr/images/title/h4_customer_use10_3.gif"></h4><img alt="" src="http://www.befe.co.kr/images/customer/customer_use10_3img.gif"><h4 class="mgt50"><img alt="무료입장 및 할인" src="http://www.befe.co.kr/images/title/h4_customer_use10_4.gif"></h4>							<ul class="use_txtList use10_list mgb50">								<li>									<dl>										<dt>무료입장</dt>										<dd>											<ul>																							<li>1. 롯데 국민행복카드,&nbsp;롯데 아이행복카드 소지자(4일 내내 입장 가능)</li>												<li>2. CJ ONE 앱 소지자</li>
+<li>3. 장애우(동반보호자 1인 포함), 경로우대자(만 65세 이상), 초등학생 이하(부모 동반일 경우)</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	</ul>										</dd>									</dl>								</li>								<li>									<dl>										<dt>티켓할인</dt>										<dd>											<ul>												<li>1. 중고생 50%</li>											</ul>										</dd>									</dl>								</li>							</ul>
+						</div>
+						
+						<!-- //2012-01-03 modify -->					
+					</div>								
+				</div>
+				<!-- exhibition right -->
+				
+    	<div class="board_bnnrBox exhibition_right">
+			<div class="ad" style="margin-bottom:40px;">
+				<a href="#"><img src="/images/common/poster_dummy02.jpg" alt="" /></a>
+			</div>
+        
+<div style="text-align:center">				
+<a href="http://www.cbmexpo.com/en/" target="_blank"><img src="/images/exhibition/right_bn_01_31.gif" alt="cbmexpo" /></a>
+</div>
+
+ <div style="padding-top:5px;padding-bottom:20px;text-align:center">	
+<a href="http://blog.naver.com/befe_overseas" target="_blank"><img src="/images/exhibition/global_befe_blog.jpg" alt="visitseoul" /></a>
+</div>
+		<!-- <div class="mobileApp">				
+		  //기존주석
+				<!--a href="/bbs/cus/guideView.befe?seq=11735"><img src="/images/exhibition/right_bn_01.gif" alt="BeFe Mobile App Information Use" /></a> 
+                <a href="http://servedby.flashtalking.com/click/2/64092;1985142;369307;211;0/?ft_width=1&ft_height=1&url=10746175" target="_blank"><img src="/images/exhibition/right_bn_02_30.jpg" alt="kindundjugend" /></a>
+			</div>--> 
+
+			<div class="serviceArea" style="padding-top:10px">
+				<p><img src="/images/exhibition/title_another_services01.gif" alt="전시회 관련 다른메뉴 보기" /></p>
+				<ul>
+					<li><a href="/exhibition/fairVisit1.befe"><img src="/images/exhibition/btn_serviceLink01.png" alt="입장절차" /></a></li>
+					<li><a href="http://www.coex.co.kr/tour-guide/traffic/location-1" target="_blank"><img src="/images/exhibition/btn_serviceLink02.png" alt="위치/교통" /></a></li>
+					<li><a href="/exhibition/fairEntry5.befe"><img src="/images/exhibition/btn_serviceLink03.png" alt="양식다운로드" /></a></li>
+					<li><a href="/exhibition/fairLately1.befe"><img src="/images/exhibition/btn_serviceLink04.png" alt="갤러리" /></a></li>					
+				</ul>
+			</div>
+    	</div>
+
+				<!--// exhibition right -->
+			</div>
+			<!-- @ BEFE_PageContents end @ -->
+		</div>
+	</div>
+	<!-- @ BEFE_Contents end @ -->
+	<!-- @ BEFE_Footer @ -->
+	<div id="footer_wrap">
+		<div id="befe_footer">
+<script type="text/javascript">
+	$(function(){
+
+		// 팝업으로 열릴 경우
+		$("#admin_footer .jqFootPopup").click(function(){
+			window.open( $(this).attr("href"), "footer_popup", "width=400,height=400" );
+			return false;
+		});
+
+	});
+</script>
+<!-- 20130106 : 배너 아이템 추가 -->
+<div class="mnBotBnnr">
+	<div id="bnnrRolling02">						
+		<p class="btns">
+			<button class="left" id="footerBannerleft" type="button"><img src="/images/main/round_arrow01.gif" alt="prev" /></button>
+			<button class="right" id="footerBannerright" type="button"><img src="/images/main/round_arrow02.gif" alt="next" /></button>
+		</p>
+		<div class="listWrap">
+			<div class="listbox">
+				<ul class="list" id="footerBanner">
+				
+					<!-- <li class="first"><a href="http://www.fedora.co.kr/community/event_view.asp?idx=18" target="_blank"><img src="/images/open_contents/footer/footer_banner01.jpg" width="183" height="90" alt="페도라" /></a></li>
+					<li><a href="http://www.i-mom.co.kr/portal/momsumer/tester.do?method=view&menuFlag=Total&board_seq=000001071598&parentPage=1&menu_id=42&src=image&kw=00046A" target="_blank"><img src="/images/open_contents/footer/footer_banner02.jpg" width="183" height="90" alt="보령메디앙스" /></a></li>
+					<li><a href="http://www.babymeal.co.kr/event/allback01.jsp" target="_blank"><img src="/images/open_contents/footer/footer_banner03.jpg" width="183" height="90" alt="풀무원" /></a></li>
+					<li><a href="http://www.freewebs.co.kr/v2/rotateq/index.html" target="_blank"><img src="/images/open_contents/footer/footer_banner04.jpg" width="183" height="90" alt="로타텍" /></a></li>
+					<li><a href="http://blog.naver.com/befebabyfair" target="_blank"><img src="/images/open_contents/footer/footer_banner05.jpg" width="183" height="90" alt="베페맘스토리" /></a></li>
+					 -->
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 20130106 : 배너 아이템 추가 -->
+<div id="admin_footer">
+	<div class="foot">
+		<p><img src="/images/footer/footer_logo.gif" alt="befe" /></p>
+		<div class="foot_txt">
+			<ul>
+				<li><a href="/aboutUs/companyOverview.befe"><img src="/images/footer/foot_txt1.gif" alt="회사소개" /></a></li>
+				<li><a href="/customerCenter.befe"><img src="/images/footer/foot_txt10.gif" alt="고객센터" /></a></li>
+				<li><a href="/bbs/cus/guideList.befe"><img src="/images/footer/foot_txt11.gif" alt="사이트 이용안내" /></a></li>
+				<li><a href="/bbs/cus/guideList.befe"><img src="/images/footer/foot_txt6.gif" alt="온라인 광고 문의" /></a></li>
+				<li><a href="/foot/conditions.befe"><img src="/images/footer/foot_txt7.gif" alt="이용약관" /></a></li>
+				<li><a href="/foot/privacyPolicy.befe"><img src="/images/footer/foot_txt8.gif" alt="개인정보취급방침" /></a></li>
+				<li><a href="/foot/email.befe"><img src="/images/footer/foot_txt9.gif" alt="이메일무단수집거부" /></a></li>
+				<!-- <li><a href="#"><img src="/images/footer/foot_txt2.gif" alt="베이비페어소개" /></a></li>
+				<li><a href="/bbs/cus/bf_noticeList.befe"><img src="/images/footer/foot_txt3.gif" alt="공지사항" /></a></li>
+				<li><a href="/bbs/cus/bf_reportList.befe"><img src="/images/footer/foot_txt4.gif" alt="보도자료" /></a></li>
+				<li><a href="#"><img src="/images/footer/foot_txt5.gif" alt="헬프데스크" /></a></li> -->
+			</ul>
+			<div class="footer_addr">
+				<img src="/images/footer/foot_txt.gif" alt="이메일무단수집거부" /><!-- 베페플래닛 정보 이미지-->
+				<a href="mailto:webmaster@befe.co.kr" class="mail"></a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 전시관리 -->
+<script type="text/javascript">
+	
+$(function(){
+
+	var fnobj = {		//함수 정의 
+			"footerBanner" : function(o){   
+				var str = "";
+				$.each(o,function(i,j){
+					if(i == 0){
+						str += "<li class='first'>";
+					}else{
+						str += "<li>";
+					}
+						str += '<a '+clickTarget(j.DIS_TYPE, j.POPX, j.POPY, j.LINK_URL,j.PLACE_CD,j.SITE_TYPE,j.ADDET_SEQ)+'><img src="'+imgMake_1(j.ATCH_FILE_ID2,"file_"+j.PLACE_CD)+'" alt=""  width="183" height="90" /></a></li>';
+				});     		
+				$("#footerBanner").html(str).carouFredSel({
+		 			width:"100%",
+		 			speed:8000,
+		 			duration:3000,
+		 			auto:true,
+		 			prev:'#footerBannerleft',
+		 			next:'#footerBannerright',
+		 			scroll:1  
+		 		}); 
+			}
+		};
+		xmlparse("110101","footerBanner", fnobj);    		
+});
+
+
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	//editor contents body
+	$("body").attr("style", "");
+});
+</script>
+
+<!--// 전시관리 -->
+<!--
+	Global site tag (gtag.js) 
+	- 삭제금지(삭제시 ga 데이터 나오지 않음)
+-->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-6793470-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+<!-- Google Analytics END -->
+
+
+<!-- Dable 스크립트 시작 / 35회 전시 추가 -->
+<script>
+(function(d,a,b,l,e,_) {
+d[b]=d[b]||function(){(d[b].q=d[b].q||[]).push(arguments)};e=a.createElement(l);
+e.async=1;e.charset='utf-8';e.src='//static.dable.io/dist/dablena.min.js';
+_=a.getElementsByTagName(l)[0];_.parentNode.insertBefore(e,_);
+})(window,document,'dablena','script');
+dablena('init', 'befe.co.kr');
+dablena('track', 'PageView');
+</script>
+<!-- Dable 스크립트 종료  -->
+
+<!-- 카울리 스크립트 시작 / 35회 전시 추가 -->
+<script type="text/javascript">
+  window._paq = window._paq || [];
+  _paq.push(['track_code',"f545fff4-a941-49ff-8fed-e9ed5ca4e8ad"]);
+  _paq.push(['event_name','OPEN']);
+  _paq.push(['send_event']);
+  (function()
+  { var u="//image.cauly.co.kr/script/"; var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'caulytracker_async.js'; s.parentNode.insertBefore(g,s); })();
+</script>
+<!-- 카울리 스크립트 종료 / 35회 전시 추가 -->
+
+<!-- WIDERPLANET  SCRIPT START 2019.1.21 -->
+<div id="wp_tg_cts" style="display:none;"></div>
+<script type="text/javascript">
+var wptg_tagscript_vars = wptg_tagscript_vars || [];
+wptg_tagscript_vars.push(
+(function() {
+	return {
+		wp_hcuid:"",   /*고객넘버 등 Unique ID (ex. 로그인  ID, 고객넘버 등 )를 암호화하여 대입.
+				*주의 : 로그인 하지 않은 사용자는 어떠한 값도 대입하지 않습니다.*/
+		ti:"41944",	/*광고주 코드 */
+		ty:"Home",	/*트래킹태그 타입 */
+		device:"web"	/*디바이스 종류  (web 또는  mobile)*/
+		
+	};
+}));
+</script>
+<script type="text/javascript" async src="//cdn-aitg.widerplanet.com/js/wp_astg_4.0.js"></script>
+<!-- // WIDERPLANET  SCRIPT END 2019.1.21 -->
+
+<!-- LOGGER(TM) TRACKING SCRIPT V.40 FOR logger.co.kr / 101890 : COMBINE TYPE / DO NOT ALTER THIS SCRIPT. -->
+<script type="text/javascript">var _TRK_LID = "101890";var _L_TD = "ssl.logger.co.kr";var _TRK_CDMN = ".befe.co.kr";</script>
+<script type="text/javascript">var _CDN_DOMAIN = location.protocol == "https:" ? "https://fs.bizspring.net" : "http://fs.bizspring.net"; 
+(function (b, s) { var f = b.getElementsByTagName(s)[0], j = b.createElement(s); j.async = true; j.src = '//fs.bizspring.net/fs4/bstrk.1.js'; f.parentNode.insertBefore(j, f); })(document, 'script');
+</script>
+<noscript><img alt="Logger Script" width="1" height="1" src="http://ssl.logger.co.kr/tracker.1.tsp?u=101890&amp;js=N"/></noscript>
+<!-- END OF LOGGER TRACKING SCRIPT -->
+
+	</div>
+	<!-- @ BEFE_Footer end @ -->
+</body>
+</html>

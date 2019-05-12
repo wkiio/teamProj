@@ -73,7 +73,12 @@ display: none;
 	<div class="container">	
 		<div class="carinput_head">
 			<img class="carinput_icon" alt="아이콘" src="/baby/resources/images/car_icon2.png">
-			<h2 class="carinput_title">카풀 등록하기</h2>
+			<c:if test="${empty list }" var="isEmpty">
+				<h2 class="carinput_title">카풀 등록하기</h2>
+			</c:if>
+			<c:if test="${not isEmpty }">
+				<h2 class="carinput_title">카풀 수정하기</h2>
+			</c:if>
 		</div>
 		<hr id="sun"/>
 		<div class="carinput_body">
@@ -137,8 +142,12 @@ display: none;
 			<div id="map" class="box_map"></div>
 		</div>
 		<div class="btngroup text-center">
-			<button type="button" class="btn btn-primary custom_Button submit">확인</button>
-			<button type="button" id="edit" class="btn btn-primary custom_Button">수정</button>
+			<c:if test="${empty list }" var="isEmpty">
+				<button type="button" class="btn btn-primary custom_Button submit">등록</button>
+			</c:if>
+			<c:if test="${not isEmpty }">
+				<button type="button" id="edit" class="btn btn-primary custom_Button">수정</button>
+			</c:if>
 			<button type="button" class="btn btn-primary custom_Button">취소</button>
 		</div>
 	</div>
@@ -164,14 +173,16 @@ $(function(){
 	});
 	
 	$('#content').summernote({
-		placeholder: 'Hello bootstrap 4',
+		placeholder: '내용을 입력하세요',
 		height: 400,
 		lang: 'ko-KR',
 		minHeight: null,
 		maxHeight: null,
 		tabsize: 2
 	});
-	//$("#affected").zInput();
+	
+	
+	
 });
 </script>
 	  
