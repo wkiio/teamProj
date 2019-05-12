@@ -82,7 +82,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 // 지도를 생성합니다    
 var map = new daum.maps.Map(mapContainer, mapOption); 
 
-//가지고온 데이타 넣어주는거?
+//가지고온 데이타 넣어주는거?(ajax로 지금 응급실데이터 넣어줄꺼)
 var getdata;
 
 var emData;
@@ -101,7 +101,7 @@ var emData;
     		if (status === daum.maps.services.Status.OK) {    		
     	        var coords = new daum.maps.LatLng(result[0].y, result[0].x);    	
     	       // console.log(coords);
-    	       conosole.log("x : " + x);
+    	      // conosole.log("x : " + x);
     	       x = result[0].x;
     	       y = result[0].y;
     		}
@@ -202,8 +202,13 @@ function displayPlaces(places) {
     if(currCategory == 'MT1'){
    		for(var i=0; i<emData.length; i++ ) {   
     	        // 마커를 생성하고 지도에 표시합니다
-    	        console.log(emData[i].x);
-                var marker = addMarker(new daum.maps.LatLng(emData[i].y,  emData[i].x), order);
+    	       	//search = getdata[i].addr;
+    	        geocoder.addressSearch(getdata[i].addr,function(result,status){     		
+    				//console.log(search);g
+        		if (status === daum.maps.services.Status.OK) {    		
+        	        var coords = new daum.maps.LatLng(result[0].y, result[0].x); 
+        	        
+                var marker = addMarker(new daum.maps.LatLng(result[0].y,  result[0].x), order);
                 // 마커와 검색결과 항목을 클릭 했을 때
                 // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
                 (function(marker, emData) {
@@ -213,7 +218,9 @@ function displayPlaces(places) {
                 })(marker, emData[i]);
     		}
     		
-    	}
+    		});
+   		}
+    }
    	
    	else{
     		for ( var i=0; i<places.length; i++ ) {    	
