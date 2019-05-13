@@ -106,10 +106,6 @@ public class HomeController {
 	public String daumapi() {
 		return "daumapi.tiles";
 	}
-	@RequestMapping("/daum.kosmo")
-	public String daum() {
-		return "daum.tiles";
-	}
 	@RequestMapping("/word.kosmo")
 	public String word() {
 		return "word.tiles";
