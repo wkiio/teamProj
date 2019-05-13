@@ -19,7 +19,7 @@
 		SELECT * FROM calender WHERE id=#{id} OR id='admin'
 	</select>
 	<insert id="calinput" parameterType="java.util.Map">
-		INSERT INTO calender VALUES(SEQ_Calender.NEXTVAL,#{caltitle},#{startdate},#{enddate},#{calcontent},'타입',#{id})
+		INSERT INTO calender VALUES(SEQ_Calender.NEXTVAL,#{caltitle},#{startdate},#{enddate},#{calcontent},#{type},#{id})
 		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
 			SELECT SEQ_Calender.CURRVAL FROM dual
 		</selectKey>
@@ -27,7 +27,7 @@
 	
 	<update id="calupdate" parameterType="java.util.Map">
 		UPDATE calender SET title=#{modiftitle}, startdate=#{modifstartStr}, enddate=#{modifendStr},
-		 content=#{modifcontent}, type='타입' WHERE cal_no=#{modifyEventId}
+		 content=#{modifcontent}, type=#{modiftype} WHERE cal_no=#{modifyEventId}
 	</update>
 	
 	

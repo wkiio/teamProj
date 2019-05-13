@@ -125,7 +125,7 @@
 					</div>
 				</div>
 			</div>
-			<form class="carviewform" action="CarpoolSubmit.kosmo">
+			<form class="carviewform" action="CarpoolSubmit.kosmo" method="post">
 				<div class="carview_content col">
 	
 					<div class="carview_title">
@@ -143,7 +143,7 @@
 					<input type="hidden" value="${dto.time}" id="time" name="time">
 					<input type="hidden" value="${dto.type }" id="type" name="type">
 					<input type="hidden" value="${dto.price }" id="price" name="price">
-					<input type="hidden" value="${dto.content}" id="content" name="content">
+					<input type="hidden" value='${dto.content}' id="content" name="content">
 					<div class="table-responsive" style="overflow-x:hidden;">
 						<table class="table table-bordered">
 							<thead class="table-borderless">
