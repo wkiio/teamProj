@@ -70,7 +70,7 @@ public class MsApi {
              // Request headers.
              //request.setHeader("Content-Type", "application/json");
              request.setHeader("Content-Type", "application/octet-stream");
-             request.setHeader("Ocp-Apim-Subscription-Key", "b1a6500340aa430fbaa8ae342e77fa29");
+             request.setHeader("Ocp-Apim-Subscription-Key", "886ad0a9dc6e4651ae8199c1544ba5e6");
            
              // Request body.
            // StringEntity requestEntity =

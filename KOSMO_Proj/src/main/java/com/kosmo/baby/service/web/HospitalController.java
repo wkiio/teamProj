@@ -54,8 +54,7 @@ public class HospitalController {
 		model.addAttribute("addrs",collections);
 		model.addAttribute("addrsJSON",JSONArray.toJSONString(collections));
 		//System.out.println("ff:" + collections);
-		/*
-		List<HospitalDTO> hospitals1 = service.selectEmer(map);
+				List<HospitalDTO> hospitals1 = service.selectEmer(map);
 		List<Map> collections1 = new Vector<Map>();
 		
 		for(HospitalDTO dto : hospitals1) {
@@ -79,7 +78,7 @@ public class HospitalController {
 			collections1.add(recode);
 		}
 		model.addAttribute("emer",JSONArray.toJSONString(collections1));
-		System.out.println("gg:" + JSONArray.toJSONString(collections1));*/
+		System.out.println("gg:" + JSONArray.toJSONString(collections1));
 		
 		return "daum.tiles";
 	}
