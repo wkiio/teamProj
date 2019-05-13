@@ -113,11 +113,7 @@ public class Carpool_borderController {
 		Carpool_borderDTO list=service.selectOne(map);
 		System.out.println("글쓴이 입니다 : " + list.getId());
 		System.out.println("상세보기 시간");
-		System.out.println(list.getTime());
-		System.out.println(list.getStart_xpos());
-		System.out.println(list.getStart_ypos());
-		System.out.println(list.getEnd_xpos());
-		System.out.println(list.getEnd_ypos());
+		System.out.println(list.getContent());
 		model.addAttribute("dto", list);
 		return "CarView.tiles";
 	}

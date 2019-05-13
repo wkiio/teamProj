@@ -8,7 +8,7 @@
 
     <style>
 .map_wrap, .map_wrap * {margin:0; padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
-.map_wrap {position:relative;width:100%;height:800px;}
+.map_wrap {position:relative;width:100%;height:350px;}
 #category {position:absolute;top:10px;left:10px;border-radius: 5px; border:1px solid #909090;box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);background: #fff;overflow: hidden;z-index: 2;}
 #category li {float:left;list-style: none;width:50px;px;border-right:1px solid #acacac;padding:6px 0;text-align: center; cursor: pointer;}
 #category li.on {background: #eee;}
@@ -64,10 +64,14 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fc37be4712f8b89b167cddbc490382f&libraries=services"></script>
 <script>
+<<<<<<< HEAD
 
 
 
 //마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
+=======
+// 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
+>>>>>>> branch 'master' of https://github.com/wkiio/teamProj.git
 var placeOverlay = new daum.maps.CustomOverlay({zIndex:1}), 
     contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다 
     markers = [], // 마커를 담을 배열입니다
@@ -82,6 +86,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 // 지도를 생성합니다    
 var map = new daum.maps.Map(mapContainer, mapOption); 
 
+<<<<<<< HEAD
 //가지고온 데이타 넣어주는거?(ajax로 지금 응급실데이터 넣어줄꺼)
 var getdata;
 
@@ -121,6 +126,8 @@ var emData;
 var geocoder = new daum.maps.services.Geocoder();
 
 
+=======
+>>>>>>> branch 'master' of https://github.com/wkiio/teamProj.git
 // 장소 검색 객체를 생성합니다
 var ps = new daum.maps.services.Places(map); 
 
