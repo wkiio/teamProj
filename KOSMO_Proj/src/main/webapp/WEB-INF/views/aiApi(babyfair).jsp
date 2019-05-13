@@ -453,6 +453,7 @@ function checkImage(data) {
 	
 }; 
 var imagecheck;
+var aa;
 
 
 $(function(){
