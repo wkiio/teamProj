@@ -90,8 +90,7 @@ public class HomeController {
 	@RequestMapping("/Car1.kosmo")
 	public String car1() {
 		return "Car1.tiles";
-	}
-	
+	}	
 	
 	@RequestMapping("/serviceclick.kosmo")
 	public String serviceclick() {
@@ -105,10 +104,6 @@ public class HomeController {
 	@RequestMapping("/daumapi.kosmo")
 	public String daumapi() {
 		return "daumapi.tiles";
-	}
-	@RequestMapping("/daum.kosmo")
-	public String daum() {
-		return "daum.tiles";
 	}
 	@RequestMapping("/word.kosmo")
 	public String word() {

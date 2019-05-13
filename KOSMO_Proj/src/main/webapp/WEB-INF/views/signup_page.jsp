@@ -2,128 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<script>
-	$(function() {
-	
-		//아이디 중복 체크
-		$("#id_check").click(function(){
-			console.log($('#id').val());
-			if($('#id').val().length >=3 && $('#id').val().length <=10){
-			//Ajax로 요청
-			$.ajax({
-				url:"<c:url value='/idCheck.kosmo'/>",
-				data: {
-					'id' : $('#id').val(),
-					"${_csrf.parameterName}":"${_csrf.token}"
-					},
-				dataType:'text',
-				type:'post',
-				success:function(data){
-					console.log("sdddd");
-					if(data=="true") {
-						alert('사용가능한 아이디 입니다');
-						$('#pwd').focus()
-					}
-					else {
-						alert('중복된 아이디 입니다');
-						$('#id').val('');
-						$('#id').focus()
-					}
-					
-				}/* ,
-				error:function(request,status,error){
-					console.log('code:%s,message:%s,error:%s,status:%s',request.status,request.responseText,error,status);
-				} */
-			});
-		}
-		else {
-			alert('아이디는 3자 이상, 10자 이하 사용해야 합니다.')
-			$('#id').val('').focus();
-		}
-		});
-		
 
-		
-		
-		
-		//비밀번호를 숫자 영문자 특수문자 8자리 이상으로 조합하게하기
-		$("#pwd").change(function(){
-		    checkPassword($('#pwd').val());
-		});
-		function checkPassword(pwd){		    
-		    if(!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,16}$/.test(pwd)){            
-		        alert('숫자+영문자+특수문자 조합으로 8자리 이상 사용해야 합니다.');
-		        $('#pwd').val('').focus();
-		        return false;
-		    }    
-		    var checkNumber = password.search(/[0-9]/g);
-		    var checkEnglish = password.search(/[a-z]/ig);
-		    if(checkNumber <0 || checkEnglish <0){
-		        alert("숫자와 영문자를 혼용하여야 합니다.");
-		        $('#pwd').val('').focus();
-		        return false;
-		    }
-		    return true;
-		}
-		//비밀번호 입력칸과 비밀번호 확인칸이 동일하지 않으면 다시 입력하게하기
-		$('#pwdsubmit').change(function(){
-			checkPwdSubmit($('#pwd').val(),$('#pwdsubmit').val());
-		});
-		function checkPwdSubmit(pwd,pwdsubmit){
-			if(pwd != pwdsubmit){
-				alert('비밀번호와 동일하게 입력해야 합니다.');
-				$('#pwdsubmit').val('').focus();
-				return false;
-			}
-			
-			return true;
-		}
-		//휴대폰 번호 유효성체크 
-		$('#tel').keypress(function(evt){
-			var code = evt.which?evt.which:event.keyCode;
-			if(code < 48 || code > 57){
-				return false;
-			}
-		});
-		
-		//이메일 선택용
-		$('#email2').change(function(){
-			$("#email2 option:gt(0):selected").each(function() {
-				var email = $('#email').val();
-				if(email.includes("@")){
-					$('#email').val(email.split('@')[0]+"@"+$(this).html());
-				}
-				else {
-					$('#email').val(email+"@"+$(this).html());
-				}
-			});
-		});
-		
-		//제휴 회원용 입력창 토글용
-		$('#carpool_check').click(function(){
-			$(".card-carpool").fadeToggle("slow");
-		});	
-		
-		//제휴 회원용 입력창 토글용
-		$('.form-signin').submit(function(){
-        if($('#carpool_check').prop('checked')){
-           //카풀등록 체크시
-           $('#partnerstatus').attr('value',"1")
-        }
-        else {
-           //카풀등록 체크 안했을시
-           $('#partnerstatus').attr('value',"0")
-        }
-     });
-	});
-</script>
 <div class="site-section" style="padding: 2em;">
 	<div class="container">
 		<div class="col-lg-10 col-xl-9 mx-auto">
 			<div class="card card-signin flex-row my-5">
 				<div class="card-body">
 					<h5 class="card-title text-center">회원가입</h5>
-					<form class="form-signin" method="post" action="Signup.kosmo" autocomplete="off">
+					<form class="form-signin" method="post" action="Signup.kosmo?${_csrf.parameterName}=${_csrf.token}" autocomplete="off" enctype="multipart/form-data">
 						<input class="form-control" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						<div class="form-label-group">
 							<div class="input-group">
@@ -151,22 +37,15 @@
 							<label for="name">이름</label>
 						</div>
 						
-						
-						
-						
 						<div class="form-label-group">
 							<div class="input-group">
-								<input type="text" id="photo" name="photo" class="form-control" placeholder="사진파일" required>
+								<input type="text" id="photo" name="photo" class="form-control" placeholder="사진파일" required>		
 								<div class="input-group-append">
-									<a id="photo_upload" class="btn btn-singup"  data-toggle="modal" data-target="#photo" style="color:white">사진 업로드</a>
+									<a id="photo_upload" class="btn btn-singup" data-target="#photo" style="color:white">사진 업로드</a>
 								</div>
 							</div>
 							<small>&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;본인의 증명사진을 올려주시기 바랍니다.</small>
 						</div>
-						
-						
-						
-						
 						
 						<div class="form-label-group">
 							<div class="input-group">
@@ -182,6 +61,7 @@
 									</select>
 								</div>
 							</div>
+							<small>&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;추후 이메일 인증을 위해 정확히 입력 해주시기 바랍니다.</small>
 						</div>
 						<div class="form-label-group">
 							<div class="input-group">
@@ -235,12 +115,13 @@
 								<label class="checkbox-inline"><input type="radio" id="cartype" name="cartype" value="소형차">소형차</label>
 								<label class="checkbox-inline"><input type="radio" id="cartype" name="cartype" value="중형차">중형차</label>
 								<label class="checkbox-inline"><input type="radio" id="cartype" name="cartype" value="대형차">대형차</label>
-								<h2>차 번호</h2><small>카풀 매칭시 이용자에게 알려주어 도달 시 찾기 용이하게 합니다.</small>
+								<h2>차 번호</h2>
 								<input type="text" id="carnumber" name="carnumber" class="form-control"  placeholder="차 번호를 입력하세요">
+								<small>&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;카풀 매칭시 이용자에게 알려주어 도달 시 찾기 용이하게 합니다.</small>
 							</div>
 						</div>
 						<input type="hidden" value="0" name="partnerstatus" id="partnerstatus"/>
-						<button class="btn btn-lg btn-singup btn-block text-uppercase" type="submit">회원 가입</button>
+						<button class="btn btn-lg btn-singup btn-block text-uppercase" type="submit" id="clickmember">회원 가입</button>
 						<hr class="my-4">
 						
 					</form>
@@ -249,7 +130,7 @@
 		</div>
 	</div>	
 	
-		<div class="modal fade" id="photomodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+		<div class="modal fade" id="photomodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:9000" >
 		  <div class="modal-dialog" role="document" >
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -261,7 +142,7 @@
 		      <form enctype="myltipart/form-data" >
 		      	<div class="modal-body">
                		<div class="form-group">
-                  	  <input type="file" class="form-control123" id="photoinput">
+                  	  <input type="file" name="photoinput" class="form-control123" id="photoinput">
                     	<small></small>
                	 	</div>
 		      	</div>
@@ -273,19 +154,169 @@
 		  </div>
 		</div>
 </div>
+
+
+
 <script>
 
-$(function() {
+var filename;
+
+function getname(obj) 
+{ 
+   // var fileObj = document.getElementById("photoinput").value; //files[0].name; 
+    filename = document.getElementById("photoinput").files[0].name;      
+    console.log('파일은?' + filename);
+
+}
+		 
+ function changeimage(){
+	 $("#photo").replaceWith( $("#photoinput").clone(true) );
 	
-	$('#photo_upload').click(function(){
-		$('#photomodal').modal();
-	}) 
-})
-	
-
-
-
+	 return true;
+ }
+		 
+		 
+ $(function() {					
+		//아이디 중복 체크
+		$("#id_check").click(function(){
+			console.log($('#id').val());
+			if($('#id').val().length >=3 && $('#id').val().length <=10){
+			//Ajax로 요청
+			$.ajax({
+				url:"<c:url value='/idCheck.kosmo'/>",
+				data: {
+					'id' : $('#id').val(),
+					"${_csrf.parameterName}":"${_csrf.token}"
+					},
+				dataType:'text',
+				type:'post',
+				success:function(data){
+					console.log("sdddd");
+					if(data=="true") {
+						alert('사용가능한 아이디 입니다');
+						$('#pwd').focus()
+					}
+					else {
+						alert('중복된 아이디 입니다');
+						$('#id').val('');
+						$('#id').focus()
+					}
+					
+				}/* ,
+				error:function(request,status,error){
+					console.log('code:%s,message:%s,error:%s,status:%s',request.status,request.responseText,error,status);
+				} */
+			});
+		}
+		else {
+			alert('아이디는 3자 이상, 10자 이하 사용해야 합니다.')
+			$('#id').val('').focus();
+		}
+		});
+		
+		
+		//비밀번호를 숫자 영문자 특수문자 8자리 이상으로 조합하게하기
+		$("#pwd").change(function(){
+		    checkPassword($('#pwd').val());
+		});
+		function checkPassword(pwd){		    
+		    if(!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,16}$/.test(pwd)){            
+		        alert('숫자+영문자+특수문자 조합으로 8자리 이상 사용해야 합니다.');
+		        $('#pwd').val('').focus();
+		        return false;
+		    }    
+		    var checkNumber = password.search(/[0-9]/g);
+		    var checkEnglish = password.search(/[a-z]/ig);
+		    if(checkNumber <0 || checkEnglish <0){
+		        alert("숫자와 영문자를 혼용하여야 합니다.");
+		        $('#pwd').val('').focus();
+		        return false;
+		    }
+		    return true;
+		}
+		//비밀번호 입력칸과 비밀번호 확인칸이 동일하지 않으면 다시 입력하게하기
+		$('#pwdsubmit').change(function(){
+			checkPwdSubmit($('#pwd').val(),$('#pwdsubmit').val());
+		});
+		function checkPwdSubmit(pwd,pwdsubmit){
+			if(pwd != pwdsubmit){
+				alert('비밀번호와 동일하게 입력해야 합니다.');
+				$('#pwdsubmit').val('').focus();
+				return false;
+			}
+			
+			return true;
+		}
+		
+		//이미지 업로드부분
+		 //사진업로드 눌렀을
+     $('#photo_upload').click(function(){
+        $('#photomodal').modal();
+     });
+     
+     $('#clickbutton_modal').click(function(){
+    	 filename = document.getElementById("photoinput").files[0].name; 
+    	 fileobject = document.getElementById("photoinput").files[0];
+    	 console.log(fileobject);
+    	 
+    	 var formData = new FormData();
+    	 formData.append("photoinput",$("input[name=photoinput]")[0].files[0]);
+    	 console.log(formData); 
+    	 //$("#photo").replaceWith( $("#photoinput").clone(true) );
+    	 
+    	 $.ajax({
+    		 url : "imageupload.kosmo?${_csrf.parameterName}=${_csrf.token}",
+    		 processData: false,
+             contentType: false,
+	         data: formData,
+	         type: 'POST',
+	         dataType : 'text',
+	         success : function(data){
+	        	 console.log("받음");
+	         }    		 
+    	 });
+    	 $('#photo').val(filename); 
+        	 
+      }); 
+		
+		//휴대폰 번호 유효성체크 
+		$('#tel').keypress(function(evt){
+			var code = evt.which?evt.which:event.keyCode;
+			if(code < 48 || code > 57){
+				return false;
+			}
+		});
+		
+		//이메일 선택용
+		$('#email2').change(function(){
+			$("#email2 option:gt(0):selected").each(function() {
+				var email = $('#email').val();
+				if(email.includes("@")){
+					$('#email').val(email.split('@')[0]+"@"+$(this).html());
+				}
+				else {
+					$('#email').val(email+"@"+$(this).html());
+				}
+			});
+		});
+		
+		//제휴 회원용 입력창 토글용
+		$('#carpool_check').click(function(){
+			$(".card-carpool").fadeToggle("slow");
+		});	
+		
+		//제휴 회원용 입력창 토글용
+		$('.form-signin').submit(function(){
+        if($('#carpool_check').prop('checked')){
+           //카풀등록 체크시
+           $('#partnerstatus').attr('value',"1")
+        }
+        else {
+           //카풀등록 체크 안했을시
+           $('#partnerstatus').attr('value',"0")
+        }
+     });
+	});
 </script>
-
 
 
