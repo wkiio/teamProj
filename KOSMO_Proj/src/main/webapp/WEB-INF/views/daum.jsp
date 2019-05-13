@@ -102,7 +102,7 @@ $(function(){
    var index =0;
    console.log('a' + emData[3].name);
    
-  /*  emData.forEach(function(vaule,index,array){
+    emData.forEach(function(vaule,index,array){
       console.log('11');
       var search3 = vaule.addr;
       geocoder.addressSearch(vaule.addr,function(result,status){           
@@ -121,10 +121,10 @@ $(function(){
       });
       console.log('44');
       
-   }); */
+   }); 
    
    
-    for(var i=0; i<emData.length; i++ ) {   
+    /* for(var i=0; i<emData.length; i++ ) {   
       console.log('11');
       var search = emData[i].addr;
       geocoder.addressSearch(search,function(result,status){           
@@ -138,7 +138,7 @@ $(function(){
             }          
          });
       console.log('44');
-      }  
+      }   */
 });
 
 
@@ -296,7 +296,7 @@ function displayPlaceInfo (place) {
    console.log("place2" + JSON.stringify(place));
    //console.log(place);
     var content = '<div class="placeinfo">' +
-                    '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.place_name + '">' + place.place_name + '</a>';   
+                    '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.name + '">' + place.place_name + '</a>';   
 
     if (place.road_address_name) {
         content += '    <span title="' + place.road_address_name + '">' + place.road_address_name + '</span>' +
