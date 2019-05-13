@@ -2,12 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/template/isMember.jsp" %>
-<c:if test="${error }">
-<script>
-alert("가입 정보와 일치하지 않습니다!");
-location.replace('<c:url value="/mypage_one.kosmo"/>');
-</script>
-</c:if>
+
 
 <div class="site-section" style="padding: 2em;">
 	<div class="container">
