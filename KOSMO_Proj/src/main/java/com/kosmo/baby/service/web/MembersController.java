@@ -77,7 +77,7 @@ public class MembersController {
 			model.addAttribute("id",dto.getId());
 			model.addAttribute("name",dto.getName());
 			System.out.println(dto.getName());
-			model.addAttribute("tel",dto.getTel().substring(0,3)+"-"+dto.getTel().substring(3, 7)+"-"+dto.getTel().substring(7));
+			model.addAttribute("tel",dto.getTel());
 			model.addAttribute("email1",dto.getEmail().split("@")[0].trim());
 			model.addAttribute("email2",dto.getEmail().split("@")[1].trim());
 			model.addAttribute("addr",dto.getAddr());
@@ -161,23 +161,6 @@ public class MembersController {
 		}
 		else {
 			model.addAttribute("findError","찾는 유저가 없습니다!");
-		}
-		return "findidresult.tiles";
-	}
-	
-	@RequestMapping("/findPwd.kosmo")
-	public String findPwd(@RequestParam Map map,Model model) throws Exception{
-		System.out.println("비밀번호를 찾는 메소드로 들어왔다.");
-		service.findPwd(map);
-		boolean flag = service.findPwd(map)==null ? false : true;
-		if(flag){
-			MembersDTO dto = service.findPwd(map);
-			model.addAttribute("id",dto.getId());
-			model.addAttribute("pwd",dto.getPwd());
-			
-		}
-		else {
-			model.addAttribute("findError","이런 정보가 틀렸습니다. 비밀번호를 찾을수가 없어요");
 		}
 		return "findidresult.tiles";
 	}

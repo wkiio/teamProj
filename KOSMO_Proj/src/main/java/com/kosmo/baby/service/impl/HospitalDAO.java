@@ -21,17 +21,7 @@ public class HospitalDAO implements HospitalService{
 	public List<HospitalDTO> selectList(Map map) {
 		return template.selectList("hospital_List",map);
 	}
-
-	@Override
-	public List<HospitalDTO> selectEmer(Map map) {
-		// TODO Auto-generated method stub
-		return template.selectList("emerlist",map);
-	}
-
-	/*
-	 * @Override public HospitalDTO selectOne(Map map) { // TODO Auto-generated
-	 * method stub return template.selectOne("emerlist",map); }
-	 */
+	
 	
 
 }

@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kosmo.baby.service.CalenderDTO;
 import com.kosmo.baby.service.CalenderService;
 
 @Repository
@@ -17,28 +18,25 @@ public class CalenderDAO implements CalenderService{
 
 	
 	@Override
-	public List<Map> selectList(Map map) {
-		//목록 뿌려주기용
-		return null;
+	public List<CalenderDTO> selectList(Map map) {
+		return template.selectList("calList",map);
 	}
 	
 	@Override
 	public int delete(Map map) {
 		//캘린더 삭제
-		return 0;
+		return template.delete("caldelete",map);
 	}
 
 	@Override
 	public int insert(Map map) {
-		//캘린더 입력
-		return 0;
+		return template.insert("calinput",map);
 	}
 
 	@Override
 	public int update(Map map) {
-		//캘린더 수정용
-		
-		return 0;
+		//캘린더 수정용	
+		return template.update("calupdate",map);
 	}
 	
 	

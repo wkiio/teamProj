@@ -7,19 +7,15 @@
 		<div class="col-lg-10 col-xl-9 mx-auto">
 			<h1 class="text-center my-5">정보 수정</h1>
 			<div class="myInfoRevise mx-5">
-				<form action="<c:url value='/mypage_edit.kosmo'/>" method="post" autocomplete="off">
-				
+				<form action="<c:url value='/.kosmo'/>" method="post" autocomplete="off">
 				<div class="reviseTit">
 					기본 정보
 					<p class="requiredTxt">
 						<span>*</span> 표시는 필수정보입니다
 					</p>
 				</div>
-			
 				<div class="writeType1">
-				
 					<ul>
-						
 						<li>
 							<div class="left text-center pt-3">
 								<p class="tit star">성명</p>
@@ -36,11 +32,22 @@
 							</div>
 							<div class="right">
 								<div class="txt">
-									${tel }<a href="#" class="blackBt changeBt">변경</a>
+									000-0000-0000<a href="#" class="blackBt changeBt">변경</a>
 								</div>
 							</div>
 						</li>
-					
+
+						<li>
+							<div class="left text-center pt-3">
+								<p class="tit star">비밀번호</p>
+							</div>
+							<div class="right">
+								<div class="txt">
+									<a href="#" class="blackBt passBt changeBt" id="pwChgBtn">변경</a>
+								</div>
+							</div>
+						</li>
+
 						<li>
 							<div class="left text-center pt-3">
 								<p class="tit star">제휴 여부</p>
@@ -70,6 +77,13 @@
 									<div class="input-area">
 										<input class="form-control" type="text" id="textEmail" value="${email2 }" disabled="disabled">
 									</div>
+									<select class="form-control" id="select">
+										<option disabled selected>E-Mail 선택</option>
+										<option>naver.com</option>
+										<option>hanmail.net</option>
+										<option>gmail.com</option>
+										<option>nate.com</option>
+									</select>
 								</div>
 							</div>
 						</li>
@@ -95,10 +109,6 @@
 								</div>
 							</div>
 						</li>
-						
-						
-						
-						
 					</ul>
 					<div class="text-center">
 						<input type="submit" class="yellowBt" value="확인">

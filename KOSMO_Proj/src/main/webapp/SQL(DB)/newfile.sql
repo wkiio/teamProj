@@ -7,11 +7,12 @@ DROP TABLE calender  CASCADE CONSTRAINTS;
 DROP TABLE reservation CASCADE CONSTRAINTS;
 DROP TABLE carpool_border  CASCADE CONSTRAINTS;
 DROP TABLE hospital CASCADE CONSTRAINTS;
-DROP TABLE kizcafe CASCADE CONSTRAINTS;
+DROP TABLE kidhouse CASCADE CONSTRAINTS;
 DROP TABLE review CASCADE CONSTRAINTS;
+DROP TABLE map CASCADE CONSTRAINTS;
+DROP TABLE code CASCADE CONSTRAINTS;
 DROP TABLE partner_members CASCADE CONSTRAINTS;
 DROP TABLE members CASCADE CONSTRAINTS;
-DROP TABLE VISIT CASCADE CONSTRAINTS;
 
 DROP SEQUENCE SEQ_Baby_Border;
 DROP SEQUENCE SEQ_Calender;
@@ -22,7 +23,6 @@ DROP SEQUENCE SEQ_Map;
 DROP SEQUENCE SEQ_Partner_Members;
 DROP SEQUENCE SEQ_Reservation;
 DROP SEQUENCE SEQ_ReView;
-DROP SEQUENCE SQE_Emergency;
 DROP TRIGGER  TRG_RESER;
 
 CREATE SEQUENCE SEQ_Baby_Border
@@ -58,10 +58,6 @@ NOCYCLE
 NOCACHE;
 
 CREATE SEQUENCE SEQ_ReView
-NOCYCLE
-NOCACHE;
-
-CREATE SEQUENCE SQE_Emergency
 NOCYCLE
 NOCACHE;
 
@@ -118,44 +114,45 @@ CREATE TABLE carpool_border
 );
 
 
-CREATE TABLE hospital(
-	h_no number primary key,
-	name nvarchar2(100),
-	tel nvarchar2(30),
-	addr nvarchar2(1000),
-	-- 월요일부터 공휴일까지 입니다.
-	mon nvarchar2(100),
-	tue nvarchar2(100),
-	wed nvarchar2(100),
-	thu nvarchar2(100),
-	fri nvarchar2(100),
-	sat nvarchar2(100),
-	sun nvarchar2(100),
-	holiday nvarchar2(100),
-	emergency number
-);
-
-
-CREATE TABLE kizcafe
+CREATE TABLE code
 (
-	k_no number NOT NULL,
-	name nvarchar2(100),
-	tel nvarchar2(30),
-	addr nvarchar2(1000),
-	PRIMARY KEY (k_no)
+	code number NOT NULL,
+	code_name nvarchar2(20),
+	PRIMARY KEY (code)
 );
 
-CREATE TABLE review
+
+CREATE TABLE hospital
 (
-	rv_no number NOT NULL,
-	title nvarchar2(50),
-	content nvarchar2(2000),
-	score number,
-	id varchar2(20) NOT NULL,
-	h_no number,
-	k_no number,
-	PRIMARY KEY (rv_no)
+	no number NOT NULL,
+	subject nvarchar2(20),
+	nightcare varchar2(10),
+	map_no number NOT NULL,
+	PRIMARY KEY (no)
 );
+
+
+CREATE TABLE kidhouse
+(
+	no number NOT NULL,
+	limitcount number,
+	teachercount number,
+	map_no number NOT NULL,
+	PRIMARY KEY (no)
+);
+
+
+CREATE TABLE map
+(
+	map_no number NOT NULL,
+	name nvarchar2(20),
+	addr nvarchar2(20),
+	tel varchar2(20),
+	totalscore number,
+	code number NOT NULL,
+	PRIMARY KEY (map_no)
+);
+
 
 CREATE TABLE members
 (
@@ -168,7 +165,6 @@ CREATE TABLE members
 	addr nvarchar2(100) NOT NULL,
 	email varchar2(50) NOT NULL,
 	tel nvarchar2(15) NOT NULL,
-	--photo varchar2(300) NOT NULL,
 	-- 이메일 인증 키 입니다.
 	authkey nvarchar2(50),
 	-- 이메일 인증이 완료가되면 값이 들어갑니다. 
@@ -192,6 +188,7 @@ CREATE TABLE partner_members
 	-- 대형차
 	cartype nvarchar2(10),
 	career nvarchar2(10),
+	photo varchar2(300),
 	totalscore number,
 	totalcount number,
 	PRIMARY KEY (p_no)
@@ -210,6 +207,18 @@ CREATE TABLE reservation
 	PRIMARY KEY (rs_no)
 );
 
+
+CREATE TABLE review
+(
+	rv_no number NOT NULL,
+	title nvarchar2(50),
+	content nvarchar2(2000),
+	score number,
+	id varchar2(20) NOT NULL,
+	map_no number NOT NULL,
+	PRIMARY KEY (rv_no)
+);
+
 CREATE TABLE VISIT (V_DATE DATE);
 
 
@@ -222,15 +231,31 @@ ALTER TABLE reservation
     on delete cascade
 ;
 
-ALTER TABLE review
-	ADD FOREIGN KEY (h_no)
-	REFERENCES hospital (h_no)
+
+ALTER TABLE map
+	ADD FOREIGN KEY (code)
+	REFERENCES code (code)
     on delete cascade
 ;
 
+
+ALTER TABLE hospital
+	ADD FOREIGN KEY (map_no)
+	REFERENCES map (map_no)
+    on delete cascade
+;
+
+
+ALTER TABLE kidhouse
+	ADD FOREIGN KEY (map_no)
+	REFERENCES map (map_no)
+    on delete cascade
+;
+
+
 ALTER TABLE review
-	ADD FOREIGN KEY (k_no)
-	REFERENCES kizcafe (k_no)
+	ADD FOREIGN KEY (map_no)
+	REFERENCES map (map_no)
     on delete cascade
 ;
 
@@ -294,9 +319,9 @@ insert into members values('admin','asd123!@#','관리자','주소','이메일',
 -- 카풀 게시판
 
 insert into members values('lee','1234','이길동','천호동','adf@nate.com','01012345678',0,1,0,default);
-insert into members values('kim','1234','김길동','천호동','adf@nate.com','01012345678',0,1,0,default);
-insert into members values('park','1234','박길동','천호동','adf@nate.com','01012345678',0,1,0,default);
-insert into members values('choi','1234','최길동','천호동','adf@nate.com','01012345678',0,1,0,default);
+insert into members values('kim','1234','김길동','천호동','01012345678','adf@nate.com',0,1,0,default);
+insert into members values('park','1234','박길동','천호동','01012345678','adf@nate.com',0,1,0,default);
+insert into members values('choi','1234','최길동','천호동','01012345678','adf@nate.com',0,1,0,default);
 
 insert into carpool_border values(10,'강남역','역삼역','태워주세요','연락처 010-1234-5678',37.498184,127.028484,37.500474,127.036082,'lee',0,sysdate,10000,'0');
 insert into carpool_border values(11,'강남역','역삼역','태워주세요','연락처 010-1234-5678',37.498184,127.028484,37.500474,127.036082,'park',0,sysdate,10000,'0');

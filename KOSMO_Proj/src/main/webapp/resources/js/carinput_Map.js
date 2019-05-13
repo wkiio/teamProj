@@ -287,7 +287,15 @@ $(function(){
 		console.log('변함')
 		
 	});
-	
-	
-	
+	if($('#start_xpos').val()!=""){
+		var start_xpos = $('#start_xpos').val()
+		var start_ypos = $('#start_ypos').val()
+		var end_xpos = $('#end_xpos').val()
+		var end_ypos = $('#end_ypos').val()		
+		createStartMarker(start_xpos,start_ypos);
+		createEndMarker(end_xpos,end_ypos);
+		createLine(start_xpos,start_ypos,end_xpos,end_ypos);
+		setBounds(start_xpos,start_ypos,end_xpos,end_ypos);
+	};
+
 });			
