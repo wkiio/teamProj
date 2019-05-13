@@ -67,7 +67,18 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fc37be4712f8b89b167cddbc490382f&libraries=services"></script>
 <script>
+<<<<<<< HEAD
 // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
+=======
+<<<<<<< HEAD
+
+
+
+//마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
+=======
+// 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
+>>>>>>> branch 'master' of https://github.com/wkiio/teamProj.git
+>>>>>>> branch 'master' of https://github.com/wkiio/teamProj.git
 var placeOverlay = new daum.maps.CustomOverlay({zIndex:1}), 
     contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다 
     markers = [], // 마커를 담을 배열입니다
@@ -82,6 +93,26 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 // 지도를 생성합니다    
 var map = new daum.maps.Map(mapContainer, mapOption); 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+//가지고온 데이타 넣어주는거?(ajax로 지금 응급실데이터 넣어줄꺼)
+var getdata;
+
+var emData;
+var xjb;
+var yib=3;
+
+//주소를 좌표로 변환 하는 객체를 생성한다.
+var geocoder = new daum.maps.services.Geocoder();
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> branch 'master' of https://github.com/wkiio/teamProj.git
+=======
+>>>>>>> branch 'mjmj' of https://github.com/wkiio/teamProj.git
+>>>>>>> branch 'master' of https://github.com/wkiio/teamProj.git
 // 장소 검색 객체를 생성합니다
 var ps = new daum.maps.services.Places(map); 
 
