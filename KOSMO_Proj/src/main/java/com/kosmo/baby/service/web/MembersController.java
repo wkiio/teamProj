@@ -77,7 +77,7 @@ public class MembersController {
 			model.addAttribute("id",dto.getId());
 			model.addAttribute("name",dto.getName());
 			System.out.println(dto.getName());
-			model.addAttribute("tel",dto.getTel());
+			model.addAttribute("tel",dto.getTel().substring(0,3)+"-"+dto.getTel().substring(3, 7)+"-"+dto.getTel().substring(7));
 			model.addAttribute("email1",dto.getEmail().split("@")[0].trim());
 			model.addAttribute("email2",dto.getEmail().split("@")[1].trim());
 			model.addAttribute("addr",dto.getAddr());

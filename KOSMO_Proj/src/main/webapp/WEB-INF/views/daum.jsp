@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+ <script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
+ <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
     <style>
 .map_wrap, .map_wrap * {margin:0; padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
@@ -39,35 +44,34 @@
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
     <ul id="category">
         <li id="BK9" data-order="0"> 
-            <span class="category_bg bank"></span>
-            은행
+            <span id="hospital" class="category_bg bank"></span>
+            소아과
         </li>       
         <li id="MT1" data-order="1"> 
-            <span class="category_bg mart"></span>
-            마트
+            <span id="emergency" class="category_bg mart"></span>
+            응급실
         </li>  
         <li id="PM9" data-order="2"> 
-            <span class="category_bg pharmacy"></span>
-            약국
+            <span id="dentist" class="category_bg pharmacy"></span>
+            소아치과
         </li>  
         <li id="OL7" data-order="3"> 
-            <span class="category_bg oil"></span>
-            주유소
-        </li>  
-        <li id="CE7" data-order="4"> 
-            <span class="category_bg cafe"></span>
-            카페
-        </li>  
-        <li id="CS2" data-order="5"> 
-            <span class="category_bg store"></span>
-            편의점
-        </li>      
+            <span id="ob" class="category_bg oil"></span>
+            산부인과
+        </li>        
     </ul>
 </div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fc37be4712f8b89b167cddbc490382f&libraries=services"></script>
 <script>
+<<<<<<< HEAD
+
+
+
+//마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
+=======
 // 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
+>>>>>>> branch 'master' of https://github.com/wkiio/teamProj.git
 var placeOverlay = new daum.maps.CustomOverlay({zIndex:1}), 
     contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트 입니다 
     markers = [], // 마커를 담을 배열입니다
@@ -82,8 +86,76 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 // 지도를 생성합니다    
 var map = new daum.maps.Map(mapContainer, mapOption); 
 
+<<<<<<< HEAD
+//가지고온 데이타 넣어주는거?(ajax로 지금 응급실데이터 넣어줄꺼)
+var getdata;
+
+var emData;
+var xjb;
+var yib=3;
+
+//주소를 좌표로 변환 하는 객체를 생성한다.
+var geocoder = new daum.maps.services.Geocoder();
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> branch 'master' of https://github.com/wkiio/teamProj.git
+=======
+>>>>>>> branch 'mjmj' of https://github.com/wkiio/teamProj.git
 // 장소 검색 객체를 생성합니다
 var ps = new daum.maps.services.Places(map); 
+
+//값 미리 설정해보기
+$(function(){
+   emData = ${emer};
+   //console.log("emData:" + emData);
+   var index =0;
+   console.log('a' + emData[3].name);
+   
+    emData.forEach(function(vaule,index,array){
+      console.log('11');
+      var search3 = vaule.addr;
+      geocoder.addressSearch(vaule.addr,function(result,status){           
+         console.log('index :'+ index +' : '+ vaule.addr);
+         index++;
+         console.log('22');
+            if (status === daum.maps.services.Status.OK) {  
+             var coords = new daum.maps.LatLng(result[0].y, result[0].x);                   
+                console.log('y : '+typeof(result[0].y));
+                vaule.x = result[0].x;
+                vaule.y= result[0].y;
+                //console.log('v : ' + typeof(coords.jb));
+             //value.x = result[0].y;
+             //console.log('33 : ' + vaule.x);          
+         }          
+      });
+      console.log('44');
+      
+   }); 
+   
+   
+    /* for(var i=0; i<emData.length; i++ ) {   
+      console.log('11');
+      var search = emData[i].addr;
+      geocoder.addressSearch(search,function(result,status){           
+            console.log('index :'+ index +' : '+ search);
+            index++;
+            console.log('22');
+               if (status === daum.maps.services.Status.OK) {  
+                var coords = new daum.maps.LatLng(result[0].y, result[0].x);                   
+          
+                console.log('33');          
+            }          
+         });
+      console.log('44');
+      }   */
+});
+
+
+
+
+
 
 // 지도에 idle 이벤트를 등록합니다
 daum.maps.event.addListener(map, 'idle', searchPlaces);
@@ -101,6 +173,11 @@ placeOverlay.setContent(contentNode);
 
 // 각 카테고리에 클릭 이벤트를 등록합니다
 addCategoryClickEvent();
+
+
+ 
+
+
 
 // 엘리먼트에 이벤트 핸들러를 등록하는 함수입니다
 function addEventHandle(target, type, callback) {
@@ -122,16 +199,21 @@ function searchPlaces() {
 
     // 지도에 표시되고 있는 마커를 제거합니다
     removeMarker();
+    //console.log('ffff' + currCategory);
+    
+    //ajax를 통해서 디비에서 가져온다.
+    sendCategory(currCategory);
     
     ps.categorySearch(currCategory, placesSearchCB, {useMapBounds:true}); 
 }
 
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
+    
     if (status === daum.maps.services.Status.OK) {
-
         // 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
         displayPlaces(data);
+       
     } else if (status === daum.maps.services.Status.ZERO_RESULT) {
         // 검색결과가 없는경우 해야할 처리가 있다면 이곳에 작성해 주세요
 
@@ -141,18 +223,42 @@ function placesSearchCB(data, status, pagination) {
     }
 }
 
+
+
+
 // 지도에 마커를 표출하는 함수입니다
 function displayPlaces(places) {
-
+ //console.log("places1: " +JSON.stringify(places));
+ //console.log(places[0].place_name)
+ console.log(places);
+ console.log(emData[0].addr);
     // 몇번째 카테고리가 선택되어 있는지 얻어옵니다
     // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
     var order = document.getElementById(currCategory).getAttribute('data-order');
-
     
-
-    for ( var i=0; i<places.length; i++ ) {
-
-            // 마커를 생성하고 지도에 표시합니다
+   var index = 0;
+    if(currCategory == 'MT1'){
+         for(var i=0; i<emData.length; i++ ) {   
+               // 마커를 생성하고 지도에 표시합니다
+                 //search = getdata[i].addr;
+              // geocoder.addressSearch(getdata[i].addr,function(result,status){           
+                //console.log(search);g
+           
+                   
+                  var marker = addMarker(new daum.maps.LatLng( emData[i].y,  emData[i].x), order);
+               // 마커와 검색결과 항목을 클릭 했을 때
+               // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
+               (function(marker, emData) {
+                   daum.maps.event.addListener(marker, 'click', function() {
+                       displayPlaceInfo(emData);
+                   });
+               })(marker, emData[i]);
+         }
+     }
+      
+      else{
+          for ( var i=0; i<places.length; i++ ) {       
+             // 마커를 생성하고 지도에 표시합니다
             var marker = addMarker(new daum.maps.LatLng(places[i].y, places[i].x), order);
 
             // 마커와 검색결과 항목을 클릭 했을 때
@@ -161,9 +267,11 @@ function displayPlaces(places) {
                 daum.maps.event.addListener(marker, 'click', function() {
                     displayPlaceInfo(place);
                 });
-            })(marker, places[i]);
-    }
+            })(marker, places[i]); 
+       }
+      }
 }
+
 
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 function addMarker(position, order) {
@@ -196,8 +304,10 @@ function removeMarker() {
 
 // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
 function displayPlaceInfo (place) {
+   console.log("place2" + JSON.stringify(place));
+   //console.log(place);
     var content = '<div class="placeinfo">' +
-                    '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.place_name + '">' + place.place_name + '</a>';   
+                    '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.name + '">' + place.place_name + '</a>';   
 
     if (place.road_address_name) {
         content += '    <span title="' + place.road_address_name + '">' + place.road_address_name + '</span>' +
@@ -228,9 +338,9 @@ function addCategoryClickEvent() {
 
 // 카테고리를 클릭했을 때 호출되는 함수입니다
 function onClickCategory() {
+   console.log('카테고리 클릭');
     var id = this.id,
-        className = this.className;
-
+        className = this.className;   
     placeOverlay.setMap(null);
 
     if (className === 'on') {
@@ -238,7 +348,7 @@ function onClickCategory() {
         changeCategoryClass();
         removeMarker();
     } else {
-        currCategory = id;
+        currCategory = id;       
         changeCategoryClass(this);
         searchPlaces();
     }
@@ -246,9 +356,9 @@ function onClickCategory() {
 
 // 클릭된 카테고리에만 클릭된 스타일을 적용하는 함수입니다
 function changeCategoryClass(el) {
+   //console.log("el: " +el);
     var category = document.getElementById('category'),
-        children = category.children,
-        i;
+        children = category.children,i;
 
     for ( i=0; i<children.length; i++ ) {
         children[i].className = '';
@@ -258,4 +368,30 @@ function changeCategoryClass(el) {
         el.className = 'on';
     } 
 } 
+
+//카테고리 선택했을때 ajax로 데이타값 가져오는 함수 구현하기
+function sendCategory(category){
+   console.log('이걸 보낼꺼임' + category);
+   $.ajax({
+      data :{"${_csrf.parameterName}" : "${_csrf.token}", 'category' : category},
+      type : "POST",
+      url : "<c:url value='sendCategory.kosmo'/>",
+      dataType:"json",
+      success:function(data){
+         console.log('ajax일단 성공했따!');
+         console.log(typeof(data));
+         getdata = data;
+         //console.log('getdata:' + typeof(getdata));
+      }
+      
+      
+   });
+   
+   
+};
+
+
+
+
 </script>
+
