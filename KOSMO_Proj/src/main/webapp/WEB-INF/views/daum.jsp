@@ -70,33 +70,11 @@
 		no-repeat;
 }
 
-#category li .bank {
-	background-position: -10px 0;
-}
 
-#category li .mart {
-	background-position: -10px -36px;
-}
 
-#category li .pharmacy {
-	background-position: -10px -72px;
-}
-
-#category li .oil {
-	background-position: -10px -108px;
-}
-
-#category li .cafe {
-	background-position: -10px -144px;
-}
-
-#category li .store {
-	background-position: -10px -180px;
-}
-
-#category li.on .category_bg {
-	background-position-x: -46px;
-}
+ #category li.on .category_bg {
+	background-position-x: -80px;
+} 
 
 .placeinfo_wrap {
 	position: absolute;
@@ -171,6 +149,23 @@
 	font-size: 11px;
 	margin-top: 0;
 }
+
+#hospital {
+	background-image : url('resources/map_icons/hos.jpg');
+	
+}
+#emergency {
+	background-image : url('resources/map_icons/emer.jpg');
+	
+}
+#dentist {
+	background-image : url('resources/map_icons/den.jpg');
+	
+}
+#obimage {
+	background-image : url('resources/map_icons/obbb.jpg');
+	
+}
 </style>
 
 <p style="margin-top:-12px">
@@ -181,20 +176,20 @@
 <div class="map_wrap">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
     <ul id="category">
-        <li id="BK9" data-order="0"> 
+        <li id="hos" data-order="0"> 
             <span id="hospital" class="category_bg bank"></span>
             소아과
         </li>       
-        <li id="MT1" data-order="1"> 
+        <li id="emer" data-order="1"> 
             <span id="emergency" class="category_bg mart"></span>
             응급실
         </li>  
-        <li id="PM9" data-order="2"> 
+        <li id="dent" data-order="2"> 
             <span id="dentist" class="category_bg pharmacy"></span>
             소아치과
         </li>  
-        <li id="OL7" data-order="3"> 
-            <span id="ob" class="category_bg oil"></span>
+        <li id="ob" data-order="3"> 
+            <span id="obimage" class="category_bg oil"></span>
             산부인과
         </li>        
     </ul>
@@ -364,7 +359,7 @@ function displayPlaces(places) {
     var order = document.getElementById(currCategory).getAttribute('data-order');
     
    var index = 0;
-    if(currCategory == 'MT1'){
+    if(currCategory == 'emer'){
          for(var i=0; i<emData.length; i++ ) {   
                // 마커를 생성하고 지도에 표시합니다
                  //search = getdata[i].addr;
@@ -402,7 +397,7 @@ function displayPlaces(places) {
 
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 function addMarker(position, order) {
-    var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+    var imageSrc = 'resource/map_icons/totalicons.jpg', // 마커 이미지 url, 스프라이트 이미지를 씁니다
         imageSize = new daum.maps.Size(27, 28),  // 마커 이미지의 크기
         imgOptions =  {
             spriteSize : new daum.maps.Size(72, 208), // 스프라이트 이미지의 크기
