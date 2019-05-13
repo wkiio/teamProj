@@ -19,6 +19,11 @@
    <select id="hospital_List" parameterType="java.util.Map" resultType="HospitalDTO">
       SELECT * FROM hospital
    </select>
+   
+   <!-- 응급실만 체크 -->
+   <select id="emerlist" parameterType="java.util.Map" resultType="HospitalDTO">
+      SELECT * FROM hospital WHERE EMERGENCY = '1'
+   </select>
 
 	
 </mapper>

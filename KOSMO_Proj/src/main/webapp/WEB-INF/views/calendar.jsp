@@ -46,7 +46,6 @@ td.fc-sat .fc-day-number {
   cursor: pointer;
   border: none;
 }
-
 .fc-button {
   background-color: #23b8bc;
   border: none;
@@ -64,7 +63,6 @@ td.fc-sat .fc-day-number {
 .modal-footer input:hover {
   background-color: #157577;
 }
-
 </style>
 <sec:authorize access="isAuthenticated()">
       <sec:authentication property="principal.username" var="id"/>
@@ -317,11 +315,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		});		
 		
 	});
-
 	
 });
-
-
 </script>
 
 <div class="site-section" style="padding: 2em;">
@@ -448,4 +443,3 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 </div>
 	
-
