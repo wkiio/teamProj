@@ -110,10 +110,12 @@ public class HospitalController {
 			recode.put("holiday",dto.getHoliday());
 			recode.put("emergency",dto.getEmergency());
 			recode.put("code",dto.getCode());
+			recode.put("x",dto.getX());
+			recode.put("y",dto.getY());
 			collections.add(recode);
 		}
 		//model.addAttribute("addrs",collections);
-		//model.addAttribute("addrsJSON",JSONArray.toJSONString(collections));
+		//model.addAttribute("emer",JSONArray.toJSONString(collections));
 		
 		System.out.println("응급실:" +JSONArray.toJSONString(collections));
 		

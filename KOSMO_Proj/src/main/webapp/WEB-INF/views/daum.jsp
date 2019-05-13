@@ -91,45 +91,71 @@ var map = new daum.maps.Map(mapContainer, mapOption);
 var getdata;
 
 var emData;
-
-//값 미리 설정해보기
- $(function(){
-	emData = ${emer};
-	console.log("emData:" + emData);
-	var x;
-	var y;
-	
-	 for(var i=0; i<emData.length; i++ ) {   
-			var search = emData[i].addr;
-			geocoder.addressSearch(search,function(result,status){     		
-				//console.log(search);g
-    		if (status === daum.maps.services.Status.OK) {    		
-    	        var coords = new daum.maps.LatLng(result[0].y, result[0].x);    	
-    	       // console.log(coords);
-    	      // conosole.log("x : " + x);
-    	       x = result[0].x;
-    	       y = result[0].y;
-    		}
-    		
-    		});
-			emData[i].x = x;
-			emData[i].y = y;
-    	} 
-});
-  
-
-
-
-
+var xjb;
+var yib=3;
 
 //주소를 좌표로 변환 하는 객체를 생성한다.
 var geocoder = new daum.maps.services.Geocoder();
 
+<<<<<<< HEAD
 
 =======
 >>>>>>> branch 'master' of https://github.com/wkiio/teamProj.git
+=======
+>>>>>>> branch 'mjmj' of https://github.com/wkiio/teamProj.git
 // 장소 검색 객체를 생성합니다
 var ps = new daum.maps.services.Places(map); 
+
+//값 미리 설정해보기
+$(function(){
+   emData = ${emer};
+   //console.log("emData:" + emData);
+   var index =0;
+   console.log('a' + emData[3].name);
+   
+    emData.forEach(function(vaule,index,array){
+      console.log('11');
+      var search3 = vaule.addr;
+      geocoder.addressSearch(vaule.addr,function(result,status){           
+         console.log('index :'+ index +' : '+ vaule.addr);
+         index++;
+         console.log('22');
+            if (status === daum.maps.services.Status.OK) {  
+             var coords = new daum.maps.LatLng(result[0].y, result[0].x);                   
+                console.log('y : '+typeof(result[0].y));
+                vaule.x = result[0].x;
+                vaule.y= result[0].y;
+                //console.log('v : ' + typeof(coords.jb));
+             //value.x = result[0].y;
+             //console.log('33 : ' + vaule.x);          
+         }          
+      });
+      console.log('44');
+      
+   }); 
+   
+   
+    /* for(var i=0; i<emData.length; i++ ) {   
+      console.log('11');
+      var search = emData[i].addr;
+      geocoder.addressSearch(search,function(result,status){           
+            console.log('index :'+ index +' : '+ search);
+            index++;
+            console.log('22');
+               if (status === daum.maps.services.Status.OK) {  
+                var coords = new daum.maps.LatLng(result[0].y, result[0].x);                   
+          
+                console.log('33');          
+            }          
+         });
+      console.log('44');
+      }   */
+});
+
+
+
+
+
 
 // 지도에 idle 이벤트를 등록합니다
 daum.maps.event.addListener(map, 'idle', searchPlaces);
@@ -147,6 +173,11 @@ placeOverlay.setContent(contentNode);
 
 // 각 카테고리에 클릭 이벤트를 등록합니다
 addCategoryClickEvent();
+
+
+ 
+
+
 
 // 엘리먼트에 이벤트 핸들러를 등록하는 함수입니다
 function addEventHandle(target, type, callback) {
@@ -178,7 +209,7 @@ function searchPlaces() {
 
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
-	 
+    
     if (status === daum.maps.services.Status.OK) {
         // 정상적으로 검색이 완료됐으면 지도에 마커를 표출합니다
         displayPlaces(data);
@@ -207,31 +238,27 @@ function displayPlaces(places) {
     
    var index = 0;
     if(currCategory == 'MT1'){
-   		for(var i=0; i<emData.length; i++ ) {   
-    	        // 마커를 생성하고 지도에 표시합니다
-    	       	//search = getdata[i].addr;
-    	        geocoder.addressSearch(getdata[i].addr,function(result,status){     		
-    				//console.log(search);g
-        		if (status === daum.maps.services.Status.OK) {    		
-        	        var coords = new daum.maps.LatLng(result[0].y, result[0].x); 
-        	        
-                var marker = addMarker(new daum.maps.LatLng(result[0].y,  result[0].x), order);
-                // 마커와 검색결과 항목을 클릭 했을 때
-                // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
-                (function(marker, emData) {
-                    daum.maps.event.addListener(marker, 'click', function() {
-                        displayPlaceInfo(emData);
-                    });
-                })(marker, emData[i]);
-    		}
-    		
-    		});
-   		}
-    }
-   	
-   	else{
-    		for ( var i=0; i<places.length; i++ ) {    	
-    		   // 마커를 생성하고 지도에 표시합니다
+         for(var i=0; i<emData.length; i++ ) {   
+               // 마커를 생성하고 지도에 표시합니다
+                 //search = getdata[i].addr;
+              // geocoder.addressSearch(getdata[i].addr,function(result,status){           
+                //console.log(search);g
+           
+                   
+                  var marker = addMarker(new daum.maps.LatLng( emData[i].y,  emData[i].x), order);
+               // 마커와 검색결과 항목을 클릭 했을 때
+               // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
+               (function(marker, emData) {
+                   daum.maps.event.addListener(marker, 'click', function() {
+                       displayPlaceInfo(emData);
+                   });
+               })(marker, emData[i]);
+         }
+     }
+      
+      else{
+          for ( var i=0; i<places.length; i++ ) {       
+             // 마커를 생성하고 지도에 표시합니다
             var marker = addMarker(new daum.maps.LatLng(places[i].y, places[i].x), order);
 
             // 마커와 검색결과 항목을 클릭 했을 때
@@ -241,8 +268,8 @@ function displayPlaces(places) {
                     displayPlaceInfo(place);
                 });
             })(marker, places[i]); 
-    	}
-   	}
+       }
+      }
 }
 
 
@@ -277,10 +304,10 @@ function removeMarker() {
 
 // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
 function displayPlaceInfo (place) {
-	console.log("place2" + JSON.stringify(place));
-	//console.log(place);
+   console.log("place2" + JSON.stringify(place));
+   //console.log(place);
     var content = '<div class="placeinfo">' +
-                    '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.place_name + '">' + place.place_name + '</a>';   
+                    '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.name + '">' + place.place_name + '</a>';   
 
     if (place.road_address_name) {
         content += '    <span title="' + place.road_address_name + '">' + place.road_address_name + '</span>' +
@@ -311,9 +338,9 @@ function addCategoryClickEvent() {
 
 // 카테고리를 클릭했을 때 호출되는 함수입니다
 function onClickCategory() {
-	console.log('카테고리 클릭');
+   console.log('카테고리 클릭');
     var id = this.id,
-        className = this.className;	
+        className = this.className;   
     placeOverlay.setMap(null);
 
     if (className === 'on') {
@@ -329,7 +356,7 @@ function onClickCategory() {
 
 // 클릭된 카테고리에만 클릭된 스타일을 적용하는 함수입니다
 function changeCategoryClass(el) {
-	//console.log("el: " +el);
+   //console.log("el: " +el);
     var category = document.getElementById('category'),
         children = category.children,i;
 
@@ -344,28 +371,27 @@ function changeCategoryClass(el) {
 
 //카테고리 선택했을때 ajax로 데이타값 가져오는 함수 구현하기
 function sendCategory(category){
-	console.log('이걸 보낼꺼임' + category);
-	$.ajax({
-		data :{"${_csrf.parameterName}" : "${_csrf.token}", 'category' : category},
-		type : "POST",
-		url : "<c:url value='sendCategory.kosmo'/>",
-		dataType:"json",
-		success:function(data){
-			console.log('ajax일단 성공했따!');
-			console.log(typeof(data));
-			getdata = data;
-			//console.log('getdata:' + typeof(getdata));
-		}
-		
-		
-	});
-	
-	
+   console.log('이걸 보낼꺼임' + category);
+   $.ajax({
+      data :{"${_csrf.parameterName}" : "${_csrf.token}", 'category' : category},
+      type : "POST",
+      url : "<c:url value='sendCategory.kosmo'/>",
+      dataType:"json",
+      success:function(data){
+         console.log('ajax일단 성공했따!');
+         console.log(typeof(data));
+         getdata = data;
+         //console.log('getdata:' + typeof(getdata));
+      }
+      
+      
+   });
+   
+   
 };
 
 
 
 
 </script>
-
 
