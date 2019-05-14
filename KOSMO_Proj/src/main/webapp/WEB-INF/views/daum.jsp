@@ -231,12 +231,12 @@
 
 	//값 미리 설정해보기
 	$(function() {
-		//emData = ${emer};
-		console.log("getdata:" + getdata);
+		emData = ${emer};
+		console.log("emData:" + emData);
 		//var index = 0;
 		//console.log('a' + emData[3].name);
 
-		getdata.forEach(function(vaule, index, array) {
+		emData.forEach(function(vaule, index, array) {
 			console.log('11');
 			var search3 = vaule.addr;
 			geocoder.addressSearch(vaule.addr,
@@ -325,10 +325,9 @@
 	}
 
 	// 지도에 마커를 표출하는 함수입니다
-	function displayPlaces(getdata) {
+	function displayPlaces(emdata) {
 		//console.log("places1: " +JSON.stringify(places));
 		//console.log(places[0].place_name)
-		console.log(getdata[0].addr);
 		// 몇번째 카테고리가 선택되어 있는지 얻어옵니다
 		// 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
 		var order = document.getElementById(currCategory).getAttribute(
@@ -337,96 +336,98 @@
 		var index = 0;
 		//currCategory == 'OL7' || currCategory == 'BK9' || currCategory == 'PM9' || currCategory == 'MT1' 
 	    if(currCategory == 'OL7'){
-			for (var i = 0; i < getdata.length; i++) {
+			for (var i = 0; i < emData.length; i++) {
 				console.log("마커표시 시작")	
 			
 				// 마커를 생성하고 지도에 표시합니다
 				//search = getdata[i].addr;
 				// geocoder.addressSearch(getdata[i].addr,function(result,status){           
 				//console.log(search);g
-				var marker = addMarker(new daum.maps.LatLng(getdata[i].y,
-						getdata[i].x), order);
+				var marker = addMarker(new daum.maps.LatLng(emData[i].y,
+						emData[i].x), order);
 				// 마커와 검색결과 항목을 클릭 했을 때
 				// 장소정보를 표출하도록 클릭 이벤트를 등록합니다
-				(function(marker, getdata) {
+				(function(marker, emData) {
 					daum.maps.event.addListener(marker, 'click', function() {
-						displayPlaceInfo(getdata);
+						displayPlaceInfo(emData);
 						console.log("마커표시 완료했다.")
 					});
-				})(marker, getdata[i]);
+				})(marker, emData[i]);
 
 			}
 		}
 	    if(currCategory == 'BK9'){
-			for (var i = 0; i < getdata.length; i++) {
+			for (var i = 0; i < emData.length; i++) {
 				console.log("마커표시 시작")	
 			
 				// 마커를 생성하고 지도에 표시합니다
 				//search = getdata[i].addr;
 				// geocoder.addressSearch(getdata[i].addr,function(result,status){           
 				//console.log(search);g
-				var marker = addMarker(new daum.maps.LatLng(getdata[i].y,
-						getdata[i].x), order);
+				var marker = addMarker(new daum.maps.LatLng(emData[i].y,
+						emData[i].x), order);
 				// 마커와 검색결과 항목을 클릭 했을 때
 				// 장소정보를 표출하도록 클릭 이벤트를 등록합니다
-				(function(marker, getdata) {
+				(function(marker, emData) {
 					daum.maps.event.addListener(marker, 'click', function() {
-						displayPlaceInfo(getdata);
+						displayPlaceInfo(emData);
 						console.log("마커표시 완료했다.")
 					});
-				})(marker, getdata[i]);
+				})(marker, emData[i]);
 
 			}
 		}
 	    if(currCategory == 'PM9'){
-			for (var i = 0; i < getdata.length; i++) {
+			for (var i = 0; i < emData.length; i++) {
 				console.log("마커표시 시작")	
 			
 				// 마커를 생성하고 지도에 표시합니다
 				//search = getdata[i].addr;
 				// geocoder.addressSearch(getdata[i].addr,function(result,status){           
 				//console.log(search);g
-				var marker = addMarker(new daum.maps.LatLng(getdata[i].y,
-						getdata[i].x), order);
+				var marker = addMarker(new daum.maps.LatLng(emData[i].y,
+						emData[i].x), order);
 				// 마커와 검색결과 항목을 클릭 했을 때
 				// 장소정보를 표출하도록 클릭 이벤트를 등록합니다
-				(function(marker, getdata) {
+				(function(marker, emData) {
 					daum.maps.event.addListener(marker, 'click', function() {
-						displayPlaceInfo(getdata);
+						displayPlaceInfo(emData);
 						console.log("마커표시 완료했다.")
 					});
-				})(marker, getdata[i]);
+				})(marker, emData[i]);
 
 			}
 		}
 	    if(currCategory == 'MT1'){
-			for (var i = 0; i < getdata.length; i++) {
+			for (var i = 0; i < emData.length; i++) {
 				console.log("마커표시 시작")	
 			
 				// 마커를 생성하고 지도에 표시합니다
 				//search = getdata[i].addr;
 				// geocoder.addressSearch(getdata[i].addr,function(result,status){           
 				//console.log(search);g
-				var marker = addMarker(new daum.maps.LatLng(getdata[i].y,
-						getdata[i].x), order);
+				var marker = addMarker(new daum.maps.LatLng(emData[i].y,
+						emData[i].x), order);
 				// 마커와 검색결과 항목을 클릭 했을 때
 				// 장소정보를 표출하도록 클릭 이벤트를 등록합니다
-				(function(marker, getdata) {
+				(function(marker, emData) {
 					daum.maps.event.addListener(marker, 'click', function() {
-						displayPlaceInfo(getdata);
+						displayPlaceInfo(emData);
 						console.log("마커표시 완료했다.")
 					});
-				})(marker, getdata[i]);
+				})(marker, emData[i]);
 
 			}
 		}
 		
 
 		else {
-			for (var i = 0; i < getdata.length; i++) {
+			if(emdata.name.typeof('undefined'))	{
+		
+			for (var i = 0; i < emdata.length; i++) {
 				// 마커를 생성하고 지도에 표시합니다
-				var marker = addMarker(new daum.maps.LatLng(getdata[i].y,
-						getdata[i].x), order);
+				var marker = addMarker(new daum.maps.LatLng(emdata[i].y,
+						emdata[i].x), order);
 
 				// 마커와 검색결과 항목을 클릭 했을 때
 				// 장소정보를 표출하도록 클릭 이벤트를 등록합니다
@@ -434,10 +435,12 @@
 					daum.maps.event.addListener(marker, 'click', function() {
 						displayPlaceInfo(place);
 					});
-				})(marker, getdata[i]);
+				})(marker, emdata[i]);
 			}
 		}
-	}
+	    }
+	    }
+	
 
 	// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 	function addMarker(position, order) {
@@ -474,7 +477,7 @@
 		console.log("place2" + JSON.stringify(emdata));
 		//console.log(place);
 		var content = '<div class="placeinfo">'
-				+ '   <a class="title" href="' + emdata.place_url + '" target="_blank" title="' + emdata.name + '">'
+				+ '   <a class="title" href="' + emdata.name + '" target="_blank" title="' + emdata.name + '">'
 				+ emdata.name + '</a>';
 
 		if (emdata.addr) {
