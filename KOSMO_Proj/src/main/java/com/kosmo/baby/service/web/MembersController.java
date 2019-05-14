@@ -94,11 +94,11 @@ public class MembersController {
 		
 		if(flag) {
 			MembersDTO dto = service.selectOne(map);
-			//System.out.println(dto.getId());
 			model.addAttribute("id",dto.getId());
 			model.addAttribute("name",dto.getName());
-			//System.out.println(dto.getName());
-			model.addAttribute("tel",dto.getTel());
+			model.addAttribute("tel1",dto.getTel().substring(0,3));
+			model.addAttribute("tel2",dto.getTel().substring(3,7));
+			model.addAttribute("tel3",dto.getTel().substring(7,11));
 			model.addAttribute("email1",dto.getEmail().split("@")[0].trim());
 			model.addAttribute("email2",dto.getEmail().split("@")[1].trim());
 			model.addAttribute("addr",dto.getAddr());

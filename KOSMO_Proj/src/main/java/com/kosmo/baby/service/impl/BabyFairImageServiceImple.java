@@ -30,7 +30,6 @@ public class BabyFairImageServiceImple implements BabyFairImageService{
 
 	@Override
 	public int insert(Map map) {
-		// TODO Auto-generated method stub
 		return dao.insert(map);
 	}
 

@@ -12,7 +12,7 @@
 						이메일 인증을 완료했습니다!<br>로그인 후 이용하세요.
 					</p>
 					<div class="mt-1">
-						<a href="login_page.kosmo" class="yellowBt">확인</a> 
+						<a href="login_page.kosmo" class="yellowBt" style="padding-top: 10px">확인</a> 
 					</div>
 				</div>
 			</div>

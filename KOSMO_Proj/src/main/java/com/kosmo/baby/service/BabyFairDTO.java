@@ -8,6 +8,8 @@ public class BabyFairDTO {
 	private String time;
 	private String place;
 	private String titleImage;
+	private String product;
+	
 	public String getBaby_no() {
 		return baby_no;
 	}
@@ -44,7 +46,10 @@ public class BabyFairDTO {
 	public void setTitleImage(String titleImage) {
 		this.titleImage = titleImage;
 	}
-	
-	
-
+	public String getProduct() {
+		return product;
+	}
+	public void setProduct(String product) {
+		this.product = product;
+	}
 }

@@ -20,7 +20,6 @@ public class BabyFairDAO implements BabyFairService {
 
 	@Override
 	public List<BabyFairDTO> selectList(Map map) {
-		// TODO Auto-generated method stub
 		return template.selectList("babyFairList",map);
 	}
 
@@ -32,13 +31,11 @@ public class BabyFairDAO implements BabyFairService {
 
 	@Override
 	public int insert(Map map) {
-		// TODO Auto-generated method stub
 		return template.insert("babyFairInsert",map);
 	}
 
 	@Override
 	public int delete(Map map) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

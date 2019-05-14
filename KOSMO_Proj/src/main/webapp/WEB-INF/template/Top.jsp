@@ -47,7 +47,7 @@
 					<ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
 						<li class="has-children active"><a href="index.kosmo">메인</a>
 							<ul class="dropdown">
-								<li><a href="Carview.kosmo">Menu One</a></li>
+								<li><a href="#">Menu One</a></li>
 								<li><a href="carregister.kosmo">카풀입력하기(임시)</a></li>
 								<li><a href="daumapi.kosmo">Menu Three</a></li>
 								<li class="has-children"><a href="#">Sub Menu</a>

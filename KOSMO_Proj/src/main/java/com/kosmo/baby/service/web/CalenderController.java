@@ -1,6 +1,7 @@
 package com.kosmo.baby.service.web;
 
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,7 @@ import java.util.Vector;
 
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.json.simple.JSONArray;
 import org.springframework.security.core.Authentication;
@@ -17,6 +19,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import com.kosmo.baby.command.FileUpDownUtils;
+import com.kosmo.baby.command.UploadCommand;
 import com.kosmo.baby.service.CalenderDTO;
 import com.kosmo.baby.service.impl.CalenderServiceimpl;
 
@@ -32,11 +39,9 @@ public class CalenderController {
 		map.put("id", user.getUsername());
 		
 		List<CalenderDTO> list = service.selectList(map);
-		System.out.println();
 		//List컬렉션을 JSO형태로 변환
 		List<Map> collections = new Vector<Map>();
 		for(CalenderDTO dto : list) {
-			System.out.println(dto.getTitle());
 			Map record = new HashMap();
 			record.put("id", dto.getCal_no());
 			record.put("title", dto.getTitle());
@@ -79,15 +84,17 @@ public class CalenderController {
 		UserDetails user = (UserDetails)auth.getPrincipal();
 		map.put("id", user.getUsername());
 		System.out.println("입력시작");
-		System.out.println(map.get("title"));		
-		if(!map.get("startTime").toString().equals("")) {
+		System.out.println(map);
+		if(!map.get("startTime").equals("")) {
 			map.put("startdate", map.get("startdate").toString().concat("T"+map.get("startTime")));
 			map.put("enddate", map.get("enddate").toString().concat("T"+map.get("endTime")));
 		}
+		System.out.println("요청보냄");
 		service.insert(map);
 		
 		System.out.println("입력완료");
 		System.out.println(map.get("no"));
+		
 		return map.get("no").toString();
 	}
 	
@@ -115,5 +122,32 @@ public class CalenderController {
 		return "삭제끝";
 	}
 	
+	@RequestMapping(value="/fcupload.kosmo", produces = "application/text; charset=utf8")
+	public String upload(MultipartHttpServletRequest mhsr,HttpServletRequest req,@RequestParam Map map) throws Exception {		
+		System.out.println("이미지 삽입 시작");
+		System.out.println(map);
+		String phisicalPath = mhsr.getServletContext().getRealPath("/resources/babypair");
+		//타이틀 이미지 업로드
+		MultipartFile titleImg = mhsr.getFile("timg");
+		String timgName = titleImg.getOriginalFilename();
+		System.out.println(titleImg.getOriginalFilename());
+		String newFileName = FileUpDownUtils.getNewFileName(phisicalPath, titleImg.getOriginalFilename());
+		File file = new File(phisicalPath+File.separator+newFileName);
+		titleImg.transferTo(file);		
+		//아이템 이미지 업로드
+		List<MultipartFile> fileList = mhsr.getFiles("file");
+		StringBuffer itemName = new StringBuffer();
+		for (MultipartFile itemImg : fileList) {
+			itemName.append(itemImg.getOriginalFilename());
+			System.out.println(itemImg.getOriginalFilename());
+			newFileName = FileUpDownUtils.getNewFileName(phisicalPath, itemImg.getOriginalFilename());
+			file = new File(phisicalPath+File.separator+newFileName);
+			itemImg.transferTo(file);
+		}
+		System.out.println("업로드 완료");
+		map.put("titleName", timgName);
+		map.put("itemName", itemName);
+		return "forward:/inputbabyfair.kosmo";
+	}
 
 }
