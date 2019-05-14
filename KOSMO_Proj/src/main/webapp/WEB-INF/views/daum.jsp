@@ -173,11 +173,6 @@
 }
 </style>
 
-<p style="margin-top:-12px">
-    <em class="link">
-        <a href="/web/documentation/#CategoryCode" target="_blank">카테고리 코드목록을 보시려면 여기를 클릭하세요!</a>
-    </em>
-</p>
 <div class="map_wrap">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
     <ul id="category">
@@ -232,6 +227,8 @@ var geocoder = new daum.maps.services.Geocoder();
 
 // 장소 검색 객체를 생성합니다
 var ps = new daum.maps.services.Places(map); 
+
+
 
 //값 미리 설정해보기
 $(function(){
@@ -377,9 +374,10 @@ function displayPlaces(places) {
                // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
                (function(marker, emData) {
                    daum.maps.event.addListener(marker, 'click', function() {
-                       displayPlaceInfo(emData);
+                       displayPlaceInfo(emData);                
                    });
                })(marker, emData[i]);
+            	
          }
      }
       
@@ -393,6 +391,7 @@ function displayPlaces(places) {
             (function(marker, place) {
                 daum.maps.event.addListener(marker, 'click', function() {
                     displayPlaceInfo(place);
+                    console.log("여기가클릭이냐??")
                 });
             })(marker, places[i]); 
        }
@@ -434,7 +433,7 @@ function displayPlaceInfo (place) {
    console.log("place2" + JSON.stringify(place));
    //console.log(place);
     var content = '<div class="placeinfo">' +
-                    '   <a class="title" href="' + place.place_url + '" target="_blank" title="' + place.name + '">' + place.place_name + '</a>';   
+                    '   <a class="title" id="title" href="' + place.place_url + '" target="_blank" title="' + place.name + '">' + place.place_name + '</a>';   
 
     if (place.road_address_name) {
         content += '    <span title="' + place.road_address_name + '">' + place.road_address_name + '</span>' +
@@ -460,12 +459,14 @@ function addCategoryClickEvent() {
 
     for (var i=0; i<children.length; i++) {
         children[i].onclick = onClickCategory;
+        console.log("여기가클릭이냐2??")
     }
 }
 
 // 카테고리를 클릭했을 때 호출되는 함수입니다
 function onClickCategory() {
    console.log('카테고리 클릭');
+   console.log("여기가클릭이냐3??")
     var id = this.id,
         className = this.className;   
     placeOverlay.setMap(null);
@@ -474,11 +475,13 @@ function onClickCategory() {
         currCategory = '';
         changeCategoryClass();
         removeMarker();
+       
     } else {
         currCategory = id;       
         changeCategoryClass(this);
         searchPlaces();
     }
+    
 }
 
 // 클릭된 카테고리에만 클릭된 스타일을 적용하는 함수입니다
@@ -486,6 +489,7 @@ function changeCategoryClass(el) {
    //console.log("el: " +el);
     var category = document.getElementById('category'),
         children = category.children,i;
+    console.log("여기가클릭이냐??")
 
     for ( i=0; i<children.length; i++ ) {
         children[i].className = '';
@@ -516,8 +520,6 @@ function sendCategory(category){
    
    
 };
-
-
 
 
 </script>

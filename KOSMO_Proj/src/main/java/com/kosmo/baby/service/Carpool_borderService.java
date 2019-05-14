@@ -21,5 +21,7 @@ public interface Carpool_borderService {
 	
 	//검색용
 	Carpool_borderDTO selectOne(Map map);
+	
+	public List<Carpool_borderDTO> seList(Map map);
 }
 

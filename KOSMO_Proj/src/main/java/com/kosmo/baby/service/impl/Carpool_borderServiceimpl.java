@@ -53,6 +53,10 @@ public class Carpool_borderServiceimpl implements Carpool_borderService{
 		// TODO Auto-generated method stub
 		return dao.CBoardCount(map);
 	}
+	@Override
+	public List<Carpool_borderDTO> seList(Map map) {
+		return dao.seList(map);
+	}
 
 	
 

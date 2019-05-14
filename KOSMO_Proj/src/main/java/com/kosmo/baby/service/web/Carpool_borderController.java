@@ -9,6 +9,7 @@ import java.util.Vector;
 import javax.annotation.Resource;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmo.baby.service.Carpool_borderDTO;
+import com.kosmo.baby.service.MembersDTO;
 import com.kosmo.baby.service.impl.Carpool_borderServiceimpl;
 
 @Controller
@@ -135,6 +137,23 @@ public class Carpool_borderController {
 		service.adminInsert(map);
 		System.out.println("reservation 테이블에 들어가버렸습니다");		
 		return "index.tiles";
+	}
+	//예약현황
+	@RequestMapping("/Carreservation.kosmo")
+	public String Carreservation(Map map, Model model,Authentication auth)throws Exception{	
+		UserDetails user = (UserDetails)auth.getPrincipal();
+		List<Carpool_borderDTO> list = service.seList(map);
+		System.out.println("카예약현황 : " + user.getUsername());
+		model.addAttribute("id2",user.getUsername());
+		for(int i=0;i<list.size();i++) {
+			map.put("reser",list.get(i).getFinish());
+		}
+		model.addAttribute("reser", map.get("reser"));
+		System.out.println("123123"+map.get("reser"));
+		model.addAttribute("selist", list);
+		
+		
+		return "Carreservation.tiles";
 	}
 	
 	

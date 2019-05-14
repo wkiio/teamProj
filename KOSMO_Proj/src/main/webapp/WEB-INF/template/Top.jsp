@@ -61,7 +61,7 @@
 							<ul class="dropdown">
 								<li><a href="search.kosmo">공공장소</a></li>
 								<li><a href="Carindex.kosmo">카풀1</a></li>
-								<li><a href="carpool_mypage.kosmo">카풀</a></li>
+								<li><a href="Carreservation.kosmo">카풀</a></li>
 							</ul></li>
 						<li><a href="calendar.kosmo">캘린더</a></li>
 						<li><a href="babyinfo.kosmo">육아정보</a></li>
