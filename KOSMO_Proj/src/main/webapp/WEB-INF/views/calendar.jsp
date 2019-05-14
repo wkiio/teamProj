@@ -78,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	var startDay,endDay;
 	var calendar;
-	
 	//일정 가져오기
 	function getevent(flag){
 		$.ajax({
@@ -94,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		});	
 	};
 	getevent(false);
-	
 	//캘린더 생성
 	function createCalendar(event,flag) {
 		console.log('캘린더 시작');
@@ -159,6 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					maxHeight: null,
 					tabsize: 2
 				});
+	        	
 	        	$('#schduleForm').modal();
 	        	
 	      	}
