@@ -31,6 +31,7 @@ public class HospitalController {
 	public String baby_admin(@RequestParam Map map,Model model) {
 		List<HospitalDTO> hospitals= service.selectList(map);
 		System.out.println("다음");
+		System.out.println("다음");
 		List<Map> collections = new Vector<Map>();
 		for(HospitalDTO dto : hospitals) {
 			Map recode = new HashMap();
