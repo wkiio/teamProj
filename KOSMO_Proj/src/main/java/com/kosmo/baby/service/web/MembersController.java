@@ -121,7 +121,7 @@ public class MembersController {
 	@RequestMapping("/imageupload.kosmo")
 	public String ss(@RequestParam Map map,UploadCommand cmd, HttpServletRequest req,MultipartFile file,MultipartHttpServletRequest rhhh)
 	{
-		System.out.println("받아온 파일이름" + map.get("photoinput"));
+		System.out.println("받아온 파일이름" + rhhh.getFile("photoinput"));
 		System.out.println(map);
 		getImageFile = rhhh.getFile("photoinput");
 		
@@ -137,7 +137,7 @@ public class MembersController {
 			HttpServletRequest req,	
 			@RequestParam(required=false) String career,@RequestParam(required=false) String cartype) throws Exception{
 		
-		
+		System.out.println("map: " + map);
 		
 		MultipartFile ff = getImageFile;
 		System.out.println("ff: " + ff);
@@ -192,7 +192,7 @@ public class MembersController {
 		String key =new TempKey().getKey(20, false);
 		map.put("authkey", key);
 		
-			
+		System.out.println("map:::" + map);
 		service.insert(map);
 		
 		MailHandler sendMail = new MailHandler(mailSender);
