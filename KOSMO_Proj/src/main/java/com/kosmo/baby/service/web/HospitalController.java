@@ -29,7 +29,7 @@ public class HospitalController {
 	//여기에 리퀘스트 맵핑 하셔서 작업하시면 됩니다.	
 	@RequestMapping("/daum.kosmo")
 	public String baby_admin(@RequestParam Map map,Model model) {
-		List<HospitalDTO> hospitals= service.selectList(map);
+/*		List<HospitalDTO> hospitals= service.selectList(map);
 		
 		List<Map> collections = new Vector<Map>();
 		for(HospitalDTO dto : hospitals) {
@@ -52,10 +52,11 @@ public class HospitalController {
 			
 		}
 		model.addAttribute("addrs",collections);
-		model.addAttribute("addrsJSON",JSONArray.toJSONString(collections));
+		model.addAttribute("addrsJSON",JSONArray.toJSONString(collections));*/
 		//System.out.println("ff:" + collections);
-	
-		List<HospitalDTO> hospitals1 = service.selectEmer(map);
+		List<HospitalDTO> hospitals1 = new Vector<HospitalDTO>();
+		hospitals1 = service.selectEmer(map);
+
 		List<Map> collections1 = new Vector<Map>();
 		
 		for(HospitalDTO dto : hospitals1) {
@@ -79,7 +80,6 @@ public class HospitalController {
 			collections1.add(recode);
 		}
 		model.addAttribute("emer",JSONArray.toJSONString(collections1));
-		System.out.println("gg:" + JSONArray.toJSONString(collections1));
 		
 		return "daum.tiles";
 	}
@@ -91,10 +91,25 @@ public class HospitalController {
 		
 		//System.out.println("xzdfasdfg");
 		
-		List<HospitalDTO> hospitals = service.selectEmer(map);
+		//List<HospitalDTO> hospitals = service.selectEmer(map);
+		
+		List<HospitalDTO> hospitals1 = new Vector<HospitalDTO>();
+		System.out.println(map.get("category"));
+		if (map.get("category").equals("MT1")) {
+			hospitals1 = service.selectEmer(map);
+		} 
+		else if (map.get("category").equals("BK9")) {
+			hospitals1 = service.selectHos(map);
+		}
+		else if (map.get("category").equals("PM9")) {
+			hospitals1 = service.selectdent(map);
+		}
+		else if (map.get("category").equals("OL7")) {
+			hospitals1 = service.selectOb(map);
+		}
 		List<Map> collections = new Vector<Map>();
 		
-		for(HospitalDTO dto : hospitals) {
+		for(HospitalDTO dto : hospitals1) {
 			Map recode = new HashMap();
 			recode.put("h_no", dto.getH_no());
 			recode.put("name", dto.getName());
@@ -116,9 +131,6 @@ public class HospitalController {
 		}
 		//model.addAttribute("addrs",collections);
 		//model.addAttribute("emer",JSONArray.toJSONString(collections));
-		
-		System.out.println("응급실:" +JSONArray.toJSONString(collections));
-		
 		return JSONArray.toJSONString(collections);
 	}
 	
