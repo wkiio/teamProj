@@ -15,7 +15,35 @@ public class Carpool_borderDTO {
 	private String id;
 	private String name;
 	private String status;
-
+	private String opened;
+	private String signed;
+	private String done;
+	private String reviewed;
+	
+	public String getOpened() {
+		return opened;
+	}
+	public void setOpened(String opened) {
+		this.opened = opened;
+	}
+	public String getSigned() {
+		return signed;
+	}
+	public void setSigned(String signed) {
+		this.signed = signed;
+	}
+	public String getDone() {
+		return done;
+	}
+	public void setDone(String done) {
+		this.done = done;
+	}
+	public String getReviewed() {
+		return reviewed;
+	}
+	public void setReviewed(String reviewed) {
+		this.reviewed = reviewed;
+	}
 	public String getStatus() {
 		return status;
 	}

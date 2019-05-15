@@ -188,7 +188,6 @@
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fc37be4712f8b89b167cddbc490382f&libraries=services"></script>
 <script>
 
-
 	//마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
 	var placeOverlay = new daum.maps.CustomOverlay({
 		zIndex : 1
@@ -235,8 +234,7 @@
 						index++;
 						console.log('22');
 						if (status === daum.maps.services.Status.OK) {
-							var coords = new daum.maps.LatLng(result[0].y,
-									result[0].x);
+							var coords = new daum.maps.LatLng(result[0].y, result[0].x);
 							console.log('y : ' + typeof (result[0].y));
 							vaule.x = result[0].x;
 							vaule.y = result[0].y;
@@ -325,10 +323,11 @@
 
 		var index = 0;
 		//currCategory == 'OL7' || currCategory == 'BK9' || currCategory == 'PM9' || currCategory == 'MT1' 
-	    if(currCategory == 'OL7'){
+
+		if (currCategory == 'OL7') {
 			for (var i = 0; i < emData.length; i++) {
-				console.log("마커표시 시작")	
-			
+				console.log("마커표시 시작")
+
 				// 마커를 생성하고 지도에 표시합니다
 				//search = getdata[i].addr;
 				// geocoder.addressSearch(getdata[i].addr,function(result,status){           
@@ -346,10 +345,10 @@
 
 			}
 		}
-	    if(currCategory == 'BK9'){
+		if (currCategory == 'BK9') {
 			for (var i = 0; i < emData.length; i++) {
-				console.log("마커표시 시작")	
-			
+				console.log("마커표시 시작")
+
 				// 마커를 생성하고 지도에 표시합니다
 				//search = getdata[i].addr;
 				// geocoder.addressSearch(getdata[i].addr,function(result,status){           
@@ -367,10 +366,10 @@
 
 			}
 		}
-	    if(currCategory == 'PM9'){
+		if (currCategory == 'PM9') {
 			for (var i = 0; i < emData.length; i++) {
-				console.log("마커표시 시작")	
-			
+				console.log("마커표시 시작")
+
 				// 마커를 생성하고 지도에 표시합니다
 				//search = getdata[i].addr;
 				// geocoder.addressSearch(getdata[i].addr,function(result,status){           
@@ -388,10 +387,10 @@
 
 			}
 		}
-	    if(currCategory == 'MT1'){
+		if (currCategory == 'MT1') {
 			for (var i = 0; i < emData.length; i++) {
-				console.log("마커표시 시작")	
-			
+				console.log("마커표시 시작")
+
 				// 마커를 생성하고 지도에 표시합니다
 				//search = getdata[i].addr;
 				// geocoder.addressSearch(getdata[i].addr,function(result,status){           
@@ -409,28 +408,26 @@
 
 			}
 		}
-		
 
 		else {
-			if(!emdata.name.typeof('undefined'))	{
-		
+
 			for (var i = 0; i < emdata.length; i++) {
 				// 마커를 생성하고 지도에 표시합니다
+
 				var marker = addMarker(new daum.maps.LatLng(emdata[i].y,
 						emdata[i].x), order);
 
 				// 마커와 검색결과 항목을 클릭 했을 때
 				// 장소정보를 표출하도록 클릭 이벤트를 등록합니다
-				(function(marker, place) {
+				(function(marker, emdata) {
 					daum.maps.event.addListener(marker, 'click', function() {
-						displayPlaceInfo(place);
+						displayPlaceInfo(emdata);
 					});
 				})(marker, emdata[i]);
 			}
+
 		}
-	    }
-	    }
-	
+	}
 
 	// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 	function addMarker(position, order) {
@@ -477,12 +474,12 @@
 					+ '  <span class="jibun" title="' + emdata.addr + '">(지번 : '
 					+ emdata.addr + ')</span>';
 		} else {
-			content += '    <span title="' + emdata.addr + '">'
-					+ emdata.addr + '</span>';
+			content += '    <span title="' + emdata.addr + '">' + emdata.addr
+					+ '</span>';
 		}
 
-		content += '    <span class="tel">' + emdata.tel + '</span>'
-				+ '</div>' + '<div class="after"></div>';
+		content += '    <span class="tel">' + emdata.tel + '</span>' + '</div>'
+				+ '<div class="after"></div>';
 
 		contentNode.innerHTML = content;
 		placeOverlay.setPosition(new daum.maps.LatLng(emdata.y, emdata.x));
