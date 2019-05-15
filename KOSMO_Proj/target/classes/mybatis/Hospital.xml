@@ -15,7 +15,6 @@
 
 <mapper namespace="mybatis.Hospital">
 
-	<!-- 관리자페이지 회원관리용 -->
    <select id="hospital_List" parameterType="java.util.Map" resultType="HospitalDTO">
       SELECT * FROM hospital
    </select>

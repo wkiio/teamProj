@@ -464,7 +464,7 @@
 		console.log("place2" + JSON.stringify(emdata));
 		//console.log(place);
 		var content = '<div class="placeinfo">'
-				+ '   <a class="title" href="' + emdata.name + '" target="_blank" title="' + emdata.name + '">'
+				 + '   <a class="title" href="https://map.kakao.com/?eName='+emdata.name+'" target="_blank" title="' + emdata.name + '">'
 				+ emdata.name + '</a>';
 
 		if (emdata.addr) {

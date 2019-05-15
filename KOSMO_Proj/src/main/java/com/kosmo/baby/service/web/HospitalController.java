@@ -55,7 +55,7 @@ public class HospitalController {
 		model.addAttribute("addrsJSON",JSONArray.toJSONString(collections));*/
 		//System.out.println("ff:" + collections);
 		List<HospitalDTO> hospitals1 = new Vector<HospitalDTO>();
-		hospitals1 = service.selectEmer(map);
+		hospitals1 = service.selectList(map);
 
 		List<Map> collections1 = new Vector<Map>();
 		
