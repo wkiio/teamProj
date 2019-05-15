@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MsApi {
-	 // **********************************************
+    // **********************************************
     // *** Update or verify the following values. ***
     // **********************************************
 
@@ -32,8 +32,8 @@ public class MsApi {
     // If you use a free trial subscription key, you shouldn't need to change
     // this region.
     private static final String uriBase =
-            "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/analyze";
-
+            "https://koreacentral.api.cognitive.microsoft.com/vision/v2.0/analyze";
+//https://koreacentral.api.cognitive.microsoft.com/
     //사진이미지 넣어줘야할듯?
     private static final String imageToAnalyze =
             "https://upload.wikimedia.org/wikipedia/commons/" +
@@ -44,17 +44,17 @@ public class MsApi {
     
     
     public String getMs_Api() {
-		return ms_Api;
-	}
+      return ms_Api;
+   }
 
 
-	public void setMs_Api(String ms_Api) {
-		this.ms_Api = ms_Api;
-	}
+   public void setMs_Api(String ms_Api) {
+      this.ms_Api = ms_Api;
+   }
 
 
-	public void startApi(String imageurl) {
-    	 CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+   public void startApi(String imageurl) {
+        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
          try {
              URIBuilder builder = new URIBuilder(uriBase);
@@ -70,7 +70,7 @@ public class MsApi {
              // Request headers.
              //request.setHeader("Content-Type", "application/json");
              request.setHeader("Content-Type", "application/octet-stream");
-             request.setHeader("Ocp-Apim-Subscription-Key", "b1a6500340aa430fbaa8ae342e77fa29");
+             request.setHeader("Ocp-Apim-Subscription-Key", "61a233c03b074f2885059165d246fca0");
            
              // Request body.
            // StringEntity requestEntity =

@@ -114,7 +114,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			eventClick: function(info) {
 				console.log('클릭');
 				console.log("${id}");
-			    editCalendar(info); 
+				console.log(info.event.id);
+				seachEvent(info);
 			   
 			},
 	      	select: function(info) {
@@ -199,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						start: $('#startStr').val(),
 						end: $('#endStr').val(),
 						description: $('#calcontent').val(),
-						color: color
+						color: color,
 					});
 				}
 				else{
@@ -209,14 +210,13 @@ document.addEventListener('DOMContentLoaded', function() {
 						start: $('#startStr').val().concat('T'.concat($('#startTime').val())),
 						end: $('#endStr').val().concat('T'.concat($('#endTime').val())),
 						description: $('#calcontent').val(),
-						color: color
+						color: color,
 					});
 				}
 				console.log("이벤트");
 				console.log(data);
-				console.log(calendar.getEventById(data));
-				$('#calno').val(data)
-				
+
+				$('#calno').val(data);
 				if($('#type').val()=="행사"){
 					console.log('행사임');
 					console.log($('#calno').val());
@@ -227,7 +227,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				else {
 					console.log('행사아님');
 				}
-				
 				
 			}
 			
@@ -335,6 +334,29 @@ document.addEventListener('DOMContentLoaded', function() {
 		});		
 		
 	});
+	
+	function seachEvent(info){
+		console.log("이벤트 찾기 시작");
+		$.ajax({
+			url:"<c:url value='/seachevent.kosmo'/>",
+			data:{'calno':info.event.id,"${_csrf.parameterName}":"${_csrf.token}"},
+			type:'post',
+			dataType:'text',
+			success:function(data){
+				console.log("이벤트 찾기 성공");
+				console.log(data);
+				if(data=="true"){
+					$(location).attr("href", "<c:url value='/pairview.kosmo?calno="+info.event.id+"'/>");
+				}
+				else{
+					 editCalendar(info); 
+				}
+			}
+			
+		});
+	};
+	
+	
 	
 	$('#type').change(function(){
 		console.log('선택');

@@ -7,8 +7,9 @@ public class BabyFairDTO {
 	private String period;
 	private String time;
 	private String place;
-	private String titleImage;
+	private String titleimage;
 	private String product;
+	private String calno;
 	
 	public String getBaby_no() {
 		return baby_no;
@@ -40,11 +41,11 @@ public class BabyFairDTO {
 	public void setPlace(String place) {
 		this.place = place;
 	}
-	public String getTitleImage() {
-		return titleImage;
+	public String getTitleimage() {
+		return titleimage;
 	}
-	public void setTitleImage(String titleImage) {
-		this.titleImage = titleImage;
+	public void setTitleimage(String titleimage) {
+		this.titleimage = titleimage;
 	}
 	public String getProduct() {
 		return product;
@@ -52,4 +53,12 @@ public class BabyFairDTO {
 	public void setProduct(String product) {
 		this.product = product;
 	}
+	public String getCalno() {
+		return calno;
+	}
+	public void setCalno(String calno) {
+		this.calno = calno;
+	}
+	
+	
 }

@@ -138,15 +138,15 @@ public class CalenderController {
 		List<MultipartFile> fileList = mhsr.getFiles("file");
 		StringBuffer itemName = new StringBuffer();
 		for (MultipartFile itemImg : fileList) {
-			itemName.append(itemImg.getOriginalFilename());
+			itemName.append(","+itemImg.getOriginalFilename());
 			System.out.println(itemImg.getOriginalFilename());
 			newFileName = FileUpDownUtils.getNewFileName(phisicalPath, itemImg.getOriginalFilename());
 			file = new File(phisicalPath+File.separator+newFileName);
 			itemImg.transferTo(file);
 		}
 		System.out.println("업로드 완료");
-		map.put("titleName", timgName);
-		map.put("itemName", itemName);
+		req.setAttribute("titleName", timgName);
+		req.setAttribute("itemName", itemName.toString());
 		return "forward:/inputbabyfair.kosmo";
 	}
 

@@ -63,6 +63,7 @@ public class AI_ApiController {
 		
 		////////////////////////////////////////////////
 		//ms aiapi
+		System.out.println("aaaaaaa:" + fileRealPath);
 		ms_api.startApi(fileRealPath);
 		System.out.println("ms: " + ms_api.getMs_Api());
 		

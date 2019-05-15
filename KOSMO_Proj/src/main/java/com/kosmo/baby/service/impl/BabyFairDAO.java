@@ -25,12 +25,13 @@ public class BabyFairDAO implements BabyFairService {
 
 	@Override
 	public BabyFairDTO selectOne(Map map) {
-		// TODO Auto-generated method stub
+		System.out.println("베이비페어 DAO");
 		return template.selectOne("babyFairselectOne",map);
 	}
 
 	@Override
 	public int insert(Map map) {
+		System.out.println("베이비페어 DAO");
 		return template.insert("babyFairInsert",map);
 	}
 
@@ -41,8 +42,12 @@ public class BabyFairDAO implements BabyFairService {
 
 	@Override
 	public int update(Map map) {
-		// TODO Auto-generated method stub
 		return template.update("babyFairUpdate",map);
+	}
+
+	@Override
+	public int seachEvent(Map map) {
+		return template.selectOne("babyFairseachOne",map);
 	}
 	
 
