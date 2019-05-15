@@ -86,8 +86,8 @@ public class CalenderController {
 		System.out.println("입력시작");
 		System.out.println(map);
 		if(!map.get("startTime").equals("")) {
-			map.put("startdate", map.get("startdate").toString().concat("T"+map.get("startTime")));
-			map.put("enddate", map.get("enddate").toString().concat("T"+map.get("endTime")));
+			map.put("startdate", map.get("startStr").toString().concat("T"+map.get("startTime")));
+			map.put("enddate", map.get("endStr").toString().concat("T"+map.get("endTime")));
 		}
 		System.out.println("요청보냄");
 		service.insert(map);
@@ -125,8 +125,22 @@ public class CalenderController {
 	@RequestMapping(value="/fcupload.kosmo", produces = "application/text; charset=utf8")
 	public String upload(MultipartHttpServletRequest mhsr,HttpServletRequest req,@RequestParam Map map) throws Exception {		
 		System.out.println("이미지 삽입 시작");
-		System.out.println(map);
+		System.out.println(map);		
 		String phisicalPath = mhsr.getServletContext().getRealPath("/resources/babypair");
+		File folder = new File(phisicalPath);
+		System.out.println("업로드 폴더 유무 판단");
+		if (!folder.exists()) {		
+			try{
+				folder.mkdir(); //폴더 생성합니다.
+				System.out.println("폴더가 생성되었습니다.");
+			} 
+			catch(Exception e){
+				System.out.println("폴더 생성 실패.");
+			    e.printStackTrace();
+			}        
+		}else {
+			System.out.println("이미 폴더가 생성되어 있습니다.");
+		}
 		//타이틀 이미지 업로드
 		MultipartFile titleImg = mhsr.getFile("timg");
 		String timgName = titleImg.getOriginalFilename();

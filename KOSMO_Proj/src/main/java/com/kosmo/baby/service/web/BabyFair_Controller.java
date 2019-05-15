@@ -1,6 +1,9 @@
 package com.kosmo.baby.service.web;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -13,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmo.baby.service.BabyFairDTO;
-import com.kosmo.baby.service.impl.BabyFairImageServiceImple;
 import com.kosmo.baby.service.impl.BabyFairServiceimpl;
 
 
@@ -57,12 +59,20 @@ public class BabyFair_Controller {
 		return flag;
 	}
 	
-	
 	@RequestMapping("/inputbabyfair.kosmo")
 	public String inputbabyfair(@RequestParam Map map,HttpServletRequest req) throws Exception{
 		System.out.println("베이비페어 입력시작");
 		System.out.println(map);
-		String period = map.get("startdate").toString().substring(5)+" - "+map.get("enddate").toString().substring(5);
+		String period;
+		String sday = getDateDay(map.get("startStr").toString());
+		if(map.get("startStr").toString().equals(map.get("endStr").toString())) {
+			period = map.get("startStr").toString()+"("+sday+")";
+		}
+		else {
+			String eday = getDateDay(map.get("endStr").toString());
+			period = map.get("startStr").toString().substring(5)+"("+sday+")"+
+			" - "+map.get("endStr").toString().substring(5)+"("+eday+")";
+		}
 		System.out.print("period:");
 		System.out.println(period);
 		String time = map.get("startTime").toString().substring(0,5)+" ~ "+map.get("endTime").toString().substring(0,5);
@@ -84,6 +94,42 @@ public class BabyFair_Controller {
 		service.insert(map);
 		System.out.println("베이비페어 입력끝");
 		return "forward:/pairview.kosmo";
+	}
+
+	public String getDateDay(String date) throws Exception {  
+		String data = date.replace("-", "");
+	    String day = "" ;	     
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd") ;
+	    Date nDate = dateFormat.parse(data) ;	     
+	    Calendar cal = Calendar.getInstance() ;
+	    cal.setTime(nDate);
+	     
+	    int dayNum = cal.get(Calendar.DAY_OF_WEEK) ;     
+	     
+	    switch(dayNum){
+	        case 1:
+	            day = "일";
+	            break ;
+	        case 2:
+	            day = "월";
+	            break ;
+	        case 3:
+	            day = "화";
+	            break ;
+	        case 4:
+	            day = "수";
+	            break ;
+	        case 5:
+	            day = "목";
+	            break ;
+	        case 6:
+	            day = "금";
+	            break ;
+	        case 7:
+	            day = "토";
+	            break ;	             
+	    }
+	    return day ;
 	}
 
 

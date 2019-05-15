@@ -22,16 +22,15 @@
 
 			<ul class="site-menu ml-auto list-unstyled d-flex text-right mb-0"
 				data-class="social" data-aos="fade-down">
-					<%-- 0424 pm 4:00 로그인 시큐리티 추가 --%>
+				<%-- 0424 pm 4:00 로그인 시큐리티 추가 --%>
 				<sec:authorize access="isAnonymous()">
 					<li><a href="login_page.kosmo" class="pl-0 pr-3 text-black">로그인</a></li>
 					<li><a href="sign_up_page.kosmo" class="pl-3 pr-3 text-black">회원가입</a></li>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
-        			<li><a href="javascript:logout()">로그아웃</a></li>
+					<li style="margin-right: 10px;"><span>${id }님</span></li>
+        			<li style="margin-right: 10px;"><a href="javascript:logout()">로그아웃</a></li>
 				</sec:authorize>
-				<%-- 0424 pm 4:00 로그인 시큐리티 추가 --%>
-				<li><a href="#" class="pl-3 pr-3 text-black">제휴</a></li>
 			</ul>
 
 			<div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3"

@@ -151,6 +151,10 @@ public class Admin_Controller {
 		 
 		
 	}
+	@RequestMapping("/calendar_admin.kosmo")
+	public String calendar(@RequestParam Map map) {		
+		return "/admin_page/calendar_admin";
+	}
 /*	
 	@RequestMapping("/car_admin.kosmo")
 	public String car_adimin(@RequestParam Map map,Model model) {
