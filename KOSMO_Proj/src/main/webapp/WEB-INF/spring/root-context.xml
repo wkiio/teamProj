@@ -19,6 +19,7 @@
      	<property name="configLocation" value="classpath:mybatis/configuration.xml"/>
      </bean>
 	<!-- 2]SqlSessionTemplate -->
+	<!-- 독자적으로 생기지않고 1번을 생성자로 바쳐서 만든다. -->
 	<bean id="template" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"/>
 	</bean>

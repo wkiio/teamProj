@@ -100,7 +100,10 @@ public class HomeController {
 		return "daum.tiles";
 	}
 	
-	
+	@RequestMapping("/guestBook.kosmo")
+	public String guestbook() {
+		return "guest.tiles";
+	}
 
 	
 }
