@@ -304,6 +304,42 @@ section{
 }
 
 
+/*모달창에 검색어 달기? */
+.green_window {
+	display: inline-block;
+	width: 220px; height: 34px;
+	border: 3px solid #2db400;
+	background: white;
+	position : relative;
+	left : 330px;
+	margin-top: 4px;
+}
+.input_text {
+	width: 200px; height: 21px;
+	margin: 6px 0 0 9px;
+	border: 0;
+	line-height: 21px;
+	font-weight: bold;
+	font-size: 16px;
+	outline: none;
+	
+}
+.sch_smit {
+	width: 54px; height: 40px;
+	margin: 0; border: 0;
+	vertical-align: top;
+	background: #22B600;
+	color: white;
+	font-weight: bold;
+	border-radius: 1px;
+	cursor: pointer;
+	position : relative;
+	left : 335px;
+}
+.sch_smit:hover {
+	background: #56C82C;
+}
+
 </style>
   	
 
@@ -339,18 +375,21 @@ section{
 			<i id = "이미지받기" class="fas fa-shopping-bag fa-10x"style="color:red;"></i>	
 		</div> 
 	</div>
-     
-     
-	<!-- 모달창(가격같은거) -->
-	<div class="modal fade bd-example" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 9000">
+
+     <!-- 모달창(가격같은거) -->
+	<div class="modal fade bd-example	" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 9000">
 		<div class="modal-dialog " role="document" >
 			<div class="modal-content modal-ku">
 				<div class="modal-header">
-		        	<h5 class="modal-title" id="exampleModalLabel">실시간 네이버 쇼핑 가격</h5>
-		        	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<h5 class="modal-title" id="exampleModalLabel">실시간 네이버 쇼핑 가격</h5>
+					<span class='green_window'>
+						<input type='text' class='input_text' />
+					</span>
+					<button type='button' class='sch_smit' id ='sch_smit'>검색</button>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
+		        	</button>
+		      	</div>
 				<div class="modal-body">
 					<section id="cartable">
 						<!--for demo wrap-->
@@ -369,15 +408,12 @@ section{
 						<div class="tbl-content">
 							<table cellpadding="0" cellspacing="0" border="0">
 								<tbody class="serach_shopping">
-										  
+									
 								</tbody>
 							</table>
 						</div>
 					</section>
 				</div>
-					
-
-
 			</div>		      
 		</div>
 	</div>
@@ -451,90 +487,76 @@ var aa;
 
 
 $(function(){
-   $('.image_one').draggable({helper: 'clone'});
-   
-   
-   
-   
-   
-   // $( "#이미지2" ).draggable({  helper: 'clone'});
-
+	$('.image_one').draggable({helper: 'clone'});
+	// $( "#이미지2" ).draggable({  helper: 'clone'});
     $( "#이미지받기" ).droppable({
-        activeClass: "active",
+    	 activeClass: "active",
          hoverClass:  "hover",
       drop: function( event, ui ) {
         //$( this );
         //ui.attr("src");
         var $item = ui.draggable.clone();
-      $item.remove();         
-      showLoading();
-      
+		$item.remove();         
+		showLoading();
+		
         // ui.draggable.remove();
-       //var filepath = $('#이미지2').attr("src");
-       var filepath = $item.attr("src");
-       //ui.draggable.remove();
-       filepath = filepath.substring(5,filepath.length);
-       console.log(filepath);
-        $.ajax({
-          data :  {"${_csrf.parameterName}" : "${_csrf.token}", "filepath" : filepath}, 
-          type : "POST",
-          url : " <c:url value='gotoAI.kosmo'/>",
-          dataType : "json",
-          success:function(data){          
-             var aa = new Array();
-             $.each(data.tags,function(index,value){
-                aa[index] = value;                
-             });
-             getAiImage = checkImage(aa);
-             console.log("getAiImage:"+ getAiImage);
-
-              NaverApiSearch(getAiImage);
-          }
-       });       
+    	//var filepath = $('#이미지2').attr("src");
+    	var filepath = $item.attr("src");
+    	//ui.draggable.remove();
+    	filepath = filepath.substring(5,filepath.length);
+    	console.log(filepath);
+    	 $.ajax({
+    		data :  {"${_csrf.parameterName}" : "${_csrf.token}", "filepath" : filepath}, 
+    		type : "POST",
+    		url : " <c:url value='gotoAI.kosmo'/>",
+    		dataType : "json",
+    		success:function(data){    		
+    			var aa = new Array();
+    			$.each(data.tags,function(index,value){
+    				aa[index] = value;    				
+    			});
+    			getAiImage = checkImage(aa);
+    			console.log("getAiImage:"+ getAiImage);
+     			NaverApiSearch(getAiImage);
+    		}
+    	});       
       }
-    });    
+    });	 
 }); //function()
-
 var paintSearch = function(data){
-   var html = "<tr>";
-   $.each(data.items,function(index,value){
-      //console.log("상품이름 : " + value['title'] + " , " + "가격 : " + value['lprice']);
-      html+="<td><img src="+ value['image'] +" " +"style=\"height:200px;width:200px;z-index:15;\"> "+ "</img></td>";   
-      html+="<td>" + value['title'] + "</td>" + "<td>" + value['lprice'] +"원" + "</td>";
-      //<button onclick="window.open('address')">button</button>
-      html +="<td>" + "<button type=\"button\" class=\"btn btn-info\" onclick=\"window.open("+"\'" + value['link']+"\'"+")\">"+"링크연결"+"</button></td></tr>";
-      
-      //console.log(html);
-   });         
-   $('.serach_shopping').html(html);     
+	var html = "<tr>";
+	$.each(data.items,function(index,value){
+		//console.log("상품이름 : " + value['title'] + " , " + "가격 : " + value['lprice']);
+		html+="<td><img src="+ value['image'] +" " +"style=\"height:200px;width:200px;z-index:15;\"> "+ "</img></td>";	
+		html+="<td>" + value['title'] + "</td>" + "<td>" + value['lprice'] +"원" + "</td>";
+		//<button onclick="window.open('address')">button</button>
+		html +="<td>" + "<button type=\"button\" class=\"btn btn-info\" onclick=\"window.open("+"\'" + value['link']+"\'"+")\">"+"링크연결"+"</button></td></tr>";
+		
+		//console.log(html);
+	});			
+	$('.serach_shopping').html(html);  	
 }
-
 $('.sch_smit').click(function(){
-   //var f = document.getElementById('input_text').value;
-   //console.log('f'+f);
-   var input = $(".input_text").val();   
-   console.log(input);
-   $('.serach_shopping').empty();     
-   NaverApiSearch(input);
-   
-
+	//var f = document.getElementById('input_text').value;
+	//console.log('f'+f);
+	var input = $(".input_text").val();   
+	console.log(input);
+	$('.serach_shopping').empty();  	
+	NaverApiSearch(input);
+	
 });
-
-
-
-
 var NaverApiSearch = function(image){
-   $.ajax({
-      data : {"${_csrf.parameterName}" : "${_csrf.token}", "getAiImage" : image}, 
-      type : "POST",
-      url : "<c:url value='gotoSearch.kosmo'/>",
-      dataType : "json",
-      success:function(data){
-         hideLoading();                  
-         paintSearch(data);         
-         $("#exampleModal").modal();      
-      }
-   });      
+	$.ajax({
+		data : {"${_csrf.parameterName}" : "${_csrf.token}", "getAiImage" : image}, 
+		type : "POST",
+		url : "<c:url value='gotoSearch.kosmo'/>",
+		dataType : "json",
+		success:function(data){
+			hideLoading();						
+			paintSearch(data);			
+			$("#exampleModal").modal();		
+		}
+	});		
 };
 
 

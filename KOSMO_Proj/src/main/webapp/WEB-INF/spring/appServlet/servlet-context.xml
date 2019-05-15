@@ -44,6 +44,7 @@
         <beans:property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->   
    </beans:bean>
 	
+	
 	<!-- 리소스파일(.properties) 사용을 위한 설정 --> 
 	<context:property-placeholder location="classpath:kosmo/kosmo.properties"/>
 	<!-- 컨트롤러 스캔용 베이스 패키지 설정 --> 

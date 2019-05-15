@@ -24,6 +24,15 @@
    <select id="emerlist" parameterType="java.util.Map" resultType="HospitalDTO">
       SELECT * FROM hospital WHERE EMERGENCY = '1'
    </select>
+   <select id="hoslist" parameterType="java.util.Map" resultType="HospitalDTO">
+      SELECT * FROM hospital WHERE EMERGENCY = '0' AND code = '0'
+   </select>
+   <select id="dentlist" parameterType="java.util.Map" resultType="HospitalDTO">
+      SELECT * FROM hospital WHERE code = '1'
+   </select>
+   <select id="obtlist" parameterType="java.util.Map" resultType="HospitalDTO">
+      SELECT * FROM hospital WHERE code = '2'
+   </select>
 
 	
 </mapper>

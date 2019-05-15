@@ -30,6 +30,24 @@ public class HospitalServiceimpl implements HospitalService{
 	}
 
 
+	@Override
+	public List<HospitalDTO> selectHos(Map map) {
+		return dao.selectHos(map);
+	}
+
+
+	@Override
+	public List<HospitalDTO> selectOb(Map map) {
+		return dao.selectOb(map);
+	}
+
+
+	@Override
+	public List<HospitalDTO> selectdent(Map map) {
+		return dao.selectdent(map);
+	}
+
+
 	/*
 	 * @Override public HospitalDTO selectOne(Map map) { // TODO Auto-generated
 	 * method stub return dao.selectList(map); }
