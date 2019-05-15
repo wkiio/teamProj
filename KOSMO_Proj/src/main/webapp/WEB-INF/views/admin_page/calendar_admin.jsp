@@ -38,9 +38,32 @@
 <script src="Bootstrap/js/popper.min.js"></script>
 <script src="Bootstrap/js/aos.js"></script>
 
+
+
+<link href='/baby/resources/fullcalendar/core/main.css' rel='stylesheet' />
+<link href='/baby/resources/fullcalendar/daygrid/main.css' rel='stylesheet' />
+<link href='/baby/resources/fullcalendar/timegrid/main.css' rel='stylesheet' />
+<link href='/baby/resources/fullcalendar/list/main.css' rel='stylesheet' />
+<link href='/baby/resources/timepicker/jquery.timepicker.css' rel='stylesheet' />
+
+<script src='/baby/resources/fullcalendar/core/main.js'></script>
+<script src='/baby/resources/fullcalendar/daygrid/main.js'></script>
+<script src='/baby/resources/fullcalendar/timegrid/main.js'></script>
+<script src='/baby/resources/fullcalendar/list/main.js'></script>
+<script src='/baby/resources/fullcalendar/core/locales/ko.js'></script>
+<script src='/baby/resources/fullcalendar/interaction/main.js'></script>
+<script src='/baby/resources/timepicker/jquery.timepicker.js'></script>
+<script src='/baby/resources/timepicker/moment.js'></script>
+
+<!-- 섬머노트 css/js -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
+<!-- 섬머노트 한국어 설정 -->
+<script src="/baby/resources/summernote/summernote-ko-KR.js"></script>
+
 <style>
-*{
-  z-index: 0;
+.section__content {
+  z-index: auto;
 }
 td.fc-sun .fc-day-number {
   color: red;
@@ -82,31 +105,9 @@ td.fc-sat .fc-day-number {
   background-color: white;
 }
 </style>
-
-<link href='/baby/resources/fullcalendar/core/main.css' rel='stylesheet' />
-<link href='/baby/resources/fullcalendar/daygrid/main.css' rel='stylesheet' />
-<link href='/baby/resources/fullcalendar/timegrid/main.css' rel='stylesheet' />
-<link href='/baby/resources/fullcalendar/list/main.css' rel='stylesheet' />
-<link href='/baby/resources/timepicker/jquery.timepicker.css' rel='stylesheet' />
-
-<script src='/baby/resources/fullcalendar/core/main.js'></script>
-<script src='/baby/resources/fullcalendar/daygrid/main.js'></script>
-<script src='/baby/resources/fullcalendar/timegrid/main.js'></script>
-<script src='/baby/resources/fullcalendar/list/main.js'></script>
-<script src='/baby/resources/fullcalendar/core/locales/ko.js'></script>
-<script src='/baby/resources/fullcalendar/interaction/main.js'></script>
-<script src='/baby/resources/timepicker/jquery.timepicker.js'></script>
-<script src='/baby/resources/timepicker/moment.js'></script>
-
-<!-- 섬머노트 css/js -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
-<!-- 섬머노트 한국어 설정 -->
-<script src="/baby/resources/summernote/summernote-ko-KR.js"></script>
 </head>
 
 <body class="animsition">
-
 	<div class="page-wrapper">
 		<!-- HEADER MOBILE-->
 		
@@ -199,7 +200,7 @@ td.fc-sat .fc-day-number {
 								<div id='calendar'></div>
 							</div>
 							<!-- 일정 생성용 modal -->
-						<div class="modal fade" id="schduleForm" role="dialog" style="z-index: 9999;">
+						<div class="modal fade" id="schduleForm" role="dialog">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -279,7 +280,7 @@ td.fc-sat .fc-day-number {
 						</div>
 
 						<!-- 일정 확인 및 수정,삭제용  modal -->
-						<div class="modal fade" id="schduleFormModify" role="dialog" style="z-index: 9999;">
+						<div class="modal fade" id="schduleFormModify" role="dialog">
 							<div class="modal-dialog">
 								<div class="modal-content">
 									<div class="modal-header">
@@ -362,7 +363,7 @@ td.fc-sat .fc-day-number {
 		</div>
 	</div>
 	
-	<script>
+<script>
 	document.addEventListener('DOMContentLoaded', function() {		
 		$('#startTime').timepicker({'noneOption':['리셋'], 'timeFormat': 'H:i' });
 		$('#endTime').timepicker({'noneOption':['리셋'], 'timeFormat': 'H:i' });
