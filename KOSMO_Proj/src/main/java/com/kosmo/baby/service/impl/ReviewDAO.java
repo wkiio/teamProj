@@ -8,28 +8,30 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.kosmo.baby.service.ReservationDTO;
-import com.kosmo.baby.service.ReservationService;
+import com.kosmo.baby.service.ReviewDTO;
+import com.kosmo.baby.service.ReviewService;
 
 @Repository
-public class ReservationDAO implements ReservationService{
+public class ReviewDAO implements ReviewService{
+	
 	@Resource(name="template")
 	private SqlSessionTemplate template;
-
+	
 	@Override
-	public List<ReservationDTO> selectList(Map map) {
-		return template.selectList("rselectList",map);
+	public List<ReviewDTO> selectList(Map map) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public ReservationDTO selectOne(Map map) {
+	public ReviewDTO selectOne(Map map) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int insert(Map map) {
-		// TODO Auto-generated method stub
+	// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -42,9 +44,7 @@ public class ReservationDAO implements ReservationService{
 	@Override
 	public int update(Map map) {
 		// TODO Auto-generated method stub
-		return template.update("gradeupdate", map);
+		return 0;
 	}
-	
-	
 
 }

@@ -42,7 +42,7 @@
 	</select>
 	
 	<insert id="adminInsert" parameterType="java.util.Map">
-		INSERT INTO reservation VALUES(SEQ_reservation.NEXTVAL,0,default,#{id},#{cp_no})
+		INSERT INTO reservation VALUES(SEQ_reservation.NEXTVAL,0,'제목','내용',default,#{id},#{cp_no})
 	</insert>
 	
 	<update id="Carupdate" parameterType="java.util.Map" >

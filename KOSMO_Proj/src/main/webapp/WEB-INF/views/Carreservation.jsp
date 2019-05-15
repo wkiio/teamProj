@@ -2,7 +2,18 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
+<style>
+	.starR{
+  background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+  background-size: auto 100%;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-indent: -9999px;
+  cursor: pointer;
+}
+.starR.on{background-position:0 0;}
+</style>
 
 <script>
 	$(function(){
@@ -25,6 +36,7 @@
 		<input type="hidden" value="" id="cp_no" name="cp_no">
 	</form>
 		<nav class="nav nav-tabs" id="nav-tab" role="tablist">
+	
 			<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab">현재 예약</a> 
 			<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab">완료 예약</a>
 		</nav>
@@ -62,13 +74,13 @@
 														<th><button class="btn btn-success btn-sm btnsubmit" id="${items.cp_no }">완료</button></th>
 													</c:if>
 													<c:if test="${items.type=='태워주세요' && items.id ==id2}">
-														<th><button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#exampleModal">평점</button></th>
+														<th><button type="button" class="btn btn-sm btn-success btnreview" data-toggle="modal" id="${items.cp_no }" data-target="#exampleModal">평점</button></th>
 													</c:if>
 													<c:if test="${items.type=='타세요' && items.id ==id2}">
 														<th><button class="btn btn-success btn-sm btnsubmit" id="${items.cp_no }">완료</button></th>
 													</c:if>
 													<c:if test="${items.type=='타세요' && items.reservationid ==id2}">
-														<th><button type="button" class="btn-sm btn btn-success" data-toggle="modal" data-target="#exampleModal">평점</button></th>
+														<th><button type="button" class="btn-sm btn btn-success btnreview" data-toggle="modal" id="${items.cp_no }" data-target="#exampleModal">평점</button></th>
 													</c:if>
 													
 												</tr>
@@ -116,8 +128,8 @@
 						</div>
 			</div>
 			<!-- Modal -->
-			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <h5 class="modal-title" id="exampleModalLabel">평점 주기</h5>
@@ -125,17 +137,48 @@
 			          <span aria-hidden="true">&times;</span>
 			        </button>
 			      </div>
+			      
 			      <div class="modal-body">
-			        ...
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-			        <button type="button" class="btn btn-primary">리뷰등록</button>
-			      </div>
+			      		<form class="carriewform" action="grade.kosmo" method="post">
+				      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+							<input type="hidden" value="" id="modalno" name="modalno">
+							<input type="hidden" value="" id="score" name="score">
+			      	  		<div class="input-group mb-3">
+						  		<div class="input-group-prepend">
+						    		<span class="input-group-text" id="inputGroup-sizing-default" >제목</span>
+						  		</div>
+						  		<input type="text" class="form-control" name="title">
+							</div>
+							<div class="input-group">
+						  		<div class="input-group-prepend">
+						    		<span class="input-group-text">내용</span>
+						  		</div>
+						  		<textarea class="form-control" name="content"></textarea>
+							</div>
+							<div class="starRev" style="margin-top: 10px">
+								<span class="starR" value="1">1</span>
+								<span class="starR" value="2">2</span>
+								<span class="starR" value="3">3</span>
+							  	<span class="starR" value="4">4</span>
+							  	<span class="starR" value="5">5</span>
+							  	<span class="starR" value="6">6</span>
+							  	<span class="starR" value="7">7</span>
+							  	<span class="starR" value="8">8</span>
+							  	<span class="starR" value="9">9</span>
+							  	<span class="starR" value="10">10</span>
+							</div>
+						</form>					
+			      	</div>
+			      	<div class="modal-footer">
+			        	<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+			        	<button type="button" class="btn btn-primary btngrade">리뷰등록</button>
+			      	</div>
+			      
 			    </div>
 			  </div>
 			</div>
 			<!-- Modal -->
+			
 		</div>
 		<!-- 여기가 탭키 나누는곳 -->
 	
@@ -161,13 +204,33 @@
 
 <script>
 $('.btnsubmit').click(function(){
-	console.log("123545");
-	console.log($(this).attr('id'));
+	
 	$('#cp_no').val($(this).attr('id'));
-	console.log($('#cp_no').val());
+	console.log($('#cp_no').val($(this).attr('id')));
 	$('.carviewform').submit();
+}); 
+
+$('.btnreview').click(function(){
+	$('#modalno').val($(this).attr('id'));
 });
 
+$('.starRev span').click(function(){
+	  $(this).parent().children('span').removeClass('on');
+	  $(this).addClass('on').prevAll('span').addClass('on');
+	  return false;
+});
+
+$('.starR').click(function(){
+	console.log($('#modalno').val());
+	var score = $(this).html();
+	console.log(score);
+	$('#score').val(score);
+	$('#modalno')
+	$('.btngrade').click(function(){
+		$('.carriewform').submit();
+	
+	});
+});
 </script>
 
 <script src="https://code.jquery.com/jquery-latest.js"></script>

@@ -130,9 +130,10 @@ public class Carpool_borderController {
 	
 	@RequestMapping("/CarpoolSubmit.kosmo")
 	public String CarpoolSubmit(@RequestParam Map map,Model model,Authentication auth) throws Exception{
+		System.out.println("예약시작");
 		UserDetails user = (UserDetails)auth.getPrincipal();
-		System.out.println(user.getUsername());
 		map.put("id", user.getUsername());
+		System.out.println(map);
 		
 		service.adminInsert(map);
 		System.out.println("reservation 테이블에 들어가버렸습니다");		
