@@ -105,5 +105,11 @@ public class HomeController {
 		return "guest.tiles";
 	}
 
+	@RequestMapping("/blookChain.kosmo")
+	public String blookchain() {
+		return "blockChain.tiles";
+	}
+	
+	
 	
 }

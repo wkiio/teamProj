@@ -193,8 +193,13 @@
 			<version>4.2.8.RELEASE</version>
 		</dependency>
         <!-- 시큐리티 사용을 위한 디펜던시 끝 -->
-		
-		
+		  <!-- 블록체인 시작 -->
+      <dependency>
+          <groupId>org.web3j</groupId>
+          <artifactId>core</artifactId>
+          <version>4.2.0</version>
+      </dependency>
+		<!-- 블록체인 끝 -->
 		
 	</dependencies>
     <build>
