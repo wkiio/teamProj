@@ -140,21 +140,41 @@ public class Carpool_borderController {
 	}
 	//예약현황
 	@RequestMapping("/Carreservation.kosmo")
-	public String Carreservation(Map map, Model model,Authentication auth)throws Exception{	
+	public String Carreservation(@RequestParam Map map, Model model,Authentication auth)throws Exception{	
 		UserDetails user = (UserDetails)auth.getPrincipal();
 		List<Carpool_borderDTO> list = service.seList(map);
+		
 		System.out.println("카예약현황 : " + user.getUsername());
 		model.addAttribute("id2",user.getUsername());
 		for(int i=0;i<list.size();i++) {
-			map.put("reser",list.get(i).getFinish());
+			//map.put("reser",list.get(i).getFinish());			
+			System.out.println(list.get(i).getCp_no() + "," + list.get(i).getFinish());
 		}
-		model.addAttribute("reser", map.get("reser"));
-		System.out.println("123123"+map.get("reser"));
+		//model.addAttribute("reser",  map.get("reser"));
+		//System.out.println("123123"+ map.get("reser"));
+
 		model.addAttribute("selist", list);
+		/*boolean toggle = false;
+		if(!toggle) {
+			model.addAttribute("yes","111");
+			toggle = true;
+		}	*/
 		
-		
+				
 		return "Carreservation.tiles";
 	}
+	@RequestMapping("/yes.kosmo")
+	public String yes1(@RequestParam Map map, Model model,Authentication auth)throws Exception{			
+		System.out.println("yes1map:" + map);
+		int ii=service.yesupdate(map);
+		System.out.println(ii);
+		System.out.println("완료컨트롤러1");
+		model.addAttribute("yes","222");
+		return "forward:Carreservation.kosmo";
+	}
+	
+
+
 	
 	
 }

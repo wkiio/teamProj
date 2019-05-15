@@ -57,7 +57,11 @@ public class Carpool_borderServiceimpl implements Carpool_borderService{
 	public List<Carpool_borderDTO> seList(Map map) {
 		return dao.seList(map);
 	}
-
+	@Override
+	public int yesupdate(Map map) {
+		System.out.println("완료 서비스");
+		return dao.yesupdate(map);
+	}
 	
 
 }

@@ -63,6 +63,14 @@ public class Carpool_borderDAO implements Carpool_borderService{
 		return template.selectList("seList",map);
 		
 	}
+	@Override
+	public int yesupdate(Map map) {
+		System.out.println("완료 DAO");
+		System.out.println("???:" +map);
+		int aa = template.update("yesupdate",map);
+		System.out.println("aa : " + aa);
+		return aa;
+	}
 	
 
 }
