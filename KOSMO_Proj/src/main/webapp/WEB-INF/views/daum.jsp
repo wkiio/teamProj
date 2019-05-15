@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+	pageEncoding="UTF-8"%>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<script src = "https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 <style>
 .map_wrap, .map_wrap * {
@@ -69,12 +69,9 @@
 		url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png)
 		no-repeat;
 } */
-
-
-
 #category li.on .category_bg {
 	background-position-x: -80px;
-} 
+}
 
 .placeinfo_wrap {
 	position: absolute;
@@ -151,51 +148,44 @@
 }
 
 #hospital {
-	background-image : url('resources/map_icons/hos.jpg');
-	
+	background-image: url('resources/map_icons/hos.jpg');
 }
+
 #emergency {
-	background-image : url('resources/map_icons/emer.jpg');
-	
+	background-image: url('resources/map_icons/emer.jpg');
 }
+
 #dentist {
-	background-image : url('resources/map_icons/den.jpg');
-	
+	background-image: url('resources/map_icons/den.jpg');
 }
+
 #obimage {
-	background-image : url('resources/map_icons/obbb.jpg');
-	
+	background-image: url('resources/map_icons/obbb.jpg');
 }
 </style>
 
-<p style="margin-top:-12px">
-    <em class="link">
-        <a href="/web/documentation/#CategoryCode" target="_blank">카테고리 코드목록을 보시려면 여기를 클릭하세요!</a>
-    </em>
+<p style="margin-top: -12px">
+	<em class="link"> <a href="/web/documentation/#CategoryCode"
+		target="_blank">카테고리 코드목록을 보시려면 여기를 클릭하세요!</a>
+	</em>
 </p>
 <div class="map_wrap">
-    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-    <ul id="category">
-        <li id="BK9" data-order="0"> 
-            <span id="hospital" class="category_bg bank"></span>
-            소아과
-        </li>       
-        <li id="MT1" data-order="1"> 
-            <span id="emergency" class="category_bg mart"></span>
-            응급실
-        </li>  
-        <li id="PM9" data-order="2"> 
-            <span id="dentist" class="category_bg pharmacy"></span>
-            소아치과
-        </li>  
-        <li id="OL7" data-order="3"> 
-            <span id="obimage" class="category_bg oil"></span>
-            산부인과
-        </li>        
-    </ul>
+	<div id="map"
+		style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
+	<ul id="category">
+		<li id="BK9" data-order="0"><span id="hospital"
+			class="category_bg bank"></span> 소아과</li>
+		<li id="MT1" data-order="1"><span id="emergency"
+			class="category_bg mart"></span> 응급실</li>
+		<li id="PM9" data-order="2"><span id="dentist"
+			class="category_bg pharmacy"></span> 소아치과</li>
+		<li id="OL7" data-order="3"><span id="obimage"
+			class="category_bg oil"></span> 산부인과</li>
+	</ul>
 </div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fc37be4712f8b89b167cddbc490382f&libraries=services"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fc37be4712f8b89b167cddbc490382f&libraries=services"></script>
 <script>
 
 
@@ -422,7 +412,7 @@
 		
 
 		else {
-			if(emdata.name.typeof('undefined'))	{
+			if(!emdata.name.typeof('undefined'))	{
 		
 			for (var i = 0; i < emdata.length; i++) {
 				// 마커를 생성하고 지도에 표시합니다
