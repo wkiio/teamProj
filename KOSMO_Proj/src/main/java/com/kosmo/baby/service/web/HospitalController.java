@@ -91,6 +91,7 @@ public class HospitalController {
 		
 		//System.out.println("xzdfasdfg");
 		
+		
 		//List<HospitalDTO> hospitals = service.selectEmer(map);
 		
 		List<HospitalDTO> hospitals1 = new Vector<HospitalDTO>();
