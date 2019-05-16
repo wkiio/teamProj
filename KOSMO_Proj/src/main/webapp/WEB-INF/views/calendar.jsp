@@ -467,7 +467,6 @@ document.addEventListener('DOMContentLoaded', function() {
 								<option value="기념일">기념일</option>
 								<option value="예방접종">예방접종</option>
 								<option value="약속">약속</option>
-								<option value="행사">행사</option>
 						    </select>
 						</div>
 						<div id="imgdiv1" class='form-group' style="display: none;">
@@ -539,7 +538,6 @@ document.addEventListener('DOMContentLoaded', function() {
 								<option value="기념일">기념일</option>
 								<option value="예방접종">예방접종</option>
 								<option value="약속">약속</option>
-								<option value="행사">행사</option>
 						    </select>
 						</div>
 						<div class='form-group'>
