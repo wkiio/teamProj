@@ -28,15 +28,19 @@
 				<!-- 수정 및 삭제용 파라미터 -->
 				<div style='overflow:hidden;'>
 				
-				<div style='float:left;width:200px'>
-			    <img style="border-radius: 50px; height: 50px; width: 50px" /> 
+				<div style='float:left;'>
+			    <img style="border-radius: 50px; height: 50px; width:50px" src="resources/images/cyworldMini.jpg"   /> 
 			    </div>
 			    <div style='float:left'>
 			    <input placeholder="댓글을 입력하세요" id="title" class="form-control" type="text" size="50" name="gcomment" />
 				</div>
-				<div sytle=''>
+				<div style='float:left;'>
 				<input id="submit" class="btn btn-info" value="확인" />
-				</div>		
+				</div>
+				<div style='float:left;'>
+				<input id="image" class="btn btn-success" value="이미지"/>
+				</div>
+						
 				</div>
 				</form>
 			
@@ -200,6 +204,14 @@ var displayComments = function(data){
 	
 	
 };/////////displayComments
+
+	$('#image').click(function(){
+	console.log('이미지 클릭')
+	
+	
+	});
+
+
 
 </script>
 

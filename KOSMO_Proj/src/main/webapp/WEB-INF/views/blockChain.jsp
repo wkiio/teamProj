@@ -52,9 +52,7 @@ window.addEventListener('load', async () => {
 $(function(){
 
 	
-	});//클릭 이벤트 
-	
-});
+	});//클릭 이});
 
 </script>
 
@@ -62,7 +60,7 @@ $(function(){
 
 <fieldset>
 <div class='center'>
-	<legend> 전 세계 최초 </legend>
+	<legend> 전 세계 최초 육아 베팅</legend>
 </div>
 <div style='overflow:hidden;'>
 	<textarea  style='margin-left:10%;float:left;height:40px;width:80%;' id='val'></textarea>
@@ -70,30 +68,30 @@ $(function(){
 </div>
 </br>
 <div class='center'>
-<h2> 육아 베팅 </h2>
+<h2> 배당률 1.27X </h2>
 </div>
 </br>
 <div class='center' >
 	<div class='show'>
-	<input style='text-align:center;height:35px;line-height:35px;'  id="view1" class="control1" type="text" size="100" value='' />
+	<input style='text-align:center;height:35px;line-height:35px;'  id="view1" class="control1" type="text" size="100" value='100코인' readonly/>
 	</div>
 	<div class='show'>
-	<input style='text-align:center;height:35px;line-height:35px;'  id="view2" class="control2" type="text" size="100" name="" value='' readonly/>
+	<input style='text-align:center;height:35px;line-height:35px;'  id="view2" class="control2" type="text" size="100" name="" value='200코인' readonly/>
 	</div>
 	<div class='show'>
-	<input style='text-align:center;height:35px;line-height:35px;'   id="view3" class="control3" type="text" size="100" name="" value='' readonly/>
+	<input style='text-align:center;height:35px;line-height:35px;'   id="view3" class="control3" type="text" size="100" name="" value='300코인' readonly/>
 	</div>
 	<div class='show'>
-	<input style='text-align:center;height:35px;line-height:35px;'   id="view4" class="control4" type="text" size="100" name="" value=''  readonly/>
+	<input style='text-align:center;height:35px;line-height:35px;'   id="view4" class="control4" type="text" size="100" name="" value='400코인'  readonly/>
 	</div>
 	<div class='show'>
-	<input style='text-align:center;height:35px;line-height:35px;'   id="view5" class="control5" type="text" size="100" name="" value=''  readonly/>
+	<input style='text-align:center;height:35px;line-height:35px;'   id="view5" class="control5" type="text" size="100" name="" value='500코인'  readonly/>
 	</div>
 	<div class='show'>
-	<input style='text-align:center;height:35px;line-height:35px;'   id="view6" class="control6" type="text" size="100" name="" value=''  readonly/>
+	<input style='text-align:center;height:35px;line-height:35px;'   id="view6" class="control6" type="text" size="100" name="" value='600코인'  readonly/>
 	</div>
 	<div class='show'>
-	<input style='text-align:center;height:35px;line-height:35px;'   id="view7" class="control7" type="text" size="100" name="" value=''  readonly/>
+	<input style='text-align:center;height:35px;line-height:35px;'   id="view7" class="control7" type="text" size="100" name="" value='700코인'  readonly/>
 	</div>
 </br>
 </br>
