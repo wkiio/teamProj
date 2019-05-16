@@ -27,8 +27,7 @@ public class Carpool_borderServiceimpl implements Carpool_borderService{
 	}
 
 	@Override
-	public int insert(Map map) {
-		
+	public int insert(Map map) {	
 		return dao.insert(map);
 	}
 

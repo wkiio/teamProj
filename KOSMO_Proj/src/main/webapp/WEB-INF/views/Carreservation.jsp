@@ -72,17 +72,10 @@
 													<th>${items.type }</th>												
 													<c:if test="${items.type=='태워주세요' && items.reservationid ==id2}">
 														<th><button class="btn btn-success btn-sm btnsubmit" id="${items.cp_no }">완료</button></th>
-													</c:if>
-													<c:if test="${items.type=='태워주세요' && items.id ==id2}">
-														<th><button type="button" class="btn btn-sm btn-success btnreview" data-toggle="modal" id="${items.cp_no }" data-target="#exampleModal">평점</button></th>
-													</c:if>
+													</c:if>												
 													<c:if test="${items.type=='타세요' && items.id ==id2}">
 														<th><button class="btn btn-success btn-sm btnsubmit" id="${items.cp_no }">완료</button></th>
-													</c:if>
-													<c:if test="${items.type=='타세요' && items.reservationid ==id2}">
-														<th><button type="button" class="btn-sm btn btn-success btnreview" data-toggle="modal" id="${items.cp_no }" data-target="#exampleModal">평점</button></th>
-													</c:if>
-													
+													</c:if>													
 												</tr>
 											</c:if>
 										</c:if>
@@ -107,6 +100,7 @@
 										<th style="background-color: #ffaec9">시간</th>
 										<th style="background-color: #ffaec9">가격</th>
 										<th style="background-color: #ffaec9">타입</th>
+										<th style="background-color: #ffaec9">완료여부</th>
 									</tr>
 								</thead>
 									<c:forEach items="${selist }" var="items" varStatus="loop">
@@ -119,8 +113,16 @@
 													<th>${items.endpoint }</th>
 													<th>${items.time }</th>
 													<th>${items.price }</th>
-													<th>${items.type }</th>						
-												</tr>
+													<th>${items.type }</th>	
+													<c:if test="${items.score=='0'}">
+														<c:if test="${items.type=='태워주세요' && items.id ==id2}">
+															<th><button type="button" class="btn btn-sm btn-success btnreview" data-toggle="modal" id="${items.cp_no }" data-target="#exampleModal">평점</button></th>
+														</c:if>											
+														<c:if test="${items.type=='타세요' && items.reservationid ==id2}">
+															<th><button type="button" class="btn-sm btn btn-success btnreview" data-toggle="modal" id="${items.cp_no }" data-target="#exampleModal">평점</button></th>
+														</c:if>
+													</c:if>					
+												</tr>											
 											</c:if>
 										</c:if>
 									</c:forEach>
@@ -181,7 +183,7 @@
 			
 		</div>
 		<!-- 여기가 탭키 나누는곳 -->
-	
+
 	</div> 
 	<!-- END MAIN CONTENT-->
 
