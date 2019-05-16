@@ -14,6 +14,8 @@ public interface HospitalService {
 	List<HospitalDTO> selectOb(Map map);
 	
 	List<HospitalDTO> selectdent(Map map);
+	
+	
 	//검색용
 	//HospitalDTO selectOne(Map map);	
 	

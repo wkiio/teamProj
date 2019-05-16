@@ -230,6 +230,25 @@ public class MembersController {
 		if(flag){
 			MembersDTO dto = service.findId(map);
 			model.addAttribute("id",dto.getId());
+			System.out.println("찾는 유저의 아이디는 : "+dto.getId());
+			
+		}
+		else {
+			model.addAttribute("findError","찾는 유저가 없습니다!");
+		}
+		return "findidresult.tiles";
+	}
+	
+	@RequestMapping("/findPwd.kosmo")
+	public String findPwd(@RequestParam Map map,Model model) throws Exception{
+		System.out.println("비밀번호를 찾는 메소드로 들어왔다.");
+		service.findPwd(map);
+		boolean flag = service.findPwd(map)==null ? false : true;
+		if(flag){
+			MembersDTO dto = service.findPwd(map);
+			model.addAttribute("name",dto.getName());
+			model.addAttribute("pwd",dto.getPwd());
+			System.out.println(dto.getName() + "의 비밀번호는 : "+dto.getPwd());
 			
 		}
 		else {
