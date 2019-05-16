@@ -19,7 +19,7 @@
 	<insert id="carInsert" parameterType="java.util.Map">
 		INSERT INTO CARPOOL_BORDER VALUES(SEQ_carpool_border.NEXTVAL,#{startpoint},#{endpoint},
 		#{type},#{content},#{start_xpos},#{start_ypos},#{end_xpos},#{end_ypos},
-		#{id},default,#{time},#{price},default)
+		#{id},default,#{time},#{price},default,0,0,0,0)
 	</insert>
 	
 	<select parameterType="java.util.Map" resultType="Carpool_borderDTO" id="carList">

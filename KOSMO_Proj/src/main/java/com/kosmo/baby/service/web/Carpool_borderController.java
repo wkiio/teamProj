@@ -126,7 +126,11 @@ public class Carpool_borderController {
 			record.put("startpoint",dto.getStartpoint());
 			record.put("time",dto.getTime());
 			record.put("type",dto.getType());
+			record.put("photo",dto.getPhoto().split("memberPhoto")[1].substring(1));
+			System.out.println("사진경로:" + dto.getPhoto().split("memberPhoto")[1].substring(1));
+			
 			collections.add(record);			
+			
 		}////for
 		System.out.println(JSONArray.toJSONString(collections));
 		//
@@ -144,6 +148,8 @@ public class Carpool_borderController {
 		System.out.println("글쓴이 입니다 : " + list.getId());
 		System.out.println("상세보기 시간");
 		System.out.println(list.getContent());
+		model.addAttribute("photo",list.getPhoto().split("memberPhoto")[1].substring(1));
+		
 		model.addAttribute("dto", list);
 		return "CarView.tiles";
 	}
@@ -162,9 +168,11 @@ public class Carpool_borderController {
 		map.put("id", user.getUsername());
 		System.out.println(map);
 		
+		
+		
 		service.adminInsert(map);
 		System.out.println("reservation 테이블에 들어가버렸습니다");		
-		return "index.tiles";
+		return "forward:Carreservation.kosmo";
 	}
 	//예약현황
 	@RequestMapping("/Carreservation.kosmo")
