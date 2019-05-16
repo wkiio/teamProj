@@ -14,6 +14,12 @@
       });
    }); */
 </script>
+<style>
+#memberphoto {
+  width: 70px;
+  height: 70px;
+}
+</style>
 
 <div class="site-section carpool_section" style="padding: 2em;">
 	<div class="container">
@@ -140,7 +146,7 @@
 				if(clickchange == 1){
 				 ///전체화면띄우기		
 				 html += "<tr id="+carlist['cp_no']+">";
-				 html+="<th scope=\"row\"><figure class=\"profile listtd\"><img src=\"./Bootstrap/images/3.jpg\" alt=\"프로필\" class=\"picture listtd\"><figcaption class=\"name listtd\"></figcaption></figure></th>";
+				 html+="<th scope=\"row\"><figure class=\"profile listtd\"><img id=\"memberphoto\" src=\"<c:url value='/resources/memberPhoto/"+carlist["photo"]+"'/>\" alt=\"프로필\" class=\"picture listtd\"><figcaption class=\"name listtd\"></figcaption></figure></th>";
 				 html+="<td><div class=\"start_con listtd\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
 				 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
 				 html+="<td><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
@@ -150,7 +156,7 @@
 				else if(clickchange == 2){
 					if(carlist['type'] == "타세요"){
 						 html += "<tr id="+carlist['cp_no']+">";
-						 html+="<th scope=\"row\"><figure class=\"profile listtd\"><img src=\"./Bootstrap/images/3.jpg\" alt=\"프로필\" class=\"picture listtd\"><figcaption class=\"name listtd\"></figcaption></figure></th>";
+						 html+="<th scope=\"row\"><figure class=\"profile listtd\"><img id=\"memberphoto\" src=\"<c:url value='/resources/memberPhoto/"+carlist["photo"]+"'/>\" alt=\"프로필\" class=\"picture listtd\"><figcaption class=\"name listtd\"></figcaption></figure></th>";
 						 html+="<td><div class=\"start_con listtd\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
 						 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
 						 html+="<td><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
@@ -161,7 +167,7 @@
 				else{
 					if(carlist['type'] == "태워주세요"){
 						 html += "<tr id="+carlist['cp_no']+">";
-						 html+="<th scope=\"row\"><figure class=\"profile listtd\"><img src=\"./Bootstrap/images/3.jpg\" alt=\"프로필\" class=\"picture listtd\"><figcaption class=\"name listtd\"></figcaption></figure></th>";
+						 html+="<th scope=\"row\"><figure class=\"profile listtd\"><img id=\"memberphoto\" src=\"<c:url value='/resources/memberPhoto/"+carlist["photo"]+"'/>\" alt=\"프로필\" class=\"picture listtd\"><figcaption class=\"name listtd\"></figcaption></figure></th>";
 						 html+="<td><div class=\"start_con listtd\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
 						 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
 						 html+="<td><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";

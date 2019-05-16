@@ -22,6 +22,7 @@ public class Carpool_borderDTO {
 	private String signed;
 	private String done;
 	private String reviewed;
+	private String photo;
 	
 	public String getCp_no() {
 		return cp_no;
@@ -149,5 +150,12 @@ public class Carpool_borderDTO {
 	public void setReviewed(String reviewed) {
 		this.reviewed = reviewed;
 	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+	
 
 }
