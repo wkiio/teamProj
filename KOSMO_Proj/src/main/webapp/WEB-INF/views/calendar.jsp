@@ -114,7 +114,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			eventClick: function(info) {
 				console.log('클릭');
 				console.log("${id}");
-			    editCalendar(info); 
+				console.log(info.event.id);
+				seachEvent(info);
 			   
 			},
 	      	select: function(info) {
@@ -125,8 +126,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	      			//2019-05-07T06:00:00+09:00
 	      			var startDT = info.startStr.split('+')[0].split('T');
 	      			var endDT = info.endStr.split('+')[0].split('T');
-	      			$('#startStr').val(startDT[0])
-	            	$('#endStr').val(endDT[0])
+	      			$('#startStr').val(startDT[0]);
+	            	$('#endStr').val(endDT[0]);
 	            	$('#startTime').val(startDT[1]);
 					$('#endTime').val(endDT[1]);
 					
@@ -158,6 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					minHeight: null,
 					maxHeight: null,
 					tabsize: 2
+					
 				});
 	        	$('#schduleForm').modal();
 	        	
@@ -171,10 +173,15 @@ document.addEventListener('DOMContentLoaded', function() {
 		
 	};
 	
-	
 	//일정 입력
 	$('#submitbtn').click(function(){
+		var flag = emptycheck();
+		if(flag=="false"){
+			return
+		}
+		console.log('addevent');
 		var color;
+		var event;
 		switch($("#type").val()){
 			case "중요": color="#872901"; break;
 			case "생일": color="#a36a00"; break;
@@ -183,13 +190,16 @@ document.addEventListener('DOMContentLoaded', function() {
 			case "약속": color="#2f00bc"; break;
 			case "행사": color="#a00196"; break;	
 		}
+		if("${id}"=="admin"){
+			color="gray";
+		}
 		 $.ajax({
 			url:"<c:url value='/fcinput.kosmo'/>",
 			data:$('#frmSchdule').serialize(),
 			type:'post',
-			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 			dataType:'text',
-			success:function(data){	
+			success:function(data){
+				console.log("이벤트success");
 				if($('#startTime').val()==""){				
 					calendar.addEvent({
 						id: data,
@@ -197,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						start: $('#startStr').val(),
 						end: $('#endStr').val(),
 						description: $('#calcontent').val(),
-						color: color
+						color: color,
 					});
 				}
 				else{
@@ -207,11 +217,27 @@ document.addEventListener('DOMContentLoaded', function() {
 						start: $('#startStr').val().concat('T'.concat($('#startTime').val())),
 						end: $('#endStr').val().concat('T'.concat($('#endTime').val())),
 						description: $('#calcontent').val(),
-						color: color
+						color: color,
 					});
 				}
+				console.log("이벤트");
+				console.log(data);
+
+				$('#calno').val(data);
+				if($('#type').val()=="행사"){
+					console.log('행사임');
+					console.log($('#calno').val());
+					console.log('폼이동준비');
+					$('#frmSchdule').prop("action","<c:url value='/fcupload.kosmo?${_csrf.parameterName}=${_csrf.token}'/>");
+					$('#frmSchdule').submit();
+				}
+				else {
+					console.log('행사아님');
+				}
+				
 			}
-		});
+			
+		});	
 		$('#schduleForm').modal('hide');
 		
 	});
@@ -316,12 +342,91 @@ document.addEventListener('DOMContentLoaded', function() {
 		
 	});
 	
+	function seachEvent(info){
+		console.log("이벤트 찾기 시작");
+		$.ajax({
+			url:"<c:url value='/seachevent.kosmo'/>",
+			data:{'calno':info.event.id,"${_csrf.parameterName}":"${_csrf.token}"},
+			type:'post',
+			dataType:'text',
+			success:function(data){
+				console.log("이벤트 찾기 성공");
+				console.log(data);
+				if(data=="true"){
+					$(location).attr("href", "<c:url value='/pairview.kosmo?calno="+info.event.id+"'/>");
+				}
+				else{
+					 editCalendar(info); 
+				}
+			}
+			
+		});
+	};
+	
+	function emptycheck(){
+		console.log("시작");
+		if($('#type').val()=="행사"){
+			if($('#caltitle').val()==""){
+				alert("타이틀을 입력하세요");
+				return "false";
+			}
+			if($('#startTime').val()==""){
+				alert("시작시간을 입력하세요");
+				return "false";
+			}
+			if($('#endTime').val()==""){
+				alert("종료시간을 입력하세요");
+				return "false";
+			}
+			if($('#timg').val()==""){
+				alert("타이틀 이미지를 선택하세요");
+				return "false";
+			}
+			if($('#file').val()==""){
+				alert("아이템 이미지를 선택하세요");
+				return "false";
+			}
+		}
+		else {
+			if($('#caltitle').val()==""){
+				alert("타이틀을 입력하세요");
+				return "false";
+			}
+			if($('#type').val()==null){
+				alert("분류를 선택하세요");
+				return "false";
+			}
+		}
+		return "true";
+	};
+	
+	
+	
+	$('#type').change(function(){
+		console.log('선택');
+		console.log($('#type').val());
+		if($('#type').val()=="행사"){paircontent
+			$('#modaltitle').html("행사등록");
+			$('.calcontent').css("display", "none");
+			$('.paircontent').css("display", "inline");
+			$('#imgdiv1').css("display", "inline");
+			$('#imgdiv2').css("display", "inline");
+		}
+		else{
+			$('#modaltitle').html("일정등록");
+			$('.calcontent').css("display", "inline");
+			$('.paircontent').css("display", "none");
+			$('#imgdiv1').css("display", "none");
+			$('#imgdiv2').css("display", "none");
+		}
+	});
+	
 });
 </script>
 
 <div class="site-section" style="padding: 2em;">
 	<div class="container">
-		<div id='calendar'></div>		
+		<div id='calendar'></div>
 	</div>
 	<!-- 일정 생성용 modal -->
 	<div class="modal fade" id="schduleForm" role="dialog">
@@ -329,10 +434,10 @@ document.addEventListener('DOMContentLoaded', function() {
 			<div class="modal-content"  >
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">일정등록</h4>
+					<h4 class="modal-title" id="modaltitle">일정등록</h4>
 				</div>
 				<div class="modal-body">
-					<form class='form-margin40' role='form' method='post' id='frmSchdule'>
+					<form class='form-margin40' role='form' method='post' id='frmSchdule' enctype="multipart/form-data">
 						<div class='form-group'>
 							<label>제목</label>
 							<input type='text' class='form-control' id='caltitle' name='caltitle' placeholder="예: 오후 7시에 멕시코 음식점에서 저녁식사">
@@ -356,21 +461,33 @@ document.addEventListener('DOMContentLoaded', function() {
 						<div class='form-group'>
 							<label>분류</label> 
 							<select class="form-control" id="type" name="type">
-								<option selected="selected" disabled="disabled">선택하세요</option>
+								<option selected="selected" disabled="disabled" value="noselect">선택하세요</option>
 								<option value="중요">중요</option>
 								<option value="생일">생일</option>
 								<option value="기념일">기념일</option>
 								<option value="예방접종">예방접종</option>
 								<option value="약속">약속</option>
-								<option value="행사">행사</option>
 						    </select>
+						</div>
+						<div id="imgdiv1" class='form-group' style="display: none;">
+							<label>타이틀 이미지</label> 
+							<input class='form-control timg'  type="file" id='timg' name='timg'>
+						</div>
+						<div id="imgdiv2" class='form-group' style="display: none;">
+							<label>아이템 이미지</label> 
+							<input class='form-control img' multiple="multiple" type="file" id='file' name='file'>
 						</div>
 						<input type="hidden" id='startdate' name='startdate'>
 						<input type="hidden" id='enddate' name='enddate'>
+						<input type="hidden" id="calno" name="calno" >
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-						<div class='form-group'>
+						<div class='form-group calcontent'>
 							<label>내용</label>
 							<textarea rows="7" class='form-control' id="calcontent" name='calcontent'></textarea>
+						</div>
+						<div class='form-group paircontent' style="display: none;">
+							<label>행사장소</label>
+							<input class='form-control' type="text" id='paircontent' name='paircontent' placeholder="행사장소를 입력하세요">
 						</div>
 						<div class='modal-footer'>
 							<input type="button" class='btn btn-sm btn-warning' id='submitbtn' value="확인"/> 
@@ -421,7 +538,6 @@ document.addEventListener('DOMContentLoaded', function() {
 								<option value="기념일">기념일</option>
 								<option value="예방접종">예방접종</option>
 								<option value="약속">약속</option>
-								<option value="행사">행사</option>
 						    </select>
 						</div>
 						<div class='form-group'>

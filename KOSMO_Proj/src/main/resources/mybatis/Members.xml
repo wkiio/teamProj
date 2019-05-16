@@ -38,12 +38,12 @@
 	<!-- 회원가입용 SQL -->
 	<!-- 두 번째 INTO는 카풀여부를 체크했을때 들어오는 if문입니다. -->
 	<!-- 카풀을 체크하는 순간 input type=hidden으로 들어온 partnerstatus는 0에서 1이되며, 그 순간 partner_members 테이블에도 들어갑니다-->
-	 <insert id="signup" parameterType="java.util.Map">
-		INSERT
+	 <insert id="signup" parameterType="java.util.Map">		
+	 INSERT 
 		<if test="partnerstatus==1"> ALL </if>
 			INTO members VALUES(#{id},#{pwd},#{name},#{addr},#{email},#{tel},#{photo},#{authkey},0,#{partnerstatus},default)
 		<if test="partnerstatus==1"> 
-			INTO partner_members values(SEQ_PARTNER_MEMBERS.nextval,#{id},#{carnumber},#{cartype},#{career},'0',0,0)
+			INTO partner_members values(SEQ_PARTNER_MEMBERS.nextval,#{id},#{carnumber},#{cartype},#{career},'0',0)
 			select * from dual</if>
 	</insert>
 	
@@ -69,6 +69,9 @@
    <!-- 아이디 찾기용 -->
    <select id="findId" parameterType="java.util.Map" resultType="MembersDTO">
    		SELECT id FROM members WHERE name=#{name} AND email=#{email}
+   </select>
+   <select id="findPwd" parameterType="java.util.Map" resultType="MembersDTO">
+   		SELECT name,pwd FROM members WHERE name=#{name} AND email=#{email} AND id=#{id}
    </select>
    
    

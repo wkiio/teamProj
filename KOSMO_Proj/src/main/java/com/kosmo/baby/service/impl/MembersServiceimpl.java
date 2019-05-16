@@ -74,6 +74,6 @@ public class MembersServiceimpl implements MembersService{
 
 	@Override
 	public MembersDTO findPwd(Map map) {
-		return null;
+		return dao.findPwd(map);
 	}
 }

@@ -15,41 +15,15 @@ public class Carpool_borderDTO {
 	private String id;
 	private String name;
 	private String status;
+	private String reservationid;
+	private String finish;
+	private String score;
 	private String opened;
 	private String signed;
 	private String done;
 	private String reviewed;
+	private String photo;
 	
-	public String getOpened() {
-		return opened;
-	}
-	public void setOpened(String opened) {
-		this.opened = opened;
-	}
-	public String getSigned() {
-		return signed;
-	}
-	public void setSigned(String signed) {
-		this.signed = signed;
-	}
-	public String getDone() {
-		return done;
-	}
-	public void setDone(String done) {
-		this.done = done;
-	}
-	public String getReviewed() {
-		return reviewed;
-	}
-	public void setReviewed(String reviewed) {
-		this.reviewed = reviewed;
-	}
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
 	public String getCp_no() {
 		return cp_no;
 	}
@@ -128,5 +102,60 @@ public class Carpool_borderDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getReservationid() {
+		return reservationid;
+	}
+	public void setReservationid(String reservationid) {
+		this.reservationid = reservationid;
+	}
+	public String getFinish() {
+		return finish;
+	}
+	public void setFinish(String finish) {
+		this.finish = finish;
+	}
+	public String getScore() {
+		return score;
+	}
+	public void setScore(String score) {
+		this.score = score;
+	}
+	public String getOpened() {
+		return opened;
+	}
+	public void setOpened(String opened) {
+		this.opened = opened;
+	}
+	public String getSigned() {
+		return signed;
+	}
+	public void setSigned(String signed) {
+		this.signed = signed;
+	}
+	public String getDone() {
+		return done;
+	}
+	public void setDone(String done) {
+		this.done = done;
+	}
+	public String getReviewed() {
+		return reviewed;
+	}
+	public void setReviewed(String reviewed) {
+		this.reviewed = reviewed;
+	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 	
+
 }

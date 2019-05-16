@@ -94,11 +94,11 @@ public class MembersController {
 		
 		if(flag) {
 			MembersDTO dto = service.selectOne(map);
-			//System.out.println(dto.getId());
 			model.addAttribute("id",dto.getId());
 			model.addAttribute("name",dto.getName());
-			//System.out.println(dto.getName());
-			model.addAttribute("tel",dto.getTel());
+			model.addAttribute("tel1",dto.getTel().substring(0,3));
+			model.addAttribute("tel2",dto.getTel().substring(3,7));
+			model.addAttribute("tel3",dto.getTel().substring(7,11));
 			model.addAttribute("email1",dto.getEmail().split("@")[0].trim());
 			model.addAttribute("email2",dto.getEmail().split("@")[1].trim());
 			model.addAttribute("addr",dto.getAddr());
@@ -121,7 +121,7 @@ public class MembersController {
 	@RequestMapping("/imageupload.kosmo")
 	public String ss(@RequestParam Map map,UploadCommand cmd, HttpServletRequest req,MultipartFile file,MultipartHttpServletRequest rhhh)
 	{
-		System.out.println("받아온 파일이름" + map.get("photoinput"));
+		System.out.println("받아온 파일이름" + rhhh.getFile("photoinput"));
 		System.out.println(map);
 		getImageFile = rhhh.getFile("photoinput");
 		
@@ -137,7 +137,7 @@ public class MembersController {
 			HttpServletRequest req,	
 			@RequestParam(required=false) String career,@RequestParam(required=false) String cartype) throws Exception{
 		
-		
+		System.out.println("map: " + map);
 		
 		MultipartFile ff = getImageFile;
 		System.out.println("ff: " + ff);
@@ -192,7 +192,7 @@ public class MembersController {
 		String key =new TempKey().getKey(20, false);
 		map.put("authkey", key);
 		
-			
+		System.out.println("map:::" + map);
 		service.insert(map);
 		
 		MailHandler sendMail = new MailHandler(mailSender);
@@ -230,6 +230,25 @@ public class MembersController {
 		if(flag){
 			MembersDTO dto = service.findId(map);
 			model.addAttribute("id",dto.getId());
+			System.out.println("찾는 유저의 아이디는 : "+dto.getId());
+			
+		}
+		else {
+			model.addAttribute("findError","찾는 유저가 없습니다!");
+		}
+		return "findidresult.tiles";
+	}
+	
+	@RequestMapping("/findPwd.kosmo")
+	public String findPwd(@RequestParam Map map,Model model) throws Exception{
+		System.out.println("비밀번호를 찾는 메소드로 들어왔다.");
+		service.findPwd(map);
+		boolean flag = service.findPwd(map)==null ? false : true;
+		if(flag){
+			MembersDTO dto = service.findPwd(map);
+			model.addAttribute("name",dto.getName());
+			model.addAttribute("pwd",dto.getPwd());
+			System.out.println(dto.getName() + "의 비밀번호는 : "+dto.getPwd());
 			
 		}
 		else {

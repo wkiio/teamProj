@@ -7,8 +7,11 @@ import java.util.Map;
 import java.util.Vector;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -19,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmo.baby.service.Carpool_borderDTO;
+import com.kosmo.baby.service.MembersDTO;
 import com.kosmo.baby.service.impl.Carpool_borderServiceimpl;
+import com.kosmo.baby.service.web.PagingUtil;
 
 @Controller
 public class Carpool_borderController {
@@ -61,12 +66,37 @@ public class Carpool_borderController {
 		return "forward:Carindex.kosmo";
 	}
 	
+	//리소스파일(memo.properties)에서 읽어오기
+	@Value("${PAGESIZE}")
+	private int pageSize;
+	@Value("${BLOCKPAGE}")
+	private int blockPage;
 	//리스트 보여주기
 	@RequestMapping(value="/Carindex.kosmo", produces="text/html; charset=UTF-8")
-	public String carindex(@RequestParam Map map,Model model)throws Exception{
+	public String carindex(@RequestParam Map map,Model model,HttpServletRequest req,@RequestParam(required=false,defaultValue="1") int nowPage)throws Exception{
 		System.out.println(map.get("serchword_one"));
-		List<Carpool_borderDTO> list = service.selectList(map);
-
+/*		//서비스 호출]
+		//페이징을 위한 로직 시작]
+		//전체 레코드수
+		int totalRecordCount= service.getTotalRecord(map);		
+		//전체 페이지수]
+		int totalPage=(int)Math.ceil((double)totalRecordCount/pageSize)	;		
+		//시작 및 끝 ROWNUM구하기]
+		int start =(nowPage-1)*pageSize+1;
+		int end   =nowPage*pageSize;
+		map.put("start",start);
+		map.put("end", end);
+		//페이징을 위한 로직 끝]		
+*/		List<Carpool_borderDTO> list= service.selectList(map);
+		/*//페이징 문자열을 위한 로직 호출]
+		String pagingString=PagingUtil.pagingBootStrapStyle(totalRecordCount, pageSize, blockPage, nowPage,"/baby/Carindex.kosmo?");
+		//데이타 저장]
+		model.addAttribute("list", list);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("pageSize", pageSize);
+		model.addAttribute("totalRecordCount", totalRecordCount);		
+		model.addAttribute("pagingString", pagingString);
+		*/
 		return "Car.tiles";
 	}//////
 	//리스트AJAX전체뿌리기
@@ -96,7 +126,11 @@ public class Carpool_borderController {
 			record.put("startpoint",dto.getStartpoint());
 			record.put("time",dto.getTime());
 			record.put("type",dto.getType());
+			record.put("photo",dto.getPhoto().split("memberPhoto")[1].substring(1));
+			System.out.println("사진경로:" + dto.getPhoto().split("memberPhoto")[1].substring(1));
+			
 			collections.add(record);			
+			
 		}////for
 		System.out.println(JSONArray.toJSONString(collections));
 		//
@@ -114,6 +148,8 @@ public class Carpool_borderController {
 		System.out.println("글쓴이 입니다 : " + list.getId());
 		System.out.println("상세보기 시간");
 		System.out.println(list.getContent());
+		model.addAttribute("photo",list.getPhoto().split("memberPhoto")[1].substring(1));
+		
 		model.addAttribute("dto", list);
 		return "CarView.tiles";
 	}
@@ -122,20 +158,50 @@ public class Carpool_borderController {
 	@RequestMapping("/Caredit.kosmo")
 	public String caredit(@RequestParam Map map,Model model)throws Exception{
 		model.addAttribute("list",map);
-
 		return "/car_register/carregister.tiles";
 	}
 	
 	@RequestMapping("/CarpoolSubmit.kosmo")
 	public String CarpoolSubmit(@RequestParam Map map,Model model,Authentication auth) throws Exception{
+		System.out.println("예약시작");
 		UserDetails user = (UserDetails)auth.getPrincipal();
-		System.out.println(user.getUsername());
 		map.put("id", user.getUsername());
+		System.out.println(map);
+		
+		
 		
 		service.adminInsert(map);
 		System.out.println("reservation 테이블에 들어가버렸습니다");		
-		return "index.tiles";
+		return "forward:Carreservation.kosmo";
 	}
+	//예약현황
+	@RequestMapping("/Carreservation.kosmo")
+	public String Carreservation(@RequestParam Map map, Model model,Authentication auth)throws Exception{	
+		UserDetails user = (UserDetails)auth.getPrincipal();
+		List<Carpool_borderDTO> list = service.seList(map);
+		
+		System.out.println("카예약현황 : " + user.getUsername());
+		model.addAttribute("id2",user.getUsername());
+		for(int i=0;i<list.size();i++) {		
+			System.out.println(list.get(i).getCp_no() + "," + list.get(i).getFinish());
+		}
+
+		model.addAttribute("selist", list);
+
+		
+				
+		return "Carreservation.tiles";
+	}
+	@RequestMapping("/yes.kosmo")
+	public String yes1(@RequestParam Map map, Model model,Authentication auth)throws Exception{			
+		System.out.println("yes1map:" + map);
+		int ii=service.yesupdate(map);
+		model.addAttribute("yes","222");
+		return "forward:Carreservation.kosmo";
+	}
+	
+
+
 	
 	
 }

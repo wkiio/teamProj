@@ -14,6 +14,14 @@
 
 <mapper namespace="mybatis.BabyFair">
 	<!-- 요기 안에다 쿼리문 작성하시면 됩니다 -->
-
+	<insert id="babyFairInsert" parameterType="java.util.Map">
+		INSERT INTO babypair VALUES(SEQ_Babypair.NEXTVAL,#{caltitle},#{period},#{time},#{place},#{titleimg},#{product},#{calno})
+	</insert>
+	<select id="babyFairselectOne" resultType="BabyFairDTO" parameterType="java.util.Map">
+		SELECT * FROM babypair WHERE calno=#{calno}
+	</select>
+	<select id="babyFairseachOne" resultType="int" parameterType="java.util.Map">
+		SELECT COUNT(*) FROM babypair WHERE calno=#{calno}
+	</select>
 
 </mapper>

@@ -100,6 +100,12 @@
    height: 400px;
    width: 100%;
 }
+
+#memberphoto {
+  width: 70px;
+  height: 70px;
+}
+
 </style>
 <sec:authorize access="isAuthenticated()">
       <sec:authentication property="principal.username" var="id" />
@@ -115,14 +121,14 @@
 					<div class="carview_profile">
 	
 						<figure class="profile">
-							<img src="./Bootstrap/images/3.jpg" title="박진념" alt="프로필" class="picture">
+							<img id="memberphoto" src="<c:url value='/resources/memberPhoto/${photo }'/>" title="프로필" alt="프로필" class="picture">
 							<figcaption class="name">${dto.name }</figcaption>
 						</figure>
 						<button type="button" class="btn btn-info">메시지 보내기</button>
 						<div class="mt-1">
 							
 						</div>
-					</div>
+					</div>\
 				</div>
 			</div>
 			<form class="carviewform" action="CarpoolSubmit.kosmo" method="post">

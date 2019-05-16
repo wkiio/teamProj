@@ -15,7 +15,6 @@
 
 <mapper namespace="mybatis.Hospital">
 
-	<!-- 관리자페이지 회원관리용 -->
    <select id="hospital_List" parameterType="java.util.Map" resultType="HospitalDTO">
       SELECT * FROM hospital
    </select>
@@ -33,6 +32,8 @@
    <select id="obtlist" parameterType="java.util.Map" resultType="HospitalDTO">
       SELECT * FROM hospital WHERE code = '2'
    </select>
-
+   <select id="kizcafelist" parameterType="java.util.Map" resultType="KizcafeDTO">
+      SELECT * FROM kizcafe
+   </select>
 	
 </mapper>

@@ -41,14 +41,13 @@
 											<button class="btn btn-lg btn-block btn-login font-weight-bold mb-2" type="submit">로그인</button>
 										</form>
 									</div>
-								
+								</sec:authorize>
 								<div class="text-center">
 									<a class="small" href="<c:url value='/find_Id.kosmo'/>">아이디 찾기</a> | 
-									<a class="small" href="#">비밀번호 찾기</a> | 
+									<a class="small" href="<c:url value='/find_Pwd.kosmo'/>">비밀번호 찾기</a> | 
 									<a class="small" href="<c:url value='/sign_up_page.kosmo'/>">회원 가입</a>
 								</div>
-								<a id="kakao-login-btn">카톡버튼</a>
-								</sec:authorize>
+								
 							</div>
 							
 						</div>
@@ -61,43 +60,6 @@
 
 
 <script type='text/javascript'>
-	//<![CDATA[
-	// 사용할 앱의 JavaScript 키를 설정해 주세요.
-	Kakao.init('c697b4f59516842004ed550968ca1155'); //여기서 아까 발급받은 키 중 javascript키를 사용해준다.
-	// 카카오 로그인 버튼을 생성합니다.
-	Kakao.Auth.createLoginButton({
-		container : '#kakao-login-btn',
-		success : function(authObj) {
-			alert(JSON.stringify(authObj));
-		},
-		fail : function(err) {
-			alert(JSON.stringify(err));
-		}
-	});
-	//]]>
-
-	Kakao.Auth.createLoginButton({
-		container : '#kakao-login-btn',
-		success : function(authObj) {
-			Kakao.API.request({
-				url : '/v1/user/me',
-				success : function(res) {
-					alert(JSON.stringify(res)); //<---- kakao.api.request 에서 불러온 결과값 json형태로 출력
-					alert(JSON.stringify(authObj)); //<----Kakao.Auth.createLoginButton에서 불러온 결과값 json형태로 출력
-					console.log(res.id);//<---- 콘솔 로그에 id 정보 출력(id는 res안에 있기 때문에  res.id 로 불러온다)
-					console.log(res.kaccount_email);//<---- 콘솔 로그에 email 정보 출력 (어딨는지 알겠죠?)
-					console.log(res.properties['nickname']);//<---- 콘솔 로그에 닉네임 출력(properties에 있는 nickname 접근 
-					// res.properties.nickname으로도 접근 가능 )
-					console.log(authObj.access_token);//<---- 콘솔 로그에 토큰값 출력
-				}
-			})
-		},
-
-		fail : function(error) {
-			alert(JSON.stringify(error));
-		}
-	});
-	
 	
 	$(document).ready(function(){
 	    var userInputId = getCookie("userInputId");//저장된 쿠기값 가져오기

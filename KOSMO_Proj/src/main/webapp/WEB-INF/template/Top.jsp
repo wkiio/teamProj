@@ -22,16 +22,15 @@
 
 			<ul class="site-menu ml-auto list-unstyled d-flex text-right mb-0"
 				data-class="social" data-aos="fade-down">
-					<%-- 0424 pm 4:00 로그인 시큐리티 추가 --%>
+				<%-- 0424 pm 4:00 로그인 시큐리티 추가 --%>
 				<sec:authorize access="isAnonymous()">
 					<li><a href="login_page.kosmo" class="pl-0 pr-3 text-black">로그인</a></li>
 					<li><a href="sign_up_page.kosmo" class="pl-3 pr-3 text-black">회원가입</a></li>
 				</sec:authorize>
 				<sec:authorize access="isAuthenticated()">
-        			<li><a href="javascript:logout()">로그아웃</a></li>
+					<li style="margin-right: 10px;"><span>${id }님</span></li>
+        			<li style="margin-right: 10px;"><a href="javascript:logout()">로그아웃</a></li>
 				</sec:authorize>
-				<%-- 0424 pm 4:00 로그인 시큐리티 추가 --%>
-				<li><a href="#" class="pl-3 pr-3 text-black">제휴</a></li>
 			</ul>
 
 			<div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3"
@@ -46,28 +45,20 @@
 					role="navigation">
 					<ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
 						<li class="has-children active"><a href="index.kosmo">메인</a>
-							<ul class="dropdown">
-								<li><a href="Carview.kosmo">Menu One</a></li>
-								<li><a href="carregister.kosmo">카풀입력하기(임시)</a></li>
-								<li><a href="daumapi.kosmo">Menu Three</a></li>
-								<li class="has-children"><a href="#">Sub Menu</a>
-									<ul class="dropdown">
-										<li><a href="daum.kosmo">Menu One</a></li>
-										<li><a href="aiApi.kosmo">Menu Two</a></li>
-										<li><a href="carload.kosmo">Menu Three</a></li>
-									</ul></li>
-							</ul></li>
+						</li>
 						<li class="has-children"><a href="serviceclick.kosmo">서비스</a>
 							<ul class="dropdown">
-								<li><a href="search.kosmo">공공장소</a></li>
-								<li><a href="Carindex.kosmo">카풀1</a></li>
-								<li><a href="carpool_mypage.kosmo">카풀</a></li>
+								<li><a href="carregister.kosmo">이동입력</a></li>
+								<li><a href="Carindex.kosmo">이동리스트</a></li>
+								<li><a href="daum.kosmo">지도검색</a></li>
+								<li><a href="aiApi.kosmo">베이비페어</a></li>
 							</ul></li>
-						<li><a href="calendar.kosmo">캘린더</a></li>
+						<li><a href="calendar.kosmo">육아달력</a></li>
 						<li><a href="babyinfo.kosmo">육아정보</a></li>
 						<li class="has-children active"><a href="#">마이페이지</a>
 							<ul class="dropdown">
-								<li><a href="mypage_one.kosmo">Menu One</a></li>
+								<li><a href="mypage_one.kosmo">개인정보</a></li>
+								<li><a href="Carreservation.kosmo">예약현황</a></li>
 							</ul></li>
 							<c:set var="loginid" value="${id}" />
 						<c:if test="${loginid == 'admin'}">

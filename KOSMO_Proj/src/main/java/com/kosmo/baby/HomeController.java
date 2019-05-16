@@ -30,15 +30,14 @@ public class HomeController {
 		return "login_page.tiles";	
 	}
 	
-	@RequestMapping("/aiApi.kosmo")
-	public String ai_API() {
-		return "aiApi(babyfair).tiles";
-	}
-	
 	
 	@RequestMapping("/find_Id.kosmo")
 	public String find_id() {
 		return "find_Id.tiles";
+	}
+	@RequestMapping("/find_Pwd.kosmo")
+	public String find_pwd() {
+		return "find_Pwd.tiles";
 	}
 	
 	@RequestMapping("/sign_up_page.kosmo")
@@ -118,7 +117,7 @@ public class HomeController {
 	public String carload()throws Exception{
 		return "carload.tiles";
 	}
-	
+
 
 	
 }

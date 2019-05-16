@@ -31,13 +31,7 @@ public class AiApi {
 	  String m_fileName;
 	  
 	  String m_responBody;
-	
 	  
-	
-
-
-
-
 	public String getM_responBody() {
 		return m_responBody;
 	}
@@ -81,8 +75,8 @@ public class AiApi {
 
 	public void AiApiStart() {
 			System.out.println("ccccc");
-	        String openApiURL = "http://aiopen.etri.re.kr:8000/ObjectDetect";
-	        String accessKey = "c47c98fe-c121-4697-991d-08516e0f6828";    // 발급받은 API Key
+	        String openApiURL = "http://aiopen.etri.re.kr:8000/ObjectDetect"; //9494f11fab50478f9c86a735ee9642ce
+	        String accessKey = "2d8993cb-a0b9-48cd-890e-7c430ae58d44";    // 발급받은 API Key c47c98fe-c121-4697-991d-08516e0f6828
 	        //String type = "jpg";     // 이미지 파일 확장자
 	        String type= m_typeName;
 	        String file = m_fileName;

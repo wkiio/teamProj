@@ -42,7 +42,7 @@ public class ReservationDAO implements ReservationService{
 	@Override
 	public int update(Map map) {
 		// TODO Auto-generated method stub
-		return 0;
+		return template.update("gradeupdate", map);
 	}
 	
 	

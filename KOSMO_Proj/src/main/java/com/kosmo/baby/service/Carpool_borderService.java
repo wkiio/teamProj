@@ -17,9 +17,15 @@ public interface Carpool_borderService {
 
 	//게시물 개수
 	int CBoardCount(Map map);
+	//전체 레코드 수]
+	int getTotalRecord(Map map);
 
 	
 	//검색용
 	Carpool_borderDTO selectOne(Map map);
+	//예약현황용
+	public List<Carpool_borderDTO> seList(Map map);
+	//카풀완료버튼
+	int yesupdate(Map map);
 }
 
