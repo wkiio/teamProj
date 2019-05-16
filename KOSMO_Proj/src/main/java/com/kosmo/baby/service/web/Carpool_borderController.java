@@ -152,7 +152,6 @@ public class Carpool_borderController {
 	@RequestMapping("/Caredit.kosmo")
 	public String caredit(@RequestParam Map map,Model model)throws Exception{
 		model.addAttribute("list",map);
-
 		return "/car_register/carregister.tiles";
 	}
 	
@@ -175,19 +174,12 @@ public class Carpool_borderController {
 		
 		System.out.println("카예약현황 : " + user.getUsername());
 		model.addAttribute("id2",user.getUsername());
-		for(int i=0;i<list.size();i++) {
-			//map.put("reser",list.get(i).getFinish());			
+		for(int i=0;i<list.size();i++) {		
 			System.out.println(list.get(i).getCp_no() + "," + list.get(i).getFinish());
 		}
-		//model.addAttribute("reser",  map.get("reser"));
-		//System.out.println("123123"+ map.get("reser"));
 
 		model.addAttribute("selist", list);
-		/*boolean toggle = false;
-		if(!toggle) {
-			model.addAttribute("yes","111");
-			toggle = true;
-		}	*/
+
 		
 				
 		return "Carreservation.tiles";
@@ -196,8 +188,6 @@ public class Carpool_borderController {
 	public String yes1(@RequestParam Map map, Model model,Authentication auth)throws Exception{			
 		System.out.println("yes1map:" + map);
 		int ii=service.yesupdate(map);
-		System.out.println(ii);
-		System.out.println("완료컨트롤러1");
 		model.addAttribute("yes","222");
 		return "forward:Carreservation.kosmo";
 	}

@@ -18,13 +18,11 @@ public class Carpool_borderDTO {
 	private String reservationid;
 	private String finish;
 	private String score;
-
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	private String opened;
+	private String signed;
+	private String done;
+	private String reviewed;
+	
 	public String getCp_no() {
 		return cp_no;
 	}
@@ -103,6 +101,12 @@ public class Carpool_borderDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public String getReservationid() {
 		return reservationid;
 	}
@@ -121,10 +125,29 @@ public class Carpool_borderDTO {
 	public void setScore(String score) {
 		this.score = score;
 	}
-	
-	
-	
-	
-	
-	
+	public String getOpened() {
+		return opened;
+	}
+	public void setOpened(String opened) {
+		this.opened = opened;
+	}
+	public String getSigned() {
+		return signed;
+	}
+	public void setSigned(String signed) {
+		this.signed = signed;
+	}
+	public String getDone() {
+		return done;
+	}
+	public void setDone(String done) {
+		this.done = done;
+	}
+	public String getReviewed() {
+		return reviewed;
+	}
+	public void setReviewed(String reviewed) {
+		this.reviewed = reviewed;
+	}
+
 }

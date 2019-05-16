@@ -70,6 +70,9 @@
    <select id="findId" parameterType="java.util.Map" resultType="MembersDTO">
    		SELECT id FROM members WHERE name=#{name} AND email=#{email}
    </select>
+   <select id="findPwd" parameterType="java.util.Map" resultType="MembersDTO">
+   		SELECT name,pwd FROM members WHERE name=#{name} AND email=#{email} AND id=#{id}
+   </select>
    
    
 	
