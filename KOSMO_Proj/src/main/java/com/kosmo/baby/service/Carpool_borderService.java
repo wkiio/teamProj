@@ -17,6 +17,8 @@ public interface Carpool_borderService {
 
 	//게시물 개수
 	int CBoardCount(Map map);
+	//전체 레코드 수]
+	int getTotalRecord(Map map);
 
 	
 	//검색용
