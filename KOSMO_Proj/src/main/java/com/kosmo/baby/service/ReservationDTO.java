@@ -3,6 +3,8 @@ package com.kosmo.baby.service;
 public class ReservationDTO {
 	private String rs_no;
 	private String score;
+	private String title;
+	private String content;
 	private String finish;
 	private String id;
 	private String cp_no;

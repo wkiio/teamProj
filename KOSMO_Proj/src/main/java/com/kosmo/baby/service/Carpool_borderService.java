@@ -21,5 +21,9 @@ public interface Carpool_borderService {
 	
 	//검색용
 	Carpool_borderDTO selectOne(Map map);
+	//예약현황용
+	public List<Carpool_borderDTO> seList(Map map);
+	//카풀완료버튼
+	int yesupdate(Map map);
 }
 

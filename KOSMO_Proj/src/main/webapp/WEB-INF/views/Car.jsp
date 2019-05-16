@@ -74,6 +74,7 @@
 				<tbody class="text-center" id="carList">
 						
 				</tbody>
+			
 			</table>
 		</div>
 	</div>	
@@ -129,9 +130,10 @@
 		 success: function(data){
 			 $('#carList').empty();	
 			 var html="";
+			
 			 $.each(data,function(index,carlist){		
 				if(clickchange == 1){
-				 ///전체화면띄우기				
+				 ///전체화면띄우기		
 				 html += "<tr id="+carlist['cp_no']+">";
 				 html+="<th scope=\"row\"><figure class=\"profile\"><img src=\"./Bootstrap/images/3.jpg\" alt=\"프로필\" class=\"picture\"><figcaption class=\"name\"></figcaption></figure></th>";
 				 html+="<td><div class=\"start_con\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
@@ -159,7 +161,8 @@
 						 html+="<td class=\"px-1 py-3\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow\"></td>";
 						 html+="<td><div class=\"end_con\"><h6>"+carlist['endpoint']+"</h6></div></td>";
 						 html+="<td><h6 class=\"cp_type\">"+carlist['type']+"</h6></td>";
-						 html+="<td><h6 class=\"cp_type\">"+"2자리"+"</h6><span class=\"cp_time\">"+carlist['price']+"원"+"</td></tr>";			
+						 html+="<td><h6 class=\"cp_type\">"+"2자리"+"</h6><span class=\"cp_time\">"+carlist['price']+"원"+"</td></tr>";
+						 
 					}
 				}
 			});////each

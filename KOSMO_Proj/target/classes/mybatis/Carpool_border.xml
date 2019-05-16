@@ -22,7 +22,7 @@
 		#{id},default,#{time},#{price},default)
 	</insert>
 	<select parameterType="java.util.Map" resultType="Carpool_borderDTO" id="carList">
-		SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id
+		SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id 
 		<if test= "((secondsearch != null) and !secondsearch.equals('')) and firstsearch.equals('')">
 			WHERE endpoint LIKE '%' || #{secondsearch} || '%' 
 		</if>
@@ -33,7 +33,7 @@
 			WHERE (startpoint LIKE '%' || #{firstsearch} || '%' 
 			AND endpoint LIKE '%' || #{secondsearch} || '%') 
 		</if>
-		ORDER BY CP_NO DESC
+		AND status=0 ORDER BY CP_NO DESC
 	</select>
 
 	<select resultType="Carpool_borderDTO" id="carview" parameterType="java.util.Map">
@@ -42,7 +42,7 @@
 	</select>
 	
 	<insert id="adminInsert" parameterType="java.util.Map">
-		INSERT INTO reservation VALUES(SEQ_reservation.NEXTVAL,0,default,#{id},#{cp_no})
+		INSERT INTO reservation VALUES(SEQ_reservation.NEXTVAL,0,'제목','내용',default,#{id},#{cp_no})
 	</insert>
 	
 	<update id="Carupdate" parameterType="java.util.Map" >
@@ -58,5 +58,13 @@
 	<select id="CBoardCount" resultType="int">
 		select count(*) from CARPOOL_BORDER
 	</select>
+	
+	<select parameterType="java.util.Map" resultType="Carpool_borderDTO" id="seList">
+		SELECT m.*,c.*,r.id as reservationID,r.finish FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id JOIN reservation r ON r.cp_no = c.cp_no
+	</select>
+	
+	<update id="yesupdate" parameterType="java.util.Map">
+		UPDATE RESERVATION set finish=1 where cp_no =#{cp_no}
+	</update>
 	
 </mapper>

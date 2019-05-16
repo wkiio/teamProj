@@ -7,31 +7,31 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.kosmo.baby.service.ReservationDTO;
-import com.kosmo.baby.service.ReservationService;
+import com.kosmo.baby.service.ReviewDTO;
+import com.kosmo.baby.service.ReviewService;
 
 @Service
-public class ReservationServiceimpl implements ReservationService{
-	//ReservationDAO 객체 주입
-	@Resource(name="reservationDAO")
-	private ReservationDAO dao;
-
+public class ReviewServiceimpl implements ReviewService{
+	
+	@Resource(name="reviewDAO")
+	private ReviewDAO dao;
 	
 	@Override
-	public List<ReservationDTO> selectList(Map map) {
-		return dao.selectList(map);
+	public List<ReviewDTO> selectList(Map map) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public ReservationDTO selectOne(Map map) {
+	public ReviewDTO selectOne(Map map) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public int insert(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+	// TODO Auto-generated method stub
+			return 0;
 	}
 
 	@Override
@@ -43,9 +43,7 @@ public class ReservationServiceimpl implements ReservationService{
 	@Override
 	public int update(Map map) {
 		// TODO Auto-generated method stub
-		return dao.update(map);
+		return 0;
 	}
-	
-	
 
 }

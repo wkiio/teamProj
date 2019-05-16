@@ -9,6 +9,7 @@ import java.util.Vector;
 import javax.annotation.Resource;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmo.baby.service.Carpool_borderDTO;
+import com.kosmo.baby.service.MembersDTO;
 import com.kosmo.baby.service.impl.Carpool_borderServiceimpl;
 
 @Controller
@@ -128,14 +130,52 @@ public class Carpool_borderController {
 	
 	@RequestMapping("/CarpoolSubmit.kosmo")
 	public String CarpoolSubmit(@RequestParam Map map,Model model,Authentication auth) throws Exception{
+		System.out.println("예약시작");
 		UserDetails user = (UserDetails)auth.getPrincipal();
-		System.out.println(user.getUsername());
 		map.put("id", user.getUsername());
+		System.out.println(map);
 		
 		service.adminInsert(map);
 		System.out.println("reservation 테이블에 들어가버렸습니다");		
 		return "index.tiles";
 	}
+	//예약현황
+	@RequestMapping("/Carreservation.kosmo")
+	public String Carreservation(@RequestParam Map map, Model model,Authentication auth)throws Exception{	
+		UserDetails user = (UserDetails)auth.getPrincipal();
+		List<Carpool_borderDTO> list = service.seList(map);
+		
+		System.out.println("카예약현황 : " + user.getUsername());
+		model.addAttribute("id2",user.getUsername());
+		for(int i=0;i<list.size();i++) {
+			//map.put("reser",list.get(i).getFinish());			
+			System.out.println(list.get(i).getCp_no() + "," + list.get(i).getFinish());
+		}
+		//model.addAttribute("reser",  map.get("reser"));
+		//System.out.println("123123"+ map.get("reser"));
+
+		model.addAttribute("selist", list);
+		/*boolean toggle = false;
+		if(!toggle) {
+			model.addAttribute("yes","111");
+			toggle = true;
+		}	*/
+		
+				
+		return "Carreservation.tiles";
+	}
+	@RequestMapping("/yes.kosmo")
+	public String yes1(@RequestParam Map map, Model model,Authentication auth)throws Exception{			
+		System.out.println("yes1map:" + map);
+		int ii=service.yesupdate(map);
+		System.out.println(ii);
+		System.out.println("완료컨트롤러1");
+		model.addAttribute("yes","222");
+		return "forward:Carreservation.kosmo";
+	}
+	
+
+
 	
 	
 }
