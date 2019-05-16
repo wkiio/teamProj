@@ -17,6 +17,7 @@ public class Carpool_borderDTO {
 	private String status;
 	private String reservationid;
 	private String finish;
+	private String score;
 
 	public String getStatus() {
 		return status;
@@ -114,6 +115,13 @@ public class Carpool_borderDTO {
 	public void setFinish(String finish) {
 		this.finish = finish;
 	}
+	public String getScore() {
+		return score;
+	}
+	public void setScore(String score) {
+		this.score = score;
+	}
+	
 	
 	
 	

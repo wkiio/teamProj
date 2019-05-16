@@ -21,20 +21,21 @@
 		#{type},#{content},#{start_xpos},#{start_ypos},#{end_xpos},#{end_ypos},
 		#{id},default,#{time},#{price},default)
 	</insert>
+	
 	<select parameterType="java.util.Map" resultType="Carpool_borderDTO" id="carList">
-		SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id 
-		<if test= "((secondsearch != null) and !secondsearch.equals('')) and firstsearch.equals('')">
-			WHERE endpoint LIKE '%' || #{secondsearch} || '%' 
-		</if>
-		<if test = "(firstsearch != null) and !firstsearch.equals('') and secondsearch.equals('')">
+      SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id
+      <if test= "((secondsearch != null) and !secondsearch.equals('')) and firstsearch.equals('')">
+         WHERE endpoint LIKE '%' || #{secondsearch} || '%' 
+      </if>
+      <if test = "(firstsearch != null) and !firstsearch.equals('') and secondsearch.equals('')">
          WHERE startpoint LIKE '%' || #{firstsearch} || '%' 
-     	 </if>
-		 <if test ="((secondsearch != null) and !secondsearch.equals('')) and ((firstsearch != null) and !firstsearch.equals(''))">
-			WHERE (startpoint LIKE '%' || #{firstsearch} || '%' 
-			AND endpoint LIKE '%' || #{secondsearch} || '%') 
-		</if>
-		AND status=0 ORDER BY CP_NO DESC
-	</select>
+         </if>
+       <if test ="((secondsearch != null) and !secondsearch.equals('')) and ((firstsearch != null) and !firstsearch.equals(''))">
+         WHERE (startpoint LIKE '%' || #{firstsearch} || '%' 
+         AND endpoint LIKE '%' || #{secondsearch} || '%') 
+      </if>
+      and status=0 ORDER BY CP_NO DESC
+   </select>
 
 	<select resultType="Carpool_borderDTO" id="carview" parameterType="java.util.Map">
 		SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id where CP_NO=#{cp_no} 
@@ -60,11 +61,18 @@
 	</select>
 	
 	<select parameterType="java.util.Map" resultType="Carpool_borderDTO" id="seList">
-		SELECT m.*,c.*,r.id as reservationID,r.finish FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id JOIN reservation r ON r.cp_no = c.cp_no
+		SELECT m.*,c.*,r.id as reservationID,r.finish,r.score FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id JOIN reservation r ON r.cp_no = c.cp_no
 	</select>
 	
 	<update id="yesupdate" parameterType="java.util.Map">
 		UPDATE RESERVATION set finish=1 where cp_no =#{cp_no}
 	</update>
+<!-- 	<select id="TotalCount" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) from CARPOOL_BORDER	
+		<if test="searchColumn !=null">
+			WHERE ${searchColumn} LIKE '%' || #{searchWord} || '%'
+		</if>		
+	</select> -->
+	
 	
 </mapper>

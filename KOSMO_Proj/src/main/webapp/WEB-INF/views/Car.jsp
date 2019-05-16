@@ -14,6 +14,7 @@
       });
    }); */
 </script>
+
 <div class="site-section carpool_section" style="padding: 2em;">
 	<div class="container">
 		<div class="carool-head row">
@@ -59,7 +60,7 @@
 			</div>
 		</div>
 		<div class="table-responsive">
-			<table class="table cp_table">
+			<table class="table cp_table tbl paginated" id="tbl">
 				<thead>
 					<tr class="text-center">
 						<th scope="col">프로필</th>
@@ -72,13 +73,17 @@
 				</thead>
 				
 				<tbody class="text-center" id="carList">
-						
+					
 				</tbody>
 			
 			</table>
 		</div>
-	</div>	
+	</div>
+<!-- 페이징 -->
+<!-- <table class="tbl paginated" id="tbl"></table> -->
+
 </div>
+
 
 <script>
 
@@ -119,13 +124,13 @@
 			console.log("firstsearch : " + firstsearch);
 			console.log("secondsearch : " + secondsearch);
 		 });
- });/////function
+ });/////functionㅁㄴㅇㅁㄴ
  
  var firsttable = function(){
 	 $.ajax({
 		 data : {"${_csrf.parameterName}" : "${_csrf.token}", 'firstsearch' : firstsearch, 'secondsearch' : secondsearch},
 		 type : "POST",
-		 url : "<c:url value = '/Carindex1.kosmo'/>",
+		 url : "<c:url value = '/Carindex1.kosmo?'/>",
 		 dataType : "json",
 		 success: function(data){
 			 $('#carList').empty();	
@@ -135,49 +140,153 @@
 				if(clickchange == 1){
 				 ///전체화면띄우기		
 				 html += "<tr id="+carlist['cp_no']+">";
-				 html+="<th scope=\"row\"><figure class=\"profile\"><img src=\"./Bootstrap/images/3.jpg\" alt=\"프로필\" class=\"picture\"><figcaption class=\"name\"></figcaption></figure></th>";
-				 html+="<td><div class=\"start_con\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
-				 html+="<td class=\"px-1 py-3\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow\"></td>";
-				 html+="<td><div class=\"end_con\"><h6>"+carlist['endpoint']+"</h6></div></td>";
-				 html+="<td><h6 class=\"cp_type\">"+carlist['type']+"</h6></td>";
-				 html+="<td><h6 class=\"cp_type\">"+"2자리"+"</h6><span class=\"cp_time\">"+carlist['price']+"원"+"</td></tr>";			 	 
+				 html+="<th scope=\"row\"><figure class=\"profile listtd\"><img src=\"./Bootstrap/images/3.jpg\" alt=\"프로필\" class=\"picture listtd\"><figcaption class=\"name listtd\"></figcaption></figure></th>";
+				 html+="<td><div class=\"start_con listtd\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
+				 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
+				 html+="<td><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
+				 html+="<td><h6 class=\"cp_type listtd\">"+carlist['type']+"</h6></td>";
+				 html+="<td><h6 class=\"cp_type listtd\">"+"2자리"+"</h6><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</td></tr>";			 	 
 				}
 				else if(clickchange == 2){
 					if(carlist['type'] == "타세요"){
 						 html += "<tr id="+carlist['cp_no']+">";
-						 html+="<th scope=\"row\"><figure class=\"profile\"><img src=\"./Bootstrap/images/3.jpg\" alt=\"프로필\" class=\"picture\"><figcaption class=\"name\"></figcaption></figure></th>";
-						 html+="<td><div class=\"start_con\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
-						 html+="<td class=\"px-1 py-3\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow\"></td>";
-						 html+="<td><div class=\"end_con\"><h6>"+carlist['endpoint']+"</h6></div></td>";
-						 html+="<td><h6 class=\"cp_type\">"+carlist['type']+"</h6></td>";
-						 html+="<td><h6 class=\"cp_type\">"+"2자리"+"</h6><span class=\"cp_time\">"+carlist['price']+"원"+"</td></tr>";			
+						 html+="<th scope=\"row\"><figure class=\"profile listtd\"><img src=\"./Bootstrap/images/3.jpg\" alt=\"프로필\" class=\"picture listtd\"><figcaption class=\"name listtd\"></figcaption></figure></th>";
+						 html+="<td><div class=\"start_con listtd\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
+						 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
+						 html+="<td><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
+						 html+="<td><h6 class=\"cp_type listtd\">"+carlist['type']+"</h6></td>";
+						 html+="<td><h6 class=\"cp_type listtd\">"+"2자리"+"</h6><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</td></tr>";			
 					}
 				}
 				else{
 					if(carlist['type'] == "태워주세요"){
 						 html += "<tr id="+carlist['cp_no']+">";
-						 html+="<th scope=\"row\"><figure class=\"profile\"><img src=\"./Bootstrap/images/3.jpg\" alt=\"프로필\" class=\"picture\"><figcaption class=\"name\"></figcaption></figure></th>";
-						 html+="<td><div class=\"start_con\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
-						 html+="<td class=\"px-1 py-3\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow\"></td>";
-						 html+="<td><div class=\"end_con\"><h6>"+carlist['endpoint']+"</h6></div></td>";
-						 html+="<td><h6 class=\"cp_type\">"+carlist['type']+"</h6></td>";
-						 html+="<td><h6 class=\"cp_type\">"+"2자리"+"</h6><span class=\"cp_time\">"+carlist['price']+"원"+"</td></tr>";
+						 html+="<th scope=\"row\"><figure class=\"profile listtd\"><img src=\"./Bootstrap/images/3.jpg\" alt=\"프로필\" class=\"picture listtd\"><figcaption class=\"name listtd\"></figcaption></figure></th>";
+						 html+="<td><div class=\"start_con listtd\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
+						 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
+						 html+="<td><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
+						 html+="<td><h6 class=\"cp_type listtd\">"+carlist['type']+"</h6></td>";
+						 html+="<td><h6 class=\"cp_type listtd\">"+"2자리"+"</h6><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</td></tr>";
 						 
 					}
 				}
 			});////each
+			
 			$('#carList').html(html);
+			page();
 			
 			
+
 			 $('tbody tr').each(function(i){
 		         $(this).click(function(){
 		        	var id = $(this).attr('id');
 		            location.href="Carview.kosmo?cp_no="+id;		            
 		         });		         
-		      });			 
+		      });
+			 
+			 
+			// 만들어진 테이블에 페이지 처리
+				function page(){ 
+				var reSortColors = function($table) {
+				  $('tbody tr:odd td', $table).removeClass('even').removeClass('listtd').addClass('odd');
+				  $('tbody tr:even td', $table).removeClass('odd').removeClass('listtd').addClass('even');
+				 };
+				 $('table.paginated').each(function() {
+				  var pagesu = 10;  
+				  var currentPage = 0;
+				  var numPerPage = 5;  //목록의 수
+				  var $table = $(this);    
+				  
+				  //length로 원래 리스트의 전체길이구함
+				  var numRows = $table.find('tbody tr').length;
+				  //Math.ceil를 이용하여 반올림
+				  var numPages = Math.ceil(numRows / numPerPage);
+				  //리스트가 없으면 종료
+				  if (numPages==0) return;
+				  //pager라는 클래스의 div엘리먼트 작성
+				  var $pager = $('<td align="center" id="remo" colspan="10"><div class="pager"></div></td>');
+				  
+				  var nowp = currentPage;
+				  var endp = nowp+10;
+				  
+				  //페이지를 클릭하면 다시 셋팅
+				  $("#remo").remove();
+				  $table.bind('repaginate', function() {
+				  //기본적으로 모두 감춘다, 현재페이지+1 곱하기 현재페이지까지 보여준다
+				  
+				   $table.find('tbody tr').hide().slice(currentPage * numPerPage, (currentPage + 1) * numPerPage).show();
+				   $("#remo").html("");
+				   
+				   if (numPages > 1) {     // 한페이지 이상이면
+				    if (currentPage < 5 && numPages-currentPage >= 5) {   // 현재 5p 이하이면
+				     nowp = 0;     // 1부터 
+				     endp = pagesu;    // 10까지
+				    }else{
+				     nowp = currentPage -5;  // 6넘어가면 2부터 찍고
+				     endp = nowp+pagesu;   // 10까지
+				     pi = 1;
+				    }
+				    
+				    if (numPages < endp) {   // 10페이지가 안되면
+				     endp = numPages;   // 마지막페이지를 갯수 만큼
+				     nowp = numPages-pagesu;  // 시작페이지를   갯수 -10
+				    }
+				    if (nowp < 1) {     // 시작이 음수 or 0 이면
+				     nowp = 0;     // 1페이지부터 시작
+				    }
+				   }else{       // 한페이지 이하이면
+				    nowp = 0;      // 한번만 페이징 생성
+				    endp = numPages;
+				   }
+				   
+				   // [처음]
+				   $('<br /><span class="page-number" cursor: "pointer">[처음]</span>').bind('click', {newPage: page},function(event) {
+				          currentPage = 0;   
+				          $table.trigger('repaginate');  
+				          $($(".page-number")[2]).addClass('active').siblings().removeClass('active');
+				      }).appendTo($pager).addClass('clickable');
+				    // [이전]
+				      $('<span class="page-number" cursor: "pointer">&nbsp;&nbsp;&nbsp;[이전]&nbsp;</span>').bind('click', {newPage: page},function(event) {
+				          if(currentPage == 0) return; 
+				          currentPage = currentPage-1;
+				    $table.trigger('repaginate'); 
+				    $($(".page-number")[(currentPage-nowp)+2]).addClass('active').siblings().removeClass('active');
+				   }).appendTo($pager).addClass('clickable');
+				    // [1,2,3,4,5,6,7,8]
+				   for (var page = nowp ; page < endp; page++) {
+				    $('<span class="page-number" cursor: "pointer" style="margin-left: 8px;"></span>').text(page + 1).bind('click', {newPage: page}, function(event) {
+				     currentPage = event.data['newPage'];
+				     $table.trigger('repaginate');
+				     $($(".page-number")[(currentPage-nowp)+2]).addClass('active').siblings().removeClass('active');
+				     }).appendTo($pager).addClass('clickable');
+				   } 
+				    // [다음]
+				      $('<span class="page-number" cursor: "pointer">&nbsp;&nbsp;&nbsp;[다음]&nbsp;</span>').bind('click', {newPage: page},function(event) {
+				    if(currentPage == numPages-1) return;
+				        currentPage = currentPage+1;
+				    $table.trigger('repaginate'); 
+				     $($(".page-number")[(currentPage-nowp)+2]).addClass('active').siblings().removeClass('active');
+				   }).appendTo($pager).addClass('clickable');
+				    // [끝]
+				   $('<span class="page-number" cursor: "pointer">&nbsp;[끝]</span>').bind('click', {newPage: page},function(event) {
+				           currentPage = numPages-1;
+				           $table.trigger('repaginate');
+				           $($(".page-number")[endp-nowp+1]).addClass('active').siblings().removeClass('active');
+				   }).appendTo($pager).addClass('clickable');
+				     
+				     $($(".page-number")[2]).addClass('active');
+				reSortColors($table);
+				  });
+				   $pager.insertAfter($table).find('span.page-number:first').next().next().addClass('active');   
+				   $pager.appendTo($table);
+				   $table.trigger('repaginate');
+				 });
+				}
 		 }/////success
 		 
+		 
 	 });////ajax
+	 
 	 
  }
  
