@@ -65,8 +65,8 @@
 							</ul></li>
 						<li><a href="calendar.kosmo">캘린더</a></li>
 						<li><a href="babyinfo.kosmo">육아정보</a></li>
+						<li><a href="blookChain.kosmo">육아베팅</a></li>
 						<li><a href="guestBook.kosmo">방명록</a></li>
-						<li><a href="blookChain.kosmo">블록체인</a></li>
 						
 						
 						

@@ -10,7 +10,11 @@ public interface GuestBookService {
 	
 	void insert(Map map);
 	void delete(Map map);
+	
+	//SelectOne
+	GuestBookDTO selectOne(Map map);
+	
+	//답변
 	void update(Map map);
 	int reply(Map map);
-	
 }

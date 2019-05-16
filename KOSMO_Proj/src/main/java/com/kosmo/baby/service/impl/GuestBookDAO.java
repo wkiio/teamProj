@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.kosmo.baby.service.GuestBookDTO;
 import com.kosmo.baby.service.GuestBookService;
 
 @Repository
@@ -43,6 +44,11 @@ public class GuestBookDAO implements GuestBookService{
 		int updateCount=template.update("ReplyUpdate",map);
 		int insertCount=template.insert("ReplyInsert",map);
 		return insertCount;
+	}
+
+	@Override
+	public GuestBookDTO selectOne(Map map) {
+		return template.selectOne("selectOne",map);
 	}
 
 }

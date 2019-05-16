@@ -12,26 +12,23 @@
 					
 </div>
 
-
 <div class="container">
 	<div class="row">
 		<div class="col-md-9" style="left:35.5%">
 			<div class="col-md-offset-2 col-md-6">
-
 				<!-- 한줄 코멘트 입력 폼-->
-
-
 				<form class="form" id="frm" method="post">
 				
+				<div id='recomment'>
 				<h2>방명록<small> 글 입력</small></h2>
-				
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> 
-				<input type="hidden" name="no" value="" />	
-				<input type="hidden" name="gno" value="" /> 
+				</div>
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+				 
+				<input type="hidden" name="gno" /> 
 				<!-- 수정 및 삭제용 파라미터 -->
 				<div style='overflow:hidden;'>
 				
-				<div style='display:inline;float:left;width:200px'>
+				<div style='float:left;width:200px'>
 			    <img style="border-radius: 50px; height: 50px; width: 50px" /> 
 			    </div>
 			    <div style='float:left'>
@@ -41,25 +38,19 @@
 				<input id="submit" class="btn btn-info" value="확인" />
 				</div>		
 				</div>
-
-
 				</form>
-				
-
+			
 			</div>
 		</div>
 	</div>
 
 </div>
-
 <script>
-
-
 $(function(){
 	//코멘트 입력처리]
 	showComments();
 	$('#submit').click(function(){
-		console.log('입력 확인');
+		console.log('클릭 확인');
 		if($(this).val()=='확인'){
 			console.log('확인??');		
 			$.ajax({
@@ -76,10 +67,28 @@ $(function(){
 				}				
 			}); 			
 		}
+		else if ($(this).val()=='답변'){///답변 작성용
+			console.log('답변 클릭후 답변 작성 스타트');
+			
+			$.ajax({
+				url: "<c:url value='/GuestBook/reply.kosmo'/>",
+				data:$('#frm').serialize(),
+				dataType:'text',
+				type:'post',
+				success:function(){
+					console.log('답변 입력 성공');
+					showComments();
+					
+					$('#title').val('');
+					$('#title').focus();					
+				}				
+			}); 
+						
+			}////대댓글
 		else{
-			console.log('수정이 들어갈수도 있나??')
-			//var action ="<c:url value='/GuestBook/Edit.kosmo'/>";
+			console.log('요건 수정')
 		}
+		
 		
 	});//코멘트 입력처리 끝]
 	
@@ -104,7 +113,7 @@ var displayComments = function(data){
 	console.log(JSON.stringify(data));
 	var commentsString="";
 	commentsString+="<div class='col-md-9' style='left:12.5%'><h2 style='text-align: center;'>방명록 <small>댓글 목록</small></h2><table id='add_table'  class='table table-bordered'>";
-	commentsString+="<tr class='reply'><th width='15%'>작성자</th><th width='50%'>댓글</th><th>작성일</th><th>답변/삭제</th></tr>";
+	commentsString+="<tr><th width='15%'>작성자</th><th width='50%'>댓글</th><th>작성일</th><th>답변/삭제</th></tr>";
 	if(data.length==0){
 		commentsString+='<tr><td colspan="4">등록된 한줄 댓글이 없어요</td></tr>';
 	} 
@@ -115,7 +124,7 @@ var displayComments = function(data){
 		//본인이 쓴 코멘트 수정할 수 있도록 링크 처리
 		if('kim' != comment['ID'])//보안적용 후
 			commentsString+="<td align='left'>"+comment['GCOMMENT']+'</td>';
-		else
+			else //수정 
 			commentsString+="<td align='left'><span style='cursor:pointer' class='commentEdit' title='"+comment['GNO']+"'>"+comment['GCOMMENT']+'</span></td>';
 				
 		commentsString+="<td>"+comment['GPOSTDATE']+'</td>';
@@ -123,9 +132,8 @@ var displayComments = function(data){
 		if('kim' != comment['ID'])//보안적용 후
 			commentsString+="<span style='color:gray;font-size:.7em;font-weight:bold'>삭제불가</span>"
 		else
-			commentsString+="<span class='reply' title='"+comment['GNO']+"' style='cursor:pointer;color:green;font-size:1.2em;font-weight:bold'>답변 / </span><span class='commentDelete' title='"+comment['GNO']+"' style='cursor:pointer;color:green;font-size:1.2em;font-weight:bold' >삭제</span>"
+			commentsString+="<a href='#recomment'><span class='reply' title='"+comment['GNO']+"' style='cursor:pointer;color:green;font-size:1.2em;font-weight:bold'>답변 / </span></a><span class='commentDelete' title='"+comment['GNO']+"' style='cursor:pointer;color:green;font-size:1.2em;font-weight:bold' >삭제</span>"
 		commentsString+="</td></tr>";
-		commentsString+="<tr class='test' style='display:none;'></tr>";
 	});
 	commentsString+="</table></div>";
 	$('#comments').html(commentsString);
@@ -139,19 +147,22 @@ var displayComments = function(data){
 		console.log('클릭한 댓글의 키값(GNO):',$('#title').attr('title'));
 		//클릭한 제목으로 텍스트박스 값 설정
 		//$('#title').val($(this).html());
-		$('#submit').val('댓글수정');			
-		//form의 hidden속성중 name="cno"값 설정ff
-		//$('input[name=GNO]').val($(this).attr('title'));ㅁㄴㅇㅁㄴㅇㅋ
-		console.log('???:' + $(this).attr('title'));
-		var gno = $(this).attr('title');
+		
+		$('#submit').val('댓글수정');
+		
+		$('#title').focus();
+		//form의 hidden속성중 name="cno"값 설정
+		
+		$('input[name=gno]').val($(this).attr('title'));
+		
 		$('#submit').click(function(){			
 			if($('#submit').val()=='댓글수정'){			
-				var edittext = $('#title').val();
+				
 				//console.log('입력한값 :' + $('#title').val());			
 				$.ajax({
 					url:'<c:url value="/GuestBook/Edit.kosmo"/>',
 					//스프링 보안 적용시(단,CSRF적용시(POST방식)에만 서버에 CSRF토큰값도 같이 보내야 한다)
-					data:{gno : gno ,gcomment : edittext,'_csrf':'${_csrf.token}'},
+					data:$('#frm').serialize(),
 					dataType:'text',
 					type:'post',
 					success:function(){showComments(); $('#submit').val('확인');$('#title').val('');
@@ -176,41 +187,16 @@ var displayComments = function(data){
 	});
 	
 	$('.reply').click(function(){		
-	console.log('답변 클릭')	
-	//var replyText = $('#title').html()
+	console.log('답변 클릭 펑션:'+$(this).attr('title'));
+	$('input[name=gno]').val($(this).attr('title'));
 	console.log($(this).attr('title'));
-	
  	console.log("찾은 것:" ,$(this).html());
 
-	console.log('답변 완료')	
+ 	$('#submit').val('답변')
+ 	$('#title').focus();
+	console.log('답변 펑션 완료')	
 	
 	});
-	
-	$('#add_table').on("click", "button", function() {
-	    $(this).closest("td").remove()
-	});
-	
-	
-	/*
-	var replyComments = function(){
-		$.ajax({
-			url:"<c:url value='/GuestBook/List.kosmo'/>",
-			//스프링 보안 적용시(단,CSRF적용시(POST방식)에만 서버에 CSRF토큰값도 같이 보내야 한다)
-			data:{'${_csrf.parameterName}':'${_csrf.token}'},
-			dataType:'json',
-			type:'post',
-			success: reply			
-		});	
-	};
-	
-	var reply = function(data){
-		console.log(JSON.stringify(data));
-		$.each(data,function(){
-			
-		})
-	};
-	*/
-	
 	
 	
 };/////////displayComments

@@ -1,38 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-
 <!DOCTYPE mapper  
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 
 <mapper namespace="mybatis.GuestBook">
 	<select id="commentSelectList" parameterType="java.util.Map" resultType="java.util.Map">
 		SELECT * FROM guestbook  ORDER BY refer DESC,step ASC
 	</select>
+	
 	<insert id="commentInsert" parameterType="java.util.Map">
 		INSERT INTO guestbook VALUES(SEQ_GUESTBOOK.NEXTVAL,#{gcomment},'kim','image',DEFAULT,SEQ_GUESTBOOK.CURRVAL,DEFAULT,DEFAULT)
-	</insert>
+	</insert> 
+	
 	<update id="commentUpdate" parameterType="java.util.Map">
 		UPDATE guestbook SET gComment=#{gcomment} WHERE gNo =#{gno}
 	</update>
+	
 	<delete id="commentDelete" parameterType="java.util.Map">
 		DELETE guestbook WHERE gNo =#{gno}
 	</delete>
+	
 	<update id="ReplyUpdate" parameterType="java.util.Map">
 		UPDATE guestbook SET step=step+1 WHERE refer=#{refer} AND step &gt; #{step}
 	</update>
+	
 	<insert id="ReplyInsert" parameterType="java.util.Map">
 		INSERT INTO guestbook VALUES(SEQ_GUESTBOOK.NEXTVAL,#{gcomment},'kim','image',DEFAULT,#{refer},#{step}+1,#{depth}+1)
 	</insert>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<select id="selectOne" parameterType="java.util.Map" resultType="GuestBookDTO">
+		SELECT * from guestbook where gno = #{gno}
+	</select>
 </mapper>

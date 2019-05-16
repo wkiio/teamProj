@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.kosmo.baby.service.GuestBookDTO;
 import com.kosmo.baby.service.GuestBookService;
 
 @Service("guestBookService")
@@ -40,6 +41,11 @@ public class GuestBookServiceimpl implements GuestBookService{
 	@Override
 	public int reply(Map map) {
 		return dao.reply(map);
+	}
+
+	@Override
+	public GuestBookDTO selectOne(Map map) {
+		return dao.selectOne(map);
 	}
 	
 
