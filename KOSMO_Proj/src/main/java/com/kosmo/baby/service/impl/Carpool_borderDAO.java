@@ -22,6 +22,7 @@ public class Carpool_borderDAO implements Carpool_borderService{
 		System.out.println("Map : "+map);
 		System.out.println();
 		return template.selectList("carList",map);
+		
 	}
 
 	@Override
@@ -56,7 +57,20 @@ public class Carpool_borderDAO implements Carpool_borderService{
 		// TODO Auto-generated method stub
 		return template.selectOne("CBoardCount", map);
 	}
+	@Override
+	public List<Carpool_borderDTO> seList(Map map) {
 
+		return template.selectList("seList",map);
+		
+	}
+	@Override
+	public int yesupdate(Map map) {
+		System.out.println("완료 DAO");
+		System.out.println("???:" +map);
+		int aa = template.update("yesupdate",map);
+		System.out.println("aa : " + aa);
+		return aa;
+	}
 	
 
 }

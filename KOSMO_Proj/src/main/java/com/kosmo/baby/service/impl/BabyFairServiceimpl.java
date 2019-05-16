@@ -24,14 +24,11 @@ public class BabyFairServiceimpl implements BabyFairService {
 
 	@Override
 	public BabyFairDTO selectOne(Map map) {
-		// TODO Auto-generated method stub
 		return dao.selectOne(map);
 	}
 
 	@Override
 	public int insert(Map map) {
-		// TODO Auto-generated method stub
-		
 		return dao.insert(map);
 	}
 
@@ -44,5 +41,12 @@ public class BabyFairServiceimpl implements BabyFairService {
 	public int update(Map map) {
 		return dao.update(map);
 	}
+
+	@Override
+	public int seachEvent(Map map) {
+		return dao.seachEvent(map);
+	}
+
+	
 
 }

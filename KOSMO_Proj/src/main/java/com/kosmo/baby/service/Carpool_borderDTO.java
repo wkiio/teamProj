@@ -15,6 +15,8 @@ public class Carpool_borderDTO {
 	private String id;
 	private String name;
 	private String status;
+	private String reservationid;
+	private String finish;
 
 	public String getStatus() {
 		return status;
@@ -100,5 +102,21 @@ public class Carpool_borderDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getReservationid() {
+		return reservationid;
+	}
+	public void setReservationid(String reservationid) {
+		this.reservationid = reservationid;
+	}
+	public String getFinish() {
+		return finish;
+	}
+	public void setFinish(String finish) {
+		this.finish = finish;
+	}
+	
+	
+	
+	
 	
 }

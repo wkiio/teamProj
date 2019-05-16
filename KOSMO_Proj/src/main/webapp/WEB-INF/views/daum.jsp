@@ -168,11 +168,6 @@
 }
 </style>
 
-<p style="margin-top:-12px">
-    <em class="link">
-        <a href="/web/documentation/#CategoryCode" target="_blank">카테고리 코드목록을 보시려면 여기를 클릭하세요!</a>
-    </em>
-</p>
 <div class="map_wrap">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
     <ul id="category">
@@ -229,12 +224,62 @@
 	// 장소 검색 객체를 생성합니다
 	var ps = new daum.maps.services.Places(map);
 
+<<<<<<< HEAD
 	//값 미리 설정해보기
 	$(function() {
 		emData = ${emer};
 		console.log("emData:" + emData);
 		//var index = 0;
 		//console.log('a' + emData[3].name);
+=======
+
+
+//값 미리 설정해보기
+$(function(){
+   emData = ${emer};
+   //console.log("emData:" + emData);
+   var index =0;
+   console.log('a' + emData[3].name);
+   
+    emData.forEach(function(vaule,index,array){
+      console.log('11');
+      var search3 = vaule.addr;
+      geocoder.addressSearch(vaule.addr,function(result,status){           
+         console.log('index :'+ index +' : '+ vaule.addr);
+         index++;
+         console.log('22');
+            if (status === daum.maps.services.Status.OK) {  
+             var coords = new daum.maps.LatLng(result[0].y, result[0].x);                   
+                console.log('y : '+typeof(result[0].y));
+                vaule.x = result[0].x;
+                vaule.y= result[0].y;
+                //console.log('v : ' + typeof(coords.jb));
+             //value.x = result[0].y;
+             //console.log('33 : ' + vaule.x);          
+         }          
+      });
+      console.log('44');
+      
+   }); 
+   
+   
+    /* for(var i=0; i<emData.length; i++ ) {   
+      console.log('11');
+      var search = emData[i].addr;
+      geocoder.addressSearch(search,function(result,status){           
+            console.log('index :'+ index +' : '+ search);
+            index++;
+            console.log('22');
+               if (status === daum.maps.services.Status.OK) {  
+                var coords = new daum.maps.LatLng(result[0].y, result[0].x);                   
+          
+                console.log('33');          
+            }          
+         });
+      console.log('44');
+      }   */
+});
+>>>>>>> branch 'hosic' of https://github.com/wkiio/teamProj.git
 
 		emData.forEach(function(vaule, index, array) {
 			console.log('11');
@@ -375,6 +420,7 @@
 					});
 				})(marker, emData[i]);
 
+<<<<<<< HEAD
 			}
 		}
 	    if(currCategory == 'PM9'){
@@ -395,7 +441,45 @@
 						console.log("마커표시 완료했다.")
 					});
 				})(marker, emData[i]);
+=======
+// 지도에 마커를 표출하는 함수입니다
+function displayPlaces(places) {
+ //console.log("places1: " +JSON.stringify(places));
+ //console.log(places[0].place_name)
+ console.log(places);
+ console.log(emData[0].addr);
+    // 몇번째 카테고리가 선택되어 있는지 얻어옵니다
+    // 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
+    var order = document.getElementById(currCategory).getAttribute('data-order');
+    
+   var index = 0;
+    if(currCategory == 'MT1'){
+         for(var i=0; i<emData.length; i++ ) {   
+               // 마커를 생성하고 지도에 표시합니다
+                 //search = getdata[i].addr;
+              // geocoder.addressSearch(getdata[i].addr,function(result,status){           
+                //console.log(search);g
+           
+                   
+                  var marker = addMarker(new daum.maps.LatLng( emData[i].y,  emData[i].x), order);
+               // 마커와 검색결과 항목을 클릭 했을 때
+               // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
+               (function(marker, emData) {
+                   daum.maps.event.addListener(marker, 'click', function() {
+                       displayPlaceInfo(emData);                
+                   });
+               })(marker, emData[i]);
+            	
+         }
+     }
+      
+      else{
+          for ( var i=0; i<places.length; i++ ) {       
+             // 마커를 생성하고 지도에 표시합니다
+            var marker = addMarker(new daum.maps.LatLng(places[i].y, places[i].x), order);
+>>>>>>> branch 'hosic' of https://github.com/wkiio/teamProj.git
 
+<<<<<<< HEAD
 			}
 		}
 	    if(currCategory == 'MT1'){
@@ -416,6 +500,19 @@
 						console.log("마커표시 완료했다.")
 					});
 				})(marker, emData[i]);
+=======
+            // 마커와 검색결과 항목을 클릭 했을 때
+            // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
+            (function(marker, place) {
+                daum.maps.event.addListener(marker, 'click', function() {
+                    displayPlaceInfo(place);
+                    console.log("여기가클릭이냐??")
+                });
+            })(marker, places[i]); 
+       }
+      }
+}
+>>>>>>> branch 'hosic' of https://github.com/wkiio/teamProj.git
 
 			}
 		}
@@ -458,8 +555,17 @@
 			image : markerImage
 		});
 
+<<<<<<< HEAD
 		marker.setMap(map); // 지도 위에 마커를 표출합니다
 		markers.push(marker); // 배열에 생성된 마커를 추가합니다
+=======
+// 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
+function displayPlaceInfo (place) {
+   console.log("place2" + JSON.stringify(place));
+   //console.log(place);
+    var content = '<div class="placeinfo">' +
+                    '   <a class="title" id="title" href="' + place.place_url + '" target="_blank" title="' + place.name + '">' + place.place_name + '</a>';   
+>>>>>>> branch 'hosic' of https://github.com/wkiio/teamProj.git
 
 		return marker;
 	}
@@ -491,22 +597,64 @@
 					+ emdata.addr + '</span>';
 		}
 
+<<<<<<< HEAD
 		content += '    <span class="tel">' + emdata.tel + '</span>'
 				+ '</div>' + '<div class="after"></div>';
+=======
+    for (var i=0; i<children.length; i++) {
+        children[i].onclick = onClickCategory;
+        console.log("여기가클릭이냐2??")
+    }
+}
+>>>>>>> branch 'hosic' of https://github.com/wkiio/teamProj.git
 
+<<<<<<< HEAD
 		contentNode.innerHTML = content;
 		placeOverlay.setPosition(new daum.maps.LatLng(emdata.y, emdata.x));
 		placeOverlay.setMap(map);
 	}
+=======
+// 카테고리를 클릭했을 때 호출되는 함수입니다
+function onClickCategory() {
+   console.log('카테고리 클릭');
+   console.log("여기가클릭이냐3??")
+    var id = this.id,
+        className = this.className;   
+    placeOverlay.setMap(null);
+>>>>>>> branch 'hosic' of https://github.com/wkiio/teamProj.git
 
+<<<<<<< HEAD
 	// 각 카테고리에 클릭 이벤트를 등록합니다
 	function addCategoryClickEvent() {
 		var category = document.getElementById('category'), children = category.children;
+=======
+    if (className === 'on') {
+        currCategory = '';
+        changeCategoryClass();
+        removeMarker();
+       
+    } else {
+        currCategory = id;       
+        changeCategoryClass(this);
+        searchPlaces();
+    }
+    
+}
+>>>>>>> branch 'hosic' of https://github.com/wkiio/teamProj.git
 
+<<<<<<< HEAD
 		for (var i = 0; i < children.length; i++) {
 			children[i].onclick = onClickCategory;
 		}
 	}
+=======
+// 클릭된 카테고리에만 클릭된 스타일을 적용하는 함수입니다
+function changeCategoryClass(el) {
+   //console.log("el: " +el);
+    var category = document.getElementById('category'),
+        children = category.children,i;
+    console.log("여기가클릭이냐??")
+>>>>>>> branch 'hosic' of https://github.com/wkiio/teamProj.git
 
 	// 카테고리를 클릭했을 때 호출되는 함수입니다
 	function onClickCategory() {
@@ -534,6 +682,7 @@
 			children[i].className = '';
 		}
 
+<<<<<<< HEAD
 		if (el) {
 			el.className = 'on';
 		}
@@ -560,5 +709,7 @@
 		});
 
 	};
+=======
+>>>>>>> branch 'hosic' of https://github.com/wkiio/teamProj.git
 </script>
 

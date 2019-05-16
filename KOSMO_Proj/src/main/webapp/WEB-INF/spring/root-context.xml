@@ -39,8 +39,7 @@
          </props>
       </property>
    </bean>
-   
-    
+
    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- max upload size in bytes -->
         <property name="maxUploadSize" value="20971520" /> <!-- 20MB -->
@@ -50,7 +49,6 @@
    
     <bean name="visitCountDAO"  id="visitCountDAO" class="com.kosmo.baby.service.impl.VisitCountDAO"/> 
     <bean name="visitCountServiceimpl"  id="visitCountServiceimpl" class="com.kosmo.baby.service.impl.VisitCountServiceimpl"/> 
-   
-	
+
 		
 </beans>

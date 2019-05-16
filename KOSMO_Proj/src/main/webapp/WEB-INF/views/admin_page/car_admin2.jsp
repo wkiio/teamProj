@@ -305,7 +305,7 @@ section{
                                 <i class="far fa-check-square"></i>육아 게시판 관리</a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="calendar_admin.kosmo">
                                 <i class="fas fa-calendar-alt"></i>달력 및 공지사항 관리</a>
                         </li>
                     </ul>

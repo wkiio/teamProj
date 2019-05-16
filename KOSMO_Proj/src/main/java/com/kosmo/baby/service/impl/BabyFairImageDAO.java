@@ -27,7 +27,8 @@ public class BabyFairImageDAO implements BabyFairImageService{
 
 	@Override
 	public int insert(Map map) {
-		return template.insert("babyFairImageInsert",map);
+		
+		return 0;
 		
 	}
 

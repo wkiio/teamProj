@@ -1,0 +1,36 @@
+td.fc-sun .fc-day-number {
+  color: red;
+}
+td.fc-sat .fc-day-number {
+  color: blue;
+}
+.fc-event .fc-title {
+  color: white;
+}
+.fc-event .fc-time {
+  color: white;
+}
+.fc-today .fc-day-number {
+  font-weight: bold;
+}
+.fc-event {
+  cursor: pointer;
+  border: none;
+}
+.fc-button {
+  background-color: #23b8bc;
+  border: none;
+}
+.note-editor.note-frame .note-editing-area .note-editable[contenteditable="false"] {
+  background-color: white;
+}
+.modal-footer input {
+  background: #23b8bc;
+  color: #fff;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+}
+.modal-footer input:hover {
+  background-color: #157577;
+}

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MsApi {
-	 // **********************************************
+    // **********************************************
     // *** Update or verify the following values. ***
     // **********************************************
 
@@ -44,17 +44,17 @@ public class MsApi {
     
     
     public String getMs_Api() {
-		return ms_Api;
-	}
+      return ms_Api;
+   }
 
 
-	public void setMs_Api(String ms_Api) {
-		this.ms_Api = ms_Api;
-	}
+   public void setMs_Api(String ms_Api) {
+      this.ms_Api = ms_Api;
+   }
 
 
-	public void startApi(String imageurl) {
-    	 CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+   public void startApi(String imageurl) {
+        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
          try {
              URIBuilder builder = new URIBuilder(uriBase);

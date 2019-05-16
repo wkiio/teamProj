@@ -151,17 +151,21 @@ public class Admin_Controller {
 		 
 		
 	}
-/*	
-	@RequestMapping("/car_admin.kosmo")
+	@RequestMapping("/calendar_admin.kosmo")
+	public String calendar(@RequestParam Map map) {		
+		return "/admin_page/calendar_admin";
+	}
+
+/*	@RequestMapping("/car_admin.kosmo")
 	public String car_adimin(@RequestParam Map map,Model model) {
 		
 		//List<ReservationDTO> record = reservationService.selectList(map);
 		
 		
 		return "/admin_page/car_admin";
-	}
+	}*/
 	
-	*/
+	
 	
 	
 	
