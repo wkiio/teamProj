@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/template/isMember.jsp" %>
-<sec:authentication property="principal.username" var="id"/>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src='/baby/resources/aranblockchain.js'></script>
 <style>

@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/template/isMember.jsp" %>
-<sec:authentication property="principal.username" var="id"/>
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -24,21 +23,22 @@
 				</div>
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 				 
+				<input type="hidden" name="id" /> 
 				<input type="hidden" name="gno" /> 
 				<!-- 수정 및 삭제용 파라미터 -->
 				<div style='overflow:hidden;'>
 				
 				<div style='float:left;'>
-			    <img style="border-radius: 50px; height: 50px; width:50px" src="resources/images/cyworldMini.jpg"   /> 
+			    <img style="border-radius: 50px; height: 50px; width:50px;border:5px solid black;" src="resources/images/cyworldMini.jpg"   /> 
 			    </div>
-			    <div style='float:left'>
-			    <input placeholder="댓글을 입력하세요" id="title" class="form-control" type="text" size="50" name="gcomment" />
+			    <div style='float:left;border:5px solid red;width:80%'>
+			    <input placeholder="댓글을 입력하세요" id="title" class="form-control" type="text" size="250" name="gcomment"  />
 				</div>
-				<div style='float:left;'>
+				<div style='float:left;border:5px solid green;width:50% '>
 				<input id="submit" class="btn btn-info" value="확인" />
 				</div>
-				<div style='float:left;'>
-				<input id="image" class="btn btn-success" value="이미지"/>
+				<div style='float:left;border:5px solid blue;width:50% '>
+				<input id="image" type="file" class="btn btn-success" value="이미지"  />
 				</div>
 						
 				</div>
@@ -116,8 +116,8 @@ var showComments=function(){
 var displayComments = function(data){
 	console.log(JSON.stringify(data));
 	var commentsString="";
-	commentsString+="<div class='col-md-9' style='left:12.5%'><h2 style='text-align: center;'>방명록 <small>댓글 목록</small></h2><table id='add_table'  class='table table-bordered'>";
-	commentsString+="<tr><th width='15%'>작성자</th><th width='50%'>댓글</th><th>작성일</th><th>답변/삭제</th></tr>";
+	commentsString+="<section><div class='col-md-9' style='left:12.5%'><h2 style='text-align: center;'>방명록 <small>댓글 목록</small></h2><p>";
+	commentsString+="<img style='margin-top: 15px' src='http://nthumb.cyworld.com/thumb?width=56&amp;height=56&amp;url=http%3A%2F%2Fcyimg44.cyworld.com%2Fcommon%2Fvm_file_down.asp%3Fredirect%3D%252F440023%252F2019%252F5%252F17%252F23%252FCyHome_5591558043851748_921.webp' style='cursor: pointer;' >";
 	if(data.length==0){
 		commentsString+='<tr><td colspan="4">등록된 한줄 댓글이 없어요</td></tr>';
 	} 
@@ -126,20 +126,20 @@ var displayComments = function(data){
 	
 		commentsString+="<tr><td>"+comment['ID']+'</td>';
 		//본인이 쓴 코멘트 수정할 수 있도록 링크 처리
-		if('kim' != comment['ID'])//보안적용 후
-			commentsString+="<td align='left'>"+comment['GCOMMENT']+'</td>';
-			else //수정 
+		if('${id}' != comment['ID'])//보안적용 후
+			commentsString+="<td align='left' id='preview'>"+comment['GCOMMENT']+'</td>';
+		else //수정 
 			commentsString+="<td align='left'><span style='cursor:pointer' class='commentEdit' title='"+comment['GNO']+"'>"+comment['GCOMMENT']+'</span></td>';
 				
 		commentsString+="<td>"+comment['GPOSTDATE']+'</td>';
 		commentsString+="<td>";
-		if('kim' != comment['ID'])//보안적용 후
+		if('${id}' != comment['ID'])//보안적용 후
 			commentsString+="<span style='color:gray;font-size:.7em;font-weight:bold'>삭제불가</span>"
 		else
 			commentsString+="<a href='#recomment'><span class='reply' title='"+comment['GNO']+"' style='cursor:pointer;color:green;font-size:1.2em;font-weight:bold'>답변 / </span></a><span class='commentDelete' title='"+comment['GNO']+"' style='cursor:pointer;color:green;font-size:1.2em;font-weight:bold' >삭제</span>"
 		commentsString+="</td></tr>";
 	});
-	commentsString+="</table></div>";
+	commentsString+="</p></div></section>";
 	$('#comments').html(commentsString);
 	
 	//※아래는 반드시 $('#comments').html(commentsString);이후에
@@ -210,6 +210,23 @@ var displayComments = function(data){
 	
 	
 	});
+
+	var file = document.querySelector('#image');
+	
+	file.onchange = function() {
+		console.log('파일 이미지 스타트')
+		
+		var fileList = file.files;
+		//읽기
+		var reader = new FileReader();
+		reader.readAsDataURL(fileList[0]);
+		
+		reader.onload = function(){
+			document.querySelector('#preview').src = reader.result;
+		};
+		
+	};
+	
 
 
 

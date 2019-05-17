@@ -12,8 +12,8 @@ public class GuestBookDTO {
 	private String step;
 	private String depth;
 	/*private String name;*/
-/*	private String image;
-*/	
+	private String image;
+	
 	
 	//게터 세터
 	public String getgNo() {
@@ -66,7 +66,7 @@ public class GuestBookDTO {
 		this.name = name;
 	}
 	*/
-/*	
+	
 	public String getImage() {
 		return image;
 	}
@@ -74,7 +74,7 @@ public class GuestBookDTO {
 		this.image = image;
 	}
 	
-*/	
+
 	
 	
 	

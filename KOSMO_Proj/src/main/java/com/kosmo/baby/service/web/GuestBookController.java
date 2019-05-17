@@ -27,9 +27,13 @@ public class GuestBookController {
 	@ResponseBody
 	@RequestMapping(value="/GuestBook/List.kosmo",produces="text/html; charset=UTF-8")
 	public String list(@RequestParam Map map) throws Exception{
-//		System.out.println("리스트 리스트 리스트 시작");
+		System.out.println("리스트 리스트 리스트 시작");
 		
-//		System.out.println(map);
+		System.out.println(map);
+		/*
+		GuestBookDTO list = guestBookService.selectOne(map);
+		map.put("id", list.getId());
+		*/
 		
 		//서비스 호출]
 		List<Map> comments= guestBookService.selectList(map);
@@ -44,7 +48,7 @@ public class GuestBookController {
 		
 		System.out.println("코멘트 목록:"+JSONArray.toJSONString(comments));
 		
-//		System.out.println("리스트 리스트 끝");
+		System.out.println("리스트 리스트 끝");
 
 		return JSONArray.toJSONString(comments);
 	}//////////////List
@@ -54,9 +58,10 @@ public class GuestBookController {
 	public String write(@RequestParam Map map,Authentication auth, HttpSession session) throws Exception{
 		System.out.println("라윗트 라윗트 시작");
 		System.out.println(map.get("gcomment"));
+		System.out.println(map.get("id"));
 		
-		//UserDetails userDetails=(UserDetails)auth.getPrincipal();
-		//map.put("id",userDetails.getUsername())`
+		UserDetails userDetails=(UserDetails)auth.getPrincipal();
+		map.put("id",userDetails.getUsername());
 		
 		
 		guestBookService.insert(map);
@@ -109,12 +114,7 @@ public class GuestBookController {
 		
 		System.out.println("리스트 호출 한 뒤 map:"+map);
 		
-		System.out.println("답변 인서트 시작");
 		
-		
-		
-		System.out.println("답변 인서트 끝");
-		map.put("id", "kim");
 		int affected =guestBookService.reply(map);
 		
 		System.out.println("답변 이클립스 끝");
