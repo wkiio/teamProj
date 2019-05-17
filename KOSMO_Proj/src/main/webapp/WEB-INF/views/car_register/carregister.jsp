@@ -95,6 +95,15 @@ display: none;
 							</div>
 						</div>
 						<div class="form-group">
+							<label for="carseat" class="col-form-label purpose">카시트: </label> 
+							<div class="col">					
+								<select	class="form-control" id="carseat" name="carseat">
+									<option>있어요</option>
+									<option>없어요</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
 							<label for="start" class="col-form-label">출발지: </label>
 							<div class="col">
 								<input type="text" id="start" name="startpoint" value="${list.startpoint }" class="form-control search_point" placeholder="출발위치" />
@@ -112,8 +121,10 @@ display: none;
 						<input class="form-control" type="hidden" id="end_xpos" name="end_xpos" value="${list.e_xpos }"/>
 						<input class="form-control" type="hidden" id="end_ypos" name="end_ypos" value="${list.e_ypos }"/>
 						<input class="form-control" type="hidden" id="cp_no" name="cp_no" value="${list.cp_no }"/>
-						 <input class="form-control" type="hidden" id="id" name="id" value="${id }"/>
+						<input class="form-control" type="hidden" id="id" name="id" value="${id }"/>
+						<input class="form-control" type="hidden" id="carseat" name="carseat" value="${list.carseat }"/>
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+						
 						<div class="form-group">
 							<label for="point" class="col-form-label pay">금액: </label>
 							<div class="col">

@@ -50,7 +50,7 @@
   margin-right: 5px;
 }
 .carview_sub {
-  height:300px;
+  height:174px;
   margin-bottom: 40px;
   border: 1px solid #4ebdc4;
   border-radius: 3px;
@@ -128,7 +128,7 @@
 						<div class="mt-1">
 							
 						</div>
-					</div>\
+					</div>
 				</div>
 			</div>
 			<form class="carviewform" action="CarpoolSubmit.kosmo" method="post">
@@ -166,22 +166,23 @@
 							</thead>
 							<tbody>
 								<tr>
-									<th>경유지</th>
-									<td>성남시 정자1동 정자역</td>
 									<th>출발일시</th>
 									<td>${dto.time}</td>
-								</tr>
-								<tr>
-									<th>목적</th>
-									<td>${dto.type }</td>
 									<th>비용</th>
 									<td>${dto.price }원</td>
+									
 								</tr>
 								<tr>
-									<th>좌석수</th>
-									<td>3/3</td>
-									<th>대인배상</th>
-									<td>가입</td>
+									<th>유형</th>
+									<td>${dto.type }</td>
+									<th>카시트</th>
+									<td>${dto.carseat }</td>
+								</tr>
+								<tr>
+									<th>평점</th>
+									<td>${score }</td>
+									<th>차종</th>
+									<td>${dto.cartype }</td>
 								</tr>
 							</tbody>
 						</table>

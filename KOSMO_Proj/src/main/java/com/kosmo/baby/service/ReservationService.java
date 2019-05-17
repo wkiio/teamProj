@@ -10,6 +10,10 @@ public interface ReservationService {
 	//검색용
 	ReservationDTO selectOne(Map map);
 	
+	//평점용
+	int count(Map map);
+	List<ReservationDTO> selectScore(Map map);
+	
 	//CRUD
 	int insert(Map map);
 	int delete(Map map);

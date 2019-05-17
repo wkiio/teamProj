@@ -16,6 +16,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="HospitalDTO" type="com.kosmo.baby.service.HospitalDTO"/>
 		<typeAlias alias="BabyFairDTO" type="com.kosmo.baby.service.BabyFairDTO"/>
 		<typeAlias alias="KizcafeDTO" type="com.kosmo.baby.service.KizcafeDTO"/>	
+		<typeAlias alias="ReservationDTO" type="com.kosmo.baby.service.ReservationDTO"/>	
 	</typeAliases>
 	
 	

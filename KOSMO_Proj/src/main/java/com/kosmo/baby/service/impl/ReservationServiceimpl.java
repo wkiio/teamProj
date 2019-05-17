@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.kosmo.baby.service.ReservationDTO;
@@ -44,6 +45,16 @@ public class ReservationServiceimpl implements ReservationService{
 	public int update(Map map) {
 		// TODO Auto-generated method stub
 		return dao.update(map);
+	}
+
+	@Override
+	public int count(Map map) {
+		return dao.count(map);
+	}
+
+	@Override
+	public List<ReservationDTO> selectScore(Map map) {
+		return dao.selectScore(map);
 	}
 	
 	
