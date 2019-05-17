@@ -113,6 +113,8 @@ public class Carpool_borderController {
 		
 		for(Carpool_borderDTO dto : list) {
 			Map record = new HashMap();
+			System.out.println("사진 노스플릿 : "+ dto.getPhoto());
+			System.out.println("사진 스플릿 : " + dto.getPhoto().split("memberPhoto")[1].substring(1));
 			record.put("cp_no",dto.getCp_no());
 			record.put("content",dto.getContent());
 			record.put("end_xpos",dto.getEnd_xpos());

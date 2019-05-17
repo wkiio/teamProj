@@ -191,15 +191,22 @@ public class MembersController {
 		//인증키 만들기
 		String key =new TempKey().getKey(20, false);
 		map.put("authkey", key);
-		
 		System.out.println("map:::" + map);
 		service.insert(map);
-		
+		String email ="";
+		email   += 
+				"<table style=\"text-align: center;\" width=\"500px\">" + 
+				"	<tbody><tr><td>" + 
+				"				<a href='http://localhost:8080/baby/emailConfirm.kosmo?email="+map.get("email")+"&authkey="+key+"' target='_blenk'><img alt=\"open_img\" height=\"291px\" src='https://blogfiles.pstatic.net/MjAxOTA1MTdfNyAg/MDAxNTU4MDYzOTc1MDY2.Y2o_m7tgcjPrSmubpJ8fWi101MA6RaV0-_b-33wfLk0g.v24iEcLNwf5li2Y4Fnoga9OhavYh9QQ2GToWV5GNc80g.PNG.yuemj/Aran.png?type=w1'></a>" + 
+				"			</td></tr><tr><td>" + 
+				"				<p style=\"font-size: 15px; font-stretch: normal; line-height: 1.5; letter-spacing: normal;color: #333333; word-break: keep-all; margin-bottom: 30px;\">아란 회원가입을 위해서 이메일 인증이 필요합니다.</p>" + 
+				"				<p style=\"font-size: 15px; font-stretch: normal; line-height: 1.5; letter-spacing: normal;color: #333333; word-break: keep-all; margin-bottom: 30px;\">위의 이미지를 클릭하면 인증이 완료됩니다.\r\n</p>" + 
+				"			</td></tr><tr><td>" + 
+				"</table>";
 		MailHandler sendMail = new MailHandler(mailSender);
-		sendMail.setSubject("육아육아해사이트 회원가입 이메일 인증");
-		sendMail.setText(
-					new StringBuffer().append("<h1>육아육아해사이트 회원가입 이메일 인증 : "+map.get("id")+"님</h1>").append("<a href='http://localhost:8080/baby/emailConfirm.kosmo?email=").append(map.get("email").toString()).append("&authkey=").append(key).append("' target='_blenk'>이메일 인증 확인</a>").toString());
-		sendMail.setFrom("csj910226@gmail.com", "육아육아해");
+		sendMail.setSubject("아란 회원가입 이메일 인증");
+		sendMail.setText(email);
+		sendMail.setFrom("admin@Aran.com", "아란관리자");
 		sendMail.setTo(map.get("email").toString());
 		sendMail.send();
 		
