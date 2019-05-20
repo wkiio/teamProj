@@ -2,24 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/template/isMember.jsp" %>
-<script>
-/*    $(function(){
-      $('tbody tr').each(function(i){
-         $(this).click(function(){
-        	var id = $(this).attr('id');
-            location.href="Carview.kosmo?cp_no="+id;
-            
-         });
-         
-      });
-   }); */
-</script>
+
 <style>
 #memberphoto {
   width: 70px;
   height: 70px;
 }
 </style>
+<sec:authorize access="isAuthenticated()">
+      <sec:authentication property="principal.username" var="id" />
+</sec:authorize>
 
 <div class="site-section carpool_section" style="padding: 2em;">
 	<div class="container">

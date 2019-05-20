@@ -30,5 +30,9 @@
 	<select resultType="ReservationDTO" id="totalscore" parameterType="java.util.Map">
 		SELECT score FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id join partner_members p on m.id = p.id join reservation r on r.cp_no = c.cp_no where p.id= #{id}
 	</select> 
+	
+	<delete id="return" parameterType="java.util.Map">
+		DELETE FROM reservation WHERE cp_no = #{cp_no}
+	</delete>
 
 </mapper>
