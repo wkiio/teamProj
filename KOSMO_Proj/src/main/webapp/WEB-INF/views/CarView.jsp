@@ -212,7 +212,12 @@
 							<button type="button" class="btn btn-info" id="delete">삭제</button>
 						</c:if>
 						<c:if test="${!userMatch }">
-							<button type="button" class="btn btn-info" id="resbutton">예약</button>
+							<c:if test="${dto.status == 0 }" var="statusfinish">
+								<button type="submit" class="btn btn-info">예약</button>
+							</c:if>
+							<c:if test="${!statusfinish }">
+								<button type="button" class="btn btn-info" id="return">예약취소</button>
+							</c:if>
 						</c:if>
 						<a href="Carindex.kosmo"><button type="button" class="btn btn-info">목록 보기</button></a>
 					</div>
@@ -303,6 +308,12 @@ $('#resbutton').click(function(){
 		$('.carviewform').prop('action','Cardelete.kosmo');
 		$('.carviewform').submit();
 	});
+	
+	$('#return').click(function(){
+		console.log("취소할거야")
+		$('.carviewform').prop('action','Back_reser.kosmo');
+		$('.carviewform').submit();
+	})
 
 </script>
 

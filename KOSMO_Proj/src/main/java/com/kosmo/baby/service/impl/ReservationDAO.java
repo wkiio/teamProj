@@ -34,8 +34,7 @@ public class ReservationDAO implements ReservationService{
 
 	@Override
 	public int delete(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return template.update("return",map);
 	}
 
 	@Override

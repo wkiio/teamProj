@@ -54,6 +54,13 @@ public class ReservationController {
 		return "forward:Carreservation.kosmo";
 	}
 	
+	@RequestMapping("/Back_reser.kosmo")
+	public String returnreservation(@RequestParam Map map,Model model,Authentication auth) throws Exception{
+		System.out.println("트리거 되냐쉬발 : "+map.get("cp_no"));
+		rService.delete(map);
+		return "Car.tiles";
+	}
+	
 	
 	
 }
