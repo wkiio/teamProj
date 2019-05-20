@@ -7,6 +7,8 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,7 +63,10 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/carregister.kosmo")
-	public String carregister() {
+	public String carregister(Authentication auth,Model model) {
+		UserDetails user = (UserDetails)auth.getPrincipal();
+		model.addAttribute("id", user.getUsername());
+		
 		return "/car_register/carregister.tiles";
 	}
 

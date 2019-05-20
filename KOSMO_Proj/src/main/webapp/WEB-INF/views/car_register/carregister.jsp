@@ -19,7 +19,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
 	<!-- 섬머노트 한국어 설정 -->
 	<script src="/baby/resources/summernote/summernote-ko-KR.js"></script>
- 	<!-- 시큐리티 -->
+  	<!-- 블록체인 -->
+ 	<script src='/baby/resources/aranblockchain.js'></script>
 
 <style>
 .carinput_head {
@@ -124,6 +125,8 @@ display: none;
 						<input class="form-control" type="hidden" id="id" name="id" value="${id }"/>
 						<input class="form-control" type="hidden" id="carseat" name="carseat" value="${list.carseat }"/>
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+						<!-- 해시값 -->
+						<input type="hidden" value="asd123" id="opened" name="opened">
 						
 						<div class="form-group">
 							<label for="point" class="col-form-label pay">금액: </label>
@@ -167,11 +170,67 @@ display: none;
 
 
 <script>
+//블록체인 최초접속
+var message;
+window.addEventListener('load', async () => {
+    // Modern dapp browsers...
+    if (window.ethereum) {
+        window.web3 = new Web3(ethereum);
+        try {
+            // Request account access if needed
+            await ethereum.enable();
+            // Acccounts now exposed
+            web3.eth.sendTransaction({ /* ... */ });
+        } catch (error) {
+            // User denied account access...
+        }
+    }
+    // Legacy dapp browsers...
+    else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider);
+        // Acccounts always exposed
+        web3.eth.sendTransaction({ /* ... */ });
+    }
+    // Non-dapp browsers...
+    else {
+        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+    }
+    
+    message=web3.eth.contract(abi).at(contractAddress);
+    //startApp();
+});
+
+var tHash;
 $(function(){
-	$('.submit').click(function(){		
-		$('.carinput_form').submit();
+	$('.submit').click(function(){
+		
+		var id = vv('${id}');
+		
+		console.log(id);
+		var select = $('#type  option:selected').val();
+		if(select === "타세요"){
+			select = 'driver';
+			console.log('드라이버');
+		}
+		else{
+			select = 'user';
+			console.log('유저');	
+		}
+		var type = vv(select);
+		console.log("type:" +type);
+		//onsole.log('타태?' + b);
+	  	message.openingBook(id,type,function(e,r){
+			console.log('트랜잭션 해시값 :' + r);
+			$('#opened').val(r);
+			
+			$('.carinput_form').submit();
+		});     
+		/* $('#opened').val('1231234124123412');
+		
+		$('.carinput_form').submit(); */
 		
 	});
+	
 	$('#edit').click(function(){
 		$('.carinput_form').prop('action','Carupdate.kosmo')
 		$('.carinput_form').submit();

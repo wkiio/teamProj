@@ -19,7 +19,7 @@
 	<insert id="carInsert" parameterType="java.util.Map">
 		INSERT INTO CARPOOL_BORDER VALUES(SEQ_carpool_border.NEXTVAL,#{startpoint},#{endpoint},
 		#{type},#{content},#{start_xpos},#{start_ypos},#{end_xpos},#{end_ypos},
-		#{id},#{carseat},#{time},#{price},default,0,0,0,0)
+		#{id},#{carseat},#{time},#{price},default,#{opened},0,0,0)
 	</insert>
 	
 	<select parameterType="java.util.Map" resultType="Carpool_borderDTO" id="carList">
@@ -47,6 +47,20 @@
 	<insert id="adminInsert" parameterType="java.util.Map">
 		INSERT INTO reservation VALUES(SEQ_reservation.NEXTVAL,0,'제목','내용',default,#{id},#{cp_no})
 	</insert>
+	
+	<update id="UpdateHash" parameterType="java.util.Map" >
+		update
+		<if test ="signed != null">
+			carpool_border set signed=#{signed} where cp_no = #{cp_no}
+		</if>
+		<if test ="signed == null and done != null" >
+			carpool_border set done=#{done} where cp_no = #{cp_no}
+		</if>
+		<if test ="signed == null and done == null" >
+			carpool_border set reviewed=#{reviewed} where cp_no = #{cp_no}
+		</if>		
+	</update>
+	
 	
 	<update id="Carupdate" parameterType="java.util.Map" >
 		update carpool_border set startpoint=#{startpoint}, endpoint=#{endpoint}

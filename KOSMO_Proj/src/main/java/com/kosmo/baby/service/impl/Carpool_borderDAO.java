@@ -74,6 +74,12 @@ public class Carpool_borderDAO implements Carpool_borderService{
 	public int getTotalRecord(Map map) {		
 		return template.selectOne("TotalCount",map);
 	}
+
+	@Override
+	public int updateHasp(Map map) {
+	
+		return template.update("UpdateHash",map);
+	}
 	
 
 }

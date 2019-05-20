@@ -18,19 +18,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmo.baby.service.Carpool_borderDTO;
 import com.kosmo.baby.service.ReservationDTO;
+import com.kosmo.baby.service.impl.Carpool_borderServiceimpl;
 import com.kosmo.baby.service.impl.ReservationServiceimpl;
 
 @Controller
 public class ReservationController {
 	//서비스 주입
 	@Resource(name="reservationServiceimpl")
-	private ReservationServiceimpl service;
+	private ReservationServiceimpl rService;
+	
+	//서비스 주입
+	@Resource(name="carpool_borderServiceimpl")
+	private Carpool_borderServiceimpl cService;
+
 	
 	//여기에 리퀘스트 맵핑 하셔서 작업하시면 됩니다.
 	
 	@RequestMapping("/car_admin.kosmo")
 	public String baby_admin(@RequestParam Map map,Model model) {
-		List<ReservationDTO> recode= service.selectList(map);
+		List<ReservationDTO> recode= rService.selectList(map);
 		
 		model.addAttribute("car_list",recode);
 		
@@ -42,7 +48,8 @@ public class ReservationController {
 		map.put("id",user.getUsername());
 		System.out.println(map);
 		System.out.println("리절베이션컨트롤러");
-		service.update(map);
+		cService.updateHasp(map);
+		rService.update(map);
 		
 		return "forward:Carreservation.kosmo";
 	}
