@@ -1,11 +1,10 @@
 $(function(){
    //출발위치 위도,경도 얻기
-   var s_xpos = document.getElementById('s_xpos');
-   var s_ypos = document.getElementById('s_ypos');
+   var s_xpos = document.getElementById('start_xpos');
+   var s_ypos = document.getElementById('start_ypos');
    //도착위치 위도,경도 얻기
-   var e_xpos = document.getElementById('e_xpos');
-   var e_ypos = document.getElementById('e_ypos');
-   console.log('지도지도지도지되지ㅚㅈ')
+   var e_xpos = document.getElementById('end_xpos');
+   var e_ypos = document.getElementById('end_ypos');
    console.log(e_xpos);
    console.log(e_ypos);
    

@@ -1,14 +1,10 @@
 
 
-var s_xpos = document.getElementById('s_ypos');
-var s_ypos = document.getElementById('s_xpos');
+var s_xpos = document.getElementById('start_ypos');
+var s_ypos = document.getElementById('start_xpos');
 //도착위치 위도,경도 얻기
-var e_xpos = document.getElementById('e_ypos');
-var e_ypos = document.getElementById('e_xpos');
-console.log("s_xpos : "+s_xpos.value)
-console.log("s_ypos : "+s_ypos.value)
-console.log("e_xpos : "+e_xpos.value)
-console.log("e_ypos : "+e_ypos.value)
+var e_xpos = document.getElementById('end_ypos');
+var e_ypos = document.getElementById('end_xpos');
 // 1. 지도 띄우기
 map = new Tmap.Map({
 	div : 'map_div',
