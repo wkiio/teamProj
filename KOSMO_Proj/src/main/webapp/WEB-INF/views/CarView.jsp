@@ -6,7 +6,8 @@
    <script src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=b5cc2a5e-34c4-441b-96f9-0a2639aabc1a"></script>
      <!-- 블록체인 -->
  	<script src='/baby/resources/aranblockchain.js'></script>
-   <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fc37be4712f8b89b167cddbc490382f"></script> -->
+ 	
+   <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fc37be4712f8b89b167cddbc490382f"></script> asdasdasd-->
 <style>
 
 .carview_title {
@@ -317,4 +318,4 @@ $('#resbutton').click(function(){
 
 </script>
 
-<script src="Bootstrap/js/Carload.js"></script>
+<script src="Bootstrap/js/carload.js"></script>
