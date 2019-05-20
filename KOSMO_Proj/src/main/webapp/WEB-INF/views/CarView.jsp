@@ -150,6 +150,7 @@
 					<input type="hidden" value="${dto.type }" id="type" name="type">
 					<input type="hidden" value="${dto.price }" id="price" name="price">
 					<input type="hidden" value='${dto.content}' id="content" name="content">
+					<input type="hidden" value='${dto.carseat}' id="carseat" name="carseat">
 					<div class="table-responsive" style="overflow-x:hidden;">
 						<table class="table table-bordered">
 							<thead class="table-borderless">

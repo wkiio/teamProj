@@ -169,7 +169,12 @@ public class Carpool_borderController {
 			score = Integer.parseInt(a.getScore());
 			realscore += score;
 		}
+		if(!(counter == 0 || realscore == 0)) {
 		value = realscore/counter;
+		model.addAttribute("score",value);
+		}
+		else { model.addAttribute("score","운행 기록이 없습니다"); } 
+		
 			
 		
 		
@@ -180,7 +185,7 @@ public class Carpool_borderController {
 		model.addAttribute("photo",list.getPhoto().split("memberPhoto")[1].substring(1));
 		
 		model.addAttribute("dto", list);
-		model.addAttribute("score",value);
+		
 		return "CarView.tiles";
 	}
 	
