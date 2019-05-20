@@ -74,7 +74,8 @@
 						<th scope="col"></th>
 						<th scope="col">도착</th>
 						<th scope="col">유형</th>
-						<th scope="col">자리/금액</th>
+						<th scope="col">금액</th>
+						<th scope="col">카시트</th>
 					</tr>
 				</thead>
 				
@@ -151,7 +152,8 @@
 				 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
 				 html+="<td><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
 				 html+="<td><h6 class=\"cp_type listtd\">"+carlist['type']+"</h6></td>";
-				 html+="<td><h6 class=\"cp_type listtd\">"+"2자리"+"</h6><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</td></tr>";			 	 
+				 html+="<td><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</span></td>";			 	 
+				 html+="<td><span>"+carlist['carseat']+"</span></td></tr>";			 	 
 				}
 				else if(clickchange == 2){
 					if(carlist['type'] == "타세요"){
@@ -161,7 +163,8 @@
 						 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
 						 html+="<td><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
 						 html+="<td><h6 class=\"cp_type listtd\">"+carlist['type']+"</h6></td>";
-						 html+="<td><h6 class=\"cp_type listtd\">"+"2자리"+"</h6><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</td></tr>";			
+						 html+="<td><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</td>";
+						 html+="<td><span class=\"cp_time listtd\">"+carlist['carseat']+"</td></tr>";	
 					}
 				}
 				else{
@@ -172,7 +175,8 @@
 						 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
 						 html+="<td><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
 						 html+="<td><h6 class=\"cp_type listtd\">"+carlist['type']+"</h6></td>";
-						 html+="<td><h6 class=\"cp_type listtd\">"+"2자리"+"</h6><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</td></tr>";
+						 html+="<td><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</td>";
+						 html+="<td><span class=\"cp_time listtd\">"+carlist['carseat']+"</td></tr>";	
 						 
 					}
 				}

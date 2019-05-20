@@ -22,5 +22,13 @@
 	<update id="gradeupdate" parameterType="java.util.Map">
 		UPDATE reservation SET score=#{score}, title=#{title}, content=#{content} WHERE cp_no=#{modalno}
 	</update>
+	
+	<!-- 평점을 위한 select 문들 -->
+	<select resultType="int" id="resercount" parameterType="java.util.Map">
+		SELECT COUNT(*) FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id join partner_members p on m.id = p.id join reservation r on r.cp_no = c.cp_no where p.id= #{id}
+	</select>
+	<select resultType="ReservationDTO" id="totalscore" parameterType="java.util.Map">
+		SELECT score FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id join partner_members p on m.id = p.id join reservation r on r.cp_no = c.cp_no where p.id= #{id}
+	</select> 
 
 </mapper>
