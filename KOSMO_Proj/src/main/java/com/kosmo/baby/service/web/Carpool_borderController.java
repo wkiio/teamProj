@@ -155,6 +155,8 @@ public class Carpool_borderController {
 		System.out.println("로그인중입니다 : " + user.getUsername());
 		Carpool_borderDTO list=carservice.selectOne(map);
 		System.out.println(list.getId());
+		model.addAttribute("userId",user.getUsername());
+		model.addAttribute("writerId", list.getId());
 		map.put("id",list.getId());
 		int count = rsservice.count(map);
 		System.out.println(count);
@@ -203,7 +205,7 @@ public class Carpool_borderController {
 		map.put("id", user.getUsername());
 		System.out.println(map);
 		
-		
+		carservice.updateHasp(map);
 		
 		carservice.adminInsert(map);
 		System.out.println("reservation 테이블에 들어가버렸습니다");		
@@ -230,7 +232,8 @@ public class Carpool_borderController {
 	@RequestMapping("/yes.kosmo")
 	public String yes1(@RequestParam Map map, Model model,Authentication auth)throws Exception{			
 		System.out.println("yes1map:" + map);
-		int ii=carservice.yesupdate(map);
+		carservice.updateHasp(map);
+		carservice.yesupdate(map);
 		model.addAttribute("yes","222");
 		return "forward:Carreservation.kosmo";
 	}

@@ -32,7 +32,7 @@ public class ReviewDAO implements ReviewService{
 	@Override
 	public int insert(Map map) {
 	// TODO Auto-generated method stub
-		return 0;
+		return template.insert("reviewInsert", map);
 	}
 
 	@Override
