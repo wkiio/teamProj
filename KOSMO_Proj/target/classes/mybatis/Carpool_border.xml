@@ -39,7 +39,7 @@
 
 	<select resultType="Carpool_borderDTO" id="carview" parameterType="java.util.Map">
 		SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id JOIN partner_members p ON p.id=m.id 
-		where CP_NO=#{cp_no} 
+		where CP_NO=#{cp_no}
 	</select>
 	
 
