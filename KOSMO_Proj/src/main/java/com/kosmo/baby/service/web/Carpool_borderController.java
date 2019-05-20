@@ -165,7 +165,6 @@ public class Carpool_borderController {
 		System.out.println(counter);
 		List<ReservationDTO> totalscore = rsservice.selectScore(map);
 		int score,value,realscore = 0;
-		
 		System.out.println("얼마나했냐 : "+counter);
 		for(ReservationDTO a : totalscore) {
 			System.out.println("지금까지 한 점수 : "+Integer.parseInt(a.getScore()));
@@ -177,10 +176,6 @@ public class Carpool_borderController {
 		model.addAttribute("score",value);
 		}
 		else { model.addAttribute("score","운행 기록이 없습니다"); } 
-		
-			
-		
-		
 		
 		System.out.println("글쓴이 입니다 : " + list.getId());
 		System.out.println("상세보기 시간");

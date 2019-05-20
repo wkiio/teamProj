@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +29,7 @@ public class Review_Controller {
 		
 		System.out.println("리뷰에 정보 모모가 들어왔는지 " + map);
 		
-		//rService.insert(map);
+		rService.insert(map);
 		
 		return "성공";
 	}
