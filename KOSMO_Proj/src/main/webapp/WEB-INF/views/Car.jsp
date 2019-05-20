@@ -182,7 +182,8 @@
 			 $('tbody tr').each(function(i){
 		         $(this).click(function(){
 		        	var id = $(this).attr('id');
-		            location.href="Carview.kosmo?cp_no="+id;		            
+		        	var type = $('tr[id="'+id+'"] td:nth-child(5) > h6').html();
+		            location.href="Carview.kosmo?cp_no="+id+"&type="+type;		            
 		         });		         
 		      });
 			 

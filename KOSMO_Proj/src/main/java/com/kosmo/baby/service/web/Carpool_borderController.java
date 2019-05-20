@@ -150,11 +150,13 @@ public class Carpool_borderController {
 	@RequestMapping("/Carview.kosmo")
 	public String carview(@RequestParam Map map,Model model,Authentication auth)throws Exception{
 		System.out.println("상세보기");
-		System.out.println(map.get("no"));
+		System.out.println(map.get("cp_no"));
+		System.out.println(map.get("type"));
 		UserDetails user = (UserDetails)auth.getPrincipal();
 		System.out.println("로그인중입니다 : " + user.getUsername());
 		Carpool_borderDTO list=carservice.selectOne(map);
-		System.out.println(list.getId());
+		System.out.println(list);
+		System.out.println(list.getCp_no());
 		map.put("id",list.getId());
 		int count = rsservice.count(map);
 		System.out.println(count);
