@@ -69,12 +69,7 @@
 	<update id="yesupdate" parameterType="java.util.Map">
 		UPDATE RESERVATION set finish=1 where cp_no =#{cp_no}
 	</update>
-<!-- 	<select id="TotalCount" parameterType="java.util.Map" resultType="int">
-		SELECT COUNT(*) from CARPOOL_BORDER	
-		<if test="searchColumn !=null">
-			WHERE ${searchColumn} LIKE '%' || #{searchWord} || '%'
-		</if>		
-	</select> -->
+
 	
 	
 </mapper>
