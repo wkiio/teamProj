@@ -37,9 +37,13 @@
       and status=0 ORDER BY CP_NO DESC
    </select>
 
-	<select resultType="Carpool_borderDTO" id="carview" parameterType="java.util.Map">
-		SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id JOIN partner_members p ON p.id=m.id 
-		where CP_NO=#{cp_no}
+	<select id="carview" resultType="Carpool_borderDTO" parameterType="java.util.Map">
+		<if test ="type.equals('타세요')">
+			SELECT * FROM CARPOOL_BORDER c  JOIN MEMBERS m  ON m.id=c.id JOIN partner_members p ON p.id=m.id WHERE cp_no=#{cp_no}
+		</if>
+		<if test ="type.equals('태워주세요')">
+			SELECT * FROM CARPOOL_BORDER c  JOIN MEMBERS m  ON m.id=c.id WHERE cp_no=#{cp_no}
+		</if>
 	</select>
 	
 
