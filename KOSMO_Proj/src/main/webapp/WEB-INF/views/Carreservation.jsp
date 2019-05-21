@@ -16,8 +16,7 @@
 </style>
 
 <script>
-	$(function(){
-		console.log('${yes}'=="222");
+	$(function(){		console.log('${yes}'=="222");
 		if('${yes}'=="222"){
 			$('#nav-home-tab').prop('class','nav-item nav-link');
 			$('#nav-profile-tab').prop('class','nav-item nav-link active');
