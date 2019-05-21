@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 
-var contractAddress = "0x382292e666b9038bc53ade26535be53542cd1a8c";
+var contractAddress = "0x01ce01453b6f24befc0e4b14e35948cd583090dd";
 var abi =[
 	{
 		"constant": false,
@@ -459,6 +459,20 @@ var abi =[
 	},
 	{
 		"constant": true,
+		"inputs": [],
+		"name": "not",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
 		"inputs": [
 			{
 				"name": "",
@@ -470,6 +484,20 @@ var abi =[
 			}
 		],
 		"name": "sign",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "signed",
 		"outputs": [
 			{
 				"name": "",
@@ -533,6 +561,25 @@ var abi =[
 			{
 				"name": "_signNum",
 				"type": "int256"
+			}
+		],
+		"name": "validDone",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_signNum",
+				"type": "int256"
 			},
 			{
 				"name": "_opener",
@@ -571,6 +618,20 @@ var abi =[
 			{
 				"name": "",
 				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "yet",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
 			}
 		],
 		"payable": false,

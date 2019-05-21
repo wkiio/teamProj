@@ -77,7 +77,6 @@ public class Carpool_borderDAO implements Carpool_borderService{
 
 	@Override
 	public int updateHasp(Map map) {
-	
 		return template.update("UpdateHash",map);
 	}
 

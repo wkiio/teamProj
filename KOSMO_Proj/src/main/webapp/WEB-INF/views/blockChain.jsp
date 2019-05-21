@@ -73,27 +73,14 @@ $(function(){
 	    var view4 = r['from']
 	    var view5 = r['gasUsed'];
 	    
-	
 	    $('#view2').val(view2);
 	    $('#view3').val(view3);
 	    $('#view4').val(view4);
 	    $('#view5').val(view5);
 	
 	});
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	console.log('클릭 후');	
 	});//click 이벤트
-	
-
-	
 	
 	});//윈도우
 

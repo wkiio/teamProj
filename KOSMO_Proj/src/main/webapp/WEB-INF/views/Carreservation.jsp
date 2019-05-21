@@ -256,11 +256,11 @@ $('.btnsubmit').click(function(){
    var user = vv($(this).parent().parent().children().eq(1).text());
    console.log(provider + " :: " + user);
    
-    /*  message.closingbook(45,provider,user,function(e,r){
+      message.closingbook(no,provider,user,function(e,r){
        $('#done').val(r);
        $('.carviewform').submit();  
     }); 
-     */
+     
    /* $('#done').val("ㅁㄴㅇㅁㄴㅇㅁㄴㅇㄴㅁㅇ");
    $('.carviewform').submit(); */
 }); 
@@ -288,7 +288,7 @@ $('.starRev span').click(function(){
 });
 
 $('.starR').click(function(){
-   console.log($('#modalno').val());
+   console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+$('#modalno').val());
    var score = $(this).html();
    var h_Score = vv($(this).html());
    console.log('adsasd:' + score);
@@ -297,16 +297,22 @@ $('.starR').click(function(){
    $('.btngrade').click(function(){
       //CpReview(번호,카페주인,유저,점수)      
       $('#cp_no1').val(nono);
+      console.log(nono);
+      console.log($('#cp_no1').val());
       
       console.log('provider:' + provider);
       console.log('user' + user);
       console.log('score' + score);
       console.log('리뷰등록을 해봐?');
-         message.CpReview(45,provider,user,score,function(e,r){
+           message.CpReview($('#modalno').val(),provider,user,score,function(e,r){
          console.log(r);
           $('#reviewed').val(r);
          $('.carriewform').submit();
-      });   
+      });    
+      
+      /*  message.getSign(1,function(e,r){
+    	  console.log(r);
+      })  */
       /*  $('#reviewed').val("0xe785414c9dde601e734879578ab856541b3203d211e004e14b611ec22c87ef03");
          $('.carriewform').submit(); */
    });
