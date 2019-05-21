@@ -86,7 +86,7 @@ public class MembersDAO implements MembersService{
 
 	@Override
 	public MembersDTO findPwd(Map map) {
-		return null;
+		return template.selectOne("findPwd",map);
 	}
 	
 }

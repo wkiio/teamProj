@@ -305,7 +305,7 @@ section{
                                 <i class="far fa-check-square"></i>육아 게시판 관리</a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="calendar_admin.kosmo">
                                 <i class="fas fa-calendar-alt"></i>달력 및 공지사항 관리</a>
                         </li>
                     </ul>
@@ -430,7 +430,7 @@ section{
 															<td> ${car.TNAME }-> ${car.DNAME} </td>
 															<td>${car.STARTPOINT}</td>
 															<td>${car.ENDPOINT} </td>
-															<td>예약진행중</td>														  	  
+															<td>${car.FINISH eq '1' ? "계약완료" : "예약진행중"}</td>														  	  
 														</tr>
 														<tr>
 														<td class="SlideDownup" id="demo${car.RS_NO}" colspan="4">
@@ -449,7 +449,6 @@ section{
 																		<td>${car.PRICE}</td>
 																		<td>날짜   :</td>
 																		<td>${car.TIME}</td>
-																		<td colspan='2' rowspan='2' style="border-left:1px solid #2d2a2a;background-color: red">사진.jpg</td>
 																	</tr>
 																	
 																	<tr>

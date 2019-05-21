@@ -32,7 +32,7 @@
 							</div>
 							<div class="right">
 								<div class="txt">
-									000-0000-0000<a href="#" class="blackBt changeBt">변경</a>
+									${tel1 }-${tel2 }-${tel3 }<a href="#" class="blackBt changeBt">변경</a>
 								</div>
 							</div>
 						</li>
@@ -123,8 +123,12 @@
 
 <script>
 <%-- 카풀제휴 여부 판단 후 체크해주는 if문 --%>
-if(${partnerstatus}=='0'){ $('#partner1').prop("checked","checked")	}
-else { $('#partner2').prop("checked","checked") }
+if('${partnerstatus}'=='0') { 
+	$('#partner1').prop("checked","checked");
+}
+else {
+	$('#partner2').prop("checked","checked");
+}
 
 
 	

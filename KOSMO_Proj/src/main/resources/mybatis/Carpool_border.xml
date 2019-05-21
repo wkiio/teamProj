@@ -19,31 +19,56 @@
 	<insert id="carInsert" parameterType="java.util.Map">
 		INSERT INTO CARPOOL_BORDER VALUES(SEQ_carpool_border.NEXTVAL,#{startpoint},#{endpoint},
 		#{type},#{content},#{start_xpos},#{start_ypos},#{end_xpos},#{end_ypos},
-		#{id},default,#{time},#{price},default)
+		#{id},#{carseat},#{time},#{price},default,#{opened},0,0,0)
 	</insert>
+	
 	<select parameterType="java.util.Map" resultType="Carpool_borderDTO" id="carList">
-		SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id 
-		<if test= "((secondsearch != null) and !secondsearch.equals('')) and firstsearch.equals('')">
-			WHERE endpoint LIKE '%' || #{secondsearch} || '%' 
-		</if>
-		<if test = "(firstsearch != null) and !firstsearch.equals('') and secondsearch.equals('')">
+      SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id
+      <if test= "((secondsearch != null) and !secondsearch.equals('')) and firstsearch.equals('')">
+         WHERE endpoint LIKE '%' || #{secondsearch} || '%' 
+      </if>
+      <if test = "(firstsearch != null) and !firstsearch.equals('') and secondsearch.equals('')">
          WHERE startpoint LIKE '%' || #{firstsearch} || '%' 
-     	 </if>
-		 <if test ="((secondsearch != null) and !secondsearch.equals('')) and ((firstsearch != null) and !firstsearch.equals(''))">
-			WHERE (startpoint LIKE '%' || #{firstsearch} || '%' 
-			AND endpoint LIKE '%' || #{secondsearch} || '%') 
+         </if>
+       <if test ="((secondsearch != null) and !secondsearch.equals('')) and ((firstsearch != null) and !firstsearch.equals(''))">
+         WHERE (startpoint LIKE '%' || #{firstsearch} || '%' 
+         AND endpoint LIKE '%' || #{secondsearch} || '%') 
+      </if>
+      and status=0 ORDER BY CP_NO DESC
+   </select>
+
+	<select id="carview" resultType="Carpool_borderDTO" parameterType="java.util.Map">
+		<if test ="type.equals('타세요')">
+			SELECT * FROM CARPOOL_BORDER c  JOIN MEMBERS m  ON m.id=c.id JOIN partner_members p ON p.id=m.id WHERE cp_no=#{cp_no}
 		</if>
-		AND status=0 ORDER BY CP_NO DESC
+		<if test ="type.equals('태워주세요')">
+			SELECT * FROM CARPOOL_BORDER c  JOIN MEMBERS m  ON m.id=c.id WHERE cp_no=#{cp_no}
+		</if>
 	</select>
-
-	<select resultType="Carpool_borderDTO" id="carview" parameterType="java.util.Map">
-		SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id where CP_NO=#{cp_no} 
-
+	
+	<select id="one" resultType="Carpool_borderDTO" parameterType="java.util.Map">
+		SELECT * FROM members WHERE id = #{id}
 	</select>
+	
+
 	
 	<insert id="adminInsert" parameterType="java.util.Map">
 		INSERT INTO reservation VALUES(SEQ_reservation.NEXTVAL,0,'제목','내용',default,#{id},#{cp_no})
 	</insert>
+	
+	<update id="UpdateHash" parameterType="java.util.Map" >
+		update
+		<if test ="signed != null">
+			carpool_border set signed=#{signed} where cp_no = #{cp_no}
+		</if>
+		<if test ="signed == null and done != null" >
+			carpool_border set done=#{done} where cp_no = #{cp_no}
+		</if>
+		<if test ="signed == null and done == null" >
+			carpool_border set reviewed=#{reviewed} where cp_no = #{cp_no}
+		</if>		
+	</update>
+	
 	
 	<update id="Carupdate" parameterType="java.util.Map" >
 		update carpool_border set startpoint=#{startpoint}, endpoint=#{endpoint}
@@ -60,11 +85,13 @@
 	</select>
 	
 	<select parameterType="java.util.Map" resultType="Carpool_borderDTO" id="seList">
-		SELECT m.*,c.*,r.id as reservationID,r.finish FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id JOIN reservation r ON r.cp_no = c.cp_no
+		SELECT m.*,c.*,r.id as reservationID,r.finish,r.score FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id JOIN reservation r ON r.cp_no = c.cp_no
 	</select>
 	
 	<update id="yesupdate" parameterType="java.util.Map">
 		UPDATE RESERVATION set finish=1 where cp_no =#{cp_no}
 	</update>
+
+	
 	
 </mapper>

@@ -94,18 +94,17 @@ public class MembersController {
 		
 		if(flag) {
 			MembersDTO dto = service.selectOne(map);
-			//System.out.println(dto.getId());
 			model.addAttribute("id",dto.getId());
 			model.addAttribute("name",dto.getName());
-			//System.out.println(dto.getName());
-			model.addAttribute("tel",dto.getTel());
+			model.addAttribute("tel1",dto.getTel().substring(0,3));
+			model.addAttribute("tel2",dto.getTel().substring(3,7));
+			model.addAttribute("tel3",dto.getTel().substring(7,11));
 			model.addAttribute("email1",dto.getEmail().split("@")[0].trim());
 			model.addAttribute("email2",dto.getEmail().split("@")[1].trim());
 			model.addAttribute("addr",dto.getAddr());
 			model.addAttribute("addr0",dto.getAddr().split(":!:")[0].trim());
 			model.addAttribute("addr1",dto.getAddr().split(":!:")[1].split(";!@")[0].trim());
 			model.addAttribute("addr2",dto.getAddr().split(";!@")[1].trim());
-			
 			model.addAttribute("partnerstatus",dto.getPartnerstatus());
 			return "mypage_two.tiles";
 		}
@@ -141,21 +140,7 @@ public class MembersController {
 		
 		MultipartFile ff = getImageFile;
 		System.out.println("ff: " + ff);
-		
-		//Set pathSet = req.getSession().getServletContext().getResourcePaths("/resources");
-		
-		//System.out.println(pathSet);
-		
-		//System.out.println("한지민?"+req.getSession().getServletContext().getResource("/resources/한지민.jpg").getPath());
-		
 
-		//System.out.println(resourceLoader.getResource("classpath:config.properties").getURI().getPath()); 
-
-	//	System.out.println(resourceLoader.getResource("resources/css/style.css").getURI().getPath());
-		
-		
-		//String imagePath = req.getSession().getServletContext().getRealPath("");
-		
 		//경로찾기
 		System.out.println("??? ::" + servletContext.getRealPath("/"));
 		String phisicalPath=req.getServletContext().getRealPath("/resources/memberPhoto");
@@ -191,15 +176,22 @@ public class MembersController {
 		//인증키 만들기
 		String key =new TempKey().getKey(20, false);
 		map.put("authkey", key);
-		
 		System.out.println("map:::" + map);
 		service.insert(map);
-		
+		String email ="";
+		email   += 
+				"<table style=\"text-align: center;\" width=\"500px\">" + 
+				"	<tbody><tr><td>" + 
+				"				<a href='http://localhost:8080/baby/emailConfirm.kosmo?email="+map.get("email")+"&authkey="+key+"' target='_blenk'><img alt=\"open_img\" height=\"291px\" src='https://blogfiles.pstatic.net/MjAxOTA1MTdfNyAg/MDAxNTU4MDYzOTc1MDY2.Y2o_m7tgcjPrSmubpJ8fWi101MA6RaV0-_b-33wfLk0g.v24iEcLNwf5li2Y4Fnoga9OhavYh9QQ2GToWV5GNc80g.PNG.yuemj/Aran.png?type=w1'></a>" + 
+				"			</td></tr><tr><td>" + 
+				"				<p style=\"font-size: 15px; font-stretch: normal; line-height: 1.5; letter-spacing: normal;color: #333333; word-break: keep-all; margin-bottom: 30px;\">아란 회원가입을 위해서 이메일 인증이 필요합니다.</p>" + 
+				"				<p style=\"font-size: 15px; font-stretch: normal; line-height: 1.5; letter-spacing: normal;color: #333333; word-break: keep-all; margin-bottom: 30px;\">위의 이미지를 클릭하면 인증이 완료됩니다.\r\n</p>" + 
+				"			</td></tr><tr><td>" + 
+				"</table>";
 		MailHandler sendMail = new MailHandler(mailSender);
-		sendMail.setSubject("육아육아해사이트 회원가입 이메일 인증");
-		sendMail.setText(
-					new StringBuffer().append("<h1>육아육아해사이트 회원가입 이메일 인증 : "+map.get("id")+"님</h1>").append("<a href='http://localhost:8080/baby/emailConfirm.kosmo?email=").append(map.get("email").toString()).append("&authkey=").append(key).append("' target='_blenk'>이메일 인증 확인</a>").toString());
-		sendMail.setFrom("csj910226@gmail.com", "육아육아해");
+		sendMail.setSubject("아란 회원가입 이메일 인증");
+		sendMail.setText(email);
+		sendMail.setFrom("admin@Aran.com", "아란관리자");
 		sendMail.setTo(map.get("email").toString());
 		sendMail.send();
 		
@@ -230,6 +222,25 @@ public class MembersController {
 		if(flag){
 			MembersDTO dto = service.findId(map);
 			model.addAttribute("id",dto.getId());
+			System.out.println("찾는 유저의 아이디는 : "+dto.getId());
+			
+		}
+		else {
+			model.addAttribute("findError","찾는 유저가 없습니다!");
+		}
+		return "findidresult.tiles";
+	}
+	
+	@RequestMapping("/findPwd.kosmo")
+	public String findPwd(@RequestParam Map map,Model model) throws Exception{
+		System.out.println("비밀번호를 찾는 메소드로 들어왔다.");
+		service.findPwd(map);
+		boolean flag = service.findPwd(map)==null ? false : true;
+		if(flag){
+			MembersDTO dto = service.findPwd(map);
+			model.addAttribute("name",dto.getName());
+			model.addAttribute("pwd",dto.getPwd());
+			System.out.println(dto.getName() + "의 비밀번호는 : "+dto.getPwd());
 			
 		}
 		else {

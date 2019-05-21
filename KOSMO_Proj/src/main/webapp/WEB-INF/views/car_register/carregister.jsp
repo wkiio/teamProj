@@ -19,7 +19,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote-lite.js"></script>
 	<!-- 섬머노트 한국어 설정 -->
 	<script src="/baby/resources/summernote/summernote-ko-KR.js"></script>
- 	<!-- 시큐리티 -->
+  	<!-- 블록체인 -->
+ 	<script src='/baby/resources/aranblockchain.js'></script>
 
 <style>
 .carinput_head {
@@ -89,21 +90,41 @@ display: none;
 							<label for="purpose" class="col-form-label purpose">유형: </label> 
 							<div class="col">					
 								<select	class="form-control" id="type" name="type">
-									<option>타세요</option>
+								<c:if test='${partnerstatus eq "1" or list.partnerstatus eq "1"}' var ="partner">
+									<option>타세요 </option>
+								</c:if>
 									<option>태워주세요</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group" id="partnerCarseat" style="display: none;">
+							<label for="carseat" class="col-form-label purpose">카시트: </label> 
+							<div class="col">					
+								<select	class="form-control" id="carseat" name="carseat">
+									<option>있어요</option>
+									<option>없어요</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group" id="nomalCarseat"  style="display: none;">
+							<label for="carseat" class="col-form-label purpose">카시트: </label> 
+							<div class="col">					
+								<select	class="form-control" id="carseat" name="carseat">
+									<option>필요</option>
+									<option>불필요</option>
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="start" class="col-form-label">출발지: </label>
 							<div class="col">
-								<input type="text" id="start" name="startpoint" value="${list.startpoint }" class="form-control search_point" placeholder="출발위치" />
+								<input type="text" id="start" name="startpoint" value="${list.startpoint }" class="form-control search_point" placeholder="출발위치" required/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="end" class="col-form-label">도착지: </label>
 							<div class="col">
-								<input type="text" id="end" name="endpoint" value="${list.endpoint }" class="form-control search_point" placeholder="도착위치" />
+								<input type="text" id="end" name="endpoint" value="${list.endpoint }" class="form-control search_point" placeholder="도착위치" required/>
 							</div>
 						</div>
 						<!-- 출발 도착 위치 위도, 경도 저장용 -->
@@ -112,18 +133,22 @@ display: none;
 						<input class="form-control" type="hidden" id="end_xpos" name="end_xpos" value="${list.e_xpos }"/>
 						<input class="form-control" type="hidden" id="end_ypos" name="end_ypos" value="${list.e_ypos }"/>
 						<input class="form-control" type="hidden" id="cp_no" name="cp_no" value="${list.cp_no }"/>
-						 <input class="form-control" type="hidden" id="id" name="id" value="${id }"/>
+						<input class="form-control" type="hidden" id="id" name="id" value="${id }"/>
+						<input class="form-control" type="hidden" id="carseat" name="carseat" value="${list.carseat }"/>
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+						<!-- 해시값 -->
+						<input type="hidden" value="asd123" id="opened" name="opened">
+						
 						<div class="form-group">
 							<label for="point" class="col-form-label pay">금액: </label>
 							<div class="col">
-								<input type="text" id="price" name="price" class="form-control" placeholder="금액 입력해주세요" value="${list.price }"/>
+								<input type="text" id="price" name="price" class="form-control" placeholder="금액 입력해주세요" value="${list.price }" required/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="datepicker1" class="col-form-label pay">날짜: </label>
 							<div class="col">
-								<input type="text" id="time" name="time" class="form-control" placeholder="날짜 입력해주세요" value="${list.time }"/>
+								<input type="text" id="time" name="time" class="form-control" placeholder="날짜 입력해주세요" value="${list.time }" required/>
 							</div>
 						</div>
 					</div>
@@ -156,11 +181,85 @@ display: none;
 
 
 <script>
+
+//블록체인 최초접속
+var message;
+window.addEventListener('load', async () => {
+    // Modern dapp browsers...
+    if (window.ethereum) {
+        window.web3 = new Web3(ethereum);
+        try {
+            // Request account access if needed
+            await ethereum.enable();
+            // Acccounts now exposed
+            web3.eth.sendTransaction({ /* ... */ });
+        } catch (error) {
+            // User denied account access...
+        }
+    }
+    // Legacy dapp browsers...
+    else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider);
+        // Acccounts always exposed
+        web3.eth.sendTransaction({ /* ... */ });
+    }
+    // Non-dapp browsers...
+    else {
+        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+    }
+    
+    message=web3.eth.contract(abi).at(contractAddress);
+    //startApp();
+});
+
+var tHash;
 $(function(){
-	$('.submit').click(function(){		
-		$('.carinput_form').submit();
+	   if($('#type').val()=="타세요"){
+		      $('#partnerCarseat').css("display", "inline");
+		   }
+		   else{
+		      $('#nomalCarseat').css("display", "inline");
+		   }
+		   $('#type').change(function(){
+		      if($(this).val()=="타세요"){
+		         $('#partnerCarseat').css("display", "inline");
+		         $('#nomalCarseat').css("display", "none");
+		      }
+		      else{
+		         $('#partnerCarseat').css("display", "none");
+		         $('#nomalCarseat').css("display", "inline");
+		      }
+		   });
+	
+	$('.submit').click(function(){
+		
+		var id = vv('${id}');
+		
+		console.log(id);
+		var select = $('#type  option:selected').val();
+		if(select === "타세요"){
+			select = 'driver';
+			console.log('드라이버');
+		}
+		else{
+			select = 'user';
+			console.log('유저');	
+		}
+		var type = vv(select);
+		console.log("type:" +type);
+		//onsole.log('타태?' + b);
+	  	message.openingBook(id,type,function(e,r){
+			console.log('트랜잭션 해시값 :' + r);
+			$('#opened').val(r);
+			
+			$('.carinput_form').submit();
+		});     
+		/* $('#opened').val('1231234124123412');
+		
+		$('.carinput_form').submit(); */
 		
 	});
+	
 	$('#edit').click(function(){
 		$('.carinput_form').prop('action','Carupdate.kosmo')
 		$('.carinput_form').submit();

@@ -7,6 +7,8 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,15 +32,14 @@ public class HomeController {
 		return "login_page.tiles";	
 	}
 	
-	@RequestMapping("/aiApi.kosmo")
-	public String ai_API() {
-		return "aiApi(babyfair).tiles";
-	}
-	
 	
 	@RequestMapping("/find_Id.kosmo")
 	public String find_id() {
 		return "find_Id.tiles";
+	}
+	@RequestMapping("/find_Pwd.kosmo")
+	public String find_pwd() {
+		return "find_Pwd.tiles";
 	}
 	
 	@RequestMapping("/sign_up_page.kosmo")
@@ -61,10 +62,13 @@ public class HomeController {
 		
 	}
 	
-	@RequestMapping("/carregister.kosmo")
-	public String carregister() {
+/*	@RequestMapping("/carregister.kosmo")
+	public String carregister(Authentication auth,Model model) {
+		UserDetails user = (UserDetails)auth.getPrincipal();
+		model.addAttribute("id", user.getUsername());
+		
 		return "/car_register/carregister.tiles";
-	}
+	}*/
 
 	
 	@RequestMapping("/carpool_mypage.kosmo")
@@ -83,10 +87,10 @@ public class HomeController {
 	public String carpool2() {
 		return "carpool2.tiles";
 	}
-	@RequestMapping("/Car.kosmo")
+/*	@RequestMapping("/Car.kosmo")
 	public String car() {
 		return "Car.tiles";
-	}
+	}*/
 	@RequestMapping("/Car1.kosmo")
 	public String car1() {
 		return "Car1.tiles";

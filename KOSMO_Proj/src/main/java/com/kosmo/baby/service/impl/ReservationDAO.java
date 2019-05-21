@@ -23,7 +23,6 @@ public class ReservationDAO implements ReservationService{
 
 	@Override
 	public ReservationDTO selectOne(Map map) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -35,14 +34,23 @@ public class ReservationDAO implements ReservationService{
 
 	@Override
 	public int delete(Map map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return template.update("return",map);
 	}
 
 	@Override
 	public int update(Map map) {
 		// TODO Auto-generated method stub
 		return template.update("gradeupdate", map);
+	}
+
+	@Override
+	public int count(Map map) {
+		return template.selectOne("resercount",map);
+	}
+
+	@Override
+	public List<ReservationDTO> selectScore(Map map) {
+		return template.selectList("totalscore",map);
 	}
 	
 	

@@ -13,23 +13,26 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="Chart_DTO" type="com.kosmo.baby.service.Chart_DTO"/>	
 		<typeAlias alias="CalenderDTO" type="com.kosmo.baby.service.CalenderDTO"/>
 		<typeAlias alias="MembersDTO" type="com.kosmo.baby.service.MembersDTO"/>	
-		<typeAlias alias="HospitalDTO" type="com.kosmo.baby.service.HospitalDTO"/>	
+		<typeAlias alias="HospitalDTO" type="com.kosmo.baby.service.HospitalDTO"/>
+		<typeAlias alias="BabyFairDTO" type="com.kosmo.baby.service.BabyFairDTO"/>
+		<typeAlias alias="KizcafeDTO" type="com.kosmo.baby.service.KizcafeDTO"/>	
+		<typeAlias alias="ReservationDTO" type="com.kosmo.baby.service.ReservationDTO"/>	
 	</typeAliases>
 	
 	
 	<!-- 매퍼파일(SQL쿼리 결과와 자바빈 매핑) 정보 설정 -->	
-  
 	<mappers>
 		<mapper resource="mybatis/Members.xml" />
 		<mapper resource="mybatis/Baby_border.xml" />
-		<mapper resource="mybatis/Partner.xml" />
 		<mapper resource="mybatis/Carpool_border.xml" />
 		<mapper resource="mybatis/Calender.xml" />
 		<mapper resource="mybatis/Chart_API.xml"/>
+		<mapper resource="mybatis/Partner.xml"/>
 		<mapper resource="mybatis/Reservation.xml" />
 		<mapper resource="mybatis/VisitCount.xml" />
 		<mapper resource="mybatis/Hospital.xml" />
 		<mapper resource="mybatis/BabyFair.xml" />
+		<mapper resource="mybatis/Review.xml"/>
 	</mappers>
 
 </configuration>
