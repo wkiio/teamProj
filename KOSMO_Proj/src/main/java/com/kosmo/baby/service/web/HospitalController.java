@@ -71,7 +71,7 @@ public class HospitalController {
    @ResponseBody
    @RequestMapping(value="/sendCategory.kosmo" , produces="text/html; charset=UTF-8")
    public String category(@RequestParam Map map, Model model) {
-
+	  System.out.println("머들어오냐"+map);
       System.out.println(map.get("category"));
       if (
          map.get("category").equals("MT1") || 
@@ -118,15 +118,45 @@ public class HospitalController {
          List<KizcafeDTO> objects = new Vector<KizcafeDTO>();
          objects = kizcafeservice.selectList(map);
          List<Map> collections = new Vector<Map>();
-         for (KizcafeDTO dto : objects) {
+         for (KizcafeDTO dto : objects) {       	 
             Map recode = new HashMap();
             recode.put("k_no",dto.getK_no());
             recode.put("name", dto.getName());
             recode.put("tel", dto.getTel()==null?"":dto.getTel());
             recode.put("addr", dto.getAddr());
+
             collections.add(recode);
          }
+ 
+         System.out.printf("bbbbbbbb"+JSONArray.toJSONString(collections));
          return JSONArray.toJSONString(collections);
       }
    }
-}
+   
+   @ResponseBody
+   @RequestMapping(value="/reviewcontent.kosmo",produces="text/html; charset=UTF-8")
+   public String review(@RequestParam Map map, Model model) {
+	   List<KizcafeDTO> objects = new Vector<KizcafeDTO>();
+       objects = kizcafeservice.selectreview(map);
+       List<Map> collections = new Vector<Map>();
+       for (KizcafeDTO dto : objects) {       	 
+          Map recode = new HashMap();
+          recode.put("addr",dto.getAddr());
+          recode.put("content", dto.getContent());
+          recode.put("id", dto.getId());
+          recode.put("k_no", dto.getK_no());
+          recode.put("k_no_1", dto.getK_no_1());
+          recode.put("name", dto.getName());
+          recode.put("rv_no", dto.getRv_no());
+          recode.put("score", dto.getScore());
+          recode.put("tel", dto.getTel()==null?"":dto.getTel());
+          recode.put("title", dto.getTitle());
+
+          collections.add(recode);
+       }
+
+       System.out.printf("ccccccccc"+JSONArray.toJSONString(collections));
+       return JSONArray.toJSONString(collections);
+      }
+   }
+   
