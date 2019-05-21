@@ -80,8 +80,16 @@ public class Carpool_borderController {
 	private int blockPage;
 	//리스트 보여주기
 	@RequestMapping(value="/Carindex.kosmo", produces="text/html; charset=UTF-8")
-	public String carindex(@RequestParam Map map,Model model,HttpServletRequest req,@RequestParam(required=false,defaultValue="1") int nowPage)throws Exception{
+	public String carindex(@RequestParam Map map,Model model,HttpServletRequest req,@RequestParam(required=false,defaultValue="1") int nowPage,Authentication auth)throws Exception{
 		System.out.println(map.get("serchword_one"));
+		UserDetails user = (UserDetails)auth.getPrincipal();
+		map.put("id", user.getUsername());
+		Carpool_borderDTO dto = carservice.one(map);
+		model.addAttribute("id",dto.getId());
+		model.addAttribute("partnerstatus",dto.getPartnerstatus());
+		System.out.println(dto.getId()+"의 제휴현황 : "+dto.getPartnerstatus());
+		
+		
 /*		//서비스 호출]
 		//페이징을 위한 로직 시작]
 		//전체 레코드수
@@ -136,6 +144,7 @@ public class Carpool_borderController {
 			record.put("time",dto.getTime());
 			record.put("type",dto.getType());
 			record.put("carseat",dto.getCarseat());
+			record.put("partnerstatus",dto.getPartnerstatus());
 			record.put("photo",dto.getPhoto().split("memberPhoto")[1].substring(1));
 			System.out.println("사진경로:" + dto.getPhoto().split("memberPhoto")[1].substring(1));
 			System.out.println("카시트 유무"+dto.getCarseat());
@@ -233,6 +242,30 @@ public class Carpool_borderController {
 		model.addAttribute("yes","222");
 		return "forward:Carreservation.kosmo";
 	}
+	
+	@RequestMapping("/Car.kosmo")
+	public String car(@RequestParam Map map,Model model,Authentication auth)throws Exception{
+		UserDetails user = (UserDetails)auth.getPrincipal();
+		map.put("id", user.getUsername());
+		Carpool_borderDTO dto = carservice.one(map);
+		model.addAttribute("id",dto.getId());
+		model.addAttribute("partnerstatus",dto.getPartnerstatus());
+		System.out.println(dto.getId()+"의 제휴현황 : "+dto.getPartnerstatus());
+		
+		return "Car.tiles";
+	}
+	
+	@RequestMapping("/carregister.kosmo")
+	public String carregister(@RequestParam Map map, Authentication auth,Model model) {
+		UserDetails user = (UserDetails)auth.getPrincipal();
+		map.put("id", user.getUsername());
+		Carpool_borderDTO dto = carservice.one(map);
+		model.addAttribute("id",dto.getId());
+		model.addAttribute("partnerstatus",dto.getPartnerstatus());
+		System.out.println(dto.getId()+"의 제휴현황 : "+dto.getPartnerstatus());
+		return "/car_register/carregister.tiles";
+	}
+
 	
 
 

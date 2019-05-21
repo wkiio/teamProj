@@ -46,6 +46,10 @@
 		</if>
 	</select>
 	
+	<select id="one" resultType="Carpool_borderDTO" parameterType="java.util.Map">
+		SELECT * FROM members WHERE id = #{id}
+	</select>
+	
 
 	
 	<insert id="adminInsert" parameterType="java.util.Map">

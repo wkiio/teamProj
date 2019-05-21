@@ -26,7 +26,16 @@ public class Carpool_borderDTO {
 	private String photo;
 	private String cartype;
 	
+	//편의를 위한 추가
+	private String partnerstatus;
 	
+	
+	public String getPartnerstatus() {
+		return partnerstatus;
+	}
+	public void setPartnerstatus(String partnerstatus) {
+		this.partnerstatus = partnerstatus;
+	}
 	public String getCartype() {
 		return cartype;
 	}
