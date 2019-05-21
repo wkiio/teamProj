@@ -105,7 +105,6 @@ public class MembersController {
 			model.addAttribute("addr0",dto.getAddr().split(":!:")[0].trim());
 			model.addAttribute("addr1",dto.getAddr().split(":!:")[1].split(";!@")[0].trim());
 			model.addAttribute("addr2",dto.getAddr().split(";!@")[1].trim());
-			
 			model.addAttribute("partnerstatus",dto.getPartnerstatus());
 			return "mypage_two.tiles";
 		}
@@ -141,21 +140,7 @@ public class MembersController {
 		
 		MultipartFile ff = getImageFile;
 		System.out.println("ff: " + ff);
-		
-		//Set pathSet = req.getSession().getServletContext().getResourcePaths("/resources");
-		
-		//System.out.println(pathSet);
-		
-		//System.out.println("한지민?"+req.getSession().getServletContext().getResource("/resources/한지민.jpg").getPath());
-		
 
-		//System.out.println(resourceLoader.getResource("classpath:config.properties").getURI().getPath()); 
-
-	//	System.out.println(resourceLoader.getResource("resources/css/style.css").getURI().getPath());
-		
-		
-		//String imagePath = req.getSession().getServletContext().getRealPath("");
-		
 		//경로찾기
 		System.out.println("??? ::" + servletContext.getRealPath("/"));
 		String phisicalPath=req.getServletContext().getRealPath("/resources/memberPhoto");

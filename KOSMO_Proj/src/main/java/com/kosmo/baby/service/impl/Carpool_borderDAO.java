@@ -80,6 +80,11 @@ public class Carpool_borderDAO implements Carpool_borderService{
 	
 		return template.update("UpdateHash",map);
 	}
+
+	@Override
+	public Carpool_borderDTO one(Map map) {
+		return template.selectOne("one",map);
+	}
 	
 
 }

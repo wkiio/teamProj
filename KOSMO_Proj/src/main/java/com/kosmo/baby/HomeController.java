@@ -62,13 +62,13 @@ public class HomeController {
 		
 	}
 	
-	@RequestMapping("/carregister.kosmo")
+/*	@RequestMapping("/carregister.kosmo")
 	public String carregister(Authentication auth,Model model) {
 		UserDetails user = (UserDetails)auth.getPrincipal();
 		model.addAttribute("id", user.getUsername());
 		
 		return "/car_register/carregister.tiles";
-	}
+	}*/
 
 	
 	@RequestMapping("/carpool_mypage.kosmo")
@@ -87,10 +87,10 @@ public class HomeController {
 	public String carpool2() {
 		return "carpool2.tiles";
 	}
-	@RequestMapping("/Car.kosmo")
+/*	@RequestMapping("/Car.kosmo")
 	public String car() {
 		return "Car.tiles";
-	}
+	}*/
 	@RequestMapping("/Car1.kosmo")
 	public String car1() {
 		return "Car1.tiles";
