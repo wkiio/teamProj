@@ -137,29 +137,4 @@ public class HomeController {
 
 
 	
-	@RequestMapping("/guestBook.kosmo")
-	public String guestbook() {
-		return "guest.tiles";
-	}
-
-	@RequestMapping("/blookChain.kosmo")
-	public String blookchain() {
-		return "blockChain.tiles";
-	}
-	
-	
-	
-}
-	public String guestbook() {
-		return "guest.tiles";
-	}
-
-	@RequestMapping("/blookChain.kosmo")
-	public String blookchain() {
-		return "blockChain.tiles";
-	}
-	
-
-
-	
 }
