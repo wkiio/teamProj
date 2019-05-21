@@ -90,15 +90,14 @@ display: none;
 							<label for="purpose" class="col-form-label purpose">유형: </label> 
 							<div class="col">					
 								<select	class="form-control" id="type" name="type">
-								<c:if test='${partnerstatus eq "1"}' var ="partner">
+								<c:if test='${partnerstatus eq "1" or list.partnerstatus eq "1"}' var ="partner">
 									<option>타세요 </option>
 								</c:if>
 									<option>태워주세요</option>
 								</select>
 							</div>
 						</div>
-						<c:if test='${partner}'>
-						<div class="form-group">
+						<div class="form-group" id="partnerCarseat" style="display: none;">
 							<label for="carseat" class="col-form-label purpose">카시트: </label> 
 							<div class="col">					
 								<select	class="form-control" id="carseat" name="carseat">
@@ -107,9 +106,7 @@ display: none;
 								</select>
 							</div>
 						</div>
-						</c:if>
-						<c:if test='${!partner}'>
-						<div class="form-group">
+						<div class="form-group" id="nomalCarseat"  style="display: none;">
 							<label for="carseat" class="col-form-label purpose">카시트: </label> 
 							<div class="col">					
 								<select	class="form-control" id="carseat" name="carseat">
@@ -118,7 +115,6 @@ display: none;
 								</select>
 							</div>
 						</div>
-						</c:if>
 						<div class="form-group">
 							<label for="start" class="col-form-label">출발지: </label>
 							<div class="col">
@@ -185,6 +181,7 @@ display: none;
 
 
 <script>
+
 //블록체인 최초접속
 var message;
 window.addEventListener('load', async () => {
@@ -217,6 +214,23 @@ window.addEventListener('load', async () => {
 
 var tHash;
 $(function(){
+	   if($('#type').val()=="타세요"){
+		      $('#partnerCarseat').css("display", "inline");
+		   }
+		   else{
+		      $('#nomalCarseat').css("display", "inline");
+		   }
+		   $('#type').change(function(){
+		      if($(this).val()=="타세요"){
+		         $('#partnerCarseat').css("display", "inline");
+		         $('#nomalCarseat').css("display", "none");
+		      }
+		      else{
+		         $('#partnerCarseat').css("display", "none");
+		         $('#nomalCarseat').css("display", "inline");
+		      }
+		   });
+	
 	$('.submit').click(function(){
 		
 		var id = vv('${id}');

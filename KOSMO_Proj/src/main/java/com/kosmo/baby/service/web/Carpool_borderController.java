@@ -82,14 +82,6 @@ public class Carpool_borderController {
 	@RequestMapping(value="/Carindex.kosmo", produces="text/html; charset=UTF-8")
 	public String carindex(@RequestParam Map map,Model model,HttpServletRequest req,@RequestParam(required=false,defaultValue="1") int nowPage,Authentication auth)throws Exception{
 		System.out.println(map.get("serchword_one"));
-		UserDetails user = (UserDetails)auth.getPrincipal();
-		map.put("id", user.getUsername());
-		Carpool_borderDTO dto = carservice.one(map);
-		model.addAttribute("id",dto.getId());
-		model.addAttribute("partnerstatus",dto.getPartnerstatus());
-		System.out.println(dto.getId()+"의 제휴현황 : "+dto.getPartnerstatus());
-		
-		
 /*		//서비스 호출]
 		//페이징을 위한 로직 시작]
 		//전체 레코드수
@@ -164,7 +156,8 @@ public class Carpool_borderController {
 		UserDetails user = (UserDetails)auth.getPrincipal();
 		System.out.println("로그인중입니다 : " + user.getUsername());
 		Carpool_borderDTO list=carservice.selectOne(map);
-		System.out.println(list.getId());
+		System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwww" + list.getId());
+		System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwww" + list.getPartnerstatus());
 		model.addAttribute("userId",user.getUsername());
 		model.addAttribute("writerId", list.getId());
 		map.put("id",list.getId());
@@ -192,6 +185,7 @@ public class Carpool_borderController {
 		model.addAttribute("photo",list.getPhoto().split("memberPhoto")[1].substring(1));
 		
 		model.addAttribute("dto", list);
+		model.addAttribute("partnerstatus", list.getPartnerstatus());
 		
 		return "CarView.tiles";
 	}
