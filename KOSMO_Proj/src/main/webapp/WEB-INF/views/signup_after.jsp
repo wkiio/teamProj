@@ -13,10 +13,19 @@
 						<br>인증코드를 클릭하여 인증하기 전까지 로그인이 불가능합니다.
 					</p>
 					<div class="mt-1">
-						<a href="index.kosmo" class="yellowBt">확인</a> 
+					<button id="gologin" class="yellowBt" 
+								style="color: white; border-radius: 30px; border: 0px; outline: 0px; text-align: center;">확인</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+	$(function() {
+		$('#gologin').click(function(){
+			location.replace('login_page.kosmo');
+		})
+		
+	})
+</script>
