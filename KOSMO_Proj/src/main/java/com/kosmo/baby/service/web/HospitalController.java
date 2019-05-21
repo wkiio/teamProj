@@ -68,6 +68,7 @@ public class HospitalController {
    }
    
    
+   
    @ResponseBody
    @RequestMapping(value="/sendCategory.kosmo" , produces="text/html; charset=UTF-8")
    public String category(@RequestParam Map map, Model model) {
@@ -78,7 +79,8 @@ public class HospitalController {
          map.get("category").equals("BK9") || 
          map.get("category").equals("PM9") || 
          map.get("category").equals("OL7")
-         ) {
+         ) 
+      {
          List<HospitalDTO> objects = new Vector<HospitalDTO>();
          if (map.get("category").equals("MT1")) {
             objects = hospitalservice.selectEmer(map);
@@ -111,6 +113,7 @@ public class HospitalController {
             collections.add(recode);
             
          }
+       
          return JSONArray.toJSONString(collections);
       }
       
@@ -126,7 +129,9 @@ public class HospitalController {
             recode.put("addr", dto.getAddr());
             collections.add(recode);
          }
+         System.out.println("515234: " + JSONArray.toJSONString(collections));
          return JSONArray.toJSONString(collections);
       }
    }
+   
 }

@@ -214,7 +214,7 @@
 						</c:if>
 						<c:if test="${!userMatch }">
 							<c:if test="${dto.status == 0 }" var="statusfinish">
-								<button type="submit" class="btn btn-info">예약</button>
+								<button type="button" class="btn btn-info " id="resbutton">예약</button>
 							</c:if>
 							<c:if test="${!statusfinish }">
 								<button type="button" class="btn btn-info" id="return">예약취소</button>
@@ -280,17 +280,18 @@ $('#resbutton').click(function(){
 	
 		 
   
-	  message.signBook(num,id2,id,type,function(e,r){
+	  /* message.signBook(45,id2,id,type,function(e,r){
+		  console.log('asdasdasdasd');
 		 $('#signed').val(r); 
-		 //console.log(r);
+		 console.log(r);
 		 $('.carviewform').submit();
-	  });    
+	  });     */
 	   
 	 
-	/*   $('#signed').val("sdasdasdasdzxczxczx"); 
+	 $('#signed').val("sdasdasdasdzxczxczx"); 
 	  console.log('ㅁㄴㅇㄴㅁㅇㅁㄴ');
 	  $('.carviewform').submit(); 
-	 */
+	 
 });
 
 

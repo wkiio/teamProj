@@ -241,30 +241,44 @@ window.addEventListener('load', async () => {
 });
 ////////////////////////////////////////////////////////
 
-var nono;
+
 
 $('.btnsubmit').click(function(){
 	
 	$('#cp_no').val($(this).attr('id'));
-	console.log($('#cp_no').val($(this).attr('id')));
+	console.log('번호:' + $('#cp_no').val($(this).attr('id')));
 	var no = $('#cp_no').val();
 	nono = no;
 	console.log(no);
+	//console.log("제공자:" + $(this).parent().parent().children().eq(0).text());
+	console.log('asdasd:' + $(this).parent().parent().children().eq(0).text());
 	var provider = vv($(this).parent().parent().children().eq(0).text());
 	var user = vv($(this).parent().parent().children().eq(1).text());
 	console.log(provider + " :: " + user);
 	
-	  message.closingbook(num,provider,user,function(e,r){
+	 /*  message.closingbook(45,provider,user,function(e,r){
 		 $('#done').val(r);
 		 $('.carviewform').submit();  
 	 }); 
-	 
+	  */
 	/* $('#done').val("ㅁㄴㅇㅁㄴㅇㅁㄴㅇㄴㅁㅇ");
 	$('.carviewform').submit(); */
 }); 
 
+var nono;
+var provider;
+var user;
+
+
 $('.btnreview').click(function(){
 	$('#modalno').val($(this).attr('id'));
+	nono = $('#cp_no').val();
+	console.log('번호:' + nono);
+	console.log('asdasd:' + $(this).parent().parent().children().eq(0).text());
+	provider = vv($(this).parent().parent().children().eq(0).text());
+	user = vv($(this).parent().parent().children().eq(1).text());
+	console.log(provider + " :: " + user);
+	
 });
 
 $('.starRev span').click(function(){
@@ -275,22 +289,26 @@ $('.starRev span').click(function(){
 
 $('.starR').click(function(){
 	console.log($('#modalno').val());
-	var score = vv($(this).html());
+	var score = $(this).html();
+	var h_Score = vv($(this).html());
 	console.log('adsasd:' + score);
 	$('#score').val(score);
 	$('#modalno')
 	$('.btngrade').click(function(){
-		//CpReview(번호,카페주인,유저,점수)
-		var no = vv(nono);
-		var provider = vv($(this).parent().parent().children().eq(0).text());
-		var user = vv($(this).parent().parent().children().eq(1).text());
-	
-		message.CpReview(no,provider,user,score,function(e,r){
+		//CpReview(번호,카페주인,유저,점수)		
+		$('#cp_no1').val(nono);
+		
+		console.log('provider:' + provider);
+		console.log('user' + user);
+		console.log('score' + score);
+		console.log('리뷰등록을 해봐?');
+		   message.CpReview(45,provider,user,score,function(e,r){
 			console.log(r);
 			 $('#reviewed').val(r);
 			$('.carriewform').submit();
-		});
-	
+		});   
+		/*  $('#reviewed').val("0xe785414c9dde601e734879578ab856541b3203d211e004e14b611ec22c87ef03");
+			$('.carriewform').submit(); */
 	});
 });
 </script>
