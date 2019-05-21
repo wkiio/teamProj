@@ -17,6 +17,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias alias="BabyFairDTO" type="com.kosmo.baby.service.BabyFairDTO"/>
 		<typeAlias alias="KizcafeDTO" type="com.kosmo.baby.service.KizcafeDTO"/>	
 		<typeAlias alias="ReservationDTO" type="com.kosmo.baby.service.ReservationDTO"/>	
+		<typeAlias alias="GuestBookDTO" type="com.kosmo.baby.service.GuestBookDTO"/>	
 	</typeAliases>
 	
 	
@@ -33,6 +34,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/Hospital.xml" />
 		<mapper resource="mybatis/BabyFair.xml" />
 		<mapper resource="mybatis/Review.xml"/>
+		<mapper resource="mybatis/GuestBook.xml" />
 	</mappers>
 
 </configuration>
