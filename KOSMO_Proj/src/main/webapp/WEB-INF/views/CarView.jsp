@@ -229,7 +229,9 @@
 		$('.carviewform').prop('action','Cardelete.kosmo');
 		$('.carviewform').submit();
 	});
+	
 
+	
 </script>
 
 <script src="Bootstrap/js/Carload.js"></script>

@@ -1,4 +1,5 @@
 $(function(){
+	
    //출발위치 위도,경도 얻기
    var s_xpos = document.getElementById('s_xpos');
    var s_ypos = document.getElementById('s_ypos');

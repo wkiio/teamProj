@@ -19,6 +19,7 @@
   width: 70px;
   height: 70px;
 }
+
 </style>
 
 <div class="site-section carpool_section" style="padding: 2em;">

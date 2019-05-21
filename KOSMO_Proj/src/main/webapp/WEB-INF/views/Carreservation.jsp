@@ -13,6 +13,7 @@
   cursor: pointer;
 }
 .starR.on{background-position:0 0;}
+
 </style>
 
 <script>
@@ -30,7 +31,7 @@
 </script>
 
  	<!-- MAIN CONTENT-->	
-	<div class="main-content">	
+	<div class="site-section main-content">	
 	<form class="carviewform" action="yes.kosmo" method="post">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<input type="hidden" value="" id="cp_no" name="cp_no">
