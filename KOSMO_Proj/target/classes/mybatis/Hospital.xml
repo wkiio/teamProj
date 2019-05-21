@@ -34,5 +34,8 @@
    <select id="kizcafelist" parameterType="java.util.Map" resultType="KizcafeDTO">
       SELECT * FROM kizcafe
    </select>
+   <select id="kizcafereview" parameterType="java.util.Map" resultType="KizcafeDTO">
+      SELECT * FROM kizcafe k join review r on k.k_no=r.k_no where k.k_no =#{k_no}
+   </select>
 	
 </mapper>

@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+
 <style>
 @font-face {
 	font-family: 'overwatch';
@@ -14,17 +9,12 @@
 </style>
 
 <body>
-	<script src="https://d3js.org/d3.v3.min.js"></script>
-	<script
-		src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"
-		type="text/JavaScript"></script>
+	
 	<script>
         var width = 960,
             height = 500
 
-        var svg = d3.select("body").append("svg")
-            .attr("width", width)
-            .attr("height", height);
+        var svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
         d3.csv("worddata.csv", function (data) {
             showCloud(data)
             setInterval(function(){
@@ -37,9 +27,7 @@
         //clamp: domain의 범위를 넘어간 값에 대하여 domain의 최대값으로 고정시킨다.
         wordScale = d3.scale.linear().domain([0, 100]).range([0, 150]).clamp(true);
         var keywords = ["자리야", "트레이서", "한조"]
-        var svg = d3.select("svg")
-                    .append("g")
-                    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+        var svg = d3.select("svg").append("g").attr("transform", "translate(" + width/2 + "," + height/2 + ")");
 
         function showCloud(data) {
             d3.layout.cloud().size([width, height])
@@ -84,6 +72,8 @@
             }
         }
     </script>
-
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+	<script
+		src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"
+		type="text/JavaScript"></script>
 </body>
-</html>

@@ -5,7 +5,7 @@
 https://mdbootstrap.com/components/bootstrap-footer/
  -->
 <!-- Footer -->
-<footer class="site-footer" style="border-top: 2px solid #5f84b7;background-color: #e4e2ff">
+<footer class="site-footer" style="border-top: 2px solid #5f84b7;background-color: #e4e2ff;">
 	<div class="container">
 		<div class="row text-center">
 			<div class="col-md-12">

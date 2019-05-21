@@ -113,7 +113,7 @@ public class HomeController {
 	public String word() {
 		return "word.tiles";
 	}
-	@RequestMapping("/wordcloud.kosmo")
+	@RequestMapping("/wordCloud.kosmo")
 	public String wordcloud()throws Exception {
 		
 		return "wordCloud.tiles";

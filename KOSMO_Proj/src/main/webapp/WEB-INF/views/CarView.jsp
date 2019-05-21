@@ -311,12 +311,16 @@ $('#resbutton').click(function(){
 		$('.carviewform').submit();
 	});
 	
+<<<<<<< HEAD
+=======
 	$('#return').click(function(){
 		console.log("취소할거야")
 		$('.carviewform').prop('action','Back_reser.kosmo');
 		$('.carviewform').submit();
 	})
+>>>>>>> branch 'master' of https://github.com/wkiio/teamProj.git
 
+	
 </script>
 
 <script src="Bootstrap/js/carload.js"></script>
