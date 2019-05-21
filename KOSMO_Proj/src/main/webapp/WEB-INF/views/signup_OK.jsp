@@ -12,10 +12,19 @@
 						이메일 인증을 완료했습니다!<br>로그인 후 이용하세요.
 					</p>
 					<div class="mt-1">
-						<a href="login_page.kosmo" class="yellowBt" style="padding-top: 10px">확인</a> 
+					<button id="gologin" class="yellowBt" 
+								style="color: white; border-radius: 30px; border: 0px; outline: 0px; text-align: center;">확인</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+	$(function() {
+		$('#gologin').click(function(){
+			location.replace('login_page.kosmo');
+		})
+		
+	})
+</script>

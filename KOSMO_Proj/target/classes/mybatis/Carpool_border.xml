@@ -19,7 +19,7 @@
 	<insert id="carInsert" parameterType="java.util.Map">
 		INSERT INTO CARPOOL_BORDER VALUES(SEQ_carpool_border.NEXTVAL,#{startpoint},#{endpoint},
 		#{type},#{content},#{start_xpos},#{start_ypos},#{end_xpos},#{end_ypos},
-		#{id},default,#{time},#{price},default,0,0,0,0)
+		#{id},#{carseat},#{time},#{price},default,#{opened},0,0,0)
 	</insert>
 	
 	<select parameterType="java.util.Map" resultType="Carpool_borderDTO" id="carList">
@@ -37,14 +37,34 @@
       and status=0 ORDER BY CP_NO DESC
    </select>
 
-	<select resultType="Carpool_borderDTO" id="carview" parameterType="java.util.Map">
-		SELECT * FROM MEMBERS m JOIN CARPOOL_BORDER c ON m.id=c.id where CP_NO=#{cp_no} 
-
+	<select id="carview" resultType="Carpool_borderDTO" parameterType="java.util.Map">
+		<if test ="type.equals('타세요')">
+			SELECT * FROM CARPOOL_BORDER c  JOIN MEMBERS m  ON m.id=c.id JOIN partner_members p ON p.id=m.id WHERE cp_no=#{cp_no}
+		</if>
+		<if test ="type.equals('태워주세요')">
+			SELECT * FROM CARPOOL_BORDER c  JOIN MEMBERS m  ON m.id=c.id WHERE cp_no=#{cp_no}
+		</if>
 	</select>
+	
+
 	
 	<insert id="adminInsert" parameterType="java.util.Map">
 		INSERT INTO reservation VALUES(SEQ_reservation.NEXTVAL,0,'제목','내용',default,#{id},#{cp_no})
 	</insert>
+	
+	<update id="UpdateHash" parameterType="java.util.Map" >
+		update
+		<if test ="signed != null">
+			carpool_border set signed=#{signed} where cp_no = #{cp_no}
+		</if>
+		<if test ="signed == null and done != null" >
+			carpool_border set done=#{done} where cp_no = #{cp_no}
+		</if>
+		<if test ="signed == null and done == null" >
+			carpool_border set reviewed=#{reviewed} where cp_no = #{cp_no}
+		</if>		
+	</update>
+	
 	
 	<update id="Carupdate" parameterType="java.util.Map" >
 		update carpool_border set startpoint=#{startpoint}, endpoint=#{endpoint}
@@ -67,12 +87,7 @@
 	<update id="yesupdate" parameterType="java.util.Map">
 		UPDATE RESERVATION set finish=1 where cp_no =#{cp_no}
 	</update>
-<!-- 	<select id="TotalCount" parameterType="java.util.Map" resultType="int">
-		SELECT COUNT(*) from CARPOOL_BORDER	
-		<if test="searchColumn !=null">
-			WHERE ${searchColumn} LIKE '%' || #{searchWord} || '%'
-		</if>		
-	</select> -->
+
 	
 	
 </mapper>

@@ -12,8 +12,8 @@
 <!-- 		컬럼 순서에 유의하며 SQL문을 작성해주세요 								  -->
 <!-- ==================================================================== -->
 
-<mapper namespace="">
-
-	
-
+<mapper namespace="mybatis.Review">
+	<insert id="reviewInsert" parameterType="java.util.Map"> 
+		INSERT INTO review VALUES(SEQ_ReView.NEXTVAL,#{title},#{content},#{score},#{id},#{k_no})
+	</insert>
 </mapper>

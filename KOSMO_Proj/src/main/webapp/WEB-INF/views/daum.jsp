@@ -70,6 +70,17 @@
       no-repeat;
 } */
 
+/*평점*/
+.starR{
+  background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+  background-size: auto 100%;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  text-indent: -9999px;
+  cursor: pointer;
+}
+.starR.on{background-position:0 0;}
 
 
 #category li.on .category_bg {
@@ -171,35 +182,94 @@
    
 }
 </style>
+<div class="site-section" style="height:auto; padding:2em;z-index=3" >
+   <div class="main-content">   
+   
+      <div class="map_wrap">
+          <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+          <ul id="category">
+              <li id="BK9" data-order="0"> 
+                  <span id="hospital" class="category_bg bank"></span>
+                  소아과
+              </li>       
+              <li id="MT1" data-order="1"> 
+                  <span id="emergency" class="category_bg mart"></span>
+                  응급실
+              </li>  
+              <li id="PM9" data-order="2"> 
+                  <span id="dentist" class="category_bg pharmacy"></span>
+                  소아치과
+              </li>  
+              <li id="OL7" data-order="3"> 
+                  <span id="obimage" class="category_bg oil"></span>
+                  산부인과
+              </li>        
+              <li id="SC4" data-order="4"> 
+                  <span id="cafe" class="category_bg oil"></span>
+                  키즈카페
+              </li>        
+          </ul>
+      </div>
 
 
-<div class="map_wrap">
-    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-    <ul id="category">
-        <li id="BK9" data-order="0"> 
-            <span id="hospital" class="category_bg bank"></span>
-            소아과
-        </li>       
-        <li id="MT1" data-order="1"> 
-            <span id="emergency" class="category_bg mart"></span>
-            응급실
-        </li>  
-        <li id="PM9" data-order="2"> 
-            <span id="dentist" class="category_bg pharmacy"></span>
-            소아치과
-        </li>  
-        <li id="OL7" data-order="3"> 
-            <span id="obimage" class="category_bg oil"></span>
-            산부인과
-        </li>        
-        <li id="SC4" data-order="4"> 
-            <span id="cafe" class="category_bg oil"></span>
-            키즈카페
-        </li>        
-    </ul>
+<!-- Modal -->
+         <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h5 class="modal-title" id="reviewModalLabel">평점 주기</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                 </button>
+               </div>
+               
+               <div class="modal-body">
+                  <!-- <form id="reviewform"> -->
+                    <label id="kcafetitle">가게이름 : </label>
+                     <label id="kcafeName">ㅁㄴㅇㅁㄴㅇ</label>
+                     <div class="form-group">
+                          <label for="inputName">제목</label>
+                          <input type="text" class="form-control123" id="inputTitle">
+                       </div>
+                     <div class="form-group">
+                           <label for="inputName">내용</label>                  
+                           <textarea class="form-control" id="inputContext"></textarea>
+                        </div>  
+                        <%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                  <input type="hidden" value="" id="reviewId" name="reviewId">
+                  <input type="hidden" value="" id="starScore" name="starScore"> 
+                      </form> --%>         
+                     <div class="starRev" style="margin-top: 10px">
+                        <span class="starR" value="1">1</span>
+                        <span class="starR" value="2">2</span>
+                        <span class="starR" value="3">3</span>
+                          <span class="starR" value="4">4</span>
+                          <span class="starR" value="5">5</span>
+                          <span class="starR" value="6">6</span>
+                          <span class="starR" value="7">7</span>
+                          <span class="starR" value="8">8</span>
+                          <span class="starR" value="9">9</span>
+                          <span class="starR" value="10">10</span>
+                  </div>               
+                  </div>
+               
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                    <button type="button" class="btn btn-primary btngrade" id ="sendReview"  data-dismiss="modal">리뷰등록</button>
+                  </div>
+               
+             </div>
+           </div>
+         </div>
+         <!-- Modal -->
+
+   </div>
 </div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fc37be4712f8b89b167cddbc490382f&libraries=services"></script>
+ <!-- Bootstrap JS-->
+    <script src="admin_assets/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="admin_assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f053d576cd5dc6d9de018d8e7da2d525&libraries=services"></script>
 <script>
 
 
@@ -243,7 +313,7 @@
          counter=0;
          await foo(value);
       });      
-   }
+   }//asd
    
      function foo(sear){    
       return new Promise(function(resolve, reject){
@@ -274,34 +344,6 @@
       displayPlaces(emData);
    }
    
-   
-   /* //값 미리 설정해보기
-    $(function() {
-      emData = ${emer};
-      console.log("emData:" + emData);
-      //var index = 0;
-      //console.log('a' + emData[3].name);
-
-      emData.forEach(function(vaule, index, array) {
-         console.log('11');
-         var search3 = vaule.addr;
-         geocoder.addressSearch(vaule.addr,function(result, status) {
-               console.log('index :' + index + ' : ' + vaule.addr);
-               index++;
-               console.log('22');
-               if (status === daum.maps.services.Status.OK) {
-                  var coords = new daum.maps.LatLng(result[0].y,result[0].x);
-                  console.log('y : ' + typeof (result[0].y));
-                  vaule.x = result[0].x;
-                  vaule.y = result[0].y;
-               
-               }
-            });
-         console.log('44');
-
-      });
-
-   });  */
 
    // 지도에 idle 이벤트를 등록합니다
    daum.maps.event.addListener(map, 'idle', searchPlaces);
@@ -413,7 +455,7 @@
    // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
    function addMarker(position, order) {
 
-      var imageSrc = 'http://localhost:8080/baby/resources/map_icons/totalicons.jpg', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+      var imageSrc = 'http://192.168.0.60:8080/baby/resources/map_icons/totalicons.jpg', // 마커 이미지 url, 스프라이트 이미지를 씁니다
       imageSize = new daum.maps.Size(27, 28), // 마커 이미지의 크기
       imgOptions = {
          spriteSize : new daum.maps.Size(72, 208), // 스프라이트 이미지의 크기
@@ -439,31 +481,34 @@
       }
       markers = [];
    }
-
+   var cafeNo;
    // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
    function displayPlaceInfo(emdata) {
-      //console.log("place2" + JSON.stringify(emdata));
-      //console.log(place);
+    
       var content = '<div class="placeinfo">'
          + '<a class="title" href="https://map.kakao.com/?eName='+emdata.addr+'" target="_blank" title="' + emdata.name + '">'
             + emdata.name + '</a>';
 
             if (emdata.addr) {
-                console.log("야 여기 들어가냐?")
+               
                   var flag = typeof(emdata.sat)!='undefined'
-                 content+= '<span title="' + emdata.addr + '">' + emdata.addr + '</span>';
+                  console.log('flag:' +emdata.k_no);
+                 content+= '<span title="' + emdata.k_no + '" id="cafeNo" >' + emdata.addr + '</span>';
                  if(flag){
                     content+= '  <span class="jibun" title="' + emdata.addr + '">(토요일 : ' + emdata.sat + ')</span>'
                        + '  <span class="jibun" title="' + emdata.addr + '">(일요일 : ' + emdata.sun + ')</span>'
                        + '  <span class="jibun" title="' + emdata.addr + '">(공휴일 : ' + emdata.holiday + ')</span>';
                        console.log("flag : "+flag)
+                       
                  }
               } else {
                  content += '<span title="' + emdata.addr + '">' + emdata.addr + '</span>';
+                
               }
+      
 
-
-      content += '<span class="tel">' + emdata.tel + '</span>' + '</div>' + '<div class="after"></div>';
+            content += '<span class="tel">' + emdata.tel + '<span class="btn btn-primary" id="reviewicon" style="display:inline;margin-left:100px;">리뷰</span>' + '</span>' + '</div>';
+     
 
       contentNode.innerHTML = content;
       placeOverlay.setPosition(new daum.maps.LatLng(emdata.y, emdata.x));
@@ -535,4 +580,80 @@
       });
 
    };
+   
+   
+   
+   //리뷰 등록하는 부분
+   
+   //평점별알려주는거
+   var starScore;
+   var clickCafeName;
+   
+    //span은 동적이기때문에 이벤트추가해야됨.
+     $(document).on('click','#reviewicon',function(){
+        //모달창 띄우기
+        //alert('fafasf');
+        $("#reviewModal").modal();
+        clickCafeName = $('.placeinfo a').html();
+        console.log('주소는??:'+clickCafeName );
+        $('#kcafeName').text(clickCafeName);
+        
+        
+     });
+     
+     //별점 클릭하는거 이벤트 주는거?   
+     $('.starRev span').click(function(){
+       $(this).parent().children('span').removeClass('on');
+       $(this).addClass('on').prevAll('span').addClass('on');
+       return false;
+     });
+     
+     $('.starR').click(function(){
+        starScore = $(this).html();
+        console.log(starScore);        
+     });
+     
+     $('#sendReview').click(function(){
+        //alert('이제 보내야징');
+        console.log()
+        console.log('평점은? ' + starScore);
+        console.log('보낼려는 가게이름 : ' + clickCafeName);
+        console.log('리뷰쓰는 글쓴이이름: ' + '${reviewId}');
+        var id = '${reviewId}';
+        var no =  $('#cafeNo').attr('title');
+        var title = $("#inputTitle").val();
+        var content = $("#inputContext").val();
+        console.log('리뷰제목 :' + title);
+        console.log("리뷰내용 :" + content);
+        console.log( '번호???:' + $('#cafeNo').attr('title') );
+        
+        //키즈카페 함수 추가해서 해시값 받아서 ajax로 넘겨주기 만들기
+        //kreview
+        
+        
+        $.ajax({
+           type : "POST",
+           data : {"${_csrf.parameterName}" : "${_csrf.token}",
+              "title":title,
+              "content":content,
+              "score":starScore,
+              "id":id,
+              "k_no":no
+           },
+           
+           url:"<c:url value='/review.kosmo'/>",
+           dataType : "text",
+           success:function(data){
+              console.log("성공하면 알람창띄워서 리뷰등록됬다고 말해주기");
+           }
+           
+        });
+     }); 
+     
+     
+     
+     
+     
+  
+   
 </script>

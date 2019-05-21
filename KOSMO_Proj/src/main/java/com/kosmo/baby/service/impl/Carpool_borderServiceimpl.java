@@ -65,6 +65,12 @@ public class Carpool_borderServiceimpl implements Carpool_borderService{
 		System.out.println("완료 서비스");
 		return dao.yesupdate(map);
 	}
+
+	@Override
+	public int updateHasp(Map map) {
+		
+		return dao.updateHasp(map);
+	}
 	
 
 }

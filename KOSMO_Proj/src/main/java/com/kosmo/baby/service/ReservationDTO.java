@@ -8,8 +8,42 @@ public class ReservationDTO {
 	private String finish;
 	private String id;
 	private String cp_no;
+	private String totalscore;
+	private int count;
 	
 	
+	
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getCp_no() {
+		return cp_no;
+	}
+	public void setCp_no(String cp_no) {
+		this.cp_no = cp_no;
+	}
+	public String getTotalscore() {
+		return totalscore;
+	}
+	public void setTotalscore(String totalscore) {
+		this.totalscore = totalscore;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public String getRs_no() {
 		return rs_no;
 	}

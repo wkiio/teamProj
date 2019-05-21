@@ -4,8 +4,10 @@
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
    <!-- 카풀map시작-->
    <script src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=b5cc2a5e-34c4-441b-96f9-0a2639aabc1a"></script>
-   
-   <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fc37be4712f8b89b167cddbc490382f"></script> -->
+     <!-- 블록체인 -->
+ 	<script src='/baby/resources/aranblockchain.js'></script>
+ 	
+   <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fc37be4712f8b89b167cddbc490382f"></script> asdasdasd-->
 <style>
 
 .carview_title {
@@ -50,7 +52,7 @@
   margin-right: 5px;
 }
 .carview_sub {
-  height:300px;
+  height:174px;
   margin-bottom: 40px;
   border: 1px solid #4ebdc4;
   border-radius: 3px;
@@ -128,7 +130,7 @@
 						<div class="mt-1">
 							
 						</div>
-					</div>\
+					</div>
 				</div>
 			</div>
 			<form class="carviewform" action="CarpoolSubmit.kosmo" method="post">
@@ -138,10 +140,10 @@
 						<h1 class="title_img">단기 카풀</h1>
 						<h2 class="title_text">태워주세요</h2>
 					</div>
-					<input type="hidden" value="${dto.start_xpos }" id="s_xpos" name="s_xpos">
-					<input type="hidden" value="${dto.start_ypos }" id="s_ypos" name="s_ypos">
-					<input type="hidden" value="${dto.end_xpos }" id="e_xpos" name="e_xpos">
-					<input type="hidden" value="${dto.end_ypos }" id="e_ypos" name="e_ypos">
+					<input type="hidden" value="${dto.start_xpos }" id="start_xpos" name="start_xpos">
+					<input type="hidden" value="${dto.start_ypos }" id="start_ypos" name="start_ypos">
+					<input type="hidden" value="${dto.end_xpos }" id="end_xpos" name="end_xpos">
+					<input type="hidden" value="${dto.end_ypos }" id="end_ypos" name="end_ypos">
 					<input type="hidden" value="${dto.cp_no }" id="cp_no" name="cp_no">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					<input type="hidden" value="${dto.startpoint }" id="startpoint" name="startpoint">
@@ -150,6 +152,9 @@
 					<input type="hidden" value="${dto.type }" id="type" name="type">
 					<input type="hidden" value="${dto.price }" id="price" name="price">
 					<input type="hidden" value='${dto.content}' id="content" name="content">
+					<input type="hidden" value='${dto.carseat}' id="carseat" name="carseat">
+					<input type="hidden" value="" id="signed" name="signed">
+				
 					<div class="table-responsive" style="overflow-x:hidden;">
 						<table class="table table-bordered">
 							<thead class="table-borderless">
@@ -166,22 +171,23 @@
 							</thead>
 							<tbody>
 								<tr>
-									<th>경유지</th>
-									<td>성남시 정자1동 정자역</td>
 									<th>출발일시</th>
 									<td>${dto.time}</td>
-								</tr>
-								<tr>
-									<th>목적</th>
-									<td>${dto.type }</td>
 									<th>비용</th>
 									<td>${dto.price }원</td>
+									
 								</tr>
 								<tr>
-									<th>좌석수</th>
-									<td>3/3</td>
-									<th>대인배상</th>
-									<td>가입</td>
+									<th>유형</th>
+									<td>${dto.type }</td>
+									<th>카시트</th>
+									<td>${dto.carseat }</td>
+								</tr>
+								<tr>
+									<th>평점</th>
+									<td>${score }</td>
+									<th>차종</th>
+									<td>${dto.cartype }</td>
 								</tr>
 							</tbody>
 						</table>
@@ -207,7 +213,12 @@
 							<button type="button" class="btn btn-info" id="delete">삭제</button>
 						</c:if>
 						<c:if test="${!userMatch }">
-							<button type="submit" class="btn btn-info">예약</button>
+							<c:if test="${dto.status == 0 }" var="statusfinish">
+								<button type="submit" class="btn btn-info">예약</button>
+							</c:if>
+							<c:if test="${!statusfinish }">
+								<button type="button" class="btn btn-info" id="return">예약취소</button>
+							</c:if>
 						</c:if>
 						<a href="Carindex.kosmo"><button type="button" class="btn btn-info">목록 보기</button></a>
 					</div>
@@ -219,6 +230,75 @@
 
 
 <script>
+var message;
+window.addEventListener('load', async () => {
+    // Modern dapp browsers...
+    if (window.ethereum) {
+        window.web3 = new Web3(ethereum);
+        try {
+            // Request account access if needed
+            await ethereum.enable();
+            // Acccounts now exposed
+            web3.eth.sendTransaction({ /* ... */ });
+        } catch (error) {
+            // User denied account access...
+        }
+    }
+    // Legacy dapp browsers...
+    else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider);
+        // Acccounts always exposed
+        web3.eth.sendTransaction({ /* ... */ });
+    }
+    // Non-dapp browsers...
+    else {
+        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+    }
+    
+    message=web3.eth.contract(abi).at(contractAddress);
+    //startApp();
+});
+$('#resbutton').click(function(){
+	
+	var id = vv('${userId}');
+	console.log('id:'+id);
+
+	var id2 = vv('${writerId}');
+	console.log('id2:'+id2);
+	var num = parseInt('${dto.cp_no}');
+	console.log('num:'+num);
+	console.log('타입?' + '${dto.type }');
+	var vtype = '${dto.type }';
+	var type;
+	if( vtype == "타세요"){
+		type = vv("user");
+		console.log("유저저??");
+	}
+	else
+		type = vv("driver");
+	
+	
+		 
+  
+	  message.signBook(num,id2,id,type,function(e,r){
+		 $('#signed').val(r); 
+		 //console.log(r);
+		 $('.carviewform').submit();
+	  });    
+	   
+	 
+	/*   $('#signed').val("sdasdasdasdzxczxczx"); 
+	  console.log('ㅁㄴㅇㄴㅁㅇㅁㄴ');
+	  $('.carviewform').submit(); 
+	 */
+});
+
+
+
+
+
+
+
 	$('#edit').click(function(){
 		console.log("asdfdsfgsdfg");
 		$('.carviewform').prop('action','Caredit.kosmo');
@@ -230,8 +310,16 @@
 		$('.carviewform').submit();
 	});
 	
+<<<<<<< HEAD
+=======
+	$('#return').click(function(){
+		console.log("취소할거야")
+		$('.carviewform').prop('action','Back_reser.kosmo');
+		$('.carviewform').submit();
+	})
+>>>>>>> branch 'master' of https://github.com/wkiio/teamProj.git
 
 	
 </script>
 
-<script src="Bootstrap/js/Carload.js"></script>
+<script src="Bootstrap/js/carload.js"></script>

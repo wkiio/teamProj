@@ -35,6 +35,7 @@
 	<form class="carviewform" action="yes.kosmo" method="post">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<input type="hidden" value="" id="cp_no" name="cp_no">
+		<input type="hidden" value="" id="done" name="done">
 	</form>
 		<nav class="nav nav-tabs" id="nav-tab" role="tablist">
 	
@@ -146,6 +147,8 @@
 				      		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 							<input type="hidden" value="" id="modalno" name="modalno">
 							<input type="hidden" value="" id="score" name="score">
+							<input type="hidden" value="" id="reviewed" name="reviewed">
+							<input type="hidden" value="" id="cp_no1" name="cp_no">
 			      	  		<div class="input-group mb-3">
 						  		<div class="input-group-prepend">
 						    		<span class="input-group-text" id="inputGroup-sizing-default" >제목</span>
@@ -204,13 +207,61 @@
 <script src="admin_assets/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
 <script src="admin_assets/vendor/select2/select2.min.js"></script>
 
+  <!-- 블록체인 -->
+ 	<script src='/baby/resources/aranblockchain.js'></script>
+
 
 <script>
+var message;
+window.addEventListener('load', async () => {
+    // Modern dapp browsers...
+    if (window.ethereum) {
+        window.web3 = new Web3(ethereum);
+        try {
+            // Request account access if needed
+            await ethereum.enable();
+            // Acccounts now exposed
+            web3.eth.sendTransaction({ /* ... */ });
+        } catch (error) {
+            // User denied account access...
+        }
+    }
+    // Legacy dapp browsers...
+    else if (window.web3) {
+        window.web3 = new Web3(web3.currentProvider);
+        // Acccounts always exposed
+        web3.eth.sendTransaction({ /* ... */ });
+    }
+    // Non-dapp browsers...
+    else {
+        console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+    }
+    
+    message=web3.eth.contract(abi).at(contractAddress);
+    //startApp();
+});
+////////////////////////////////////////////////////////
+
+var nono;
+
 $('.btnsubmit').click(function(){
 	
 	$('#cp_no').val($(this).attr('id'));
 	console.log($('#cp_no').val($(this).attr('id')));
-	$('.carviewform').submit();
+	var no = $('#cp_no').val();
+	nono = no;
+	console.log(no);
+	var provider = vv($(this).parent().parent().children().eq(0).text());
+	var user = vv($(this).parent().parent().children().eq(1).text());
+	console.log(provider + " :: " + user);
+	
+	  message.closingbook(num,provider,user,function(e,r){
+		 $('#done').val(r);
+		 $('.carviewform').submit();  
+	 }); 
+	 
+	/* $('#done').val("ㅁㄴㅇㅁㄴㅇㅁㄴㅇㄴㅁㅇ");
+	$('.carviewform').submit(); */
 }); 
 
 $('.btnreview').click(function(){
@@ -225,12 +276,21 @@ $('.starRev span').click(function(){
 
 $('.starR').click(function(){
 	console.log($('#modalno').val());
-	var score = $(this).html();
-	console.log(score);
+	var score = vv($(this).html());
+	console.log('adsasd:' + score);
 	$('#score').val(score);
 	$('#modalno')
 	$('.btngrade').click(function(){
-		$('.carriewform').submit();
+		//CpReview(번호,카페주인,유저,점수)
+		var no = vv(nono);
+		var provider = vv($(this).parent().parent().children().eq(0).text());
+		var user = vv($(this).parent().parent().children().eq(1).text());
+	
+		message.CpReview(no,provider,user,score,function(e,r){
+			console.log(r);
+			 $('#reviewed').val(r);
+			$('.carriewform').submit();
+		});
 	
 	});
 });

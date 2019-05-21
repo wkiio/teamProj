@@ -12,6 +12,7 @@ public class Carpool_borderDTO {
 	private String end_ypos;
 	private String time;
 	private String price;
+	private String carseat;
 	private String id;
 	private String name;
 	private String status;
@@ -23,7 +24,21 @@ public class Carpool_borderDTO {
 	private String done;
 	private String reviewed;
 	private String photo;
+	private String cartype;
 	
+	
+	public String getCartype() {
+		return cartype;
+	}
+	public void setCartype(String cartype) {
+		this.cartype = cartype;
+	}
+	public String getCarseat() {
+		return carseat;
+	}
+	public void setCarseat(String carseat) {
+		this.carseat = carseat;
+	}
 	public String getCp_no() {
 		return cp_no;
 	}

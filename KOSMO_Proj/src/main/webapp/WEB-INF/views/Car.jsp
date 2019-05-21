@@ -2,18 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/template/isMember.jsp" %>
-<script>
-/*    $(function(){
-      $('tbody tr').each(function(i){
-         $(this).click(function(){
-        	var id = $(this).attr('id');
-            location.href="Carview.kosmo?cp_no="+id;
-            
-         });
-         
-      });
-   }); */
-</script>
+
 <style>
 #memberphoto {
   width: 70px;
@@ -21,6 +10,9 @@
 }
 
 </style>
+<sec:authorize access="isAuthenticated()">
+      <sec:authentication property="principal.username" var="id" />
+</sec:authorize>
 
 <div class="site-section carpool_section" style="padding: 2em;">
 	<div class="container">
@@ -75,7 +67,8 @@
 						<th scope="col"></th>
 						<th scope="col">도착</th>
 						<th scope="col">유형</th>
-						<th scope="col">자리/금액</th>
+						<th scope="col">금액</th>
+						<th scope="col">카시트</th>
 					</tr>
 				</thead>
 				
@@ -152,7 +145,8 @@
 				 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
 				 html+="<td><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
 				 html+="<td><h6 class=\"cp_type listtd\">"+carlist['type']+"</h6></td>";
-				 html+="<td><h6 class=\"cp_type listtd\">"+"2자리"+"</h6><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</td></tr>";			 	 
+				 html+="<td><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</span></td>";			 	 
+				 html+="<td><span>"+carlist['carseat']+"</span></td></tr>";			 	 
 				}
 				else if(clickchange == 2){
 					if(carlist['type'] == "타세요"){
@@ -162,7 +156,8 @@
 						 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
 						 html+="<td><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
 						 html+="<td><h6 class=\"cp_type listtd\">"+carlist['type']+"</h6></td>";
-						 html+="<td><h6 class=\"cp_type listtd\">"+"2자리"+"</h6><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</td></tr>";			
+						 html+="<td><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</td>";
+						 html+="<td><span class=\"cp_time listtd\">"+carlist['carseat']+"</td></tr>";	
 					}
 				}
 				else{
@@ -173,7 +168,8 @@
 						 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
 						 html+="<td><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
 						 html+="<td><h6 class=\"cp_type listtd\">"+carlist['type']+"</h6></td>";
-						 html+="<td><h6 class=\"cp_type listtd\">"+"2자리"+"</h6><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</td></tr>";
+						 html+="<td><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</td>";
+						 html+="<td><span class=\"cp_time listtd\">"+carlist['carseat']+"</td></tr>";	
 						 
 					}
 				}
@@ -187,7 +183,8 @@
 			 $('tbody tr').each(function(i){
 		         $(this).click(function(){
 		        	var id = $(this).attr('id');
-		            location.href="Carview.kosmo?cp_no="+id;		            
+		        	var type = $('tr[id="'+id+'"] td:nth-child(5) > h6').html();
+		            location.href="Carview.kosmo?cp_no="+id+"&type="+type;		            
 		         });		         
 		      });
 			 
