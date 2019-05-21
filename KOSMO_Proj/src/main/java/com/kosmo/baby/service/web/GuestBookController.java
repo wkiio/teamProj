@@ -37,6 +37,7 @@ public class GuestBookController {
 		
 		//서비스 호출]
 		List<Map> comments= guestBookService.selectList(map);
+		System.out.println(comments.get(0).get("image"));
 		//날짜 값을 문자열로 변경해야한다 그렇지 않으면 JSON형식에 맞지 않는다
 		//JSONArray.toJSONString(comments) 시
 		//[{"NO":2,"ONELINECOMMENT":"댓글2","CPOSTDATE":2018-09-12 10:15:38.0,"CNO":3,"ID":"LEE","NAME":"이길동"},{"NO":2,"ONELINECOMMENT":"댓글1","CPOSTDATE":2018-09-12 10:14:44.0,"CNO":2,"ID":"PARK","NAME":"박길동"}]
@@ -44,6 +45,7 @@ public class GuestBookController {
 		
 		for(Map comment:comments) { 
 			comment.put("GPOSTDATE", comment.get("GPOSTDATE").toString().substring(0,10));
+			
 		}
 		
 		System.out.println("코멘트 목록:"+JSONArray.toJSONString(comments));
@@ -111,6 +113,7 @@ public class GuestBookController {
 		map.put("refer",list.getRefer());
 		map.put("step",list.getStep());
 		map.put("depth",list.getDepth());		
+		map.put("id",list.getId());		
 		
 		System.out.println("리스트 호출 한 뒤 map:"+map);
 		

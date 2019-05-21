@@ -9,7 +9,7 @@
 	</select>
 	
 	<insert id="commentInsert" parameterType="java.util.Map">
-		INSERT INTO guestbook VALUES(SEQ_GUESTBOOK.NEXTVAL,#{gcomment},#{id},'image',DEFAULT,SEQ_GUESTBOOK.CURRVAL,DEFAULT,DEFAULT)
+		INSERT INTO guestbook VALUES(SEQ_GUESTBOOK.NEXTVAL,#{gcomment},#{id},EMPTY_CLOB(),DEFAULT,SEQ_GUESTBOOK.CURRVAL,DEFAULT,DEFAULT)
 	</insert> 
 	
 	<update id="commentUpdate" parameterType="java.util.Map">
