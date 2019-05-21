@@ -15,6 +15,9 @@ public interface Carpool_borderService {
 	int insert(Map map);
 	int update(Map map);
 	int updateHasp(Map map);
+	
+	//블록체인용
+	Carpool_borderDTO blockchain(Map map);
 
 	//게시물 개수
 	int CBoardCount(Map map);

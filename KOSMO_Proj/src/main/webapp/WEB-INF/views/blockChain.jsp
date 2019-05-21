@@ -4,6 +4,11 @@
 <%@ include file="/WEB-INF/template/isMember.jsp" %>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src='/baby/resources/aranblockchain.js'></script>
+<sec:authorize access="isAuthenticated()">
+      <sec:authentication property="principal.username" var="id" />
+</sec:authorize>
+
+
 <style>
 .show {
 	margin-bottom: 5px;
@@ -97,14 +102,21 @@ $(function(){
 
 
 <fieldset>
+
+
+
 <div class='center'>
 	<legend> 전 세계 최초 육아 베팅</legend>
 </div>
-<div style='overflow:hidden;'>
-	<textarea  style='margin-left:10%;float:left;height:40px;width:80%;' id='val'></textarea>
-	<input style='float:left;width:50px;' id="submit" class="btn btn-info btn-sm " value="확인" />
-</div>
-</br>
+	<form class="form-signin" method="post" action="Blockchain123.kosmo?${_csrf.parameterName}=${_csrf.token}" autocomplete="off">
+		<div style='overflow: hidden;'>
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+			<input style='margin-left:10%;float:left;height:40px;width:80%;' id='val' name="cp_no">
+			<button type="submit" style='float:left;width:50px;' id="submit" class="btn btn-info btn-sm">확인</button>
+			${opened } , ${signed }, ${done }, ${reviewed }
+		</div>
+	</form>
+	</br>
 <div class='center'>
 <h2> 배당률 1.27X </h2>
 </div>

@@ -85,6 +85,11 @@ public class Carpool_borderDAO implements Carpool_borderService{
 	public Carpool_borderDTO one(Map map) {
 		return template.selectOne("one",map);
 	}
+
+	@Override
+	public Carpool_borderDTO blockchain(Map map) {
+		return template.selectOne("blockchain123",map);
+	}
 	
 
 }

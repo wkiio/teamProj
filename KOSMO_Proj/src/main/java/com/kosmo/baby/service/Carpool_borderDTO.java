@@ -19,10 +19,12 @@ public class Carpool_borderDTO {
 	private String reservationid;
 	private String finish;
 	private String score;
+	// 블록체인시작
 	private String opened;
 	private String signed;
 	private String done;
 	private String reviewed;
+	// 블록체인끝
 	private String photo;
 	private String cartype;
 	

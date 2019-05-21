@@ -5,7 +5,7 @@
 
 <mapper namespace="mybatis.GuestBook">
 	<select id="commentSelectList" parameterType="java.util.Map" resultType="java.util.Map">
-		SELECT * FROM guestbook  ORDER BY refer DESC,step ASC
+		SELECT * FROM guestbook
 	</select>
 	
 	<insert id="commentInsert" parameterType="java.util.Map">
