@@ -1,13 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@include file="/WEB-INF/template/isMember.jsp" %>
+<%@ include file="/WEB-INF/template/isMember.jsp" %>
+
 <style>
 #memberphoto {
   width: 70px;
   height: 70px;
 }
+table, td{
+text-align:center;
+}
+
 </style>
+<sec:authorize access="isAuthenticated()">
+      <sec:authentication property="principal.username" var="id" />
+</sec:authorize>
 
 <div class="site-section carpool_section" style="padding: 2em;">
 	<div class="container">
@@ -44,10 +52,12 @@
 					<input type="radio" name="options1" id="option1" autocomplete="off" value="전체" checked > 전체
 				</label>
 					<label class="btn btn-secondary">
-					<input type="radio" name="options2" id="option2" autocomplete="off" value="타세요"> 타세요
+					<input type="radio"
+					name="options2" id="option2" autocomplete="off" value="타세요"> 타세요
 				</label>
 				<label class="btn btn-secondary">
-					<input type="radio" name="options3" id="option3" autocomplete="off" value="태워주세요"> 태워주세요
+					<input type="radio"
+					name="options3" id="option3" autocomplete="off" value="태워주세요"> 태워주세요
 				</label>
 			</div>
 		</div>
@@ -62,19 +72,14 @@
 						<th scope="col">유형</th>
 						<th scope="col">금액</th>
 						<th scope="col">카시트</th>
-
 					</tr>
 				</thead>
 				
 				<tbody class="text-center" id="carList">
 					
 				</tbody>
-				
 			
 			</table>
-			<div class="mt-1" style="text-align: right;">
-				<button type="button" class="btn btn-secondary" style="border-radius : 8px;" id="register">카풀 이용하기</button>
-			</div>
 		</div>
 	</div>
 <!-- 페이징 -->
@@ -89,16 +94,8 @@
    var firstsearch;
    var secondsearch;
    
-   $(function() {
-		$('#register').click(function(){
-			location.replace('carregister.kosmo');
-		})
-		
-	})
 
   $(function(){
-	  
-	  
 	 
 	  firsttable();
 	  
@@ -147,20 +144,20 @@
 				 ///전체화면띄우기		
 				 html += "<tr id="+carlist['cp_no']+">";
 				 html+="<th scope=\"row\"><figure class=\"profile listtd\"><img id=\"memberphoto\" src=\"<c:url value='/resources/memberPhoto/"+carlist["photo"]+"'/>\" alt=\"프로필\" class=\"picture listtd\"><figcaption class=\"name listtd\"></figcaption></figure></th>";
-				 html+="<td style='width: 30%'><div class=\"start_con listtd\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
+				 html+="<td><div class=\"start_con listtd\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
 				 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
-				 html+="<td style='width: 30%'><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
+				 html+="<td><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
 				 html+="<td><h6 class=\"cp_type listtd\">"+carlist['type']+"</h6></td>";
 				 html+="<td><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</span></td>";			 	 
-				 html+="<td><span class=\"cp_time listtd\">"+carlist['carseat']+"</span></td></tr>";			 	 
+				 html+="<td><span>"+carlist['carseat']+"</span></td></tr>";			 	 
 				}
 				else if(clickchange == 2){
 					if(carlist['type'] == "타세요"){
 						 html += "<tr id="+carlist['cp_no']+">";
 						 html+="<th scope=\"row\"><figure class=\"profile listtd\"><img id=\"memberphoto\" src=\"<c:url value='/resources/memberPhoto/"+carlist["photo"]+"'/>\" alt=\"프로필\" class=\"picture listtd\"><figcaption class=\"name listtd\"></figcaption></figure></th>";
-						 html+="<td style='width: 30%'><div class=\"start_con listtd\" ><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
+						 html+="<td><div class=\"start_con listtd\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
 						 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
-						 html+="<td style='width: 30%'><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
+						 html+="<td><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
 						 html+="<td><h6 class=\"cp_type listtd\">"+carlist['type']+"</h6></td>";
 						 html+="<td><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</td>";
 						 html+="<td><span class=\"cp_time listtd\">"+carlist['carseat']+"</td></tr>";	
@@ -170,9 +167,9 @@
 					if(carlist['type'] == "태워주세요"){
 						 html += "<tr id="+carlist['cp_no']+">";
 						 html+="<th scope=\"row\"><figure class=\"profile listtd\"><img id=\"memberphoto\" src=\"<c:url value='/resources/memberPhoto/"+carlist["photo"]+"'/>\" alt=\"프로필\" class=\"picture listtd\"><figcaption class=\"name listtd\"></figcaption></figure></th>";
-						 html+="<td style='width: 30%'><div class=\"start_con listtd\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
+						 html+="<td><div class=\"start_con listtd\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
 						 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
-						 html+="<td style='width: 30%'><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
+						 html+="<td><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
 						 html+="<td><h6 class=\"cp_type listtd\">"+carlist['type']+"</h6></td>";
 						 html+="<td><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</td>";
 						 html+="<td><span class=\"cp_time listtd\">"+carlist['carseat']+"</td></tr>";	
@@ -299,8 +296,6 @@
 	 
 	 
  }
- 
-	
  
 	
  

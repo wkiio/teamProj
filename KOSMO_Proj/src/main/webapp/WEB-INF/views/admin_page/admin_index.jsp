@@ -153,7 +153,7 @@
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo" style="background-color:#feffd6">
                 <a href="index.kosmo">
-                    <img src="resources/Baby/Aran.png" alt="asdasss" style="height:60px;width:190px;padding-left: 20px" />
+                    <img src="resources/images/Aran.png" alt="asdasss" style="height:60px;width:190px;padding-left: 20px" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -203,7 +203,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="resources/Baby/Aran2.png" alt="Aran2" />
+                                            <img src="resources/images/Aran2.png" alt="Aran2" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#">Aran관리자</a>
@@ -367,47 +367,11 @@
                       
                       
                        </div>
-                        <div class="row">
-                        	<div class="col-lg-12" >
-	                        	 <table class="table table-bordered" style="background: #ffffff">
-								<thead id='thead'>
-									<tr>
-										<td colspan="12">
-											<button type='button' style='background-color:#228ff4' class='btn btn-sm ' id='moveFastPre' onclick="moveFastMonthPre()">&laquo;</button>
-											&nbsp;
-											<button type='button' style='background-color:#228ff4' class='btn btn-sm ' id='movePre' onclick="moveMonthPre()">&lsaquo;</button> <!-- btn-warning -->
-											&nbsp;&nbsp; 
-											<span id='yearMonth'></span> &nbsp;&nbsp;
-											<button type='button' style='background-color:#228ff4' class='btn btn-sm' id='moveNext' onclick="moveMonthNext()">&rsaquo;</button> 
-											&nbsp;
-											<button type='button' style='background-color:#228ff4' class='btn btn-sm' id='moveFastNext' onclick="moveFastMonthNext()">&raquo;</button>
-											<div style="text-align: right;">
-												<span>${title}</span> 
-												<input class='btn btn-sm' style='background-color:#228ff4' type="button" value="주" onclick='tabWeek()' /> 
-												<input class='btn btn-sm' style='background-color:#228ff4' type="button" value="월" onclick='tabMonth()' /> 
-												<input class='btn btn-sm' style='background-color:#228ff4' type="button" value="목록" onclick='location.href="./coding.do"' />
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>일<span class='week'></span></td>
-										<td>월<span class='week'></span></td>
-										<td>화<span class='week'></span></td>
-										<td>수<span class='week'></span></td>
-										<td>목<span class='week'></span></td>
-										<td>금<span class='week'></span></td>
-										<td>토<span class='week'></span></td>
-									</tr>
-								</thead>
-								<tbody id='tbody'></tbody>
-							</table>                       
-                        	
-                        	</div>                    
-                        </div>
+                      
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
-                                    <p>Copyright Â© 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                    <p>Aran 관리자 페이지 화면 <a href="https://colorlib.com">아란</a>.</p>
                                 </div>
                             </div>
                         </div>

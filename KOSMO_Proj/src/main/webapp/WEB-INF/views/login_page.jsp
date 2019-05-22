@@ -4,10 +4,11 @@
 <%@taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+ <link rel="stylesheet" href="Bootstrap/login&mypage/login.css">
 
-<div class="site-section" style="padding: 2em;">
-	<div class="container-fluid">
+<script src="Bootstrap/junior/js/jquery-3.2.1.min.js">
+
+</script>
 		<div class="row no-gutter">
 			<div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
 			<div class="col-md-8 col-lg-6">
@@ -55,8 +56,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
 
 
 <script type='text/javascript'>
