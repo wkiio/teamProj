@@ -272,7 +272,11 @@ public class Carpool_borderController {
 		model.addAttribute("signed",dto.getSigned());
 		model.addAttribute("done",dto.getDone());
 		model.addAttribute("reviewed",dto.getReviewed());
+<<<<<<< HEAD
 		model.addAttribute("cp_no",dto.getCp_no());
+=======
+		model.addAttribute("cp_no",Integer.parseInt(dto.getCp_no()));
+>>>>>>> branch 'kihoonPark' of https://github.com/wkiio/teamProj.git
 		
 		System.out.println("방 번호 번호");
 		

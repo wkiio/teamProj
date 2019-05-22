@@ -65,7 +65,7 @@
 				</div>
 				 -->
 						<div style='float: left; border: 5px solid blue; width: 30%'>
-							<input type='file' name='image' id="image"  class="btn btn-success">							
+							<input type='file' name='upload' id="image"  class="btn btn-success">							
 						</div>
 
 						<div style='float: left; border: 5px solid green; width: 100%'>
@@ -103,14 +103,23 @@
 		//코멘트 입력처리]
 		showComments();
 		$('#submit').click(function() {
-			console.log('클릭 확인');
+		//var upload = "D:\MMJ\Workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\KOSMO_Proj\upload";
+		  console.log('클릭 확인');
 			if ($(this).val() == '확인') {
 				console.log('확인??');
+				formData = new FormData($('#frm')[0]);
+				formData.append("image", $("#image")[0].files[0]);
 				$.ajax({
 					url : "<c:url value='/GuestBook/Write.kosmo'/>",
-					data : $('#frm').serialize(),
+					data : formData,
+                    beforeSend : function(xhr)
+                    {   
+                        xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
+                    },
 					dataType : 'text',
 					type : 'post',
+					contentType: false,
+				    processData: false,
 					success : function() {
 						console.log('성공');
 						showComments();
