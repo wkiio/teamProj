@@ -4,8 +4,8 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="mybatis.GuestBook">
-	<select id="commentSelectList" parameterType="java.util.Map" resultType="java.util.Map">
-		SELECT * FROM guestbook
+	<select id="commentSelectList" parameterType="java.util.Map" resultType="GuestBookDTO">
+		SELECT * FROM guestbook g join members m on g.id = m.id ORDER BY refer DESC,step ASC
 	</select>
 	
 	<insert id="commentInsert" parameterType="java.util.Map">
@@ -17,7 +17,7 @@
 	</update>
 	
 	<delete id="commentDelete" parameterType="java.util.Map">
-		DELETE guestbook WHERE gNo =#{gno}
+		DELETE guestbook WHERE gNo = #{gno}
 	</delete>
 	
 	<update id="ReplyUpdate" parameterType="java.util.Map">

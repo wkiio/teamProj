@@ -1,8 +1,10 @@
 package com.kosmo.baby.service.web;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -40,22 +42,37 @@ public class GuestBookController {
 		*/
 		
 		//서비스 호출]
-		List<Map> comments= guestBookService.selectList(map);
+		List<GuestBookDTO> comments= guestBookService.selectList(map);
+		List<Map> collections = new Vector<Map>();
+		
 		//날짜 값을 문자열로 변경해야한다 그렇지 않으면 JSON형식에 맞지 않는다
 		//JSONArray.toJSONString(comments) 시
 		//[{"NO":2,"ONELINECOMMENT":"댓글2","CPOSTDATE":2018-09-12 10:15:38.0,"CNO":3,"ID":"LEE","NAME":"이길동"},{"NO":2,"ONELINECOMMENT":"댓글1","CPOSTDATE":2018-09-12 10:14:44.0,"CNO":2,"ID":"PARK","NAME":"박길동"}]
 		//날짜를 2018-09-12 10:15:38.0에서 " 2018-09-12"형태로 변경		
 		
-		for(Map comment:comments) { 
-			comment.put("GPOSTDATE", comment.get("GPOSTDATE").toString().substring(0,10));
+		for(GuestBookDTO comment:comments) { 
+			Map record = new HashMap();
+			record.put("gPostdate", comment.getgPostdate().substring(0,10));
+			record.put("photo",comment.getPhoto().split("memberPhoto")[1].substring(1));
+			System.out.println("사진 : "+comment.getPhoto().split("memberPhoto")[1].substring(1));
+			record.put("gNo", comment.getgNo());
+			record.put("gComment", comment.getgComment());
+			record.put("id", comment.getId());
+			record.put("refer", comment.getRefer());
+			record.put("step", comment.getStep());
+			record.put("depth", comment.getDepth());
+			record.put("image", comment.getImage());
+			collections.add(record);
+			
 			
 		}
 		
-		System.out.println("코멘트 목록:"+JSONArray.toJSONString(comments));
+		
+		System.out.println("코멘트 목록:"+JSONArray.toJSONString(collections));
 		
 		System.out.println("리스트 리스트 끝");
 
-		return JSONArray.toJSONString(comments);
+		return JSONArray.toJSONString(collections);
 	}//////////////List
 	
 	@ResponseBody

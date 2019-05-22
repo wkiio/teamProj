@@ -17,7 +17,7 @@ public class GuestBookServiceimpl implements GuestBookService{
 	private GuestBookDAO dao;
 
 	@Override
-	public List<Map> selectList(Map map) {
+	public List<GuestBookDTO> selectList(Map map) {
 		return dao.selectList(map);
 	}
 

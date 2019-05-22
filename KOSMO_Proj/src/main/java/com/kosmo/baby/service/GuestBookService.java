@@ -6,7 +6,7 @@ import java.util.Map;
 public interface GuestBookService {
 
 	//목록용
-	List<Map> selectList(Map map);
+	List<GuestBookDTO> selectList(Map map);
 	
 	void insert(Map map);
 	void delete(Map map);

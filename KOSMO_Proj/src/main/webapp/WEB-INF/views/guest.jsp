@@ -54,7 +54,8 @@
 						<!-- <div style='float:left;border:5px solid red;width:80%' id="summernote" >
 			     -->
 						<textarea placeholder="댓글을 입력하세요" class="form-control" type=text
-							size="250" name="gcomment"></textarea>
+							size="250" name="gcomment" id="gcomment"></textarea>
+							
 						<!-- </div>
 				 -->
 
@@ -115,7 +116,10 @@
 						console.log('성공');
 						showComments();
 						//입력댓글 클리어 및 포커스 주기
-
+						$('#gcomment').focus();
+						$('#gcomment').val('');
+						
+						
 					}
 				});
 			} else if ($(this).val() == '답변') {///답변 작성용
@@ -129,6 +133,8 @@
 					success : function() {
 						console.log('답변 입력 성공');
 						showComments()
+						$('#gcomment').focus();
+						$('#gcomment').val('');
 						$('#submit').val('확인')
 
 					}
@@ -165,28 +171,23 @@
 			commentsString+='<tr><td colspan="4">등록된 한줄 댓글이 없어요</td></tr>';
 		} */
 
-		$
-				.each(
-						data,
-						function(index, comment) {
+		$ .each(data,function(index, comment) {
 							var B = 53;
-							commentsString += "<div class='col-md-9' style='left:30%;margin-left:"
-									+ B * comment['DEPTH'] + "px'><p>";
-							commentsString += "<img style='width:50px;height:50px;margin-top: 15px' src='<c:url value="resources/images/Aran.png"/>' style='cursor: pointer;'/>";
-							commentsString += "<span style='line-height:center;'><strong>"
-									+ comment['ID'] + "</strong></span>";
-							console.log(comment["ID"]);
+						 	commentsString += "<div class='col-md-9' style='left:30%;margin-left:" + B * comment['depth'] + "px'><p>";
+							commentsString += "<img style='width:50px;height:50px;margin-top: 15px;' src=\"<c:url value='/resources/memberPhoto/"+comment["photo"]+"'/>\" alt=\"프로필\" style='cursor: pointer;'/>";
+							commentsString += "<span style='line-height:center;'><strong>" + comment['id'] + "</strong></span>"; 
+							//console.log(comment["ID"]);
 							//본인이 쓴 코멘트 수정할 수 있도록 링크 처리
-							/* 
+							
 							if('${id}' != comment['ID'])//보안적용 후
-								commentsString+="<td align='left' id='preview'>"+comment['GCOMMENT']+'</td>';
+								commentsString+="<td align='left' id='preview'>"+comment['gComment']+'</td>';
 							else //수정 
-							 */
-							commentsString += "<div style='margin-top: -15px;margin-left: 75px;width:300px;'><span style='margin-left:-25px;cursor:pointer' class='commentEdit' title='"+comment['GNO']+"'>"
-									+ comment['GCOMMENT'] + '</span></div>';
+							
+							commentsString += "<div style='margin-top: -15px;margin-left: 75px;width:300px;'><span style='margin-left:-25px;cursor:pointer' class='commentEdit' title='"+comment['gNo']+"'>"
+									+ comment['gComment'] + '</span></div>';
 							commentsString += "<span style='color:black;margin-left:50px;'>"
-									+ comment['GPOSTDATE'] + "</span>";
-							commentsString += "<a href='#recomment'><span class='reply' title='"+comment['GNO']+"' style='cursor:pointer;color:black;'>  답변  </span></a><span class='commentDelete' title='"+comment['GNO']+"' style='cursor:pointer;color:black;'>삭제</span>";
+									+ comment['gPostdate'] + "</span>";
+							commentsString += "<a href='#recomment'><span class='reply' title='"+comment['gNo']+"' style='cursor:pointer;color:black;'>  답변  </span></a><span class='commentDelete' title='"+comment['gNo']+"' style='cursor:pointer;color:black;'>삭제</span>";
 							commentsString += "</p></div>";
 						});
 

@@ -6,7 +6,7 @@ public class GuestBookDTO {
 
 	private String gNo;
 	private String gComment;
-	private Date gPostdate;
+	private String gPostdate;
 	private String id;
 	private String refer;
 	private String step;
@@ -14,7 +14,18 @@ public class GuestBookDTO {
 	/*private String name;*/
 	private String image;
 	
+	// 프로필 이미지
+	private String photo;
 	
+	
+	
+	
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 	//게터 세터
 	public String getgNo() {
 		return gNo;
@@ -46,10 +57,10 @@ public class GuestBookDTO {
 	public void setgComment(String gComment) {
 		this.gComment = gComment;
 	}
-	public Date getgPostdate() {
+	public String getgPostdate() {
 		return gPostdate;
 	}
-	public void setgPostdate(Date gPostdate) {
+	public void setgPostdate(String gPostdate) {
 		this.gPostdate = gPostdate;
 	}
 	public String getId() {

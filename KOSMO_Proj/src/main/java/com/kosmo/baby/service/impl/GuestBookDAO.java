@@ -18,7 +18,7 @@ public class GuestBookDAO implements GuestBookService{
 	private SqlSessionTemplate template;
 
 	@Override
-	public List<Map> selectList(Map map) {
+	public List<GuestBookDTO> selectList(Map map) {
 		return template.selectList("commentSelectList", map);
 	}
 
