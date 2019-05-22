@@ -138,7 +138,7 @@ public class Carpool_borderController {
 			record.put("carseat",dto.getCarseat());
 			record.put("partnerstatus",dto.getPartnerstatus());
 			record.put("photo",dto.getPhoto().split("memberPhoto")[1].substring(1));
-			System.out.println("사진경로:" + dto.getPhoto().split("memberPhoto/")[1].substring(1));
+			System.out.println("사진경로:" + dto.getPhoto().split("memberPhoto")[1].substring(1));
 			System.out.println("카시트 유무"+dto.getCarseat());
 			collections.add(record);			
 		}////for
@@ -272,6 +272,7 @@ public class Carpool_borderController {
 		model.addAttribute("signed",dto.getSigned());
 		model.addAttribute("done",dto.getDone());
 		model.addAttribute("reviewed",dto.getReviewed());
+		model.addAttribute("cp_no",dto.getCp_no());
 		
 		System.out.println("방 번호 번호");
 		

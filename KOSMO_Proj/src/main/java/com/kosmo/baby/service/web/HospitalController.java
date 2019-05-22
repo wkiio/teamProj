@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmo.baby.service.HospitalDTO;
 import com.kosmo.baby.service.KizcafeDTO;
+import com.kosmo.baby.service.ReviewDTO;
 import com.kosmo.baby.service.impl.HospitalServiceimpl;
 import com.kosmo.baby.service.impl.KizcafeServiceimpl;
+import com.kosmo.baby.service.impl.ReviewServiceimpl;
 
 @Controller
 public class HospitalController {
@@ -29,6 +31,9 @@ public class HospitalController {
    
    @Resource(name="kizcafeServiceimpl")
    private KizcafeServiceimpl kizcafeservice;
+   
+   @Resource(name="reviewServiceimpl")
+   private ReviewServiceimpl reviewservice;
    
 
    //여기에 리퀘스트 맵핑 하셔서 작업하시면 됩니다.   
@@ -124,7 +129,22 @@ public class HospitalController {
             recode.put("name", dto.getName());
             recode.put("tel", dto.getTel()==null?"":dto.getTel());
             recode.put("addr", dto.getAddr());
-
+            map.put("k_no", dto.getK_no());
+            int count = reviewservice.count(map);
+            List<ReviewDTO> redto = reviewservice.selectScore(map);
+            int score,value,realscore = 0;
+            for (ReviewDTO a : redto) {
+           	System.out.println("지금까지 한 점수 : "+Integer.parseInt(a.getScore()));
+    			score = Integer.parseInt(a.getScore());
+    			realscore += score;
+            }
+            if(!(count == 0 || realscore == 0)) {
+        		value = realscore/count;
+        		recode.put("score",value);
+        		}
+        	else  { 
+        		recode.put("score","리뷰 기록이 없습니다"); 
+        		} 
             collections.add(recode);
          }
  

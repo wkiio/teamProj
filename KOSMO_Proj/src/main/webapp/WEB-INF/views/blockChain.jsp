@@ -46,7 +46,7 @@ window.addEventListener('load', async () => {
         console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
     }
 
-    message=web3.eth.contract(abi).at(contractAddress);
+  
     //startApp();
 });
 
@@ -55,9 +55,10 @@ window.addEventListener('load', async () => {
 	$(function(){
 		$('#submit').click(async function(){
 		console.log('클릭 전');		
-			
+		 var message=web3.eth.contract(abi).at(contractAddress);
 			
 		var hashVar ='${opened}';
+		var cp_noo = '${cp_no}';
 		console.log("open",'${opened}');
 		let receipt=await web3.eth.getTransactionReceipt(hashVar,function(){
 		    web3.eth.getBlock(r['blockNumber'],function(e,s){
@@ -96,6 +97,9 @@ window.addEventListener('load', async () => {
 		//click 이벤트
 		//$('#view2').val(view2);
 		console.log(view2);
+		message.getSign(cp_noo,function(e,r){
+			console.log(web3.toAscii(r));
+		});
 	});
 	
 </script>

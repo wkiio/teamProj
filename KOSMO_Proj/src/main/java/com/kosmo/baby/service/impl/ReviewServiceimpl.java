@@ -46,4 +46,14 @@ public class ReviewServiceimpl implements ReviewService{
 		return 0;
 	}
 
+	@Override
+	public int count(Map map) {
+		return dao.count(map);
+	}
+
+	@Override
+	public List<ReviewDTO> selectScore(Map map) {
+		return dao.selectScore(map);
+	}
+
 }

@@ -37,7 +37,6 @@ public class ReservationController {
 	@RequestMapping("/car_admin.kosmo")
 	public String baby_admin(@RequestParam Map map,Model model) {
 		List<ReservationDTO> recode= rService.selectList(map);
-		
 		model.addAttribute("car_list",recode);
 		
 		return "/admin_page/car_admin";

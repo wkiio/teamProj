@@ -29,62 +29,6 @@
    });
    
 </script>
-
-<<<<<<< HEAD
-    <!-- MAIN CONTENT-->   
-   <div class="main-content">   
-   <form class="carviewform" action="yes.kosmo" method="post">
-      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-      <input type="hidden" value="" id="cp_no" name="cp_no">
-      <input type="hidden" value="" id="done" name="done">
-   </form>
-      <nav class="nav nav-tabs" id="nav-tab" role="tablist">
-   
-         <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab">현재 예약</a> 
-         <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab">완료 예약</a>
-      </nav>
-      <div class="tab-content" id="nav-tabContent">
-         <div class="tab-pane fade active show" id="nav-home" role="tabpanel">
-            <div class="section__content section__content--p30">
-               <div class="container-fluid">
-                  <div class="data-tables datatable-dark" style="padding-top: 20px; text-align: center;">            
-                     <table id="dataTable3" style="width: 100%; text-align: center">
-                        <thead>
-                        
-                           <tr>
-                              <th style="background-color: #ffaec9">작성자</th>
-                              <th style="background-color: #ffaec9">예약신청자</th>
-                              <th style="background-color: #ffaec9">출발지</th>
-                              <th style="background-color: #ffaec9">목적지</th>
-                              <th style="background-color: #ffaec9">시간</th>
-                              <th style="background-color: #ffaec9">가격</th>
-                              <th style="background-color: #ffaec9">타입</th>
-                              <th style="background-color: #ffaec9">완료여부</th>
-                           </tr>
-                        </thead>                        
-                           <c:forEach items="${selist }" var="items" varStatus="loop">
-                              <c:if test="${items.id==id2 ||items.reservationid ==id2 }">
-                                 <c:if test="${items.finish==0}">
-                                    <tr>
-                                       <th>${items.id }</th>
-                                       <th>${items.reservationid }</th>
-                                       <th>${items.startpoint }</th>
-                                       <th>${items.endpoint }</th>
-                                       <th>${items.time }</th>
-                                       <th>${items.price }</th>
-                                       <th>${items.type }</th>                                    
-                                       <c:if test="${items.type=='태워주세요' && items.reservationid ==id2}">
-                                          <th><button class="btn btn-success btn-sm btnsubmit" id="${items.cp_no }">완료</button></th>
-                                       </c:if>                                    
-                                       <c:if test="${items.type=='타세요' && items.id ==id2}">
-                                          <th><button class="btn btn-success btn-sm btnsubmit" id="${items.cp_no }">완료</button></th>
-                                       </c:if>                                       
-                                    </tr>
-                                 </c:if>
-                              </c:if>
-                           </c:forEach>
-                     </table>
-=======
  	<!-- MAIN CONTENT-->	
 	<div class="site-section main-content">	
 	<form class="carviewform" action="yes.kosmo" method="post">
@@ -138,7 +82,6 @@
 										</c:if>
 									</c:forEach>
 							</table>
->>>>>>> branch 'master' of https://github.com/wkiio/teamProj.git
 
                   </div>
                </div>
@@ -360,16 +303,16 @@ $('.starR').click(function(){
       console.log('provider:' + provider);
       console.log('user' + user);
       console.log('score' + score);
-      console.log('리뷰등록을 해봐?');
+        console.log('리뷰등록을 해봐?');
            message.CpReview($('#modalno').val(),provider,user,score,function(e,r){
          console.log(r);
           $('#reviewed').val(r);
          $('.carriewform').submit();
-      });    
-      
-      /*  message.getSign(1,function(e,r){
+      });     
+       
+/*         message.getSign(6,function(e,r){
     	  console.log(r);
-      })  */
+      })    */
       /*  $('#reviewed').val("0xe785414c9dde601e734879578ab856541b3203d211e004e14b611ec22c87ef03");
          $('.carriewform').submit(); */
    });
