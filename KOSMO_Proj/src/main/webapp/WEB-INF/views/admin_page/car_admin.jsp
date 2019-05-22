@@ -282,7 +282,7 @@ section{
         <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo" style="background-color:#feffd6">
                 <a href="index.kosmo">
-                    <img src="resources/Baby/Aran.png" alt="Cool Admin" style="height:60px;width:190px;padding-left: 20px" />
+                    <img src="resources/images/Aran.png" alt="Cool Admin" style="height:60px;width:190px;padding-left: 20px" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
@@ -330,7 +330,7 @@ section{
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="resources/Baby/Aran2.png" alt="Aran2" />
+                                            <img src="resources/images/Aran2.png" alt="Aran2" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#">Aran관리자</a>

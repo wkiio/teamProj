@@ -3,8 +3,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<div class="site-section" style="padding: 2em;">
-	<div class="container">
+<link rel="stylesheet" href="/baby/resources/css/login.css">
+
+<div class="container">
 		<div class="col-lg-10 col-xl-9 mx-auto">
 			<div class="card card-signin flex-row my-5">
 				<div class="card-body">
@@ -127,8 +128,6 @@
 					</form>
 				</div>
 			</div>
-		</div>
-	</div>	
 	
 		<div class="modal fade" id="photomodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:9000" >
 		  <div class="modal-dialog" role="document" >
@@ -153,6 +152,7 @@
 		    </div>
 		  </div>
 		</div>
+</div>
 </div>
 
 
