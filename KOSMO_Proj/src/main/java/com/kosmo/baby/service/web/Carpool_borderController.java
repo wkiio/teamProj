@@ -264,12 +264,17 @@ public class Carpool_borderController {
 
 	@RequestMapping("/Blockchain123.kosmo") 
 	public String blockchain123(@RequestParam Map map,Model model) {
+		System.out.println("방 번호 시작");
+		
 		System.out.println(map.get("cp_no"));
 		Carpool_borderDTO dto = carservice.blockchain(map);
 		model.addAttribute("opened",dto.getOpened());
 		model.addAttribute("signed",dto.getSigned());
 		model.addAttribute("done",dto.getDone());
 		model.addAttribute("reviewed",dto.getReviewed());
+		
+		System.out.println("방 번호 번호");
+		
 		
 		return "blockChain.tiles";
 	}

@@ -49,41 +49,55 @@ window.addEventListener('load', async () => {
     message=web3.eth.contract(abi).at(contractAddress);
     //startApp();
 });
-$(function(){
-	$('#submit').click(function(){
-	console.log('클릭 전');		
-		
-		
-	var hashVar = $('#val').val();
-	var view1 = "";
-	let receipt=web3.eth.getTransactionReceipt(hashVar,function(e,r){
-	    web3.eth.getBlock(r['blockNumber'],function(e,s){
-	        console.log('timestamp : '+s['timestamp']);
-	    view1 = s['timestamp'];
-	    $('#view1').val(view1);
-	        
-	    });
 
-	    console.log('tx Hash : '+r['transactionHash']);
-	    console.log('to : '+r['to']);
-	    console.log('from : '+r['from']);
-	    console.log('gasUsed : '+r['gasUsed']);
-	    var view2 = r['transactionHash'];
-	    var view3 = r['to'];
-	    var view4 = r['from']
-	    var view5 = r['gasUsed'];
+	
+	//});//윈도우
+	$(function(){
+		$('#submit').click(async function(){
+		console.log('클릭 전');		
+			
+			
+		var hashVar ='${opened}';
+		console.log("open",'${opened}');
+		let receipt=await web3.eth.getTransactionReceipt(hashVar,function(){
+		    web3.eth.getBlock(r['blockNumber'],function(e,s){
+		    $('#view1').val("TimeStamp : "+s['timestamp']);
+		    });
+
+		    console.log('tx Hash : '+r['transactionHash']);
+		    console.log('to : '+r['to']);
+		    console.log('from : '+r['from']);
+		    console.log('gasUsed : '+r['gasUsed']);
+		    console.log(hashVar);
+			view2=r['transactionHash'];
+		
+		});
 	    
-	    $('#view2').val(view2);
-	    $('#view3').val(view3);
-	    $('#view4').val(view4);
-	    $('#view5').val(view5);
-	
+	    $('#view3').val("To : "+r['to']);
+	    $('#view4').val("From : "+r['from']);
+	    $('#view5').val("GasUsed : "+r['gasUsed']);
+		console.log('${opened}');
+		console.log('${signed}');
+		hashVar ='${signed}';
+		receipt=web3.eth.getTransactionReceipt(hashVar,function(e,r){
+		    web3.eth.getBlock(r['blockNumber'],function(e,s){
+		        console.log('timestamp : '+s['timestamp']);
+		    $('#view7').val("TimeStamp : "+s['timestamp']);
+		        
+		    });
+		    $('#view8').val("TransactionHash : "+r['transactionHash']);
+		    $('#view9').val("To : "+r['to']);
+		    $('#view10').val("From : "+r['from']);
+		    $('#view11').val("GasUsed : "+r['gasUsed']);
+		});
+		
+		console.log('클릭 후');	
+		}); 
+		//click 이벤트
+		//$('#view2').val(view2);
+		console.log(view2);
 	});
-	console.log('클릭 후');	
-	});//click 이벤트
 	
-	});//윈도우
-
 </script>
 
 
