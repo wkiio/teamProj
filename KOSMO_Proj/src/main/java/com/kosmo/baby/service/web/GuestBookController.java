@@ -93,14 +93,6 @@ public class GuestBookController {
 		upload.transferTo(file);
 		map.put("image", upload.getOriginalFilename());
 		System.out.println(map.get("image"));
-		
-	
-		
-		
-		UserDetails userDetails=(UserDetails)auth.getPrincipal();
-		map.put("id",userDetails.getUsername());
-		
-		
 		guestBookService.insert(map);
 		System.out.println("돌아옴");
 		System.out.println(map);

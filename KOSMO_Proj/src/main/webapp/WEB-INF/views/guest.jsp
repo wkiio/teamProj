@@ -101,6 +101,7 @@
 
 	$(function() {
 		//코멘트 입력처리]
+		var formData = new FormData($('#frm')[0]);
 		showComments();
 		$('#submit').click(function() {
 		//var upload = "D:\MMJ\Workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\KOSMO_Proj\upload";
@@ -186,11 +187,11 @@
 							commentsString += "<span style='line-height:center;'><strong>" + comment['id'] + "</strong></span>"; 
 							//console.log(comment["ID"]);
 							//본인이 쓴 코멘트 수정할 수 있도록 링크 처리
-							
+							/*
 							if('${id}' != comment['ID'])//보안적용 후
 								commentsString+="<td align='left' id='preview'>"+comment['gComment']+'</td>';
 							else //수정 
-							
+							*/
 							commentsString += "<div style='margin-top: -15px;margin-left: 75px;width:300px;'><span style='margin-left:-25px;cursor:pointer' class='commentEdit' title='"+comment['gNo']+"'>"
 									+ comment['gComment'] + '</span></div>';
 							commentsString += "<span style='color:black;margin-left:50px;'>"
