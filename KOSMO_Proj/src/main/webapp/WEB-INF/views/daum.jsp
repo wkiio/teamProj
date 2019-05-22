@@ -288,6 +288,7 @@
     <script src="admin_assets/vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="admin_assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f053d576cd5dc6d9de018d8e7da2d525&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f053d576cd5dc6d9de018d8e7da2d525&libraries=services,clusterer,drawing"></script>
 <script>
    //마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
    var placeOverlay = new daum.maps.CustomOverlay({
@@ -460,6 +461,16 @@
          (function(marker, emData) {
             daum.maps.event.addListener(marker, 'click', function() {
                k_no = emData.k_no;
+               ///////////////////////////////////////////////////////////////////////
+               //지도를 초기화 시키는 함수
+          
+               
+               
+               
+               
+               
+               ////////////////////////////////////////////////////////////////////////
+               
                displayPlaceInfo(emData);
                $('#modalreview1').click(function(){
             	      $.ajax({
