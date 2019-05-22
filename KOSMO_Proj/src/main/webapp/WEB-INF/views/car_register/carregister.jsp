@@ -90,12 +90,14 @@ display: none;
 							<label for="purpose" class="col-form-label purpose">유형: </label> 
 							<div class="col">					
 								<select	class="form-control" id="type" name="type">
-									<option>타세요</option>
+								<c:if test='${partnerstatus eq "1" or list.partnerstatus eq "1"}' var ="partner">
+									<option>타세요 </option>
+								</c:if>
 									<option>태워주세요</option>
 								</select>
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group" id="partnerCarseat" style="display: none;">
 							<label for="carseat" class="col-form-label purpose">카시트: </label> 
 							<div class="col">					
 								<select	class="form-control" id="carseat" name="carseat">
@@ -104,16 +106,25 @@ display: none;
 								</select>
 							</div>
 						</div>
+						<div class="form-group" id="nomalCarseat"  style="display: none;">
+							<label for="carseat" class="col-form-label purpose">카시트: </label> 
+							<div class="col">					
+								<select	class="form-control" id="carseat" name="carseat">
+									<option>필요</option>
+									<option>불필요</option>
+								</select>
+							</div>
+						</div>
 						<div class="form-group">
 							<label for="start" class="col-form-label">출발지: </label>
 							<div class="col">
-								<input type="text" id="start" name="startpoint" value="${list.startpoint }" class="form-control search_point" placeholder="출발위치" />
+								<input type="text" id="start" name="startpoint" value="${list.startpoint }" class="form-control search_point" placeholder="출발위치" required/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="end" class="col-form-label">도착지: </label>
 							<div class="col">
-								<input type="text" id="end" name="endpoint" value="${list.endpoint }" class="form-control search_point" placeholder="도착위치" />
+								<input type="text" id="end" name="endpoint" value="${list.endpoint }" class="form-control search_point" placeholder="도착위치" required/>
 							</div>
 						</div>
 						<!-- 출발 도착 위치 위도, 경도 저장용 -->
@@ -131,13 +142,13 @@ display: none;
 						<div class="form-group">
 							<label for="point" class="col-form-label pay">금액: </label>
 							<div class="col">
-								<input type="text" id="price" name="price" class="form-control" placeholder="금액 입력해주세요" value="${list.price }"/>
+								<input type="text" id="price" name="price" class="form-control" placeholder="금액 입력해주세요" value="${list.price }" required/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="datepicker1" class="col-form-label pay">날짜: </label>
 							<div class="col">
-								<input type="text" id="time" name="time" class="form-control" placeholder="날짜 입력해주세요" value="${list.time }"/>
+								<input type="text" id="time" name="time" class="form-control" placeholder="날짜 입력해주세요" value="${list.time }" required/>
 							</div>
 						</div>
 					</div>
@@ -170,6 +181,7 @@ display: none;
 
 
 <script>
+
 //블록체인 최초접속
 var message;
 window.addEventListener('load', async () => {
@@ -202,6 +214,23 @@ window.addEventListener('load', async () => {
 
 var tHash;
 $(function(){
+	   if($('#type').val()=="타세요"){
+		      $('#partnerCarseat').css("display", "inline");
+		   }
+		   else{
+		      $('#nomalCarseat').css("display", "inline");
+		   }
+		   $('#type').change(function(){
+		      if($(this).val()=="타세요"){
+		         $('#partnerCarseat').css("display", "inline");
+		         $('#nomalCarseat').css("display", "none");
+		      }
+		      else{
+		         $('#partnerCarseat').css("display", "none");
+		         $('#nomalCarseat').css("display", "inline");
+		      }
+		   });
+	
 	$('.submit').click(function(){
 		
 		var id = vv('${id}');

@@ -153,6 +153,7 @@
 					<input type="hidden" value="${dto.price }" id="price" name="price">
 					<input type="hidden" value='${dto.content}' id="content" name="content">
 					<input type="hidden" value='${dto.carseat}' id="carseat" name="carseat">
+					<input type="hidden" value='${partnerstatus}' id="partnerstatus" name="partnerstatus">
 					<input type="hidden" value="" id="signed" name="signed">
 				
 					<div class="table-responsive" style="overflow-x:hidden;">
@@ -183,12 +184,14 @@
 									<th>카시트</th>
 									<td>${dto.carseat }</td>
 								</tr>
+								<c:if test="${partnerstatus eq '1' }">
 								<tr>
 									<th>평점</th>
 									<td>${score }</td>
 									<th>차종</th>
 									<td>${dto.cartype }</td>
 								</tr>
+								</c:if>
 							</tbody>
 						</table>
 					</div>
@@ -214,7 +217,7 @@
 						</c:if>
 						<c:if test="${!userMatch }">
 							<c:if test="${dto.status == 0 }" var="statusfinish">
-								<button type="submit" class="btn btn-info">예약</button>
+								<button type="button" class="btn btn-info" id ="resbutton">예약</button>
 							</c:if>
 							<c:if test="${!statusfinish }">
 								<button type="button" class="btn btn-info" id="return">예약취소</button>

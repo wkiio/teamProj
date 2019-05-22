@@ -43,7 +43,7 @@
         <!-- max size of file in memory (in bytes) -->
         <beans:property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->   
    </beans:bean>
-	
+
 	
 	<!-- 리소스파일(.properties) 사용을 위한 설정 --> 
 	<context:property-placeholder location="classpath:kosmo/kosmo.properties"/>

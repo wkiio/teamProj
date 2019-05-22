@@ -119,14 +119,17 @@ public class Admin_Controller {
 		//ID,PWD,NAME,ADDR,EMAIL,TEL,PARTNERSTATUS
 		for(MembersDTO dto : list) {
 			Map record = new HashMap();
-			
 			record.put("ID", dto.getId());
 			System.out.println(dto.getId());
 			record.put("NAME", dto.getName());
-			record.put("ADDR", dto.getAddr());
+			String addr0,addr1,addr2;
+			addr0 = dto.getAddr().split(":!:")[0].trim();
+			addr2 = dto.getAddr().split(";!@")[1].trim();
+			addr1 = dto.getAddr().split(":!:")[1].split(";!@")[0].trim();
+			record.put("ADDR", addr0 +" "+ addr1 +" "+ addr2);
 			record.put("EMAIL", dto.getEmail());
 			record.put("TEL", dto.getTel());
-			record.put("PARTNERSTATUS", dto.getPartnerstatus());
+			record.put("PARTNERSTATUS", dto.getPartnerstatus().equals("1") ? "X" : "O");
 						
 			collections.add(record);		
 		}
@@ -156,15 +159,6 @@ public class Admin_Controller {
 		return "/admin_page/calendar_admin";
 	}
 
-/*	@RequestMapping("/car_admin.kosmo")
-	public String car_adimin(@RequestParam Map map,Model model) {
-		
-		//List<ReservationDTO> record = reservationService.selectList(map);
-		
-		
-		return "/admin_page/car_admin";
-	}*/
-	
 	
 	
 	

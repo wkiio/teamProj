@@ -46,6 +46,9 @@ public class ReservationController {
 	public String grade(@RequestParam Map map,Model model,Authentication auth) throws Exception{
 		UserDetails user = (UserDetails)auth.getPrincipal();
 		map.put("id",user.getUsername());
+		System.out.println("글번호 넣어보자 : "+map.get("modalno"));
+		map.put("cp_no", map.get("modalno"));
+		
 		System.out.println(map);
 		System.out.println("리절베이션컨트롤러");
 		cService.updateHasp(map);

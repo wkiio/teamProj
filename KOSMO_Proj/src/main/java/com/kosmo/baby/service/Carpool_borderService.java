@@ -8,19 +8,21 @@ public interface Carpool_borderService {
 	List<Carpool_borderDTO> selectList(Map map);
 	//관리자 페이지 목록
 	int adminInsert(Map map);
-	//
-	
+	//이 사람이 일반유저인가 제휴유저인가 판단한다
+	Carpool_borderDTO one(Map map);
 	//CRUD 작업용
 	int delete(Map map);
 	int insert(Map map);
 	int update(Map map);
 	int updateHasp(Map map);
+	
+	//블록체인용
+	Carpool_borderDTO blockchain(Map map);
 
 	//게시물 개수
 	int CBoardCount(Map map);
 	//전체 레코드 수]
 	int getTotalRecord(Map map);
-
 	
 	//검색용
 	Carpool_borderDTO selectOne(Map map);

@@ -71,6 +71,17 @@ public class Carpool_borderServiceimpl implements Carpool_borderService{
 		
 		return dao.updateHasp(map);
 	}
+
+	@Override
+	public Carpool_borderDTO one(Map map) {
+		return dao.one(map);
+	}
+
+	@Override
+	public Carpool_borderDTO blockchain(Map map) {
+		
+		return dao.blockchain(map);
+	}
 	
 
 }

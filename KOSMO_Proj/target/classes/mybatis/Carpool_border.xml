@@ -46,6 +46,10 @@
 		</if>
 	</select>
 	
+	<select id="one" resultType="Carpool_borderDTO" parameterType="java.util.Map">
+		SELECT * FROM members WHERE id = #{id}
+	</select>
+	
 
 	
 	<insert id="adminInsert" parameterType="java.util.Map">
@@ -87,6 +91,10 @@
 	<update id="yesupdate" parameterType="java.util.Map">
 		UPDATE RESERVATION set finish=1 where cp_no =#{cp_no}
 	</update>
+	
+	<select id="blockchain123" parameterType="java.util.Map" resultType="Carpool_borderDTO">
+		SELECT opened, signed, done, reviewed FROM carpool_border WHERE cp_no = #{cp_no}
+	</select>
 
 	
 	
