@@ -7,6 +7,7 @@
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal.username" var="id" />
 </sec:authorize>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <style>
 .invoice-box {
 	max-width: 800px;
@@ -155,58 +156,63 @@ let receipt=async function(hash1,hash2,hash3,hash4){
         	
         });
     });
-/* 
+ 
     await web3.eth.getTransactionReceipt(hash2,function(e,r){
         web3.eth.getBlock(r['blockNumber'],function(e,s){
-            //$('#view7').val("TimeStamp : "+s['timestamp']);
+        	$('#time2').val(s['timestamp']);
         });
         console.log('tx Hash : '+r['transactionHash']);
         console.log('to : '+r['to']);
         console.log('from : '+r['from']);
         console.log('gasUsed : '+r['gasUsed']);
-        $('#view8').val("tx Hash : "+r['transactionHash']);
-        $('#view9').val("To : "+r['to']);
-        $('#view10').val("From : "+r['from']);
-        $('#view11').val("GasUsed : "+r['gasUsed']);
+        $('#tranhash2').val(r['transactionHash']);
+        $('#to2').val(r['to']);
+        $('#from2').val(r['from']);
+        $('#gas2').val(r['gasUsed']);
         message.getSign(${cp_no},function(e,r){
-        	$('#view87878').val("구분 : "+web3.toAscii(r[3])+"아이디 : "+web3.toAscii(r[4])+"주소 : "+r[5]);
+        	$('#division2').val(web3.toAscii(r[0]));
+        	$('#iden2').val(web3.toAscii(r[1]));
+        	$('#addr2').val(r[2]);
         });
     });
 
     await web3.eth.getTransactionReceipt(hash3,function(e,r){
     	 web3.eth.getBlock(r['blockNumber'],function(e,s){
-             $('#view12').val("TimeStamp : "+s['timestamp']);
+    		 $('#time3').val(s['timestamp']);
          });
         console.log('tx Hash : '+r['transactionHash']);
         console.log('to : '+r['to']);
         console.log('from : '+r['from']);
         console.log('gasUsed : '+r['gasUsed']);
-        $('#view13').val("tx Hash : "+r['transactionHash']);
-        $('#view14').val("To : "+r['to']);
-        $('#view15').val("From : "+r['from']);
-        $('#view16').val("GasUsed : "+r['gasUsed']);
+        $('#tranhash3').val(r['transactionHash']);
+        $('#to3').val(r['to']);
+        $('#from3').val(r['from']);
+        $('#gas3').val(r['gasUsed']);
         message.getSign(${cp_no},function(e,r){
-        	$('#view5858').val("완료여부 : "+web3.toAscii(r[6]));
+        	$('#division3').val(web3.toAscii(r[0]));
+        	$('#iden3').val(web3.toAscii(r[1]));
+        	$('#addr3').val(r[2]);
         });
     });
 
  await web3.eth.getTransactionReceipt(hash4,function(e,r){
         web3.eth.getBlock(r['blockNumber'],function(e,s){
-            $('#view157').val("TimeStamp : "+s['timestamp']);
+        	$('#time4').val(s['timestamp']);
         });
         console.log('tx Hash : '+r['transactionHash']);
         console.log('to : '+r['to']);
         console.log('from : '+r['from']);
         console.log('gasUsed : '+r['gasUsed']);
-        $('#view13').val("tx Hash : "+r['transactionHash']);
-        $('#view14').val("To : "+r['to']);
-        $('#view15').val("From : "+r['from']);
-        $('#view16').val("GasUsed : "+r['gasUsed']);
+        $('#tranhash4').val(r['transactionHash']);
+        $('#to4').val(r['to']);
+        $('#from4').val(r['from']);
+        $('#gas4').val(r['gasUsed']);
         message.getSign(${cp_no},function(e,r){
-        	$('#view67').val("평점 정보 : "+r[7]);
-        });
+        	$('#division4').val(web3.toAscii(r[0]));
+        	$('#iden4').val(web3.toAscii(r[1]));
+        	$('#addr4').val(r[2]);        });
     });
- */ 
+  
  console.log('끝');
 }
 catch(error){
@@ -230,10 +236,16 @@ $(function(){
       //click 이벤트
 
 });
+
+
 </script>
 
 
+ 
+
+
 <br/>
+
 <form class="form-signin" method="post"
 	action="Blockchain123.kosmo?${_csrf.parameterName}=${_csrf.token}"
 	autocomplete="off">
@@ -246,6 +258,14 @@ $(function(){
 			class="btn btn-info btn-sm">확인</button>
 	</div>
 </form>
+
+<div class="container">
+<div id="myCarousel" class="carousel slide" data-ride="carousel" >
+
+
+<div class="carousel-inner" >
+<div class="carousel-item active">
+  
 <fieldset>
 	<div class="invoice-box">
 		<table cellpadding="0" cellspacing="0">
@@ -257,8 +277,8 @@ $(function(){
 								src="https://www.sparksuite.com/images/logo.png"
 								style="width: 100%; max-width: 300px;"></td>
 
-							<td>Invoice #: 123<br> Created: January 1, 2015<br>
-								Due: February 1, 2015
+							<td>TimeStamp #: <input type="text" id="time1" value=""/><br> Tx Hash: <input type="text" id="tranhash1" value=""/><br>
+								BY : DANNY KIM 2019
 							</td>
 						</tr>
 					</table>
@@ -269,19 +289,20 @@ $(function(){
 				<td colspan="2">
 					<table>
 						<tr>
-						<div>
-							<td>구분<br> 아이디<br> 주소
+					
+							<td>FROM <br> TO <br> GAS
 							</td>
 
-							<td><input type="text" id="division1" readonly /><br><input type="text" id="iden1" readonly /><br><input type="text" id="addr1" readonly />
+							<td><input type="text" id="from1" value=""/><br><input type="text" id="to1" value=""/><br><input type="text" id="gas1" value=""/>
 							</td>
-							</div>
+							
 						</tr>
 					</table>
 				</td>
 			</tr>
 
 			<tr class="heading">
+				<!-- 
 				<td>TimeStamp</td>
 
 				<td><input type="text" id="time1" value=""/></td>
@@ -292,7 +313,7 @@ $(function(){
 
 				<td><input type="text" id="tranhash1" value=""/></td>
 			</tr>
-
+ -->
 			<tr class="heading">
 				<td>Item</td>
 
@@ -300,21 +321,21 @@ $(function(){
 			</tr>
 
 			<tr class="item">
-				<td>FROM</td>
+				<td>구분</td>
 
-				<td><input type="text" id="from1" value=""/></td>
+				<td><input type="text" id="division1" readonly /></td>
 			</tr>
 
 			<tr class="item">
-				<td>TO</td>
+				<td>ID</td>
 
-				<td><input type="text" id="to1" value=""/></td>
+				<td><input type="text" id="iden1" readonly /></td>
 			</tr>
 
 			<tr class="item last">
-				<td>GAS</td>
+				<td>주소</td>
 
-				<td><input type="text" id="gas1" value=""/></td>
+				<td><input type="text" id="addr1" readonly /></td>
 			</tr>
 
 			<tr class="total">
@@ -325,3 +346,275 @@ $(function(){
 		</table>
 	</div>
 </fieldset>
+
+</div>
+<!--item active 
+ -->
+<div id="carousel-item" >
+<fieldset>
+	<div class="invoice-box">
+		<table cellpadding="0" cellspacing="0">
+			<tr class="top">
+				<td colspan="2">
+					<table>
+						<tr>
+							<td class="title"><img
+								src="https://www.sparksuite.com/images/logo.png"
+								style="width: 100%; max-width: 300px;"></td>
+
+							<td>TimeStamp #: <input type="text" id="time2" value=""/><br> Tx Hash: <input type="text" id="tranhash2" value=""/><br>
+								BY : DANNY KIM 2019
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+
+			<tr class="information">
+				<td colspan="2">
+					<table>
+						<tr>
+					
+							<td>FROM <br> TO <br> GAS
+							</td>
+
+							<td><input type="text" id="from2" value=""/><br><input type="text" id="to2" value=""/><br><input type="text" id="gas2" value=""/>
+							</td>
+							
+						</tr>
+					</table>
+				</td>
+			</tr>
+
+			<tr class="heading">
+				<!-- 
+				<td>TimeStamp</td>
+
+				<td><input type="text" id="time1" value=""/></td>
+			</tr>
+
+			<tr class="details">
+				<td>Tx Hash</td>
+
+				<td><input type="text" id="tranhash1" value=""/></td>
+			</tr>
+ -->
+			<tr class="heading">
+				<td>Item</td>
+
+				<td>Price</td>
+			</tr>
+
+			<tr class="item">
+				<td>구분</td>
+
+				<td><input type="text" id="division2" readonly /></td>
+			</tr>
+
+			<tr class="item">
+				<td>ID</td>
+
+				<td><input type="text" id="iden2" readonly /></td>
+			</tr>
+
+			<tr class="item last">
+				<td>주소</td>
+
+				<td><input type="text" id="addr2" readonly /></td>
+			</tr>
+
+			<tr class="total">
+				<td></td>
+
+				<td></td>
+			</tr>
+		</table>
+	</div>
+</fieldset>
+</div>
+
+<br/>
+<!-- item2 -->
+<div id="carousel-item" >
+
+<fieldset>
+	<div class="invoice-box">
+		<table cellpadding="0" cellspacing="0">
+			<tr class="top">
+				<td colspan="2">
+					<table>
+						<tr>
+							<td class="title"><img
+								src="https://www.sparksuite.com/images/logo.png"
+								style="width: 100%; max-width: 300px;"></td>
+
+							<td>TimeStamp #: <input type="text" id="time3" value=""/><br> Tx Hash: <input type="text" id="tranhash3" value=""/><br>
+								BY : DANNY KIM 2019
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+
+			<tr class="information">
+				<td colspan="2">
+					<table>
+						<tr>
+					
+							<td>FROM <br> TO <br> GAS
+							</td>
+
+							<td><input type="text" id="from3" value=""/><br><input type="text" id="to3" value=""/><br><input type="text" id="gas3" value=""/>
+							</td>
+							
+						</tr>
+					</table>
+				</td>
+			</tr>
+
+			<tr class="heading">
+				<!-- 
+				<td>TimeStamp</td>
+
+				<td><input type="text" id="time1" value=""/></td>
+			</tr>
+
+			<tr class="details">
+				<td>Tx Hash</td>
+
+				<td><input type="text" id="tranhash1" value=""/></td>
+			</tr>
+ -->
+			<tr class="heading">
+				<td>Item</td>
+
+				<td>Price</td>
+			</tr>
+
+			<tr class="item">
+				<td>구분</td>
+
+				<td><input type="text" id="division3" readonly /></td>
+			</tr>
+
+			<tr class="item">
+				<td>ID</td>
+
+				<td><input type="text" id="iden3" readonly /></td>
+			</tr>
+
+			<tr class="item last">
+				<td>주소</td>
+
+				<td><input type="text" id="addr3" readonly /></td>
+			</tr>
+
+			<tr class="total">
+				<td></td>
+
+				<td></td>
+			</tr>
+		</table>
+	</div>
+</fieldset>
+</div>
+<!-- item -->
+<br/>
+<div id="carousel-item" >
+<fieldset>
+	<div class="invoice-box">
+		<table cellpadding="0" cellspacing="0">
+			<tr class="top">
+				<td colspan="2">
+					<table>
+						<tr>
+							<td class="title"><img
+								src="https://www.sparksuite.com/images/logo.png"
+								style="width: 100%; max-width: 300px;"></td>
+
+							<td>TimeStamp #: <input type="text" id="time4" value=""/><br> Tx Hash: <input type="text" id="tranhash4" value=""/><br>
+								BY : DANNY KIM 2019
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+
+			<tr class="information">
+				<td colspan="2">
+					<table>
+						<tr>
+					
+							<td>FROM <br> TO <br> GAS
+							</td>
+
+							<td><input type="text" id="from4" value=""/><br><input type="text" id="to4" value=""/><br><input type="text" id="gas4" value=""/>
+							</td>
+							
+						</tr>
+					</table>
+				</td>
+			</tr>
+
+			<tr class="heading">
+				<!-- 
+				<td>TimeStamp</td>
+
+				<td><input type="text" id="time1" value=""/></td>
+			</tr>
+
+			<tr class="details">
+				<td>Tx Hash</td>
+
+				<td><input type="text" id="tranhash1" value=""/></td>
+			</tr>
+ -->
+			<tr class="heading">
+				<td>Item</td>
+
+				<td>Price</td>
+			</tr>
+
+			<tr class="item">
+				<td>구분</td>
+
+				<td><input type="text" id="division4" readonly /></td>
+			</tr>
+
+			<tr class="item">
+				<td>ID</td>
+
+				<td><input type="text" id="iden4" readonly /></td>
+			</tr>
+
+			<tr class="item last">
+				<td>주소</td>
+
+				<td><input type="text" id="addr4" readonly /></td>
+			</tr>
+
+			<tr class="total">
+				<td></td>
+
+				<td></td>
+			</tr>
+		</table>
+	</div>
+</fieldset>
+ </div>
+ <!-- item -->
+ </div>
+ <!-- 리스트 박스 -->
+ <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!--마이 캐러셀 -->
+  
+</div>
+<!-- 컨테이너 -->
