@@ -111,6 +111,7 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
 
 .site-section {
 	height: auto;
+	min-height:800px;
 	padding: 0em 0;
 }
 

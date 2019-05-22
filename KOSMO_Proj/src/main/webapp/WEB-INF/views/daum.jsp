@@ -136,6 +136,7 @@
    margin: 5px 5px 0 5px;
    cursor: default;
    font-size: 13px;
+   
 }
 
 .placeinfo .title {
@@ -210,8 +211,6 @@
               </li>        
           </ul>
       </div>
-
-
 <!-- Modal -->
          <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -262,6 +261,25 @@
            </div>
          </div>
          <!-- Modal -->
+         <!-- Modal -->
+			<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">평점 보기</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      
+			      <div class="modal-body reviewtable">
+
+			      	</div>
+			      
+			    </div>
+			  </div>
+			</div>
+			<!-- Modal -->
 
    </div>
 </div>
@@ -271,8 +289,6 @@
     <script src="admin_assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f053d576cd5dc6d9de018d8e7da2d525&libraries=services"></script>
 <script>
-
-
    //마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
    var placeOverlay = new daum.maps.CustomOverlay({
       zIndex : 1
@@ -297,7 +313,11 @@
    var emData;
    var xjb;
    var yib = 3;
+	var k_no;
 
+	
+
+   
    //주소를 좌표로 변환 하는 객체를 생성한다.asd
    var geocoder = new daum.maps.services.Geocoder();
 
@@ -439,7 +459,38 @@
          // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
          (function(marker, emData) {
             daum.maps.event.addListener(marker, 'click', function() {
+               k_no = emData.k_no;
                displayPlaceInfo(emData);
+               $('#modalreview1').click(function(){
+            	      $.ajax({
+            	          data : {
+            	             "${_csrf.parameterName}" : "${_csrf.token}",
+            	             'k_no' : emData.k_no
+            	          },
+            	          type : "POST",
+            	          url : "<c:url value='reviewcontent.kosmo'/>",
+            	          dataType : "json",
+            	          success : function(data) {						
+            	             console.log(data);           	             
+							
+            	             var html="<table style='width: 100%; text-align: center'><thead><tr><th style='background-color: #ffaec9'>아이디</th><th style='background-color: #ffaec9'>내용</th><th style='background-color: #ffaec9'>별점</th></tr></thead>";
+            	             if(data.length != 0){  
+	            	             $.each(data, function(index, element){
+	            	            	 console.log(data.length);    
+	            	            	          	             	
+	            	            	 	console.log("이게멀까"+element);
+	            	            		 html+="<tr><td>"+element['id']+"</td>"+"<td>"+element['content']+"</td>"+"<td>"+element['score']+"</td></tr>";
+	            	            	
+	            	             });
+            	             }
+            	             else{html+="<tr><td colspan='3'>등록된 리뷰가 없습니다</td></tr>";}
+            	             html+="</table></div><div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>닫기</button>";
+            	             $('.reviewtable').html(html); 
+            	            }
+            	           
+            	       });
+       			
+       	 		});
                console.log("마커표시 완료했다.")
             });
          })(marker, emData[i]);
@@ -451,7 +502,6 @@
      
        
    
-
    // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
    function addMarker(position, order) {
 
@@ -482,9 +532,10 @@
       markers = [];
    }
    var cafeNo;
+   
    // 클릭한 마커에 대한 장소 상세정보를 커스텀 오버레이로 표시하는 함수입니다
-   function displayPlaceInfo(emdata) {
-    
+   function displayPlaceInfo(emdata,review) {
+    	console.log("emdata: "+emdata)
       var content = '<div class="placeinfo">'
          + '<a class="title" href="https://map.kakao.com/?eName='+emdata.addr+'" target="_blank" title="' + emdata.name + '">'
             + emdata.name + '</a>';
@@ -507,9 +558,14 @@
               }
       
 
-            content += '<span class="tel">' + emdata.tel + '<span class="btn btn-primary" id="reviewicon" style="display:inline;margin-left:100px;">리뷰</span>' + '</span>' + '</div>';
-     
+            content += '<span class="tel">' + emdata.tel + '<span class="btn btn-primary" id="reviewicon" >리뷰</span>';
+            content += '<span class="btn btn-primary" id="modalreview1" data-toggle="modal" data-target="#exampleModal1" val="">리뷰보기</span></span>';
+            //content +="<table style='width:100%; text-align:reft;border: 1px solid black;'><thead><tr><td>작성자</td><td>리뷰내용</td></tr></thead>";
+           /*  review.forEach(function(value){
+            	content+="<tr><td>"+value.id+"</td><td>"+value.content+"</td></tr>";
 
+            });
+            content+="</table></div>"; */
       contentNode.innerHTML = content;
       placeOverlay.setPosition(new daum.maps.LatLng(emdata.y, emdata.x));
       placeOverlay.setMap(map);
@@ -581,16 +637,14 @@
 
    };
    
-   
-   
-   //리뷰 등록하는 부분
+//리뷰 등록하는 부분
    
    //평점별알려주는거
    var starScore;
    var clickCafeName;
    
     //span은 동적이기때문에 이벤트추가해야됨.
-     $(document).on('click','#reviewicon',function(){
+    $(document).on('click','#reviewicon',function(){
         //모달창 띄우기
         //alert('fafasf');
         $("#reviewModal").modal();
@@ -610,50 +664,48 @@
      
      $('.starR').click(function(){
         starScore = $(this).html();
-        console.log(starScore);        
+        console.log(starScore); 
+        
      });
-     
      $('#sendReview').click(function(){
-        //alert('이제 보내야징');
-        console.log()
-        console.log('평점은? ' + starScore);
-        console.log('보낼려는 가게이름 : ' + clickCafeName);
-        console.log('리뷰쓰는 글쓴이이름: ' + '${reviewId}');
-        var id = '${reviewId}';
-        var no =  $('#cafeNo').attr('title');
-        var title = $("#inputTitle").val();
-        var content = $("#inputContext").val();
-        console.log('리뷰제목 :' + title);
-        console.log("리뷰내용 :" + content);
-        console.log( '번호???:' + $('#cafeNo').attr('title') );
-        
-        //키즈카페 함수 추가해서 해시값 받아서 ajax로 넘겨주기 만들기
-        //kreview
-        
-        
-        $.ajax({
-           type : "POST",
-           data : {"${_csrf.parameterName}" : "${_csrf.token}",
-              "title":title,
-              "content":content,
-              "score":starScore,
-              "id":id,
-              "k_no":no
-           },
-           
-           url:"<c:url value='/review.kosmo'/>",
-           dataType : "text",
-           success:function(data){
-              console.log("성공하면 알람창띄워서 리뷰등록됬다고 말해주기");
-           }
-           
-        });
-     }); 
-     
-     
-     
-     
-     
-  
+         //alert('이제 보내야징');
+         console.log()
+         console.log('평점은? ' + starScore);
+         console.log('보낼려는 가게이름 : ' + clickCafeName);
+         console.log('리뷰쓰는 글쓴이이름: ' + '${reviewId}');
+         var id = '${reviewId}';
+         var no =  $('#cafeNo').attr('title');
+         var title = $("#inputTitle").val();
+         var content = $("#inputContext").val();
+         console.log('리뷰제목 :' + title);
+         console.log("리뷰내용 :" + content);
+         console.log( '번호???:' + $('#cafeNo').attr('title') );
+         
+         //키즈카페 함수 추가해서 해시값 받아서 ajax로 넘겨주기 만들기
+         //kreview
+         
+         
+         $.ajax({
+            type : "POST",
+            data : {"${_csrf.parameterName}" : "${_csrf.token}",
+               "title":title,
+               "content":content,
+               "score":starScore,
+               "id":id,
+               "k_no":no
+            },
+            
+            url:"<c:url value='/review.kosmo'/>",
+            dataType : "text",
+            success:function(data){
+               console.log("성공하면 알람창띄워서 리뷰등록됬다고 말해주기");
+            }
+            
+         });
+         
+      });
    
+     
+     
+
 </script>

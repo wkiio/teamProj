@@ -45,6 +45,10 @@
 					role="navigation">
 					<ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
 						<li class="has-children active"><a href="index.kosmo">메인</a>
+							<ul class="dropdown">
+								<li><a href="word.kosmo">실시간검색</a></li>
+								<li><a href="wordCloud.kosmo">실시간검색cloud</a></li>
+							</ul>
 						</li>
 						<li class="has-children"><a href="serviceclick.kosmo">서비스</a>
 							<ul class="dropdown">

@@ -78,6 +78,8 @@ public class GuestBookController {
 	@ResponseBody
 	@RequestMapping(value="/GuestBook/Write.kosmo",produces="text/html; charset=UTF-8")
 	public String write(@RequestParam Map map,Authentication auth, HttpServletRequest  mhsr) throws Exception{
+		UserDetails userDetails=(UserDetails)auth.getPrincipal();
+		map.put("id",userDetails.getUsername());
 		System.out.println("라윗트 라윗트 시작");
 		System.out.println(map.get("gcomment"));
 		System.out.println(map.get("id"));
@@ -92,11 +94,6 @@ public class GuestBookController {
 		
 		System.out.println(map.get("image"));
 		*/
-		
-		UserDetails userDetails=(UserDetails)auth.getPrincipal();
-		map.put("id",userDetails.getUsername());
-		
-		
 		guestBookService.insert(map);
 		System.out.println("돌아옴");
 		System.out.println(map);

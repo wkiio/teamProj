@@ -19,7 +19,13 @@ public class KizcafeServiceimpl implements KizcafeService{
 	
 	@Override
 	public List<KizcafeDTO> selectList(Map map) {
+		System.out.println("키즈카페" + map);
 		return dao.selectList(map);
+	}
+	@Override
+	public List<KizcafeDTO> selectreview(Map map) {
+		System.out.println("키즈카페1111" + map);
+		return dao.selectreview(map);
 	}
 	
 	

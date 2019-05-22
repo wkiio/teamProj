@@ -3,54 +3,54 @@ package com.kosmo.baby.service;
 
 public class CalenderDTO {
 
-	private String cal_no;
-	private String title;
-	private String startdate;
-	private String enddate;
-	private String content;
-	private String type;
-	private String id;
+	private String Cal_no;
+	private String Title;
+	private String Startdate;
+	private String Enddate;
+	private String Content;
+	private String Type;
+	private String ID;
 	public String getCal_no() {
-		return cal_no;
+		return Cal_no;
 	}
 	public void setCal_no(String cal_no) {
-		this.cal_no = cal_no;
+		Cal_no = cal_no;
 	}
 	public String getTitle() {
-		return title;
+		return Title;
 	}
 	public void setTitle(String title) {
-		this.title = title;
+		Title = title;
 	}
 	public String getStartdate() {
-		return startdate;
+		return Startdate;
 	}
 	public void setStartdate(String startdate) {
-		this.startdate = startdate;
+		Startdate = startdate;
 	}
 	public String getEnddate() {
-		return enddate;
+		return Enddate;
 	}
 	public void setEnddate(String enddate) {
-		this.enddate = enddate;
+		Enddate = enddate;
 	}
 	public String getContent() {
-		return content;
+		return Content;
 	}
 	public void setContent(String content) {
-		this.content = content;
+		Content = content;
 	}
 	public String getType() {
-		return type;
+		return Type;
 	}
 	public void setType(String type) {
-		this.type = type;
+		Type = type;
 	}
-	public String getId() {
-		return id;
+	public String getID() {
+		return ID;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setID(String iD) {
+		ID = iD;
 	}
 	
 	

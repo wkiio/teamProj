@@ -5,4 +5,6 @@ import java.util.Map;
 
 public interface KizcafeService {
 	List<KizcafeDTO> selectList(Map map);
+	
+	List<KizcafeDTO> selectreview(Map map);
 }

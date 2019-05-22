@@ -49,7 +49,7 @@ public class CalenderController {
 			if(dto.getEnddate()!=null) {
 				record.put("end", dto.getEnddate());
 			}
-			if(dto.getId().equals("admin")) {
+			if(dto.getID().equals("admin")) {
 				record.put("color", "gray");
 			}
 			else if(dto.getType().equals("중요")) {

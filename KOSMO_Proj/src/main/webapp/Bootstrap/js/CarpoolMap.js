@@ -1,4 +1,5 @@
 $(function(){
+	
    //출발위치 위도,경도 얻기
    var s_xpos = document.getElementById('start_xpos');
    var s_ypos = document.getElementById('start_ypos');
@@ -11,12 +12,16 @@ $(function(){
    var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
    var options = { //지도를 생성할 때 필요한 기본 옵션
       center : new daum.maps.LatLng(s_xpos.value, s_ypos.value),//지도의 중심좌표.
-      level : 5
+      level : 10
    //지도의 레벨(확대, 축소 정도)
    };   
    var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
    map.setDraggable(false);
    map.setZoomable(false);
+   
+  
+   
+   
    
    // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
    var markers = [null,null];
@@ -98,4 +103,9 @@ $(function(){
    bounds.extend(spoint);
    bounds.extend(epoint);
    map.setBounds(bounds);   
+   
+   
+   
+   
+   
 });         
