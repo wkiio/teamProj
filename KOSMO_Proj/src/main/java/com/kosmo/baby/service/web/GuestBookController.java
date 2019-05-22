@@ -60,21 +60,23 @@ public class GuestBookController {
 	
 	@ResponseBody
 	@RequestMapping(value="/GuestBook/Write.kosmo",produces="text/html; charset=UTF-8")
-	public String write(@RequestParam Map map,Authentication auth, HttpServletRequest  mhsr) throws Exception{
+	public String write(@RequestParam Map map,Authentication auth, MultipartHttpServletRequest mhsr) throws Exception{
 		System.out.println("라윗트 라윗트 시작");
 		System.out.println(map.get("gcomment"));
 		System.out.println(map.get("id"));
 		System.out.println(map.get("image"));
-		/*
-		String phisicalPath=mhsr.getServletContext().getRealPath("/Upload");		
+		
+		String phisicalPath=mhsr.getServletContext().getRealPath("/upload");
+		System.out.println("ddddd"+phisicalPath);
 		MultipartFile upload= mhsr.getFile("image");
 		String newFileName=FileUpDownUtils.getNewFileName(phisicalPath, upload.getOriginalFilename());
 		File file = new File(phisicalPath+File.separator+newFileName);
 		upload.transferTo(file);
-		map.put("image", mhsr.getParameter("image"));
-		
+		map.put("image", upload.getOriginalFilename());
 		System.out.println(map.get("image"));
-		*/
+		
+	
+		
 		
 		UserDetails userDetails=(UserDetails)auth.getPrincipal();
 		map.put("id",userDetails.getUsername());

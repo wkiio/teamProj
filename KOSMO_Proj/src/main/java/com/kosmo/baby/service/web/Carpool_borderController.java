@@ -272,6 +272,7 @@ public class Carpool_borderController {
 		model.addAttribute("signed",dto.getSigned());
 		model.addAttribute("done",dto.getDone());
 		model.addAttribute("reviewed",dto.getReviewed());
+		model.addAttribute("cp_no",Integer.parseInt(dto.getCp_no()));
 		
 		System.out.println("방 번호 번호");
 		

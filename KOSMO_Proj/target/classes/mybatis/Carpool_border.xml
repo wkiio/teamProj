@@ -93,7 +93,7 @@
 	</update>
 	
 	<select id="blockchain123" parameterType="java.util.Map" resultType="Carpool_borderDTO">
-		SELECT opened, signed, done, reviewed FROM carpool_border WHERE cp_no = #{cp_no}
+		SELECT cp_no, opened, signed, done, reviewed FROM carpool_border WHERE cp_no = #{cp_no}
 	</select>
 
 	
