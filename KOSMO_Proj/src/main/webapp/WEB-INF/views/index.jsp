@@ -62,10 +62,10 @@
 								<img src="Bootstrap/junior/images/shape/sm-icon/1.png" alt="icon images">
 							</div>
 							<div class="service__details">
-								<h6><a href="service.html">카풀 서비스</a></h6>
+								<h6><a href="service.html">아카 서비스</a></h6>
 								<p>차없이 아기를 데리고 나가기는 너무 힘들다! 카시트가 있는 카풀서비스를 이용해봅니다.</p>
 								<div class="service__btn">
-									<a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Read More</a>
+									<a class="dcare__btn btn__gray hover--theme min__height-btn" href="Carindex.kosmo">Read More</a>
 								</div>
 							</div>
 						</div>
@@ -81,7 +81,7 @@
 								<h6><a href="service.html">육아 캘린더&베이비페어 </a></h6>
 								<p>우리 아이의 기념일을 기록하고 베이비페어 날짜를 달력에서 보고 좋은 제품을 구입 할 수 있습니다.</p>
 								<div class="service__btn">
-									<a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Read More</a>
+									<a class="dcare__btn btn__gray hover--theme min__height-btn" href="aiApi.kosmo">Read More</a>
 								</div>
 							</div>
 						</div>
@@ -97,7 +97,7 @@
 								<h6><a href="service.html">지도 검색</a></h6>
 								<p>우리 아기가 필요한 지도! 소아과 키즈카페 응급실등을 한눈에 보여주며 리뷰 및 평점을 등록 할 수 있습니다.</p>
 								<div class="service__btn">
-									<a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Read More</a>
+									<a class="dcare__btn btn__gray hover--theme min__height-btn" href="daum.kosmo">Read More</a>
 								</div>
 							</div>
 						</div>
@@ -113,7 +113,7 @@
 								<h6><a href="service.html">육아 영상</a></h6>
 								<p>요즘 대세인 유뷰브를 이용해서 육아 및 애니메이션 영상을 확인하여 봅니다.</p>
 								<div class="service__btn">
-									<a class="dcare__btn btn__gray hover--theme min__height-btn" href="#">Read More</a>
+									<a class="dcare__btn btn__gray hover--theme min__height-btn" href="babyinfo.kosmo">Read More</a>
 								</div>
 							</div>
 						</div>

@@ -111,6 +111,7 @@ public class HomeController {
 	}
 	@RequestMapping("/word.kosmo")
 	public String word() {
+		
 		return "word.tiles";
 	}
 	@RequestMapping("/wordCloud.kosmo")

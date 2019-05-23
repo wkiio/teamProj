@@ -7,10 +7,6 @@
       <sec:authentication property="principal.username" var="id" />
 </sec:authorize>
 
-<sec:authorize access="isAuthenticated()">
-      <sec:authentication property="principal.username" var="id" />
-</sec:authorize>
-
 	<header id="header" class="jnr__header header--one clearfix">
 			<!-- Start Header Top Area -->
 			<div class="junior__header__top">
@@ -42,47 +38,6 @@
 					</div>
 				</div>
 			</div>
-<<<<<<< HEAD
-			<div class="col-12 col-md-12 d-none d-xl-block " data-aos="fade-down">
-				<nav
-					class="site-navigation position-relative text-right text-lg-center"
-					role="navigation">
-					<ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
-						<li class="has-children active"><a href="index.kosmo">메인</a>
-						<ul class="dropdown">
-								<li><a href="word.kosmo">111</a></li>
-								<li><a href="wordCloud.kosmo">222cloud</a></li>
-							</ul>
-						</li>
-						<li class="has-children"><a href="serviceclick.kosmo">서비스</a>
-							<ul class="dropdown">
-								<li><a href="carregister.kosmo">이동입력</a></li>
-								<li><a href="Carindex.kosmo">이동리스트</a></li>
-								<li><a href="daum.kosmo">지도검색</a></li>
-								<li><a href="aiApi.kosmo">베이비페어</a></li>
-							</ul></li>
-						<li><a href="calendar.kosmo">육아달력</a></li>
-						<li><a href="babyinfo.kosmo">육아정보</a></li>
-						<li><a href="blookChain.kosmo">육아베팅</a></li>
-						
-						 
-					  <li><a href="guestBook.kosmo">방명록</a></li>
-						
-						
-						
-						<li class="has-children active"><a href="#">마이페이지</a>
-							<ul class="dropdown">
-								<li><a href="mypage_one.kosmo">개인정보</a></li>
-								<li><a href="Carreservation.kosmo">예약현황</a></li>
-							</ul></li>
-							<c:set var="loginid" value="${id}" />
-						<c:if test="${loginid == 'admin'}">
-							<li><a href="admin_index.kosmo">관리자페이지</a></li>
-						</c:if>
-					</ul>
-				</nav>
-=======
-			<!-- End Header Top Area -->
 			<!-- Start Mainmenu Area -->
 			<div class="mainmenu__wrapper bg__cat--1 poss-relative header_top_line sticky__header">
 				<div class="container">
@@ -98,7 +53,11 @@
 							<div class="mainmenu__wrap">
 								<nav class="mainmenu__nav">
                                     <ul class="mainmenu">
-                                        <li class="drop"><a href="index.kosmo">메인</a></li>
+                                        <li class="drop"><a href="index.kosmo">메인</a>
+											<ul class="dropdown__menu">
+                                                <li><a href="word.kosmo">베스트검색어</a></li>                                                
+                                            </ul>
+                                        </li>
                                         <li class="drop"><a href="serviceclick.kosmo">서비스</a>
                                         <ul class="dropdown__menu">
                                                 <li><a href="carregister.kosmo">이동입력</a></li>
@@ -111,7 +70,7 @@
                                         <li class="drop"><a href="babyinfo.kosmo">육아정보</a></li>
                                         <li class="drop"><a href="chatView.kosmo">채팅(미정)</a></li>
                                         <li class="drop"><a href="blookChain.kosmo">검증</a></li>
-                                        <li class="drop"><a href="guestbook.kosmo">검증</a></li>
+                                        <li class="drop"><a href="guestbook.kosmo">방명록</a></li>
                                         <li class="drop"><a href="#">마이페이지</a>
                                             <ul class="dropdown__menu">
                                                 <li><a href="mypage_one.kosmo">개인정보</a></li>
@@ -138,7 +97,6 @@
                     </div>
                     <!-- Mobile Menu -->
 				</div>
->>>>>>> branch 'master2' of https://github.com/wkiio/teamProj.git
 			</div>
 			<!-- End Mainmenu Area -->
 		
