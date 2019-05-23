@@ -50,7 +50,7 @@ https://mdbootstrap.com/components/bootstrap-footer/
 					<div class="row align-items-center copyright__wrapper justify-content-center">
 						<div class="col-lg-12 col-sm-12 col-md-12">
 							<div class="coppy__right__inner text-center">
-								<p>Copyright <i class="fa fa-copyright"></i> 2018 <a href="https://freethemescloud.com/" target="_blank" >Free Themes Cloud.</a> All rights reserved. </p>
+								<p> 2019 Aran Service <a href="http://www.ikosmo.co.kr/" target="_blank" >Korea SoftWare ManPower Organigation</a> </p>
 							</div>
 						</div>
 					</div>

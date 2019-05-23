@@ -15,7 +15,8 @@
 $(function(){
     $('#carouselExampleIntervals').carousel({
         interval:0,
-         pause: "false"
+        pause: "false"
+       
     });
 
 });

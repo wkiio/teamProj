@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 
-var contractAddress = "0xe347744e0db8ae5f93a170022282e6cafd849ded";
+var contractAddress = "0xda9e4fadd2f964eac1515071d9a881fcdfbb1fcd";
 var abi =[
 	{
 		"constant": true,
@@ -280,6 +280,25 @@ var abi =[
 			}
 		],
 		"name": "validsign",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_signNum",
+				"type": "int256"
+			}
+		],
+		"name": "validPros",
 		"outputs": [
 			{
 				"name": "",
