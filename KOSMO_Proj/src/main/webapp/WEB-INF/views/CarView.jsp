@@ -282,18 +282,18 @@ $('#resbutton').click(function(){
 	
 	
 		 
-  
+/*   
 	  message.signBook(num,id2,id,type,function(e,r){
 		 $('#signed').val(r); 
 		 //console.log(r);
 		 $('.carviewform').submit();
 	  });    
-	   
+	    */
 	 
-	/*   $('#signed').val("sdasdasdasdzxczxczx"); 
+	   $('#signed').val("sdasdasdasdzxczxczx"); 
 	  console.log('ㅁㄴㅇㄴㅁㅇㅁㄴ');
 	  $('.carviewform').submit(); 
-	 */
+	 
 });
 
 
@@ -312,12 +312,13 @@ $('#resbutton').click(function(){
 		$('.carviewform').prop('action','Cardelete.kosmo');
 		$('.carviewform').submit();
 	});
-	
+
 	$('#return').click(function(){
 		console.log("취소할거야")
 		$('.carviewform').prop('action','Back_reser.kosmo');
 		$('.carviewform').submit();
 	})
+
 
 	
 </script>

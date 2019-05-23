@@ -25,7 +25,7 @@
 	</update>
 	
 	<insert id="ReplyInsert" parameterType="java.util.Map">
-		INSERT INTO guestbook VALUES(SEQ_GUESTBOOK.NEXTVAL,#{gcomment},#{id},'image',DEFAULT,#{refer},#{step}+1,#{depth}+1)
+		INSERT INTO guestbook VALUES(SEQ_GUESTBOOK.NEXTVAL,#{gcomment},#{id},#{image},DEFAULT,#{refer},#{step}+1,#{depth}+1)
 	</insert>
 	
 	<select id="selectOne" parameterType="java.util.Map" resultType="GuestBookDTO">

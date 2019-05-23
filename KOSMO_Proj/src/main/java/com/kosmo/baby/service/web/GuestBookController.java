@@ -96,6 +96,8 @@ public class GuestBookController {
 		}
 		map.put("image"," ");
 		System.out.println(map.get("image"));
+
+
 		guestBookService.insert(map);
 		System.out.println("돌아옴");
 		System.out.println(map);

@@ -33,7 +33,9 @@ height:800px;
       
    });
    
+
 </script>
+
  	<!-- MAIN CONTENT-->	
 	<div class="site-section" style="padding: 2em;">	
 	<div class="container">
@@ -88,7 +90,6 @@ height:800px;
 										</c:if>
 									</c:forEach>
 							</table>
-
                   </div>
                </div>
             </div>
@@ -219,7 +220,7 @@ height:800px;
 <script>
 var message;
 window.addEventListener('load', async () => {
-    // Modern dapp browsers...
+
     if (window.ethereum) {
         window.web3 = new Web3(ethereum);
         try {
@@ -328,6 +329,4 @@ $('.starR').click(function(){
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 
 
-</body>
 
-</html>

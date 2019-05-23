@@ -288,6 +288,7 @@
     <script src="admin_assets/vendor/bootstrap-4.1/popper.min.js"></script>
     <script src="admin_assets/vendor/bootstrap-4.1/bootstrap.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f053d576cd5dc6d9de018d8e7da2d525&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f053d576cd5dc6d9de018d8e7da2d525&libraries=services,clusterer,drawing"></script>
 <script>
    //마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
    var placeOverlay = new daum.maps.CustomOverlay({
@@ -459,7 +460,7 @@
          // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
          (function(marker, emData) {
             daum.maps.event.addListener(marker, 'click', function() {
-               k_no = emData.k_no;
+               k_no = emData.k_no;        
                displayPlaceInfo(emData);
                $('#modalreview1').click(function(){
             	      $.ajax({
@@ -473,7 +474,7 @@
             	          success : function(data) {						
             	             console.log(data);           	             
 							
-            	             var html="<table style='width: 100%; text-align: center'><thead><tr><th style='background-color: #ffaec9'>아이디</th><th style='background-color: #ffaec9'>내용</th><th style='background-color: #ffaec9'>별점</th></tr></thead>";
+            	             var html="<div style='overflow:auto;height:200px;'><table style='width: 100%; text-align: center'><thead style='over'><tr><th style='background-color: #ffaec9'>아이디</th><th style='background-color: #ffaec9'>내용</th><th style='background-color: #ffaec9'>별점</th></tr></thead>";
             	             if(data.length != 0){  
 	            	             $.each(data, function(index, element){
 	            	            	 console.log(data.length);    
@@ -484,7 +485,7 @@
 	            	             });
             	             }
             	             else{html+="<tr><td colspan='3'>등록된 리뷰가 없습니다</td></tr>";}
-            	             html+="</table></div><div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>닫기</button>";
+            	             html+="</table></div></div><div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>닫기</button>";
             	             $('.reviewtable').html(html); 
             	            }
             	           

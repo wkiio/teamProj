@@ -7,10 +7,6 @@
       <sec:authentication property="principal.username" var="id" />
 </sec:authorize>
 
-<sec:authorize access="isAuthenticated()">
-      <sec:authentication property="principal.username" var="id" />
-</sec:authorize>
-
 	<header id="header" class="jnr__header header--one clearfix">
 			<!-- Start Header Top Area -->
 			<div class="junior__header__top">
@@ -42,7 +38,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- End Header Top Area -->
 			<!-- Start Mainmenu Area -->
 			<div class="mainmenu__wrapper bg__cat--1 poss-relative header_top_line sticky__header">
 				<div class="container">
@@ -58,7 +53,11 @@
 							<div class="mainmenu__wrap">
 								<nav class="mainmenu__nav">
                                     <ul class="mainmenu">
-                                        <li class="drop"><a href="index.kosmo">메인</a></li>
+                                        <li class="drop"><a href="index.kosmo">메인</a>
+											<ul class="dropdown__menu">
+                                                <li><a href="word.kosmo">베스트검색어</a></li>                                                
+                                            </ul>
+                                        </li>
                                         <li class="drop"><a href="serviceclick.kosmo">서비스</a>
                                         <ul class="dropdown__menu">
                                                 <li><a href="Carindex.kosmo">이동리스트</a></li>
