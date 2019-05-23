@@ -95,7 +95,7 @@ public class GuestBookController {
 		
 		UserDetails userDetails=(UserDetails)auth.getPrincipal();
 		map.put("id",userDetails.getUsername());
-		
+		System.out.println(map.get("image"));
 		
 		guestBookService.insert(map);
 		System.out.println("돌아옴");

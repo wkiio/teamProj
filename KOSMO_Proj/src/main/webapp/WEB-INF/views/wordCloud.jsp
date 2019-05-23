@@ -9,12 +9,10 @@
 </style>
 
 <body>
-	
+	<div class="cloud" style="width:100%;height:750px;margin-top: 30px"></div>
 	<script>
-        var width = 960,
-            height = 500
 
-        var svg = d3.select("body").append("svg").attr("width", width).attr("height", height);
+        var svg = d3.select(""cloud"").append("svg").attr("width", width).attr("height", height);
         d3.csv("worddata.csv", function (data) {
             showCloud(data)
             setInterval(function(){

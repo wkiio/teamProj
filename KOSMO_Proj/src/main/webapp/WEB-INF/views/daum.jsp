@@ -460,17 +460,7 @@
          // 장소정보를 표출하도록 클릭 이벤트를 등록합니다
          (function(marker, emData) {
             daum.maps.event.addListener(marker, 'click', function() {
-               k_no = emData.k_no;
-               ///////////////////////////////////////////////////////////////////////
-               //지도를 초기화 시키는 함수
-          
-               
-               
-               
-               
-               
-               ////////////////////////////////////////////////////////////////////////
-               
+               k_no = emData.k_no;        
                displayPlaceInfo(emData);
                $('#modalreview1').click(function(){
             	      $.ajax({
@@ -484,7 +474,7 @@
             	          success : function(data) {						
             	             console.log(data);           	             
 							
-            	             var html="<table style='width: 100%; text-align: center'><thead><tr><th style='background-color: #ffaec9'>아이디</th><th style='background-color: #ffaec9'>내용</th><th style='background-color: #ffaec9'>별점</th></tr></thead>";
+            	             var html="<div style='overflow:auto;height:200px;'><table style='width: 100%; text-align: center'><thead style='over'><tr><th style='background-color: #ffaec9'>아이디</th><th style='background-color: #ffaec9'>내용</th><th style='background-color: #ffaec9'>별점</th></tr></thead>";
             	             if(data.length != 0){  
 	            	             $.each(data, function(index, element){
 	            	            	 console.log(data.length);    
@@ -495,7 +485,7 @@
 	            	             });
             	             }
             	             else{html+="<tr><td colspan='3'>등록된 리뷰가 없습니다</td></tr>";}
-            	             html+="</table></div><div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>닫기</button>";
+            	             html+="</table></div></div><div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>닫기</button>";
             	             $('.reviewtable').html(html); 
             	            }
             	           

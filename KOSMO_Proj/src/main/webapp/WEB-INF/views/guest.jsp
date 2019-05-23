@@ -41,9 +41,8 @@
 							방명록<small> 글 입력</small>
 						</h3>
 					</div>
-					<input type="hidden" name="${_csrf.parameterName}"
-						value="${_csrf.token}" /> <input type="hidden" name="id" /> <input
-						type="hidden" name="gno" />
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> <input type="hidden" name="id" /> 
+						<input type="hidden" name="gno" />
 					<!-- 수정 및 삭제용 파라미터 -->
 					<div style='overflow: hidden;'>
 						<!-- 
@@ -66,7 +65,7 @@
 				</div>
 				 -->
 						<div style='float: left; border: 5px solid blue; width: 30%'>
-							<input type='file' name='image'  class="btn btn-success">							
+							<input type='file' id="image" name='image'  class="btn btn-success" var="">							
 						</div>
 
 						<div style='float: left; border: 5px solid green; width: 100%'>
@@ -78,9 +77,6 @@
 				<!-- 
 				섬머 노트
 			 -->
-
-
-
 			</div>
 		</div>
 	</div>
@@ -104,12 +100,16 @@
 		//코멘트 입력처리]
 		showComments();
 		$('#submit').click(function() {
+			var image = document.getElementById("image");
 			console.log('클릭 확인');
 			if ($(this).val() == '확인') {
 				console.log('확인??');
 				$.ajax({
 					url : "<c:url value='/GuestBook/Write.kosmo'/>",
-					data : $('#frm').serialize(),
+					data : {'image' : image,
+						
+					},
+							
 					dataType : 'text',
 					type : 'post',
 					success : function() {
