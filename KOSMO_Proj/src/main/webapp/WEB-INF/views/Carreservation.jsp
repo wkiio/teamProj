@@ -154,7 +154,7 @@ height:800px;
                      <input type="hidden" value="" id="modalno" name="modalno">
                      <input type="hidden" value="" id="score" name="score">
                      <input type="hidden" value="" id="reviewed" name="reviewed">
-                     <input type="hidden" value="" id="cp_no1" name="cp_no">
+                     <input type="hidden" value="" id="cp_no" name="cp_no">
                           <div class="input-group mb-3">
                           <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-default" >제목</span>
@@ -219,6 +219,7 @@ height:800px;
 
 <script>
 var message;
+
 window.addEventListener('load', async () => {
 
     if (window.ethereum) {
@@ -279,9 +280,13 @@ var user;
 
 $('.btnreview').click(function(){
    $('#modalno').val($(this).attr('id'));
-   nono = $('#cp_no').val();
+   nono = $('#modalno').val();
    console.log('번호:' + nono);
-   console.log('asdasd:' + $(this).parent().parent().children().eq(0).text());
+   console.log('클릭한 번호:' + $(this).attr('id'));
+   
+   //var no = $('#cp_no').val();
+   var cp_no = '${items.cp_no }';
+   var modalno = $('#modalno').val();
    provider = vv($(this).parent().parent().children().eq(0).text());
    user = vv($(this).parent().parent().children().eq(1).text());
    console.log(provider + " :: " + user);
@@ -291,11 +296,16 @@ $('.btnreview').click(function(){
 $('.starRev span').click(function(){
      $(this).parent().children('span').removeClass('on');
      $(this).addClass('on').prevAll('span').addClass('on');
+     console.log('클릭한 번호2:' + $('modalno').val());
+     console.log("nononononononononononono : "+nono)
      return false;
+     
 });
 
 $('.starR').click(function(){
-   console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+$('#modalno').val());
+	var no = $(this).attr('id')
+   console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+no);
+	console.log('클릭한 번호3:' + $('modalno').val());
    var score = $(this).html();
    var h_Score = vv($(this).html());
    console.log('adsasd:' + score);
@@ -309,15 +319,16 @@ $('.starR').click(function(){
       
       console.log('provider:' + provider);
       console.log('user' + user);
-      console.log('score' + score);
+      console.log('score' + parseInt(score));
+
         console.log('리뷰등록을 해봐?');
-           message.CpReview($('#modalno').val(),provider,user,score,function(e,r){
-         console.log(r);
+           message.CpReview(nono,provider,user,score,function(e,r){
+         	console.log(r);
           $('#reviewed').val(r);
-         $('.carriewform').submit();
+          $('.carriewform').submit();
       });     
        
-/*         message.getSign(6,function(e,r){
+/*          message.getSign(6,function(e,r){
     	  console.log(r);
       })    */
       /*  $('#reviewed').val("0xe785414c9dde601e734879578ab856541b3203d211e004e14b611ec22c87ef03");

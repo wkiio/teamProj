@@ -648,7 +648,7 @@ let receipt=async function(hash1,hash2,hash3,hash4){
         $('#from4').val(r['from']);
         $('#gas4').val(r['gasUsed']);
         message.getSign(${cp_no},function(e,r){
-           $('#division4').val(web3.toAscii(r[7]));
+           $('#division4').val(web3.toDecimal(r[7]));
 
     });
   

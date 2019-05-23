@@ -123,10 +123,10 @@
 					<div class="carview_profile">
 	
 						<figure class="profile">
+							<h2>글 등록자</h2>
 							<img id="memberphoto" src="<c:url value='/resources/memberPhoto/${photo }'/>" title="프로필" alt="프로필" class="picture">
 							<figcaption class="name">${dto.name }</figcaption>
 						</figure>
-						<button type="button" class="btn btn-info">메시지 보내기</button>
 						<div class="mt-1">
 							
 						</div>
@@ -137,8 +137,7 @@
 				<div class="carview_content col">
 	
 					<div class="carview_title">
-						<h1 class="title_img">단기 카풀</h1>
-						<h2 class="title_text">태워주세요</h2>
+						<h1 class="title_img">카풀</h1>
 					</div>
 					<input type="hidden" value="${dto.start_xpos }" id="start_xpos" name="start_xpos">
 					<input type="hidden" value="${dto.start_ypos }" id="start_ypos" name="start_ypos">
@@ -282,18 +281,13 @@ $('#resbutton').click(function(){
 	
 	
 		 
-/*   
+   
 	  message.signBook(num,id2,id,type,function(e,r){
 		 $('#signed').val(r); 
-		 //console.log(r);
 		 $('.carviewform').submit();
 	  });    
-	    */
-	 
-	   $('#signed').val("sdasdasdasdzxczxczx"); 
-	  console.log('ㅁㄴㅇㄴㅁㅇㅁㄴ');
-	  $('.carviewform').submit(); 
-	 
+	    
+
 });
 
 

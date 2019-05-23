@@ -223,10 +223,14 @@ $(function(){
 	      if($(this).val()=="타세요"){
 	         $('#partnerCarseat').css("display", "inline");
 	         $('#nomalCarseat').css("display", "none");
+	         $('#partnerCarseat > #carseat > option:nth-child(1)').attr("selected",true)
 	      }
 	      else{
 	         $('#partnerCarseat').css("display", "none");
 	         $('#nomalCarseat').css("display", "inline");
+	         $('#nomalCarseat > #carseat > option:nth-child(1)').attr("selected",true)
+	         
+	         
 	      }
 	   });
 	
@@ -247,29 +251,15 @@ $(function(){
 		}
 		var type = vv(select);
 		console.log("type:" +type);
-		//onsole.log('타태?' + b);
-	/*    	message.openingBook(id,type,function(e,r){
+ 	    	message.openingBook(id,type,function(e,r){
 			console.log('트랜잭션 해시값 :' + r);
 			$('#opened').val(r);
-			
+			   
 			$('.carinput_form').submit();
-		});        */
+		});     
 		
 		console.log('============');
-		/* message.getSign(4,function(e,r){
-			
-			console.log(web3.toAscii(r[0]));
-			console.log(web3.toAscii(r[1]));
-			console.log(web3.toAscii(r[2]));
-		 	console.log(web3.toAscii(r[3]));
-			console.log(web3.toAscii(r[4]));
-			console.log(web3.toAscii(r[5]));  
-		}); */
-		
-		$('#opened').val('1231234124123412');
-		
-		$('.carinput_form').submit(); 
-		
+
 	});
 	
 	$('#edit').click(function(){
