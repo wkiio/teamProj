@@ -81,6 +81,9 @@ text-align:center;
 				</tbody>
 			
 			</table>
+			<div class="mt-1" style="text-align: right;">
+				<button type="button" class="btn btn-secondary" style="border-radius : 8px;" id="register">카풀 이용하기</button>
+			</div>
 		</div>
 	</div>
 <!-- 페이징 -->
@@ -94,6 +97,13 @@ text-align:center;
    var clickchange = 1;
    var firstsearch;
    var secondsearch;
+   
+   $(function() {
+		$('#register').click(function(){
+			location.replace('carregister.kosmo');
+		})
+		
+	})
    
 
   $(function(){

@@ -49,7 +49,7 @@
 					<div class="row d-none d-lg-flex">
 						<div class="col-sm-4 col-md-6 col-lg-2 order-1 order-lg-1">
 							<div class="logo">
-								<a href="index.html">
+								<a href="index.kosmo">
 									<img src="resources/images/Aran1.png" alt="logo images" style="height:100px">
 								</a>
 							</div>
@@ -70,6 +70,8 @@
                                         <li class="drop"><a href="calendar.kosmo">육아달력</a></li>
                                         <li class="drop"><a href="babyinfo.kosmo">육아정보</a></li>
                                         <li class="drop"><a href="chatView.kosmo">채팅(미정)</a></li>
+                                        <li class="drop"><a href="blookChain.kosmo">검증</a></li>
+                                        <li class="drop"><a href="guestbook.kosmo">검증</a></li>
                                         <li class="drop"><a href="#">마이페이지</a>
                                             <ul class="dropdown__menu">
                                                 <li><a href="mypage_one.kosmo">개인정보</a></li>
