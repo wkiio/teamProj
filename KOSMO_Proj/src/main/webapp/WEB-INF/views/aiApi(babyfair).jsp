@@ -92,6 +92,10 @@
     border-radius: 100%;
 }
 
+.fa,.far,.fas{
+font-family: "Font Awesome 5 Free" !important;
+}
+
 
 .loading-container { margin: 40px auto }
 
@@ -340,17 +344,20 @@ section{
 	background: #56C82C;
 }
 
+.tt{
+margin-bottom:15px;
+}
+
 </style>
-  	
 
 <div class="site-section" style="height:auto; padding:2em;z-index=3" >
 	<div class ="row">     
      	<div class="offset-md-1 col-md-4" style="margin-top: 30px">
 			<div>
-	     		<h3>행사 타이틀 : ${dto.title}</h3>  
-	     		<h3>기  간  : ${dto.period }</h3>  
-	     		<h3>시  간  : ${dto.time }</h3> 
-	     		<h3>장  소  : ${dto.place } </h3>
+	     		<h3 class="tt">행사 타이틀 : ${dto.title}</h3>  
+	     		<h3 class="tt">기  간  : ${dto.period }</h3>  
+	     		<h3 class="tt">시  간  : ${dto.time }</h3> 
+	     		<h3 class="tt">장  소  : ${dto.place } </h3>
      		</div>
      	</div>
      	<div class="col-md-7" > <!-- style="text-align: center;" -->
@@ -372,7 +379,7 @@ section{
 				<div id="loading-text">loading</div>
 			</div>	
 			<p align="center" id = "이미지받기" style="margin:0 auto;">여기에 제품을 끌어보세요!</p>
-			<i id = "이미지받기" class="fas fa-shopping-bag fa-10x"style="color:red;"></i>	
+			<i id = "이미지받기" class="fas fa-shopping-bag fa-10x"style="color:#81c341;"></i>	
 		</div> 
 	</div>
 

@@ -9,7 +9,7 @@ public class BabyFairDTO {
 	private String place;
 	private String titleimage;
 	private String product;
-	private String calno;
+	private String cal_no;
 	
 	public String getBaby_no() {
 		return baby_no;
@@ -54,10 +54,10 @@ public class BabyFairDTO {
 		this.product = product;
 	}
 	public String getCalno() {
-		return calno;
+		return cal_no;
 	}
 	public void setCalno(String calno) {
-		this.calno = calno;
+		this.cal_no = calno;
 	}
 	
 	

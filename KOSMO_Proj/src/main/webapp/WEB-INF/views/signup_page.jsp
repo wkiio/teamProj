@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<link rel="stylesheet" href="/baby/resources/css/login.css">
+ <link rel="stylesheet" href="Bootstrap/login&mypage/login.css">
 
 <div class="container">
 		<div class="col-lg-10 col-xl-9 mx-auto">

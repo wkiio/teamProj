@@ -124,7 +124,7 @@ public class HomeController {
 	}
 
 	
-	@RequestMapping("/guestBook.kosmo")
+	@RequestMapping("/guestbook.kosmo")
 	public String guestbook() {
 		return "guest.tiles";
 	}

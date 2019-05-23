@@ -54,14 +54,13 @@
 								</a>
 							</div>
 						</div>
-						<div class="col-sm-4 col-md-2 col-lg-9 order-3 order-lg-2">
+						<div class="col-sm-4 col-md-3 col-lg-10 order-2 order-lg-2">
 							<div class="mainmenu__wrap">
 								<nav class="mainmenu__nav">
                                     <ul class="mainmenu">
                                         <li class="drop"><a href="index.kosmo">메인</a></li>
                                         <li class="drop"><a href="serviceclick.kosmo">서비스</a>
                                         <ul class="dropdown__menu">
-                                                <li><a href="carregister.kosmo">이동입력</a></li>
                                                 <li><a href="Carindex.kosmo">이동리스트</a></li>
                                                 <li><a href="daum.kosmo">지도검색</a></li>
                                                 <li><a href="aiApi.kosmo">베이비페어</a></li>                                             
@@ -71,7 +70,7 @@
                                         <li class="drop"><a href="babyinfo.kosmo">육아정보</a></li>
                                         <li class="drop"><a href="chatView.kosmo">채팅(미정)</a></li>
                                         <li class="drop"><a href="blookChain.kosmo">검증</a></li>
-                                        <li class="drop"><a href="guestbook.kosmo">검증</a></li>
+                                        <li class="drop"><a href="guestbook.kosmo">방명록</a></li>
                                         <li class="drop"><a href="#">마이페이지</a>
                                             <ul class="dropdown__menu">
                                                 <li><a href="mypage_one.kosmo">개인정보</a></li>

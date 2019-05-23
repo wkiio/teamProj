@@ -12,12 +12,16 @@
 	max-width: 800px;
 	margin: auto;
 	padding: 30px;
-	border: 1px solid #eee;
+
 	box-shadow: 0 0 10px rgba(0, 0, 0, .15);
 	font-size: 16px;
 	line-height: 24px;
 	font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
 	color: #555;
+}
+
+.site-section{
+height:800px;
 }
 
 .invoice-box table {
@@ -51,7 +55,6 @@
 
 .invoice-box table tr.heading td {
 	background: #eee;
-	border-bottom: 1px solid #ddd;
 	font-weight: bold;
 }
 
@@ -60,7 +63,7 @@
 }
 
 .invoice-box table tr.item td {
-	border-bottom: 1px solid #eee;
+	/* border-bottom: 1px solid #eee; */
 }
 
 .invoice-box table tr.item.last td {
@@ -68,7 +71,7 @@
 }
 
 .invoice-box table tr.total td:nth-child(2) {
-	border-top: 2px solid #eee;
+	/* border-top: 2px solid #eee; */
 	font-weight: bold;
 }
 
@@ -232,7 +235,7 @@ $(function(){
 });
 </script>
 
-
+<div class="site-section" style="padding: 2em;">
 <br/>
 <form class="form-signin" method="post"
 	action="Blockchain123.kosmo?${_csrf.parameterName}=${_csrf.token}"
@@ -246,7 +249,7 @@ $(function(){
 			class="btn btn-info btn-sm">확인</button>
 	</div>
 </form>
-<fieldset>
+<fieldset style="border:none">
 	<div class="invoice-box">
 		<table cellpadding="0" cellspacing="0">
 			<tr class="top">
@@ -325,3 +328,5 @@ $(function(){
 		</table>
 	</div>
 </fieldset>
+
+</div>

@@ -322,4 +322,4 @@ $('#resbutton').click(function(){
 	
 </script>
 
-<script src="Bootstrap/js/carload.js"></script>
+<script src="resources/js/carload.js"></script>

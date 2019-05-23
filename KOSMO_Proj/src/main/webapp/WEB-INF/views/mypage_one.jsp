@@ -3,6 +3,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/template/isMember.jsp" %>
 
+ <link rel="stylesheet" href="Bootstrap/login&mypage/mypage.css">
+ <link rel="stylesheet" href="Bootstrap/login&mypage/carpoolborder.css">
+
+
+<style>
+.site-section{
+height:750px;
+}
+
+</style>
+
 
 <div class="site-section" style="padding: 2em;">
 	<div class="container">

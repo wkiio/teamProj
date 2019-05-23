@@ -13,13 +13,22 @@ table, td{
 text-align:center;
 }
 
+.site-section{
+height:800px;
+/* background-image:url('/baby/Bootstrap/images/background.png'); */
+/* background-color: #D9E5FF; */
+}
+
+
+
+
 </style>
 <sec:authorize access="isAuthenticated()">
       <sec:authentication property="principal.username" var="id" />
 </sec:authorize>
 
 <div class="site-section carpool_section" style="padding: 2em;">
-	<div class="container">
+	<div class="container" >
 		<div class="carool-head row">
 			<!-- 검색 폼 -->
 			<form class="carool-form">
@@ -156,7 +165,7 @@ text-align:center;
 				 html += "<tr id="+carlist['cp_no']+">";
 				 html+="<th scope=\"row\"><figure class=\"profile listtd\"><img id=\"memberphoto\" src=\"<c:url value='/resources/memberPhoto/"+carlist["photo"]+"'/>\" alt=\"프로필\" class=\"picture listtd\"><figcaption class=\"name listtd\"></figcaption></figure></th>";
 				 html+="<td><div class=\"start_con listtd\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
-				 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
+				 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.png\" alt=\"프로필\" class=\"arrow listtd\"></td>";
 				 html+="<td><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
 				 html+="<td><h6 class=\"cp_type listtd\">"+carlist['type']+"</h6></td>";
 				 html+="<td><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</span></td>";			 	 
@@ -167,7 +176,7 @@ text-align:center;
 						 html += "<tr id="+carlist['cp_no']+">";
 						 html+="<th scope=\"row\"><figure class=\"profile listtd\"><img id=\"memberphoto\" src=\"<c:url value='/resources/memberPhoto/"+carlist["photo"]+"'/>\" alt=\"프로필\" class=\"picture listtd\"><figcaption class=\"name listtd\"></figcaption></figure></th>";
 						 html+="<td><div class=\"start_con listtd\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
-						 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
+						 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.png\" alt=\"프로필\" class=\"arrow listtd\"></td>";
 						 html+="<td><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
 						 html+="<td><h6 class=\"cp_type listtd\">"+carlist['type']+"</h6></td>";
 						 html+="<td><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</td>";
@@ -179,7 +188,7 @@ text-align:center;
 						 html += "<tr id="+carlist['cp_no']+">";
 						 html+="<th scope=\"row\"><figure class=\"profile listtd\"><img id=\"memberphoto\" src=\"<c:url value='/resources/memberPhoto/"+carlist["photo"]+"'/>\" alt=\"프로필\" class=\"picture listtd\"><figcaption class=\"name listtd\"></figcaption></figure></th>";
 						 html+="<td style='width: 30%'><div class=\"start_con listtd\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
-						 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.jpg\" alt=\"프로필\" class=\"arrow listtd\"></td>";
+						 html+="<td class=\"px-1 py-3 listtd\"><img src=\"/baby/resources/images/arrow.png\" alt=\"프로필\" class=\"arrow listtd\"></td>";
 						 html+="<td style='width: 30%'><div class=\"end_con listtd\"><h6>"+carlist['endpoint']+"</h6></div></td>";
 						 html+="<td><h6 class=\"cp_type listtd\">"+carlist['type']+"</h6></td>";
 						 html+="<td><span class=\"cp_time listtd\">"+carlist['price']+"원"+"</td>";

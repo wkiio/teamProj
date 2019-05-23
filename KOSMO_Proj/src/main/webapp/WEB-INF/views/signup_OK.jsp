@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
+ <link rel="stylesheet" href="Bootstrap/login&mypage/mypage.css">
+ <link rel="stylesheet" href="Bootstrap/login&mypage/carpoolborder.css">
+
 <div class="site-section" style="padding: 2em;">
 	<div class="container">
 		<div class="col-lg-10 col-xl-9 mx-auto">

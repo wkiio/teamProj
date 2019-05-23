@@ -80,10 +80,20 @@ Basic Styles
 /**
 Reset Styles
 */
+
+@font-face{
+	font-family:"Maplestory";
+	src: url(/baby/resources/font/Maplestory_Light.ttf) format('truetype');
+}
+
+
+
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  font-family: Maplestory !important;
 }
+
 
 article, aside, details, figcaption, figure, footer, header, nav, section, summary {
   display: block;
@@ -113,8 +123,12 @@ html, button, input, select, textarea {
   font-family: "Source Sans Pro", Helvetica, sans-serif;
 }
 
+
+
+
+
 body {
-  color: #141412;
+  color: #141412; 
   line-height: 1.5;
   margin: 0;
 }
@@ -1208,7 +1222,7 @@ a#scrollUp:hover {
 }
 
 .section-padding--lg {
-  padding: 150px 0;
+  padding: 0px 0;
 }
 
 .section-lg-padding--top {

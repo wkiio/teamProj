@@ -87,11 +87,14 @@ public class GuestBookController {
 		
 		String phisicalPath=mhsr.getServletContext().getRealPath("/upload");
 		System.out.println("ddddd"+phisicalPath);
-		MultipartFile upload= mhsr.getFile("image");
-		String newFileName=FileUpDownUtils.getNewFileName(phisicalPath, upload.getOriginalFilename());
-		File file = new File(phisicalPath+File.separator+newFileName);
-		upload.transferTo(file);
-		map.put("image", upload.getOriginalFilename());
+		if(mhsr.getFile("image") != null) {
+			MultipartFile upload= mhsr.getFile("image");
+			String newFileName=FileUpDownUtils.getNewFileName(phisicalPath, upload.getOriginalFilename());
+			File file = new File(phisicalPath+File.separator+newFileName);
+			upload.transferTo(file);
+			map.put("image", upload.getOriginalFilename());
+		}
+		map.put("image"," ");
 		System.out.println(map.get("image"));
 		guestBookService.insert(map);
 		System.out.println("돌아옴");
