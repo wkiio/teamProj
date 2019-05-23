@@ -24,19 +24,19 @@
 <link href="admin_assets/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 <link href="admin_assets/css/theme.css" rel="stylesheet" media="all">
 
-<link rel="stylesheet" href="Bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="Bootstrap/css/magnific-popup.css">
-<link rel="stylesheet" href="Bootstrap/css/jquery-ui.css">
-<link rel="stylesheet" href="Bootstrap/css/aos.css">
+<link rel="stylesheet" href="Bootstrap/calendar/css/bootstrap.min.css">
+<link rel="stylesheet" href="Bootstrap/calendar/css/magnific-popup.css">
+<link rel="stylesheet" href="Bootstrap/calendar/css/jquery-ui.css">
+<link rel="stylesheet" href="Bootstrap/calendar/css/aos.css">
 
-<script src="Bootstrap/js/jquery-3.3.1.js"></script>
-<script src="Bootstrap/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="Bootstrap/calendar/js/jquery-3.3.1.js"></script>
+<script src="Bootstrap/calendar/js/jquery-migrate-3.0.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="Bootstrap/js/jquery-ui.js"></script>
-<script src="Bootstrap/js/bootstrap.min.js"></script>
-<script src="Bootstrap/js/jquery.magnific-popup.min.js"></script>
-<script src="Bootstrap/js/popper.min.js"></script>
-<script src="Bootstrap/js/aos.js"></script>
+<script src="Bootstrap/calendar/js/jquery-ui.js"></script>
+<script src="Bootstrap/calendar/js/bootstrap.min.js"></script>
+<script src="Bootstrap/calendar/js/jquery.magnific-popup.min.js"></script>
+<script src="Bootstrap/calendar/js/popper.min.js"></script>
+<script src="Bootstrap/calendar/js/aos.js"></script>
 
 
 
@@ -116,7 +116,7 @@ td.fc-sat .fc-day-number {
 		<!-- MENU SIDEBAR-->
 		<aside class="menu-sidebar d-none d-lg-block">
 			<div class="logo" style="background-color: #feffd6">
-				<a href="index.kosmo"> <img src="resources/Baby/Aran.png"
+				<a href="index.kosmo"> <img src="resources/images/Aran.png"
 					alt="Cool Admin"
 					style="height: 60px; width: 190px; padding-left: 20px" />
 				</a>
@@ -170,7 +170,7 @@ td.fc-sat .fc-day-number {
 								<div class="account-wrap">
 									<div class="account-item clearfix js-item-menu">
 										<div class="image">
-											<img src="resources/Baby/Aran2.png" alt="Aran2" />
+											<img src="resources/images/Aran2.png" alt="Aran2" />
 										</div>
 										<div class="content">
 											<a class="js-acc-btn" href="#">Aran관리자</a>

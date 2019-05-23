@@ -68,12 +68,7 @@ public class ReservationDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getCp_No() {
-		return cp_no;
-	}
-	public void setCp_No(String cp_no) {
-		this.cp_no = cp_no;
-	}
+
 
 	
 	

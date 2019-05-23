@@ -6,7 +6,6 @@ public class ReviewDTO {
 	private String content;
 	private String score;
 	private String id;
-	private String h_no;
 	private String k_no;
 	public String getRv_no() {
 		return rv_no;
@@ -37,12 +36,6 @@ public class ReviewDTO {
 	}
 	public void setId(String id) {
 		this.id = id;
-	}
-	public String getH_no() {
-		return h_no;
-	}
-	public void setH_no(String h_no) {
-		this.h_no = h_no;
 	}
 	public String getK_no() {
 		return k_no;

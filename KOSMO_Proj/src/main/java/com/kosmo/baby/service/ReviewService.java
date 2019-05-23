@@ -10,6 +10,8 @@ public interface ReviewService {
 	
 	ReviewDTO selectOne(Map map);
 
+	int count(Map map);
+	List<ReviewDTO> selectScore(Map map);
 	
 	//입력 수정 삭제용
 	int insert(Map map);

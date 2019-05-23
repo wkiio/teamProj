@@ -47,4 +47,14 @@ public class ReviewDAO implements ReviewService{
 		return 0;
 	}
 
+	@Override
+	public int count(Map map) {
+		return template.selectOne("count",map);
+	}
+
+	@Override
+	public List<ReviewDTO> selectScore(Map map) {
+		return template.selectList("selectscore",map);
+	}
+
 }

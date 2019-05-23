@@ -16,4 +16,12 @@
 	<insert id="reviewInsert" parameterType="java.util.Map"> 
 		INSERT INTO review VALUES(SEQ_ReView.NEXTVAL,#{title},#{content},#{score},#{id},#{k_no})
 	</insert>
+	
+	<select id="count" parameterType="java.util.Map" resultType="int">
+		SELECT COUNT(*) FROM review WHERE k_no = #{k_no}
+	</select>
+	
+	<select id="selectscore" parameterType="java.util.Map" resultType="ReviewDTO">
+		SELECT score FROM review WHERE k_no = #{k_no}
+	</select>
 </mapper>

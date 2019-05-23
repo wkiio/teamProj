@@ -313,13 +313,19 @@ $('#resbutton').click(function(){
 		$('.carviewform').submit();
 	});
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master2' of https://github.com/wkiio/teamProj.git
 	$('#return').click(function(){
 		console.log("취소할거야")
 		$('.carviewform').prop('action','Back_reser.kosmo');
 		$('.carviewform').submit();
 	})
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master2' of https://github.com/wkiio/teamProj.git
 
 	
 </script>

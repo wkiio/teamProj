@@ -542,7 +542,6 @@
             + emdata.name + '</a>';
 
             if (emdata.addr) {
-               
                   var flag = typeof(emdata.sat)!='undefined'
                   console.log('flag:' +emdata.k_no);
                  content+= '<span title="' + emdata.k_no + '" id="cafeNo" >' + emdata.addr + '</span>';
@@ -553,14 +552,18 @@
                        console.log("flag : "+flag)
                        
                  }
+                 else {
+                	 content+='<span id="totalscore">평점 : '+emdata.score+'</span>';
+                	 
+                 }
               } else {
                  content += '<span title="' + emdata.addr + '">' + emdata.addr + '</span>';
                 
               }
       
 
-            content += '<span class="tel">' + emdata.tel + '<span class="btn btn-primary" id="reviewicon" >리뷰</span>';
-            content += '<span class="btn btn-primary" id="modalreview1" data-toggle="modal" data-target="#exampleModal1" val="">리뷰보기</span></span>';
+            content += '<span class="tel">' + emdata.tel + '<span class="btn btn-primary" id="reviewicon" >리뷰 작성</span>';
+            content += '<span class="btn btn-primary" id="modalreview1" data-toggle="modal" data-target="#exampleModal1" val="">리뷰 보기</span></span>';
             //content +="<table style='width:100%; text-align:reft;border: 1px solid black;'><thead><tr><td>작성자</td><td>리뷰내용</td></tr></thead>";
            /*  review.forEach(function(value){
             	content+="<tr><td>"+value.id+"</td><td>"+value.content+"</td></tr>";
@@ -700,6 +703,9 @@
             dataType : "text",
             success:function(data){
                console.log("성공하면 알람창띄워서 리뷰등록됬다고 말해주기");
+               $('#inputTitle').val('');
+               $('#inputContext').val('');
+               
             }
             
          });
