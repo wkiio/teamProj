@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
@@ -33,7 +35,11 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/chat.kosmo")
-	public String chat() {
+	public String chat(HttpServletRequest req) {
+		
+		System.out.println("네트워크??:" + req.getSession());
+		
+		
 		return "chatView.tiles";
 	}
 	

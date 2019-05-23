@@ -1,6 +1,9 @@
 package com.kosmo.baby.command;
 
+
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.InitializingBean;
@@ -13,6 +16,9 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 public class SocketHandler extends TextWebSocketHandler implements InitializingBean {
  
     private Set<WebSocketSession> sessionSet = new HashSet<WebSocketSession>();
+    
+    //세션아이디정보 넣는곳?
+    private Map<WebSocketSession,String> mapList = new HashMap<WebSocketSession, String>(); 
  
     public SocketHandler (){
         super();

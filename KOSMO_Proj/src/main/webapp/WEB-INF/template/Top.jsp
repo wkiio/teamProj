@@ -67,7 +67,7 @@
                                         </li>
                                         <li class="drop"><a href="calendar.kosmo">육아달력</a></li>
                                         <li class="drop"><a href="babyinfo.kosmo">육아정보</a></li>
-                                        <li class="drop"><a href="chatView.kosmo">채팅(미정)</a></li>
+                                        <li class="drop"><a href="chat.kosmo">채팅(미정)</a></li>
                                         <li class="drop"><a href="blookChain.kosmo">검증</a></li>
                                         <li class="drop"><a href="guestbook.kosmo">방명록</a></li>
                                         <li class="drop"><a href="#">마이페이지</a>

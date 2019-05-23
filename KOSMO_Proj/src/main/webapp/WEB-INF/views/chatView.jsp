@@ -60,7 +60,7 @@
 		//입장버튼 클릭시 ]-서버와 연결된 웹소켓 클라이언트 생성
 		$('#enterBtn').one('click',function(){
 			// 웹 소켓 객체로 서버에 연결하기
-			wsocket= new WebSocket("ws://localhost:8080<c:url value='/chat-ws.kosmo'/>")
+			wsocket= new WebSocket("ws://localhost:8080<c:url value='/echo.kosmo'/>")
 			wsocket.onopen = open;
 			 wsocket.onclose= function(){appendMessage('연결을 끊었어요')};
 			wsocket.addEventListener('message',message);
