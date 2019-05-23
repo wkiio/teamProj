@@ -32,6 +32,10 @@ public class HomeController {
 		return "login_page.tiles";	
 	}
 	
+	@RequestMapping("/chat.kosmo")
+	public String chat() {
+		return "chatView.tiles";
+	}
 	
 	@RequestMapping("/find_Id.kosmo")
 	public String find_id() {

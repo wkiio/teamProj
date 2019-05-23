@@ -42,11 +42,9 @@
 						</h3>
 					</div>
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> <input type="hidden" name="id" /> 
-<<<<<<< HEAD
-						<input type="hidden" name="gno" />
-=======
+
+
 					<input type="hidden" name="gno" />
->>>>>>> branch 'master2' of https://github.com/wkiio/teamProj.git
 					<!-- 수정 및 삭제용 파라미터 -->
 					<div style='overflow: hidden;'>
 						<!-- 
@@ -69,11 +67,10 @@
 				</div>
 				 -->
 						<div style='float: left; border: 5px solid blue; width: 30%'>
-<<<<<<< HEAD
-							<input type='file' id="image" name='image'  class="btn btn-success" var="">							
-=======
+
+
 							<input type='file' name='upload' id="image"  class="btn btn-success">							
->>>>>>> branch 'master2' of https://github.com/wkiio/teamProj.git
+
 						</div>
 
 						<div style='float: left; border: 5px solid green; width: 100%'>
@@ -109,31 +106,19 @@
 		var formData = new FormData($('#frm')[0]);
 		showComments();
 		$('#submit').click(function() {
-<<<<<<< HEAD
 			var image = document.getElementById("image");
 			console.log('클릭 확인');
-=======
-		//var upload = "D:\MMJ\Workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\wtpwebapps\KOSMO_Proj\upload";
-		  console.log('클릭 확인');
->>>>>>> branch 'master2' of https://github.com/wkiio/teamProj.git
 			if ($(this).val() == '확인') {
 				console.log('확인??');
 				formData = new FormData($('#frm')[0]);
 				formData.append("image", $("#image")[0].files[0]);
 				$.ajax({
 					url : "<c:url value='/GuestBook/Write.kosmo'/>",
-<<<<<<< HEAD
-					data : {'image' : image,
-						
-					},
-							
-=======
 					data : formData,
                     beforeSend : function(xhr)
                     {   
                         xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
                     },
->>>>>>> branch 'master2' of https://github.com/wkiio/teamProj.git
 					dataType : 'text',
 					type : 'post',
 					contentType: false,
@@ -289,50 +274,7 @@
 		});
 
 	};/////////displayComments
-	/*
-	$('#image').click(function(){
-	console.log('이미지 클릭')
 	
-	
-	});
-	
-	var file = document.querySelector('#image');
-	
-	file.onchange = function() {
-		console.log('파일 이미지 스타트')
-		
-		var fileList = file.files;
-		//읽기
-		var reader = new FileReader();
-		reader.readAsDataURL(fileList[0]);
-		
-		reader.onload = function(){
-			document.querySelector('#preview').src = reader.result;
-		};
-		
-	};
-	 */
-	/* 
-	 function readURL(input) {
-	
-	 if (input.files && input.files[0]) {
-	 var reader = new FileReader();
-	
-	 reader.onload = function (e) {
-	 $('#image_section').attr('src', e.target.result);
-	 }
-	
-	 reader.readAsDataURL(input.files[0]);
-	 }
-	 }
-	
-	 $("#imgInput").change(function(){
-	 readURL(this);
-	 });
-
-	 */
-
-	 
 	 
 	 
 	 

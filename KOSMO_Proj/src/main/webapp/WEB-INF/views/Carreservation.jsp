@@ -21,6 +21,8 @@ height:800px;
 
 </style>
 
+
+
 <script>
    $(function(){
       console.log('${yes}'=="222");
@@ -324,6 +326,10 @@ $('.starR').click(function(){
          $('.carriewform').submit(); */
    });
 });
+
+var aa = '${nonono}';
+console.log("컨트롤러에서 받아오는값?:" + aa);
+
 </script>
 
 <script src="https://code.jquery.com/jquery-latest.js"></script>

@@ -223,7 +223,7 @@ public class Carpool_borderController {
 		}
 
 		model.addAttribute("selist", list);
-
+		model.addAttribute("nonono","시발");
 		
 				
 		return "Carreservation.tiles";
