@@ -61,7 +61,7 @@
                                         <li class="drop"><a href="serviceclick.kosmo">서비스</a>
                                         <ul class="dropdown__menu">
                                                 <li><a href="Carindex.kosmo">이동리스트</a></li>
-                                                <li><a href="daum.kosmo">지도검색</a></li>
+                                                <li><a href="aaabbb.kosmo">지도검색</a></li>
                                                 <li><a href="aiApi.kosmo">베이비페어</a></li>                                             
                                             </ul>
                                         </li>

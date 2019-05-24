@@ -27,6 +27,11 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
 	
+	@RequestMapping("/aaabbb.kosmo")
+	public String aaabbb() {
+		return "aaabbb.tiles";
+	}
+	
 	@RequestMapping("/login_page.kosmo")
 	public String login_page() {
 		return "login_page.tiles";	
