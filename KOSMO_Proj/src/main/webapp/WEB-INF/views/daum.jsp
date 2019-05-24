@@ -484,7 +484,7 @@
 	            	            	
 	            	             });
             	             }
-            	             else{html+="<tr><td colspan='3'>등록된 리뷰가 없습니다</td></tr>";}
+            	             else{html+="<tr><td colspan='3' style='text-align:center;'>등록된 리뷰가 없습니다</td></tr>";}
             	             html+="</table></div></div><div class='modal-footer'><button type='button' class='btn btn-secondary' data-dismiss='modal'>닫기</button>";
             	             $('.reviewtable').html(html); 
             	            }
