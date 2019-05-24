@@ -37,7 +37,7 @@
 											</div>
 											<div class="custom-control custom-checkbox mb-3">
 												<input type="checkbox" id="idSaveCheck">
-												<label for="checkbox">아이디 저장</label>
+												<label for="checkbox">&nbsp;&nbsp;아이디 저장</label>
 											</div>
 											<button class="btn btn-lg btn-block btn-login font-weight-bold mb-2" type="submit">로그인</button>
 										</form>
