@@ -147,8 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	            	}
 	            	$('#startStr').val(info.startStr)
 	            	$('#endStr').val(str)
-	      		}
-	        	alert('selected ' + startDay + ' to ' + endDay);           	
+	      		}        	
 	        	$('#startdate').val(startDay);
 	        	$('#enddate').val(endDay);
 	        	$('#calcontent').val(null);
