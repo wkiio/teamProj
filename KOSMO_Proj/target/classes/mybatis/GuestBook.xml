@@ -13,7 +13,7 @@
 	</insert> 
 	
 	<update id="commentUpdate" parameterType="java.util.Map">
-		UPDATE guestbook SET gComment=#{gcomment} WHERE gNo =#{gno}
+		UPDATE guestbook SET gComment=#{gcomment},image=#{image} WHERE gNo =#{gno}
 	</update>
 	
 	<delete id="commentDelete" parameterType="java.util.Map">

@@ -140,7 +140,20 @@ public class HospitalController {
             }
             if(!(count == 0 || realscore == 0)) {
         		value = realscore/count;
-        		recode.put("score",value);
+        		String star = "";
+                switch(value) {
+                case 1 : star = "★☆☆☆☆☆☆☆☆☆"; break;
+                case 2 : star = "★★☆☆☆☆☆☆☆☆"; break;
+                case 3 : star = "★★★☆☆☆☆☆☆☆"; break;
+                case 4 : star = "★★★★☆☆☆☆☆☆"; break;
+                case 5 : star = "★★★★★☆☆☆☆☆"; break;
+                case 6 : star = "★★★★★★☆☆☆☆"; break;
+                case 7 : star = "★★★★★★★☆☆☆"; break;
+                case 8 : star = "★★★★★★★★☆☆"; break;
+                case 9 : star = "★★★★★★★★★☆"; break;
+                case 10 : star = "★★★★★★★★★★"; break;
+                }
+        		recode.put("score",star);
         		}
         	else  { 
         		recode.put("score","리뷰 기록이 없습니다"); 

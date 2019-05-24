@@ -111,7 +111,7 @@
 							</div>
 							<div class="service__details">
 								<h6><a href="service.html">육아 영상</a></h6>
-								<p>요즘 대세인 유뷰브를 이용해서 육아 및 애니메이션 영상을 확인하여 봅니다.</p>
+								<p>요즘 대세인 유뷰브를 이용해서 육아 및 애니메이션 영상을 확인하여 봅니다.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </p>
 								<div class="service__btn">
 									<a class="dcare__btn btn__gray hover--theme min__height-btn" href="babyinfo.kosmo">Read More</a>
 								</div>

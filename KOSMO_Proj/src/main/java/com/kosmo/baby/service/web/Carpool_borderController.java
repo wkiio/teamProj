@@ -175,7 +175,21 @@ public class Carpool_borderController {
 		}
 		if(!(counter == 0 || realscore == 0)) {
 		value = realscore/counter;
-		model.addAttribute("score",value);
+		
+		String star = "";
+        switch(value) {
+        case 1 : star = "★☆☆☆☆☆☆☆☆☆"; break;
+        case 2 : star = "★★☆☆☆☆☆☆☆☆"; break;
+        case 3 : star = "★★★☆☆☆☆☆☆☆"; break;
+        case 4 : star = "★★★★☆☆☆☆☆☆"; break;
+        case 5 : star = "★★★★★☆☆☆☆☆"; break;
+        case 6 : star = "★★★★★★☆☆☆☆"; break;
+        case 7 : star = "★★★★★★★☆☆☆"; break;
+        case 8 : star = "★★★★★★★★☆☆"; break;
+        case 9 : star = "★★★★★★★★★☆"; break;
+        case 10 : star = "★★★★★★★★★★"; break;
+        }
+		model.addAttribute("score",star);
 		}
 		else { model.addAttribute("score","운행 기록이 없습니다"); } 
 		
@@ -208,7 +222,7 @@ public class Carpool_borderController {
 		
 		carservice.adminInsert(map);
 		System.out.println("reservation 테이블에 들어가버렸습니다");		
-		return "forward:Carreservation.kosmo";
+		return "forward:sendPush.kosmo";
 	}
 	//예약현황
 	@RequestMapping("/Carreservation.kosmo")
@@ -234,7 +248,7 @@ public class Carpool_borderController {
 		carservice.updateHasp(map);
 		carservice.yesupdate(map);
 		model.addAttribute("yes","222");
-		return "forward:Carreservation.kosmo";
+		return "forward:sendPush2.kosmo";
 	}
 	
 	@RequestMapping("/Car.kosmo")
@@ -273,6 +287,8 @@ public class Carpool_borderController {
 		model.addAttribute("done",dto.getDone());
 		model.addAttribute("reviewed",dto.getReviewed());
 		model.addAttribute("cp_no",dto.getCp_no());
+		model.addAttribute("title",dto.getTitle());
+		model.addAttribute("content",dto.getContent());
 
 		System.out.println("방 번호 번호");
 		

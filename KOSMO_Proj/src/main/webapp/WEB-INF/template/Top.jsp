@@ -61,16 +61,14 @@
                                         <li class="drop"><a href="serviceclick.kosmo">서비스</a>
                                         <ul class="dropdown__menu">
                                                 <li><a href="Carindex.kosmo">이동리스트</a></li>
-                                                <li><a href="aaabbb.kosmo">지도검색</a></li>
-                                                <li><a href="aiApi.kosmo">베이비페어</a></li>                                             
+                                                <li><a href="aaabbb.kosmo">지도검색</a></li>                                            
                                             </ul>
                                         </li>
                                         <li class="drop"><a href="calendar.kosmo">육아달력</a></li>
                                         <li class="drop"><a href="babyinfo.kosmo">육아정보</a></li>
-                                        <li class="drop"><a href="chatView.kosmo">채팅(미정)</a></li>
                                         <li class="drop"><a href="blookChain.kosmo">검증</a></li>
                                         <li class="drop"><a href="guestbook.kosmo">방명록</a></li>
-                                        <li class="drop"><a href="#">마이페이지</a>
+                                        <li class="drop"><a href="sendPush.kosmo">마이페이지</a>
                                             <ul class="dropdown__menu">
                                                 <li><a href="mypage_one.kosmo">개인정보</a></li>
                                                 <li><a href="Carreservation.kosmo">예약현황</a></li>                                                

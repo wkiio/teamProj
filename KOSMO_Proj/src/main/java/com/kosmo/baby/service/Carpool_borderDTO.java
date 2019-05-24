@@ -28,9 +28,20 @@ public class Carpool_borderDTO {
 	private String photo;
 	private String cartype;
 	
+	//reservation 타이틀
+	private String title;
+	
+
 	//편의를 위한 추가
 	private String partnerstatus;
 	
+	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	
 	public String getPartnerstatus() {
 		return partnerstatus;

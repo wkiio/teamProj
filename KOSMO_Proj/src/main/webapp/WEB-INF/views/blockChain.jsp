@@ -124,11 +124,15 @@ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.
 background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
 }
 
-input {
+ input {
 text-align: right;
 border:0;
 outline: 0;
+} 
+.td_time {
+  width: 275px;
 }
+
 
 
 </style>
@@ -186,13 +190,11 @@ outline: 0;
                      <td colspan="2">
                         <table>
                            <tr>
-                              <td class="title" style="font-family:sans-serif"><img style="width:23%"
-                                 src='<c:url value="/resources/images/AranVal.png"/>'
-                                 "><span style=""> 글 등록</span></td>
+                              <td class="title" style="font-family:sans-serif"><img style="width:23%" src='<c:url value="/resources/images/AranVal.png"/>'>
+                                 <span> 글 등록<small style="font-size:large">1/4</small></span></td>
 
-                              <td>TimeStamp #: <input type="text" id="time1" value="" readonly/><br>
+                              <td class="td_time">TimeStamp #: <input type="text" id="time1" value="" readonly/><br>
                                  Tx Hash: <input type="text" id="tranhash1" value="" readonly/><br>
-                                 BY : DANNY KIM 2019 (1)
                               </td>
                            </tr>
                         </table>
@@ -230,28 +232,23 @@ outline: 0;
          </tr>
  -->
                   <tr class="heading">
-                     <td>Item</td>
+                     <td>항목</td>
 
-                     <td>Price</td>
+                     <td>실제 정보</td>
                   </tr>
 
                   <tr class="item">
                      <td>구분</td>
 
-                     <td><input type="text" id="division1" style="text-align: right"readonly /></td>
+                     <td><input type="text" id="division1" style="text-align: right;font-weight: 100;" readonly /></td>
                   </tr>
 
                   <tr class="item">
                      <td>ID</td>
 
-                     <td><input type="text" id="iden1" readonly /></td>
+                     <td><input type="text" id="iden1" style="text-align: right;font-weight: 100;"readonly /></td>
                   </tr>
-
-                  <tr class="item last">
-                     <td>주소</td>
-
-                     <td><input type="text" id="addr1" readonly /></td>
-                  </tr>
+            
 
                   <tr class="total">
                      <td></td>
@@ -273,13 +270,10 @@ outline: 0;
                      <td colspan="2">
                         <table>
                            <tr>
-                              <td class="title"><img style="width:23%;font-family:sans-serif"
-                                 src='<c:url value="/resources/images/AranVal.png"/>'
-                                 "><span style=""> 계약 체결</span></td>
-
-                              <td>TimeStamp #: <input type="text" id="time2" value="" /><br>
-                                 Tx Hash: <input type="text" id="tranhash2" value="" /><br>
-                                 BY : DANNY KIM 2019 (2)
+                              <td class="title"><img style="width:23%;font-family:sans-serif" src='<c:url value="/resources/images/AranVal.png"/>'>
+                                 <span> 계약 체결<small style="font-size:large">2/4</small></span></td>
+                              <td class="td_time">TimeStamp #: <input type="text" id="time2" value="" readonly/><br>
+                                 Tx Hash: <input type="text" id="tranhash2" value="" readonly/><br>
                               </td>
                            </tr>
                         </table>
@@ -294,9 +288,8 @@ outline: 0;
                               <td>송신자 <br>수신자 <br>가스 사용량
                               </td>
 
-                              <td><input type="text" id="from2" value="" /><br> <input
-                                 type="text" id="to2" value="" /><br> <input type="text"
-                                 id="gas2" value="" /></td>
+                              <td><input type="text" id="from2" value="" /><br> <input type="text" id="to2" value="" readonly/><br> 
+                              <input type="text" id="gas2" value="" readonly/></td>
 
                            </tr>
                         </table>
@@ -317,29 +310,24 @@ outline: 0;
          </tr>
  -->
                   <tr class="heading">
-                     <td>Item</td>
+                     <td>항목</td>
 
-                     <td>Price</td>
+                     <td>실제 정보</td>
                   </tr>
 
                   <tr class="item">
                      <td>구분</td>
 
-                     <td><input type="text" id="division2" readonly /></td>
+                     <td><input type="text" id="division2" style="text-align: right;font-weight: 100;"readonly /></td>
                   </tr>
 
                   <tr class="item">
                      <td>ID</td>
 
-                     <td><input type="text" id="iden2" readonly /></td>
+                     <td><input type="text" id="iden2" style="text-align: right;font-weight: 100;"readonly /></td>
                   </tr>
 
-                  <tr class="item last">
-                     <td>주소</td>
-
-                     <td><input type="text" id="addr2" readonly /></td>
-                  </tr>
-
+   
                   <tr class="total">
                      <td></td>
 
@@ -361,11 +349,10 @@ outline: 0;
                            <tr>
                               <td class="title"><img style="width:23%;font-family:sans-serif"
                                  src='<c:url value="/resources/images/AranVal.png"/>'
-                                 "><span style=""> 운행 완료</span></td>
+                                 ><span> 운행완료<small style="font-size:large">3/4</small></span></td>
 
-                              <td>TimeStamp #: <input type="text" id="time3" value="" /><br>
-                                 Tx Hash: <input type="text" id="tranhash3" value="" /><br>
-                                 BY : DANNY KIM 2019 (3)
+                              <td class="td_time">TimeStamp #: <input type="text" id="time3" value="" readonly/><br>
+                                 Tx Hash: <input type="text" id="tranhash3" value="" readonly/><br>
                               </td>
                            </tr>
                         </table>
@@ -380,9 +367,9 @@ outline: 0;
                               <td>송신자 <br> 수신자 <br> 가스 사용량
                               </td>
 
-                              <td><input type="text" id="from3" value="" /><br> <input
-                                 type="text" id="to3" value="" /><br> <input type="text"
-                                 id="gas3" value="" /></td>
+                              <td><input type="text" id="from3" value="" readonly/><br> <input
+                                 type="text" id="to3" value="" readonly/><br> <input type="text"
+                                 id="gas3" value="" readonly/></td>
 
                            </tr>
                         </table>
@@ -403,15 +390,15 @@ outline: 0;
          </tr>
  -->
                   <tr class="heading">
-                     <td>Item</td>
+                     <td>항목</td>
 
-                     <td>Price</td>
+                     <td>실제 정보</td>
                   </tr>
 
                   <tr class="item">
                      <td>완료여부</td>
 
-                     <td><input type="text" id="division3" readonly /></td>
+                     <td><input type="text" id="division3" style="text-align: right;font-weight: 100;" readonly /></td>
                   </tr>
 
                   <tr class="item">
@@ -440,11 +427,10 @@ outline: 0;
                            <tr>
                               <td class="title"><img style="width:23%;font-family:sans-serif "
                                  src='<c:url value="/resources/images/AranVal.png"/>'
-                                 "><span style=""> 평점 부여</span></td>
+                                 ><span> 평점 부여<small style="font-size:large">4/4</small></span></td>
 
-                              <td>TimeStamp #: <input type="text" id="time4" value="" /><br>
-                                 Tx Hash: <input type="text" id="tranhash4" value="" /><br>
-                                 BY : DANNY KIM 2019 (4)
+                              <td class="td_time">TimeStamp #: <input type="text" id="time4" value="" readonly/><br>
+                                 Tx Hash: <input type="text" id="tranhash4" value="" readonly/><br>
                               </td>
                            </tr>
                         </table>
@@ -459,9 +445,9 @@ outline: 0;
                               <td>송신자 <br> 수신자 <br> 가스 사용량
                               </td>
 
-                              <td><input type="text" id="from4" value="" /><br> <input
-                                 type="text" id="to4" value="" /><br> <input type="text"
-                                 id="gas4" value="" /></td>
+                              <td><input type="text" id="from4" value="" readonly/><br> <input
+                                 type="text" id="to4" value="" readonly/><br> <input type="text"
+                                 id="gas4" value="" readonly/></td>
 
                            </tr>
                         </table>
@@ -482,21 +468,25 @@ outline: 0;
          </tr>
  -->
                   <tr class="heading">
-                     <td>Item</td>
+                     <td>항목</td>
 
-                     <td>Price</td>
+                     <td>실제 정보</td>
                   </tr>
 
+                  <tr class="item">
+                     <td>리뷰 제목</td>
+                     <td><input type="text" id="division5" style="text-align: right;font-weight: 100;"readonly /></td>
+                  </tr>
+                  <tr class="item">
+                     <td>리뷰 내용</td>
+                     <td><input type="text" id="division6" style="text-align: right;font-weight: 100;"readonly /></td>
+                  </tr>
                   <tr class="item">
                      <td>평점</td>
-
-                     <td><input type="text" id="division4" readonly /></td>
+                     <td><input type="text" id="division4" style="text-align: right;font-weight: 100;"readonly /></td>
                   </tr>
 
-                  <tr class="item">
-                     
-                  </tr>
-
+                 
                   <tr class="item last">
                      
                   </tr>
@@ -648,7 +638,23 @@ let receipt=async function(hash1,hash2,hash3,hash4){
         $('#from4').val(r['from']);
         $('#gas4').val(r['gasUsed']);
         message.getSign(${cp_no},function(e,r){
-           $('#division4').val(web3.toDecimal(r[7]));
+        var i = web3.toDecimal(r[7]);
+        var star = "";
+        switch(i) {
+        case 1 : star = "★☆☆☆☆☆☆☆☆☆"; break;
+        case 2 : star = "★★☆☆☆☆☆☆☆☆"; break;
+        case 3 : star = "★★★☆☆☆☆☆☆☆"; break;
+        case 4 : star = "★★★★☆☆☆☆☆☆"; break;
+        case 5 : star = "★★★★★☆☆☆☆☆"; break;
+        case 6 : star = "★★★★★★☆☆☆☆"; break;
+        case 7 : star = "★★★★★★★☆☆☆"; break;
+        case 8 : star = "★★★★★★★★☆☆"; break;
+        case 9 : star = "★★★★★★★★★☆"; break;
+        case 10 : star = "★★★★★★★★★★"; break;
+        }
+           $('#division4').val(star + "("+i+")");
+           $('#division5').val('${title}');
+           $('#division6').val('${content}');
 
     });
   

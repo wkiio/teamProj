@@ -67,11 +67,15 @@
             </div>
              -->
 
-                  <div style='float: left; border: 5px solid green; width: 100%'>
-                     <input id="submit" class="btn btn-info" value="확인" />
-                  </div>
-                  <div style='float: left; border: 5px solid blue; width: 30%'>
-                     <input type='file' name='upload' id="image"  class="btn btn-success">                     
+                  <div class="text-center my-3">
+                     <div style='width: 30%;margin-right: 10px;display: inline-block;'>
+                        <label for="image" class="btn btn-success" style="width: 100%;">이미지</label>
+                        <input type='file' name='upload' id="image"  class="btn btn-success" style="display: none">                     
+                     </div>
+   
+                     <div style="width: 30%;display: inline-block;">
+                        <input id="submit" class="btn btn-info" value="확인" />
+                     </div>
                   </div>
                </div>
             </form>
@@ -113,6 +117,7 @@
                 processData: false,
                success : function() {
                   console.log('성공');
+                  $('#image').val('');
                   showComments();
                   //입력댓글 클리어 및 포커스 주기
                   $('#gcomment').focus();
@@ -142,6 +147,7 @@
                success : function() {
                   console.log('답변 입력 성공');
                   showComments()
+                  $('#image').val('');
                   $('#gcomment').focus();
                   $('#gcomment').val('');
                   $('#submit').val('확인')
