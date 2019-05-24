@@ -24,11 +24,11 @@
 	<div class="container">
 		<div class="col-md-12" id="serviceDiv">
 			<div id="serviceChoice">서비스 선택 페이지</div>
-			<a href="daumapi.kosmo">
+			<a href="aaabbb.kosmo">
 					<img id="serviceImg" src="./Bootstrap/images/map1.png" alt="맵 이미지1"
 						title="병원 등 공공장소를 검색합니다." />
 			</a>
-			<a href="aaabbb.kosmo">
+			<a href="Carindex.kosmo">
 				<img id="serviceImg" src="./Bootstrap/images/car1.png" alt="자동차 이미지1"
 					title="카풀 이용 사이트로 이동합니다." />
 			</a>

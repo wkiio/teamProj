@@ -118,13 +118,13 @@ display: none;
 						<div class="form-group">
 							<label for="start" class="col-form-label">출발지: </label>
 							<div class="col">
-								<input type="text" id="start" name="startpoint" value="${list.startpoint }" class="form-control search_point" placeholder="출발위치" />
+								<input type="text" id="start" name="startpoint" value="${list.startpoint }" class="form-control search_point" placeholder="출발위치" required/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="end" class="col-form-label">도착지: </label>
 							<div class="col">
-								<input type="text" id="end" name="endpoint" value="${list.endpoint }" class="form-control search_point" placeholder="도착위치" />
+								<input type="text" id="end" name="endpoint" value="${list.endpoint }" class="form-control search_point" placeholder="도착위치" required/>
 							</div>
 						</div>
 						<!-- 출발 도착 위치 위도, 경도 저장용 -->
@@ -142,13 +142,13 @@ display: none;
 						<div class="form-group">
 							<label for="point" class="col-form-label pay">금액: </label>
 							<div class="col">
-								<input type="text" id="price" name="price" class="form-control" placeholder="금액 입력해주세요" value="${list.price }"/>
+								<input type="text" id="price" name="price" class="form-control" placeholder="금액 입력해주세요" value="${list.price }" required/>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="datepicker1" class="col-form-label pay">날짜: </label>
 							<div class="col">
-								<input type="text" id="time" name="time" class="form-control" placeholder="날짜 입력해주세요" value="${list.time }"/>
+								<input type="text" id="time" name="time" class="form-control" placeholder="날짜 입력해주세요" value="${list.time }" required/>
 							</div>
 						</div>
 					</div>

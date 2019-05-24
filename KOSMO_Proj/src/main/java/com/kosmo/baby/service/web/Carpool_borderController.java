@@ -137,6 +137,7 @@ public class Carpool_borderController {
 			record.put("type",dto.getType());
 			record.put("carseat",dto.getCarseat());
 			record.put("partnerstatus",dto.getPartnerstatus());
+			record.put("status", dto.getStatus());
 			record.put("photo",dto.getPhoto().split("memberPhoto")[1].substring(1));
 			System.out.println("사진경로:" + dto.getPhoto().split("memberPhoto")[1].substring(1));
 			System.out.println("카시트 유무"+dto.getCarseat());
@@ -197,7 +198,6 @@ public class Carpool_borderController {
 		System.out.println("상세보기 시간");
 		System.out.println(list.getContent());
 		model.addAttribute("photo",list.getPhoto().split("memberPhoto")[1].substring(1));
-		
 		model.addAttribute("dto", list);
 		model.addAttribute("partnerstatus", list.getPartnerstatus());
 		

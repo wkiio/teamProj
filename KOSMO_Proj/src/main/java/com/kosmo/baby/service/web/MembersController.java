@@ -182,7 +182,7 @@ public class MembersController {
 		email   += 
 				"<table style=\"text-align: center;\" width=\"500px\">" + 
 				"	<tbody><tr><td>" + 
-				"				<a href='http://localhost:8080/baby/emailConfirm.kosmo?email="+map.get("email")+"&authkey="+key+"' target='_blenk'><img alt=\"open_img\" height=\"291px\" src='https://blogfiles.pstatic.net/MjAxOTA1MTdfNyAg/MDAxNTU4MDYzOTc1MDY2.Y2o_m7tgcjPrSmubpJ8fWi101MA6RaV0-_b-33wfLk0g.v24iEcLNwf5li2Y4Fnoga9OhavYh9QQ2GToWV5GNc80g.PNG.yuemj/Aran.png?type=w1'></a>" + 
+				"				<a href='http://localhost:8080/baby/emailConfirm.kosmo?email="+map.get("email")+"&authkey="+key+"&id="+map.get("id")+"' target='_blenk'><img alt=\"open_img\" height=\"291px\" src='https://blogfiles.pstatic.net/MjAxOTA1MTdfNyAg/MDAxNTU4MDYzOTc1MDY2.Y2o_m7tgcjPrSmubpJ8fWi101MA6RaV0-_b-33wfLk0g.v24iEcLNwf5li2Y4Fnoga9OhavYh9QQ2GToWV5GNc80g.PNG.yuemj/Aran.png?type=w1'></a>" + 
 				"			</td></tr><tr><td>" + 
 				"				<p style=\"font-size: 15px; font-stretch: normal; line-height: 1.5; letter-spacing: normal;color: #333333; word-break: keep-all; margin-bottom: 30px;\">아란 회원가입을 위해서 이메일 인증이 필요합니다.</p>" + 
 				"				<p style=\"font-size: 15px; font-stretch: normal; line-height: 1.5; letter-spacing: normal;color: #333333; word-break: keep-all; margin-bottom: 30px;\">위의 이미지를 클릭하면 인증이 완료됩니다.\r\n</p>" + 

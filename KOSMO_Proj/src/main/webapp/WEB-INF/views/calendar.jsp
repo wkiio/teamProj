@@ -147,11 +147,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	            	}
 	            	$('#startStr').val(info.startStr)
 	            	$('#endStr').val(str)
-<<<<<<< HEAD
+
 	      		}
-=======
-	      		}        	
->>>>>>> branch 'master3' of https://github.com/wkiio/teamProj.git
+
 	        	$('#startdate').val(startDay);
 	        	$('#enddate').val(endDay);
 	        	$('#calcontent').val(null);

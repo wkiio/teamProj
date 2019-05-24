@@ -73,13 +73,11 @@
    <select id="findPwd" parameterType="java.util.Map" resultType="MembersDTO">
    		SELECT name,pwd FROM members WHERE name=#{name} AND email=#{email} AND id=#{id}
    </select>
-   
-   
-	
+   	
 	<!-- 이메일 인증완료 SQL -->
 	<!-- 이메일에서 받은 링크를 누르면 enabled가 0에서 1로 바뀝니다. -->
 	<update id="emailConfirm" parameterType="java.util.Map">
-		UPDATE members SET enabled = CASE WHEN authkey = #{authkey} THEN 1 ELSE 0 END WHERE email = #{email}
+		UPDATE members SET enabled = CASE WHEN authkey = #{authkey} THEN 1 ELSE 0 END WHERE email = #{email} AND id=#{id}
 	</update>
 	
 </mapper>

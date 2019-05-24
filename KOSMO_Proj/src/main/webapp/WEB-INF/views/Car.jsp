@@ -159,9 +159,11 @@ height:800px;
 			 $('#carList').empty();	
 			 var html="";
 			
-			 $.each(data,function(index,carlist){		
+			 $.each(data,function(index,carlist){	
+				 if(carlist['status']=="0"){
 				if(clickchange == 1){
-				 ///전체화면띄우기		
+				 ///전체화면띄우기
+				 
 				 html += "<tr id="+carlist['cp_no']+">";
 				 html+="<th scope=\"row\"><figure class=\"profile listtd\"><img id=\"memberphoto\" src=\"<c:url value='/resources/memberPhoto/"+carlist["photo"]+"'/>\" alt=\"프로필\" class=\"picture listtd\"><figcaption class=\"name listtd\"></figcaption></figure></th>";
 				 html+="<td><div class=\"start_con listtd\"><h6>"+carlist['startpoint']+"</h6><span>"+carlist['time']+"</span></div></td>";
@@ -195,6 +197,7 @@ height:800px;
 						 html+="<td><span class=\"cp_time listtd\">"+carlist['carseat']+"</td></tr>";	
 						 
 					}
+				}
 				}
 			});////each
 			
