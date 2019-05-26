@@ -292,6 +292,7 @@
                               <th style= "background-color: #ffaec9">주소</th>
                               <th style= "background-color: #ffaec9">카풀</th>
                               <th style= "background-color: #ffaec9">변경</th>
+                              <th style= "background-color: #ffaec9">확인</th>
                            </tr>                     
                         </thead>
                      </table>
@@ -302,7 +303,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
-                                    <p>Copyright Â© 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                    <p>시발 아란 프로젝트 <a href="https://colorlib.com">개같은 아란</a>.</p>
                                 </div>
                             </div>
                         </div>
@@ -375,7 +376,12 @@
                     "data": null,
                     "defaultContent": "<button class='btn btn-sm ' style='background-color:#fc466b; text-align: center; color:white'>삭제</button>"
                 },
-           ]  
+                {
+                    "targets": 7,
+                    "data": null,
+                    "defaultContent": "<button class='btn btn-sm ' style='background-color:#fc466b; text-align: center; color:white'>확인</button>"                    
+                }
+           ]         
            });
        });//document.ready
          $(function() {
@@ -383,25 +389,33 @@
             var sa;
             var name;
             $('#dataTable3 tbody').on('click', 'button', function() {
-
-               ss = $(this).parent().parent();
+               ss = $(this).parent().parent();               
                sa = ss.children();
-
                name = sa.eq(0).text();
-               alert("클릭한값의 아이디는: " + sa.eq(0).text());
-               
-               $.ajax({
-                  type : "POST",
-                  url : "/baby/deleteMember.kosmo",
-                  data : {
-                     'id' : name,"${_csrf.parameterName}" : "${_csrf.token}"
-                  },
-                  dataType : "json",
-                  success:function(){
-                     $("#dataTable3").DataTable().ajax.reload();   
-                  }
-
-               });
+              // alert("클릭한값의 아이디는: " + sa.eq(0).text());
+              
+              if($(this).html() == "삭제"){ 
+               var result = confirm('진짜 삭제할꺼야?');
+               if(result){          
+	               $.ajax({
+	                  type : "POST",
+	                  url : "/baby/deleteMember.kosmo",
+	                  data : {
+	                     'id' : name,"${_csrf.parameterName}" : "${_csrf.token}"
+	                  },
+	                  dataType : "json",
+	                  success:function(){
+	                     $("#dataTable3").DataTable().ajax.reload();   
+	                  }
+	
+	               });
+               }
+              }
+              else{
+            	  
+            	  console.log("확인하는거");
+            	  
+              }
 
             });
 

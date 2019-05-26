@@ -114,6 +114,8 @@
 </sec:authorize>
 
 
+
+
 <div class="site-section" style="padding: 2em;">
    <div class="container">
 		<div class="row no-gutter">
@@ -124,9 +126,13 @@
 	
 						<figure class="profile">
 							<h2>등록자</h2>
-							<img id="memberphoto" src="<c:url value='/resources/memberPhoto/${photo }'/>" title="프로필" alt="프로필" class="picture">
-							<figcaption class="name">${dto.name }</figcaption>
-							<h5>${pre.cp_no } / ${pre.finish }</h5>
+							<img id="memberphoto" src="<c:url value='/resources/memberPhoto/${photo }'/>" title="프로필" alt="프로필" class="picture" style="width:100px">
+							<c:forEach var="item" items="${aaaaa}" varStatus="loop">	
+								<h6>이전글 : ${item.precp_no}번 상태: ${item.finish }</h6> 							
+							</c:forEach>
+							<%-- <figcaption class="name">${dto.name }</figcaption>
+							<h5>${precp_no }</h5> --%>
+							
 						</figure>
 						<div class="mt-1">
 							
@@ -233,9 +239,16 @@
 
 
 <script>
+
+ var dfdd = '${aaaaa}';
+
+console.log("dfdd:" + dfdd); 
+
+
+
 var message;
 window.addEventListener('load', async () => {
-    // Modern dapp browsers...
+    // Modern dapp browsers.....
     if (window.ethereum) {
         window.web3 = new Web3(ethereum);
         try {
