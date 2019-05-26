@@ -181,7 +181,27 @@ public class HospitalController {
           recode.put("k_no_1", dto.getK_no_1());
           recode.put("name", dto.getName());
           recode.put("rv_no", dto.getRv_no());
-          recode.put("score", dto.getScore());
+          
+          String star = "";
+          String a = dto.getScore();
+          switch(Integer.parseInt(a)) {
+          case 1 : star = "★×1"; break;
+          case 2 : star = "★×2"; break;
+          case 3 : star = "★×3"; break;
+          case 4 : star = "★×4"; break;
+          case 5 : star = "★×5"; break;
+          case 6 : star = "★×6"; break;
+          case 7 : star = "★×7"; break;
+          case 8 : star = "★×8"; break;
+          case 9 : star = "★×9"; break;
+          case 10 : star = "★×10"; break;
+          }
+          recode.put("score", star);
+          
+          
+          
+          
+          
           recode.put("tel", dto.getTel()==null?"":dto.getTel());
           recode.put("title", dto.getTitle());
 

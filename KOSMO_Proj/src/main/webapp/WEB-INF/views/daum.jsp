@@ -506,12 +506,12 @@
    // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
    function addMarker(position, order) {
 
-      var imageSrc = 'http://192.168.0.60:8080/baby/resources/map_icons/totalicons.jpg', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+      var imageSrc = 'http://192.168.0.100:8080/baby/resources/map_icons/totalicons.jpg', // 마커 이미지 url, 스프라이트 이미지를 씁니다
       imageSize = new daum.maps.Size(27, 28), // 마커 이미지의 크기
       imgOptions = {
          spriteSize : new daum.maps.Size(72, 208), // 스프라이트 이미지의 크기
          spriteOrigin : new daum.maps.Point(46, (order * 36)), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
-         offset : new daum.maps.Point(11, 28)
+         offset : new daum.maps.Point(11, 24)
       // 마커 좌표에 일치시킬 이미지 내에서의 좌표
       }, markerImage = new daum.maps.MarkerImage(imageSrc, imageSize,
             imgOptions), marker = new daum.maps.Marker({
