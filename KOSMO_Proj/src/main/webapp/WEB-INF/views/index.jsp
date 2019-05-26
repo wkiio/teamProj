@@ -125,5 +125,12 @@
 			</div>
 		</section>
 		<!-- End Our Service Area -->
+		<%
+                  String declare = "ㅅㅄㅂ";
+         %>
 
-		
+<script>
+
+var tmp1 = "<%=declare%>";
+console.log(tmp1);
+</script>

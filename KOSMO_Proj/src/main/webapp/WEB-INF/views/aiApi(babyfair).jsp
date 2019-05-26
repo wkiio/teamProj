@@ -372,7 +372,7 @@ margin-bottom:15px;
 			</c:forTokens>
 		</div>
 		<div   class="col-md-12" style="z-index=10;text-align: center;margin-top: 20px">
-			<h2>전시품목 가격 알아보기</h2>        		
+			<h2>품목 가격 알아보기</h2>        		
 			<!--   <p align="center" id = "이미지받기" style="height:150px;width:150px;border: 3px solid #5f84b7;margin:0 auto;">여기에 제품을 끌어보세요!</p> -->
 			<div class="loading-container">
 				<div class="loading"></div>
@@ -451,45 +451,7 @@ function hideLoading(){
 }
 
 
-
-function checkImage(data) {
-   
-   //indexOf는 맞으면 0 아니면 -1을 반환한다;
-   
-   console.log('data : ' + data);
-   console.log("??? : " + data.indexOf("riding"));
-   
-   
-   if((data.indexOf("carriage") != -1 ) && (data.indexOf("riding") != -1) ) //유모차
-      return "유모차";   
-   else if( (data.indexOf("wearing") != -1 )&& (data.indexOf("clothing") != -1) && (data.indexOf("underwear") != -1) )//임산부복
-      return "임산부복";   
-   else if( (data.indexOf("plate") != -1 )&& (data.indexOf("bed") != -1) && (data.indexOf("young") != -1) )//아기매트
-      return "아기매트";   
-   else if( (data.indexOf("bed") != -1 )&& (data.indexOf("baby") != -1) && (data.indexOf("lying") != -1) )//아기베개
-      return "아기베개";   
-   else if( (data.indexOf("holding") != -1 )&& (data.indexOf("wearing") != -1) && (data.indexOf("person") != -1) )//힙시트
-      return "힙시트";   
-   else if( (data.indexOf("playing") != -1 )&& (data.indexOf("water") != -1) && (data.indexOf("sitting") != -1) )//아기튜브
-      return "아기튜브";   
-   else if( (data.indexOf("food") != -1 )&& (data.indexOf("refrigerator") != -1) )//아기과자   
-      return "아기과자";   
-   
-   else if( (data.indexOf("sitting") != -1 )&& (data.indexOf("holding") != -1) && (data.indexOf("bed") != -1) && (data.indexOf("teeth") == -1) && (data.indexOf("room") == -1) && (data.indexOf("video") == -1) )//카시트
-      return "카시트";   
-   
-   else if( (data.indexOf("standing") != -1 )&& (data.indexOf("board") != -1) && (data.indexOf("holding") != -1) )//아기하우스
-      return "아기하우스";   
-   else if( (data.indexOf("toothbrush") != -1 )&& (data.indexOf("baby") != -1) && (data.indexOf("teeth") != -1) )//아기젖병
-      return "아기젖병";   
-   else if( (data.indexOf("game") != -1 )&& (data.indexOf("video") != -1) && (data.indexOf("young") != -1) )//체온계
-      return "체온계";   
-   else if( (data.indexOf("bed") != -1 )&& (data.indexOf("large") != -1) && (data.indexOf("room") != -1) )//아기침대
-      return "아기침대";   
-   
-}; 
-
-function checkImage1(json,data){
+function checkImage(json,data){
 	console.log("ddd:" + data)
 	if(data.indexOf("Food") != -1){
 		return "아기과자";
@@ -525,70 +487,36 @@ function checkImage1(json,data){
 var imagecheck;
 var aa;
 
-
+//이미지 드래그해서 google vision ai로 이미지 확인하기
 $(function(){
 	$('.image_one').draggable({helper: 'clone'});
-	// $( "#이미지2" ).draggable({  helper: 'clone'});
     $( "#이미지받기" ).droppable({
     	 activeClass: "active",
          hoverClass:  "hover",
       drop: function( event, ui ) {
-        //$( this );
-        //ui.attr("src");
         var $item = ui.draggable.clone();
 		$item.remove();         
-		showLoading();
-		
-        // ui.draggable.remove();
-    	//var filepath = $('#이미지2').attr("src");
+		showLoading();		
     	var filepath = $item.attr("src");
-    	//ui.draggable.remove();
     	filepath = filepath.substring(5,filepath.length);
-    	console.log(filepath);
     	 $.ajax({
     		data :  {"${_csrf.parameterName}" : "${_csrf.token}", "filepath" : filepath}, 
     		type : "POST",
     		url : " <c:url value='gotoAI.kosmo'/>",
     		dataType : "json",
     		success:function(data){    	
-    			console.log("구글구글:" + data);
     			var aa = new Array();
     			$.each(data,function(index,value){
-    				console.log("구굴value"+ value["web"]);    
     				aa[index] = value["web"];    
-    			});
-    			
-    			getAiImage = checkImage1(aa,aa.toString());
-    			console.log("얻어온 값:" + getAiImage);
+    			});    			
+    			getAiImage = checkImage(aa,aa.toString());
     			NaverApiSearch(getAiImage);
     		}
     	});       
       }
     });	 
 });
-//function()
-var paintSearch = function(data){
-	var html = "<tr>";
-	$.each(data.items,function(index,value){
-		//console.log("상품이름 : " + value['title'] + " , " + "가격 : " + value['lprice']);
-		html+="<td><img src="+ value['image'] +" " +"style=\"height:200px;width:200px;z-index:15;\"> "+ "</img></td>";	
-		html+="<td>" + value['title'] + "</td>" + "<td>" + value['lprice'] +"원" + "</td>";
-		//<button onclick="window.open('address')">button</button>
-		html +="<td>" + "<button type=\"button\" class=\"btn btn-info\" onclick=\"window.open("+"\'" + value['link']+"\'"+")\">"+"링크연결"+"</button></td></tr>";
-		
-		//console.log(html);
-	});			
-	$('.serach_shopping').html(html);  	
-}
-$('.sch_smit').click(function(){
-	//var f = document.getElementById('input_text').value;
-	//console.log('f'+f);
-	var input = $(".input_text").val();   
-	console.log(input);
-	$('.serach_shopping').empty();  	
-	NaverApiSearch(input);
-	
-});
+//vision ai를 통해서 나온 결과값 네이버 쇼핑검색하기
 var NaverApiSearch = function(image){
 	$.ajax({
 		data : {"${_csrf.parameterName}" : "${_csrf.token}", "getAiImage" : image}, 
@@ -602,9 +530,24 @@ var NaverApiSearch = function(image){
 		}
 	});		
 };
-
-
-
+//모달창에서 쇼핑검색하는거
+$('.sch_smit').click(function(){
+	var input = $(".input_text").val();   
+	console.log(input);
+	$('.serach_shopping').empty();  	
+	NaverApiSearch(input);
+	
+});
+//모달창내용을 새로그리는거
+var paintSearch = function(data){
+	var html = "<tr>";
+	$.each(data.items,function(index,value){
+		html+="<td><img src="+ value['image'] +" " +"style=\"height:200px;width:200px;z-index:15;\"> "+ "</img></td>";	
+		html+="<td>" + value['title'] + "</td>" + "<td>" + value['lprice'] +"원" + "</td>";
+		html +="<td>" + "<button type=\"button\" class=\"btn btn-info\" onclick=\"window.open("+"\'" + value['link']+"\'"+")\">"+"링크연결"+"</button></td></tr>";
+	});			
+	$('.serach_shopping').html(html);  	
+}
 
 </script>
 

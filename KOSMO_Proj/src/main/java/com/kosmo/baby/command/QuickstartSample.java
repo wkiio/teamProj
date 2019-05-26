@@ -107,11 +107,8 @@ public class QuickstartSample {
 		  try (ImageAnnotatorClient client = ImageAnnotatorClient.create()) {
 		    BatchAnnotateImagesResponse response = client.batchAnnotateImages(requests);
 		    List<AnnotateImageResponse> responses = response.getResponsesList();
-		   
 		    
-		    
-		   
-		    System.out.println("==========================zxc");
+		    System.out.println("==========================");
 		    for (AnnotateImageResponse res : responses) {
 		      if (res.hasError()) {
 		    	  System.out.printf("Error: %s\n", res.getError().getMessage());
@@ -124,11 +121,7 @@ public class QuickstartSample {
 		      WebDetection annotation = res.getWebDetection();
 		      System.out.println("Entity:Id:Score");
 		      System.out.println("===============");		     
-		      System.out.println("제이슨??:" + annotation.getWebEntitiesList());
-		      
-
-		 
-		      System.out.println("google_responses: " + responses);
+		   
 			  List<Map> collections = new Vector<Map>();
 		      for (WebEntity entity : annotation.getWebEntitiesList()) {		    	
 		    	  System.out.println(entity.getDescription() + " : " + entity.getEntityId() + " : "
