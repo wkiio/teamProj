@@ -129,8 +129,16 @@ public class Admin_Controller {
 			record.put("ADDR", addr0 +" "+ addr1 +" "+ addr2);
 			record.put("EMAIL", dto.getEmail());
 			record.put("TEL", dto.getTel());
-			record.put("PARTNERSTATUS", dto.getPartnerstatus().equals("1") ? "X" : "O");
-						
+			if(dto.getPartnerstatus().equals("2")) {
+				record.put("PARTNERSTATUS","O");
+			}
+			else if(dto.getPartnerstatus().equals("1")) {
+				record.put("PARTNERSTATUS","<button class='btn btn-sm ' style='background-color:#fc466b; text-align: center; color:white'>확인</button>");
+			}
+			else {
+				record.put("PARTNERSTATUS","X");
+			}
+			record.put("carnumber", "이곳에 차량등록증 또는 운전면허증을 넣습니다.");
 			collections.add(record);
 		}
 		
@@ -159,6 +167,11 @@ public class Admin_Controller {
 		return "/admin_page/calendar_admin";
 	}
 
+	@RequestMapping("/partnerOK")
+	public String partnerOK(@RequestParam Map map) {
+		memberService.partnerOK(map);
+		return null;
+	}
 	
 	
 	

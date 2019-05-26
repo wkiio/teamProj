@@ -292,7 +292,6 @@
                               <th style= "background-color: #ffaec9">주소</th>
                               <th style= "background-color: #ffaec9">카풀</th>
                               <th style= "background-color: #ffaec9">변경</th>
-                              <th style= "background-color: #ffaec9">확인</th>
                            </tr>                     
                         </thead>
                      </table>
@@ -376,11 +375,7 @@
                     "data": null,
                     "defaultContent": "<button class='btn btn-sm ' style='background-color:#fc466b; text-align: center; color:white'>삭제</button>"
                 },
-                {
-                    "targets": 7,
-                    "data": null,
-                    "defaultContent": "<button class='btn btn-sm ' style='background-color:#fc466b; text-align: center; color:white'>확인</button>"                    
-                }
+                
            ]         
            });
        });//document.ready

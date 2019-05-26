@@ -25,7 +25,7 @@
 	</select>
 	
 	<select id="CarpoolCount" parameterType="java.util.Map" resultType="int">
-		select count(*) from members where PARTNERSTATUS = '1'
+		select count(*) from members where PARTNERSTATUS = '2'
 	</select>
 	
 	
