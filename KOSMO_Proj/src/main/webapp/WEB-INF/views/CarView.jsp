@@ -279,7 +279,7 @@ $('#resbutton').click(function(){
 	}
 	else
 		type = vv("driver");
-	  message.signBook(num,id2,id,type,function(e,r){
+	  message.signBook(num,id,type,function(e,r){
 		 $('#signed').val(r); 
 		 $('.carviewform').submit();
 	  });    

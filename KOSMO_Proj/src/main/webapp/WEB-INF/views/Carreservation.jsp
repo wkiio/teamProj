@@ -264,7 +264,7 @@ $('.btnsubmit').click(function(){
    var user = vv($(this).parent().parent().children().eq(1).text());
    console.log(provider + " :: " + user);
    
-      message.closingbook(no,provider,user,function(e,r){
+      message.closingbook(no,function(e,r){
        $('#done').val(r);
        $('.carviewform').submit();  
     }); 
@@ -322,7 +322,7 @@ $('.starR').click(function(){
       console.log('score' + parseInt(score));
 
         console.log('리뷰등록을 해봐?');
-           message.CpReview(nono,provider,user,score,function(e,r){
+           message.CpReview(nono,provider,score,function(e,r){
          	console.log(r);
           $('#reviewed').val(r);
           $('.carriewform').submit();
