@@ -184,7 +184,7 @@
 									<th>카시트</th>
 									<td>${dto.carseat }</td>
 								</tr>
-								<c:if test="${partnerstatus eq '1' }">
+								<c:if test="${partnerstatus eq '2' }">
 								<tr>
 									<th>평점</th>
 									<td>${score }</td>

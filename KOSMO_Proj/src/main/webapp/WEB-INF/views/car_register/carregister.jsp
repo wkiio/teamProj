@@ -90,7 +90,7 @@ display: none;
 							<label for="purpose" class="col-form-label purpose">유형: </label> 
 							<div class="col">					
 								<select	class="form-control" id="type" name="type">
-								<c:if test='${partnerstatus eq "1" or list.partnerstatus eq "1"}' var ="partner">
+								<c:if test='${partnerstatus eq "2" or list.partnerstatus eq "2"}' var ="partner">
 									<option>타세요 </option>
 								</c:if>
 									<option>태워주세요</option>
