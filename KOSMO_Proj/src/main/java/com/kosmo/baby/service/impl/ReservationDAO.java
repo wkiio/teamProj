@@ -52,6 +52,11 @@ public class ReservationDAO implements ReservationService{
 	public List<ReservationDTO> selectScore(Map map) {
 		return template.selectList("totalscore",map);
 	}
+
+	@Override
+	public List<ReservationDTO> previous(Map map) {
+		return template.selectList("previous",map);
+	}
 	
 	
 

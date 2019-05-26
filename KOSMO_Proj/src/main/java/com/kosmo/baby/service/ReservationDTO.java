@@ -11,9 +11,6 @@ public class ReservationDTO {
 	private String totalscore;
 	private int count;
 	
-	
-	
-	
 	public String getTitle() {
 		return title;
 	}

@@ -170,8 +170,10 @@ public class GuestBookController {
    
    @ResponseBody
    @RequestMapping(value="/GuestBook/reply.kosmo",produces="text/html; charset=UTF-8",method=RequestMethod.POST)
-   public String reply(@RequestParam Map map, MultipartHttpServletRequest mhsr) throws Exception{
+   public String reply(@RequestParam Map map, MultipartHttpServletRequest mhsr,Authentication auth) throws Exception{
       System.out.println("답변 이클립스 시작");
+      UserDetails userDetails=(UserDetails)auth.getPrincipal();
+      map.put("id",userDetails.getUsername());
       
       System.out.println("map:"+map);
       
@@ -179,12 +181,9 @@ public class GuestBookController {
       map.put("refer",list.getRefer());
       map.put("step",list.getStep());
       map.put("depth",list.getDepth());      
-      map.put("id",list.getId());      
+      //map.put("id",list.getId());
       String phisicalPath=mhsr.getServletContext().getRealPath("/upload");
       System.out.println("경로 : "+phisicalPath);
-
-      
-      
       if(mhsr.getFile("image") != null){
          System.out.println("null 아닌거 시작1");
          MultipartFile upload= mhsr.getFile("image");
@@ -202,7 +201,6 @@ public class GuestBookController {
          map.put("image", "noneImage");
          
       }
-      
       System.out.println(map.get("image"));
       System.out.println("리스트 호출 한 뒤 map:"+map);
       

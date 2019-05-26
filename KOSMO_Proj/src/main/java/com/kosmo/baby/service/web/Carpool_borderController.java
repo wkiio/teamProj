@@ -151,22 +151,30 @@ public class Carpool_borderController {
 	//상세보기
 	@RequestMapping("/Carview.kosmo")
 	public String carview(@RequestParam Map map,Model model,Authentication auth)throws Exception{
-		System.out.println("상세보기");
 		System.out.println(map.get("cp_no"));
 		System.out.println(map.get("type"));
 		UserDetails user = (UserDetails)auth.getPrincipal();
 		System.out.println("로그인중입니다 : " + user.getUsername());
 		Carpool_borderDTO list=carservice.selectOne(map);
-		System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwww" + list.getId());
-		System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwww" + list.getPartnerstatus());
+		map.put("id",list.getId());
 		model.addAttribute("userId",user.getUsername());
 		model.addAttribute("writerId", list.getId());
-		map.put("id",list.getId());
+		System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwww" + list.getId());
+		System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwww" + list.getPartnerstatus());
+		List<ReservationDTO> previouses = rsservice.previous(map);
+		for(ReservationDTO previous : previouses) {
+			System.out.println("과거했던 글번호 : "+previous.getCp_no());
+			model.addAttribute("precp_no",previous.getCp_no());
+			System.out.println(previous.getFinish().equals("0") ? "미완료" : "완료");
+			model.addAttribute("finish",previous.getFinish().equals("0") ? "미완료" : "완료");
+			
+		}
 		int count = rsservice.count(map);
 		System.out.println(count);
 		int counter = Integer.valueOf(count);
 		System.out.println(counter);
 		List<ReservationDTO> totalscore = rsservice.selectScore(map);
+		
 		int score,value,realscore = 0;
 		System.out.println("얼마나했냐 : "+counter);
 		for(ReservationDTO a : totalscore) {
@@ -194,11 +202,9 @@ public class Carpool_borderController {
 		}
 		else { model.addAttribute("score","운행 기록이 없습니다"); } 
 		
-		System.out.println("글쓴이 입니다 : " + list.getId());
-		System.out.println("상세보기 시간");
-		System.out.println(list.getContent());
 		model.addAttribute("photo",list.getPhoto().split("memberPhoto")[1].substring(1));
 		model.addAttribute("dto", list);
+		model.addAttribute("pre",previouses);
 		model.addAttribute("partnerstatus", list.getPartnerstatus());
 		
 		return "CarView.tiles";
@@ -295,6 +301,8 @@ public class Carpool_borderController {
 		
 		return "blockChain.tiles";
 	}
+	
+
 	
 	
 }

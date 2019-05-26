@@ -123,9 +123,10 @@
 					<div class="carview_profile">
 	
 						<figure class="profile">
-							<h2>글 등록자</h2>
+							<h2>등록자</h2>
 							<img id="memberphoto" src="<c:url value='/resources/memberPhoto/${photo }'/>" title="프로필" alt="프로필" class="picture">
 							<figcaption class="name">${dto.name }</figcaption>
+							<h5>${pre.cp_no } / ${pre.finish }</h5>
 						</figure>
 						<div class="mt-1">
 							

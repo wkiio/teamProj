@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 
-var contractAddress = "0x638ad432d237722a8a33876f97ee984f63b3d159";
+var contractAddress = "0x6890cc1f3a0cc68499e51c1b69f37eeb47a17ef0";
 var abi =[
 	{
 		"constant": true,
@@ -148,32 +148,6 @@ var abi =[
 		],
 		"payable": false,
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_signNum",
-				"type": "int256"
-			},
-			{
-				"name": "_opener",
-				"type": "bytes32"
-			},
-			{
-				"name": "_closer",
-				"type": "bytes32"
-			},
-			{
-				"name": "_race",
-				"type": "bytes32"
-			}
-		],
-		"name": "signBook",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -354,11 +328,11 @@ var abi =[
 				"type": "bytes32"
 			},
 			{
-				"name": "_user",
-				"type": "bytes32"
+				"name": "_rating",
+				"type": "int256"
 			}
 		],
-		"name": "closingbook",
+		"name": "CpReview",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -439,6 +413,28 @@ var abi =[
 		"type": "function"
 	},
 	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_signNum",
+				"type": "int256"
+			},
+			{
+				"name": "_closer",
+				"type": "bytes32"
+			},
+			{
+				"name": "_race",
+				"type": "bytes32"
+			}
+		],
+		"name": "signBook",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"constant": true,
 		"inputs": [
 			{
@@ -455,6 +451,20 @@ var abi =[
 		],
 		"payable": false,
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_signNum",
+				"type": "int256"
+			}
+		],
+		"name": "closingbook",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -552,32 +562,6 @@ var abi =[
 		],
 		"payable": false,
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": false,
-		"inputs": [
-			{
-				"name": "_signNum",
-				"type": "int256"
-			},
-			{
-				"name": "_provider",
-				"type": "bytes32"
-			},
-			{
-				"name": "_user",
-				"type": "bytes32"
-			},
-			{
-				"name": "_rating",
-				"type": "int256"
-			}
-		],
-		"name": "CpReview",
-		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
