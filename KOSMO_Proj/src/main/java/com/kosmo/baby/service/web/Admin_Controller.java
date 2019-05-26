@@ -131,7 +131,7 @@ public class Admin_Controller {
 			record.put("TEL", dto.getTel());
 			record.put("PARTNERSTATUS", dto.getPartnerstatus().equals("1") ? "X" : "O");
 						
-			collections.add(record);		
+			collections.add(record);
 		}
 		
 		
