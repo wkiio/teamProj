@@ -10,7 +10,14 @@ public class ReservationDTO {
 	private String cp_no;
 	private String totalscore;
 	private int count;
+	private int cp_no_2;
 	
+	public int getCp_no_2() {
+		return cp_no_2;
+	}
+	public void setCp_no_2(int cp_no_2) {
+		this.cp_no_2 = cp_no_2;
+	}
 	public String getTitle() {
 		return title;
 	}

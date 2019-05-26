@@ -36,7 +36,7 @@
 	</delete>
 	
 	<select id="previous" parameterType="java.util.Map" resultType="ReservationDTO">
-		SELECT c.cp_no,finish FROM reservation r JOIN carpool_border c ON r.cp_no = c.cp_no WHERE c.id = #{id} ORDER BY c.cp_no DESC
+		SELECT c.cp_no as cp_no,finish FROM reservation r JOIN carpool_border c ON r.cp_no = c.cp_no WHERE c.id = #{id} ORDER BY c.cp_no DESC
 	</select>
 
 </mapper>
