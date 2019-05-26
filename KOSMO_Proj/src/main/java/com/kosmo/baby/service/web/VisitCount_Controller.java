@@ -1,5 +1,6 @@
 package com.kosmo.baby.service.web;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.kosmo.baby.command.QuickstartSample;
 import com.kosmo.baby.service.impl.ReservationServiceimpl;
 import com.kosmo.baby.service.impl.VisitCountDAO;
 import com.kosmo.baby.service.impl.VisitCountServiceimpl;
@@ -38,6 +40,9 @@ public class VisitCount_Controller{  //implements HttpSessionListener
 	@Resource(name="visitCountServiceimpl")
 	private VisitCountServiceimpl service;
 	
+	@Resource(name="quickstartSample")
+	private QuickstartSample ai;
+	
 	
 	//private VisitCountDAO service;
 	private boolean toggle1 = false;
@@ -47,7 +52,7 @@ public class VisitCount_Controller{  //implements HttpSessionListener
 	
 
 	@RequestMapping(value = "/index.kosmo", method = RequestMethod.GET)
-	public String home(Locale locale, Model model,  @RequestParam Map map,final HttpSession session) {
+	public String home(Locale locale, Model model,  @RequestParam Map map,final HttpSession session) throws IOException {
 		
 		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		HttpServletRequest request = attributes.getRequest();
@@ -76,7 +81,7 @@ public class VisitCount_Controller{  //implements HttpSessionListener
 		
 		System.out.println(service);
 		
-		
+		ai.asdasd();
 		
 		return "index.tiles";
 	}

@@ -38,6 +38,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.kosmo.baby.HomeController;
 import com.kosmo.baby.command.FileUpDownUtils;
+import com.kosmo.baby.command.QuickstartSample;
 import com.kosmo.baby.command.UploadCommand;
 import com.kosmo.baby.service.MailHandler;
 import com.kosmo.baby.service.MembersDTO;
@@ -76,11 +77,13 @@ public class MembersController {
 	private UploadCommand uploadCommand;
 	
 	
-	
 	//마이페이지 전용
 	@RequestMapping("/loginout.kosmo")
 	public String logout(HttpSession session) throws Exception{
 		session.invalidate();
+		
+		
+		
 		return "index.tiles";
 	}
 	
