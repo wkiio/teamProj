@@ -251,13 +251,13 @@ $(function(){
 		}
 		var type = vv(select);
 		console.log("type:" +type);
- 	    	message.openingBook(id,type,function(e,r){
+/*  	    	message.openingBook(id,type,function(e,r){
 			console.log('트랜잭션 해시값 :' + r);
 			$('#opened').val(r);
 			   
 			$('.carinput_form').submit();
 		});     
-		
+		 */
 		console.log('============');
 
 	});

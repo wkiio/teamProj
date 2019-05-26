@@ -506,7 +506,7 @@
    // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
    function addMarker(position, order) {
 
-      var imageSrc = 'http://192.168.0.100:8080/baby/resources/map_icons/totalicons.jpg', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+      var imageSrc = 'http://192.168.0.100/baby/resources/map_icons/totalicons.jpg', // 마커 이미지 url, 스프라이트 이미지를 씁니다
       imageSize = new daum.maps.Size(27, 28), // 마커 이미지의 크기
       imgOptions = {
          spriteSize : new daum.maps.Size(72, 208), // 스프라이트 이미지의 크기

@@ -161,14 +161,15 @@ public class Carpool_borderController {
 		model.addAttribute("writerId", list.getId());
 		System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwww" + list.getId());
 		System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwww" + list.getPartnerstatus());
+		
 		List<ReservationDTO> previouses = rsservice.previous(map);
 		for(ReservationDTO previous : previouses) {
 			System.out.println("과거했던 글번호 : "+previous.getCp_no());
 			model.addAttribute("precp_no",previous.getCp_no());
 			System.out.println(previous.getFinish().equals("0") ? "미완료" : "완료");
 			model.addAttribute("finish",previous.getFinish().equals("0") ? "미완료" : "완료");
-			
 		}
+		
 		int count = rsservice.count(map);
 		System.out.println(count);
 		int counter = Integer.valueOf(count);
