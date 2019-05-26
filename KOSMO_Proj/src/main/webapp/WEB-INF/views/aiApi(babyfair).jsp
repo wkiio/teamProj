@@ -487,8 +487,41 @@ function checkImage(data) {
    else if( (data.indexOf("bed") != -1 )&& (data.indexOf("large") != -1) && (data.indexOf("room") != -1) )//아기침대
       return "아기침대";   
    
-   
 }; 
+
+function checkImage1(json,data){
+	console.log("ddd:" + data)
+	if(data.indexOf("Food") != -1){
+		return "아기과자";
+	} 
+	else if( (data.indexOf("Mattress") != -1 )&& (data.indexOf("Bed Sheets") != -1))//아기매트
+	    return "아기매트";      
+   else if( (data.indexOf("Duvet") != -1 )&& (data.indexOf("Infant") != -1) )//아기베개
+      return "아기베개";   
+   else if( (data.indexOf("Nipple") != -1) && (data.indexOf("Baby Bottles") != -1))//아기젖병 Baby Bottles
+      return "아기젖병";   	
+   else if( (data.indexOf("Cots") != -1 )&& (data.indexOf("Bedding") != -1) && (data.indexOf("Mobile") != -1) )//아기침대
+	      return "아기침대";   
+   else if( (data.indexOf("roduct design") != -1 )&& (data.indexOf("Infant") != -1) && (data.indexOf("Tent") != -1) )//아기하우스
+	      return "아기하우스";   	
+	
+   else if( (data.indexOf("Babakocsi") != -1 )&& (data.indexOf("Cradle") != -1)  )//유모차
+	      return "유모차";   
+   else if( (data.indexOf("Bra") != -1 )&& (data.indexOf("Undergarment") != -1) )//임산부복
+      return "임산부복";   
+	
+   else if( (data.indexOf("Medical Thermometers") != -1 ) )//체온계
+      return "체온계";   
+   
+   else if( (data.indexOf("Car") != -1 )&& (data.indexOf("Baby") != -1) && (data.indexOf("Car Seats") != -1))//카시트
+      return "카시트";   
+   else if( (data.indexOf("Toy") != -1 )&& (data.indexOf("Doll") != -1))//아기장난감
+	      return "아기장난감"; 
+   else if( (data.indexOf("Gendongan") != -1 ) || (data.indexOf("ERGO Baby") != -1) || (data.indexOf("Hip") != -1))//힙시트
+	      return "힙시트"; 
+	
+	return json[0];
+}
 var imagecheck;
 var aa;
 
@@ -517,19 +550,23 @@ $(function(){
     		type : "POST",
     		url : " <c:url value='gotoAI.kosmo'/>",
     		dataType : "json",
-    		success:function(data){    		
+    		success:function(data){    	
+    			console.log("구글구글:" + data);
     			var aa = new Array();
-    			$.each(data.tags,function(index,value){
-    				aa[index] = value;    				
+    			$.each(data,function(index,value){
+    				console.log("구굴value"+ value["web"]);    
+    				aa[index] = value["web"];    
     			});
-    			getAiImage = checkImage(aa);
-    			console.log("getAiImage:"+ getAiImage);
-     			NaverApiSearch(getAiImage);
+    			
+    			getAiImage = checkImage1(aa,aa.toString());
+    			console.log("얻어온 값:" + getAiImage);
+    			NaverApiSearch(getAiImage);
     		}
     	});       
       }
     });	 
-}); //function()
+});
+//function()
 var paintSearch = function(data){
 	var html = "<tr>";
 	$.each(data.items,function(index,value){

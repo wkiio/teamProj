@@ -40,8 +40,7 @@ public class VisitCount_Controller{  //implements HttpSessionListener
 	@Resource(name="visitCountServiceimpl")
 	private VisitCountServiceimpl service;
 	
-	@Resource(name="quickstartSample")
-	private QuickstartSample ai;
+
 	
 	
 	//private VisitCountDAO service;
@@ -81,7 +80,6 @@ public class VisitCount_Controller{  //implements HttpSessionListener
 		
 		System.out.println(service);
 		
-		ai.asdasd();
 		
 		return "index.tiles";
 	}

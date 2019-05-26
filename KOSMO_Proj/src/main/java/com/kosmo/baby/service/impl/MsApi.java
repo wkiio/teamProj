@@ -86,7 +86,7 @@ public class MsApi {
              // Call the REST API method and get the response entity.
              HttpResponse response = httpClient.execute(request);
              HttpEntity entity = response.getEntity();
-
+             System.out.println("entity:" + entity);
              if (entity != null) {
                  // Format and display the JSON response.
                  String jsonString = EntityUtils.toString(entity);
@@ -94,6 +94,8 @@ public class MsApi {
                  //System.out.println("REST Response:\n");
                  //System.out.println(json.toString(2));
                  ms_Api = json.toString(2);
+                 System.out.println("ms_Api:" + json.toString());
+                 System.out.println("ms_Api:" + json.toString(2));
              }
          } catch (Exception e) {
              // Display error message.
