@@ -1,3 +1,4 @@
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
@@ -9,7 +10,7 @@
 	<link rel="stylesheet" href="/baby/resources/css/jquery.simple-dtpicker.css"/>
 	<script type="text/javascript" src="/baby/resources/js/jquery.simple-dtpicker.js"></script>
 	<!-- 카풀map시작-->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fc37be4712f8b89b167cddbc490382f"></script>
+	<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1fc37be4712f8b89b167cddbc490382f"></script> -->
 	<!-- 주소검색 자동완성 api -->
 	<link rel="stylesheet" href="/baby/resources/css/s9jss_single.css"> 
 	<script type="text/javascript" src="/baby/resources/js/s9soft.js"></script>
@@ -21,7 +22,9 @@
 	<script src="/baby/resources/summernote/summernote-ko-KR.js"></script>
   	<!-- 블록체인 -->
  	<script src='/baby/resources/aranblockchain.js'></script>
-	
+	<!-- 카풀map시작-->
+   	<script src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=b5cc2a5e-34c4-441b-96f9-0a2639aabc1a"></script>
+   
 <style>
 .carinput_head {
   margin-bottom: 10px;
@@ -90,7 +93,7 @@ display: none;
 							<label for="purpose" class="col-form-label purpose">유형: </label> 
 							<div class="col">					
 								<select	class="form-control" id="type" name="type">
-								<c:if test='${partnerstatus eq "2" or list.partnerstatus eq "2"}' var ="partner">
+								<c:if test='${partnerstatus eq "1" or list.partnerstatus eq "1"}' var ="partner">
 									<option>타세요 </option>
 								</c:if>
 									<option>태워주세요</option>
@@ -163,9 +166,13 @@ display: none;
 			</form>
 			
 		</div>
-		<div class="col">
-			<div id="map" class="box_map"></div>
+		<div id="initmap">
+			<div id="map_div"></div>
+			<p id="result"></p>
 		</div>
+		<!-- div class="col">
+			<div id="map" class="box_map"></div>
+		</div> -->
 		<div class="btngroup text-center">
 			<c:if test="${empty list }" var="isEmpty">
 				<button type="button" class="btn btn-primary custom_Button submit">등록</button>
@@ -178,7 +185,7 @@ display: none;
 	</div>
 </div>
 
-<script src="/baby/resources/js/carinput_Map.js"></script>
+<script src="/baby/resources/js/auto/carindexload.js"></script>
 
 <script>
 //블록체인 최초접속
@@ -251,14 +258,13 @@ $(function(){
 		}
 		var type = vv(select);
 		console.log("type:" +type);
-/*  	    	message.openingBook(id,type,function(e,r){
+ 	    	message.openingBook(id,type,function(e,r){
 			console.log('트랜잭션 해시값 :' + r);
 			$('#opened').val(r);
 			   
 			$('.carinput_form').submit();
 		});     
-		 */
-		 $('.carinput_form').submit();
+		
 		console.log('============');
 
 	});
@@ -287,5 +293,4 @@ $(function(){
 	
 });
 </script>
-
 	  

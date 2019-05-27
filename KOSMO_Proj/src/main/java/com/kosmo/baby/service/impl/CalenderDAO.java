@@ -38,6 +38,11 @@ public class CalenderDAO implements CalenderService{
 		//캘린더 수정용	
 		return template.update("calupdate",map);
 	}
+
+	@Override
+	public CalenderDTO selectOne(Map map) {
+		return template.selectOne("notifi", map);
+	}
 	
 	
 

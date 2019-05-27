@@ -9,6 +9,7 @@ public class CalenderDTO {
 	private String Enddate;
 	private String Content;
 	private String Type;
+	private String Notification;
 	private String ID;
 	public String getCal_no() {
 		return Cal_no;
@@ -51,6 +52,12 @@ public class CalenderDTO {
 	}
 	public void setID(String iD) {
 		ID = iD;
+	}
+	public String getNotification() {
+		return Notification;
+	}
+	public void setNotification(String notification) {
+		Notification = notification;
 	}
 	
 	

@@ -19,8 +19,8 @@
 <body>
 	  
     <!-- Favicons -->
-	<link rel="shortcut icon" href="images/favicon.ico">
-	<link rel="apple-touch-icon" href="images/icon.png">
+	<!-- <link rel="shortcut icon" href="/baby/resources/images/favicon.ico">
+	<link rel="apple-touch-icon" href="images/icon.png"> -->
 	<!-- Google font (font-family: 'Lobster', Open+Sans;) -->
 	<link href="https://fonts.googleapis.com/css?family=Lobster+Two:400,400i,700,700i" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">

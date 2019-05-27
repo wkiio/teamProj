@@ -5,11 +5,10 @@ import java.util.Map;
 
 public interface CalenderService {
 	
-	//CRUD 작업용
-	
+	//CRUD 작업용	
 	//목록
 	List<CalenderDTO> selectList(Map map);	
-	
+	CalenderDTO selectOne(Map map);
 	//입력 수정 삭제
 	int delete(Map map);
 	int insert(Map map);

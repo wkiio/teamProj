@@ -2,6 +2,8 @@ package com.kosmo.baby.service.web;
 
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -80,7 +82,7 @@ public class CalenderController {
 	
 	@ResponseBody
 	@RequestMapping(value="/fcinput.kosmo", produces = "application/text; charset=utf8")
-	public String fcinput(@RequestParam Map map,Authentication auth) throws Exception{
+	public String fcinput(@RequestParam Map map,Authentication auth, @RequestParam(name="noti") String noti) throws Exception{
 		UserDetails user = (UserDetails)auth.getPrincipal();
 		map.put("id", user.getUsername());
 		System.out.println("입력시작");
@@ -89,24 +91,45 @@ public class CalenderController {
 			map.put("startdate", map.get("startStr").toString().concat("T"+map.get("startTime")));
 			map.put("enddate", map.get("endStr").toString().concat("T"+map.get("endTime")));
 		}
-		System.out.println("요청보냄");
+		map.put("noti", noti);
 		service.insert(map);
-		
 		System.out.println("입력완료");
-		System.out.println(map.get("no"));
-		
 		return map.get("no").toString();
+	}
+	@RequestMapping("/Notify.kosmo")
+	public String notify(@RequestParam Map map, Authentication auth,Model model) throws Exception{
+		UserDetails user = (UserDetails)auth.getPrincipal();
+		map.put("id", user.getUsername());
+		SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
+		Date time = new Date();
+		String time1 = format1.format(time);
+		System.out.println(time1.substring(0, 4));
+		System.out.println(time1.substring(5));
+		map.put("today", time1.substring(5));
+		CalenderDTO result = service.selectOne(map);
+		if(result!=null) {
+			int noti = Integer.parseInt(result.getNotification().toString());
+			switch(noti) {
+				case 1 : 
+				case 2 : 
+			}
+			String[] body = result.getStartdate().toString().split("T");
+			model.addAttribute("noti", result.getTitle().toString());
+			model.addAttribute("noti_body", body.length>1?body[0]+" "+body[1]:body[0]);
+		}	
+		return "forward:/index.kosmo";
 	}
 	
 	
 	@ResponseBody
 	@RequestMapping(value="/fcupdate.kosmo", produces = "application/text; charset=utf8")
-	public String fcupdate(@RequestParam Map map) throws Exception{
+	public String fcupdate(@RequestParam Map map, @RequestParam(name="modifnoti") String modifnoti) throws Exception{
 		System.out.println("수정시작");
 		if(!map.get("modifstartTime").toString().equals("")) {
 			map.put("modifstartStr", map.get("modifstartStr").toString().concat("T"+map.get("modifstartTime")));
 			map.put("modifendStr", map.get("modifendStr").toString().concat("T"+map.get("modifendTime")));
 		}
+		map.put("modifnoti", modifnoti);
 		service.update(map);
 		System.out.println("수정끝");
 		return "수정끝";
