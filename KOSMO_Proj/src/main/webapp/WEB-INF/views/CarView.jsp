@@ -128,7 +128,7 @@
 							<h2>등록자</h2>
 							<img id="memberphoto" src="<c:url value='/resources/memberPhoto/${photo }'/>" title="프로필" alt="프로필" class="picture" style="width:100px">
 							<c:forEach var="item" items="${aaaaa}" varStatus="loop">	
-								<h6>이전글 : ${item.precp_no}번 상태: ${item.finish }</h6> 							
+								<h6><a href="blookChain.kosmo?val=${item.precp_no }">이전글 : ${item.precp_no}번 상태: ${item.finish }</a></h6> 							
 							</c:forEach>
 							<%-- <figcaption class="name">${dto.name }</figcaption>
 							<h5>${precp_no }</h5> --%>
