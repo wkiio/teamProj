@@ -37,7 +37,7 @@
 		  -->
 		  <security:form-login 
 		    		    login-page="/login_page.kosmo"
-		                default-target-url="/index.kosmo"
+		                default-target-url="/Notify.kosmo"
 		                always-use-default-target="true" 
 		                authentication-failure-url="/login_page.kosmo?error"
 		                login-processing-url="/Login.kosmo"

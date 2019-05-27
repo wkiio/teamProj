@@ -18,6 +18,11 @@
 	<select id="calList" parameterType="java.util.Map" resultType="CalenderDTO">
 		SELECT * FROM calender WHERE id=#{id} OR id='admin'
 	</select>
+	
+	<select id="notifi" parameterType="java.util.Map" resultType="CalenderDTO">
+		SELECT * FROM calender WHERE id=#{id} AND Startdate LIKE #{today} || '%'
+	</select>
+	
 	<insert id="calinput" parameterType="java.util.Map">
 		INSERT INTO calender VALUES(SEQ_Calender.NEXTVAL,#{caltitle},#{startdate},#{enddate},#{calcontent},#{type},#{id})
 		<selectKey keyProperty="no" resultType="Integer" order="AFTER">

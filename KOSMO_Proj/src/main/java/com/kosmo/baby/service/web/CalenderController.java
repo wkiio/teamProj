@@ -2,6 +2,8 @@ package com.kosmo.baby.service.web;
 
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -80,7 +82,7 @@ public class CalenderController {
 	
 	@ResponseBody
 	@RequestMapping(value="/fcinput.kosmo", produces = "application/text; charset=utf8")
-	public String fcinput(@RequestParam Map map,Authentication auth) throws Exception{
+	public String fcinput(@RequestParam Map map,Authentication auth, @RequestParam(name="optradio") String optradio) throws Exception{
 		UserDetails user = (UserDetails)auth.getPrincipal();
 		map.put("id", user.getUsername());
 		System.out.println("입력시작");
@@ -96,6 +98,24 @@ public class CalenderController {
 		System.out.println(map.get("no"));
 		
 		return map.get("no").toString();
+	}
+	@RequestMapping("/Notify.kosmo")
+	public String notify(@RequestParam Map map, Authentication auth,Model model) throws Exception{
+		UserDetails user = (UserDetails)auth.getPrincipal();
+		map.put("id", user.getUsername());
+		SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
+		Date time = new Date();
+		String time1 = format1.format(time);
+		//map.put("today", time1);
+		map.put("today", "2019-05-11");
+		CalenderDTO result = service.selectOne(map);
+		
+		if(result!=null) {
+			String[] body = result.getStartdate().toString().split("T");
+			model.addAttribute("noti", result.getTitle().toString());
+			model.addAttribute("noti_body", body.length>1?body[0]+" "+body[1]:body[0]);
+		}	
+		return "forward:/index.kosmo";
 	}
 	
 	

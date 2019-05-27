@@ -63,6 +63,9 @@ td.fc-sat .fc-day-number {
 .modal-footer input:hover {
   background-color: #157577;
 }
+.radio-inline {
+  margin-right: 10px;
+}
 </style>
 <sec:authorize access="isAuthenticated()">
       <sec:authentication property="principal.username" var="id"/>
@@ -87,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			type:'post',
 			dataType:'json',
 			success:function(data){
-				console.log(data);
 				createCalendar(data,flag);
 			}
 			
@@ -97,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	//캘린더 생성
 	function createCalendar(event,flag) {
-		console.log('캘린더 시작');
 		var calendarEl = document.getElementById('calendar');
 		calendar = new FullCalendar.Calendar(calendarEl, {
 	      	plugins: [ 'dayGrid','timeGrid','list','interaction' ],
@@ -112,9 +113,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			},
 			events: event,
 			eventClick: function(info) {
-				console.log('클릭');
-				console.log("${id}");
-				console.log(info.event.id);
 				seachEvent(info);
 			   
 			},
@@ -180,7 +178,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		if(flag=="false"){
 			return
 		}
-		console.log('addevent');
 		var color;
 		var event;
 		switch($("#type").val()){
@@ -200,7 +197,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			type:'post',
 			dataType:'text',
 			success:function(data){
-				console.log("이벤트success");
 				if($('#startTime').val()==""){				
 					calendar.addEvent({
 						id: data,
@@ -221,21 +217,12 @@ document.addEventListener('DOMContentLoaded', function() {
 						color: color,
 					});
 				}
-				console.log("이벤트");
-				console.log(data);
 
 				$('#calno').val(data);
 				if($('#type').val()=="행사"){
-					console.log('행사임');
-					console.log($('#calno').val());
-					console.log('폼이동준비');
 					$('#frmSchdule').prop("action","<c:url value='/fcupload.kosmo?${_csrf.parameterName}=${_csrf.token}'/>");
 					$('#frmSchdule').submit();
 				}
-				else {
-					console.log('행사아님');
-				}
-				
 			}
 			
 		});	
@@ -261,7 +248,6 @@ document.addEventListener('DOMContentLoaded', function() {
 				$('#modifendTime').val(end[1].split('+')[0]);
 			}
 		}
-		console.log(info.event.borderColor);
 		switch(info.event.borderColor){
 			case "#872901": $('#modiftype').val("중요"); break;
 			case "#a36a00": $('#modiftype').val("생일"); break;
@@ -306,15 +292,13 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	//일정 수정
 	$('#caledit').click(function(){
-		console.log('수정한다');
 		$.ajax({
 			url:"<c:url value='/fcupdate.kosmo'/>",
 			data:$('#frmSchduleModify').serialize(),
 			type:'post',
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 			dataType:'text',
-			success:function(data){	
-				console.log('수정성공')			
+			success:function(data){			
 				$('#schduleFormModify').modal('hide');
 				calendar.destroy();
 				getevent(true);
@@ -325,15 +309,13 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	//일정삭제
 	$('#caldelet').click(function(){
-		console.log('삭제한다');
 		$.ajax({
 			url:"<c:url value='/fcdelete.kosmo'/>",
 			data:$('#frmSchduleModify').serialize(),
 			type:'post',
 			contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 			dataType:'text',
-			success:function(data){	
-				console.log('삭제성공')			
+			success:function(data){				
 				$('#schduleFormModify').modal('hide');
 				calendar.destroy();
 				getevent(false);
@@ -344,15 +326,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 	
 	function seachEvent(info){
-		console.log("이벤트 찾기 시작");
 		$.ajax({
 			url:"<c:url value='/seachevent.kosmo'/>",
 			data:{'calno':info.event.id,"${_csrf.parameterName}":"${_csrf.token}"},
 			type:'post',
 			dataType:'text',
 			success:function(data){
-				console.log("이벤트 찾기 성공");
-				console.log(data);
 				if(data=="true"){
 					$(location).attr("href", "<c:url value='/pairview.kosmo?calno="+info.event.id+"'/>");
 				}
@@ -365,7 +344,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	};
 	
 	function emptycheck(){
-		console.log("시작");
 		if($('#type').val()=="행사"){
 			if($('#caltitle').val()==""){
 				alert("타이틀을 입력하세요");
@@ -404,8 +382,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 	
 	$('#type').change(function(){
-		console.log('선택');
-		console.log($('#type').val());
 		if($('#type').val()=="행사"){paircontent
 			$('#modaltitle').html("행사등록");
 			$('.calcontent').css("display", "none");
@@ -469,6 +445,14 @@ document.addEventListener('DOMContentLoaded', function() {
 								<option value="예방접종">예방접종</option>
 								<option value="약속">약속</option>
 						    </select>
+						</div>
+						<div class='form-group'>
+							<label style="display: block;">알림 설정</label>
+							<div>
+								<label class="radio-inline"><input type="radio" name="optradio" value="0"> 알림 없음</label>
+								<label class="radio-inline"><input type="radio" name="optradio" value="1"> 알림 1회</label>
+								<label class="radio-inline"><input type="radio" name="optradio" value="2"> 계속 알림</label>
+							</div>
 						</div>
 						<div id="imgdiv1" class='form-group' style="display: none;">
 							<label>타이틀 이미지</label> 
@@ -540,6 +524,14 @@ document.addEventListener('DOMContentLoaded', function() {
 								<option value="예방접종">예방접종</option>
 								<option value="약속">약속</option>
 						    </select>
+						</div>
+						<div class='form-group'>
+							<label style="display: block;">알림 설정</label>
+							<div>
+								<label class="radio-inline"><input type="radio" name="modifoptradio"> 알림 없음</label>
+								<label class="radio-inline"><input type="radio" name="modifoptradio"> 알림 1회</label>
+								<label class="radio-inline"><input type="radio" name="modifoptradio"> 계속 알림</label>
+							</div>
 						</div>
 						<div class='form-group'>
 							<label>내용</label>

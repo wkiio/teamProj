@@ -1,10 +1,4 @@
 
-
-var s_xpos = document.getElementById('start_ypos');
-var s_ypos = document.getElementById('start_xpos');
-//도착위치 위도,경도 얻기
-var e_xpos = document.getElementById('end_ypos');
-var e_ypos = document.getElementById('end_xpos');
 // 1. 지도 띄우기
 map = new Tmap.Map({
 	div : 'map_div',
@@ -17,8 +11,6 @@ map.addLayer(routeLayer);
 
 markerStartLayer = new Tmap.Layer.Markers("start");
 markerEndLayer = new Tmap.Layer.Markers("end");
-markerWaypointLayer = new Tmap.Layer.Markers("waypoint");
-markerWaypointLayer2 = new Tmap.Layer.Markers("waypoint2");
 pointLayer = new Tmap.Layer.Vector("point");
 
 //2. 시작, 도착 심볼찍기
@@ -49,7 +41,6 @@ var startX = s_xpos.value;
 var startY = s_ypos.value;
 var endX = e_xpos.value;
 var endY = e_ypos.value;
-var passList = "127.04724656694417,37.524162226778515_127.10887300128256,37.5289781669373";
 var prtcl;
 var headers = {}; 
 headers["appKey"]="b5cc2a5e-34c4-441b-96f9-0a2639aabc1a";

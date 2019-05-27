@@ -1,7 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+	<script>
+		if("${noti}"!=""){
+			theIcon = "<c:url value='/resources/images/notifi.png'/>";
+			Notification.requestPermission(function (result) {
+		        //요청을 거절하면,
+		        if (result === 'denied') {
+		            return;
+		        }
+		        //요청을 허용하면,
+		        else {
+		        	console.log("시작");
+		    		var message = "${noti_body}"		    
+		            var options = {
+		                body: message,
+		                icon: theIcon
+		            }
+		            //데스크탑 알림 요청
+		            var notification = new Notification("${noti}", options);
+		            
+		            //알림 후 5초 뒤,
+		            setTimeout(function () {
+		                //얼람 메시지 닫기
+		                notification.close();
+		            }, 5000);
+		        }
+		    });
+		};
+		
+	</script>
 	<!-- Strat Slider Area -->
 		<div class="slide__carosel owl-carousel owl-theme">
 			<div class="slider__area slider--two bg-pngimage--1  d-flex fullscreen justify-content-start align-items-center">

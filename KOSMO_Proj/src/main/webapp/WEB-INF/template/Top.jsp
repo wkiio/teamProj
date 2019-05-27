@@ -86,7 +86,7 @@
 					<!-- Mobile Menu -->
                     <div class="mobile-menu d-block d-lg-none">
                     	<div class="logo">
-                    		<a href="index.html"><img src="/Bootstrap/junior/images/logo/junior.png" alt="logo"></a>
+                    		<a href="index.html"><img src="resources/images/Aran1.png" alt="logo" style="height:100px"></a>
                     	</div>
                     	<a class="minicart-trigger" href="#">
                     		<i class="fa fa-shopping-basket"></i>
