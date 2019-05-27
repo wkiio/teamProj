@@ -80,6 +80,44 @@ public class CalenderController {
 		return JSONArray.toJSONString(collections);
 	}
 	
+	@RequestMapping("/Notify.kosmo")
+	public String notify(@RequestParam Map map, Authentication auth,Model model) throws Exception{
+		UserDetails user = (UserDetails)auth.getPrincipal();
+		map.put("id", user.getUsername());
+		SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
+		Date time = new Date();
+		String time1 = format1.format(time);
+		map.put("today", time1.substring(5));
+		//CalenderDTO result = service.selectOne(map);
+		List<CalenderDTO> list = service.selectList(map);
+		System.out.println(list);
+		if(!list.isEmpty()) {
+			int count=0;
+			String title = list.get(0).getTitle().toString();
+			String[] body = list.get(0).getStartdate().toString().split("T");
+			for(int i=0;i<list.size();i++) {
+				int noti = Integer.parseInt(list.get(i).getNotification());
+				System.out.println(noti);
+				switch(noti) {
+					case 1 : 
+						if(time1.substring(0, 4).equals(list.get(i).getStartdate().substring(0, 4))) {
+							System.out.println("한번만 알림");
+							count++;
+						}
+						break;
+					case 2 :
+						System.out.println("계속 알림");
+						count++;
+						break;
+				}
+			}
+			model.addAttribute("noti", title);
+			model.addAttribute("noti_body", body.length>1?body[0]+" "+body[1]:body[0]);
+			model.addAttribute("noti_count", count-1);
+		}
+		return "forward:/index.kosmo";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value="/fcinput.kosmo", produces = "application/text; charset=utf8")
 	public String fcinput(@RequestParam Map map,Authentication auth, @RequestParam(name="noti") String noti) throws Exception{
@@ -96,29 +134,7 @@ public class CalenderController {
 		System.out.println("입력완료");
 		return map.get("no").toString();
 	}
-	@RequestMapping("/Notify.kosmo")
-	public String notify(@RequestParam Map map, Authentication auth,Model model) throws Exception{
-		UserDetails user = (UserDetails)auth.getPrincipal();
-		map.put("id", user.getUsername());
-		SimpleDateFormat format1 = new SimpleDateFormat ("yyyy-MM-dd");
-		Date time = new Date();
-		String time1 = format1.format(time);
-		System.out.println(time1.substring(0, 4));
-		System.out.println(time1.substring(5));
-		map.put("today", time1.substring(5));
-		CalenderDTO result = service.selectOne(map);
-		if(result!=null) {
-			int noti = Integer.parseInt(result.getNotification().toString());
-			switch(noti) {
-				case 1 : 
-				case 2 : 
-			}
-			String[] body = result.getStartdate().toString().split("T");
-			model.addAttribute("noti", result.getTitle().toString());
-			model.addAttribute("noti_body", body.length>1?body[0]+" "+body[1]:body[0]);
-		}	
-		return "forward:/index.kosmo";
-	}
+	
 	
 	
 	@ResponseBody

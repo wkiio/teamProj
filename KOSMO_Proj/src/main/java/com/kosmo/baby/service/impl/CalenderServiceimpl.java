@@ -35,13 +35,6 @@ public class CalenderServiceimpl implements CalenderService{
 	public int update(Map map) {
 		return dao.update(map);
 	}
-
-	@Override
-	public CalenderDTO selectOne(Map map) {
-		return dao.selectOne(map);
-	}
-	
-	
 	
 
 }

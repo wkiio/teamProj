@@ -19,7 +19,12 @@ public class CalenderDAO implements CalenderService{
 	
 	@Override
 	public List<CalenderDTO> selectList(Map map) {
-		return template.selectList("calList",map);
+		if(map.get("today")!=null) {
+			return template.selectList("notifi",map);
+		}
+		else {
+			return template.selectList("calList",map);
+		}
 	}
 	
 	@Override
@@ -37,11 +42,6 @@ public class CalenderDAO implements CalenderService{
 	public int update(Map map) {
 		//캘린더 수정용	
 		return template.update("calupdate",map);
-	}
-
-	@Override
-	public CalenderDTO selectOne(Map map) {
-		return template.selectOne("notifi", map);
 	}
 	
 	

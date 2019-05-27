@@ -20,7 +20,7 @@
 	</select>
 	
 	<select id="notifi" parameterType="java.util.Map" resultType="CalenderDTO">
-		SELECT * FROM calender WHERE id=#{id} AND Startdate LIKE '%' || #{today} || '%'
+		SELECT * FROM calender WHERE id=#{id} AND Startdate LIKE '%' || #{today} || '%' ORDER BY cal_no DESC
 	</select>
 	
 	<insert id="calinput" parameterType="java.util.Map">
