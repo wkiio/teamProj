@@ -47,10 +47,6 @@ $(function(){
 		var startY = $("#start_xpos").val();
 		var endX = $("#end_ypos").val();
 		var endY = $("#end_xpos").val();
-		console.log(startX);
-		console.log(startY);
-		console.log(endX);
-		console.log(endY);
 		var prtcl;
 		var headers = {}; 
 		headers["appKey"]="b5cc2a5e-34c4-441b-96f9-0a2639aabc1a";
@@ -72,8 +68,6 @@ $(function(){
 					trafficInfo : "Y" //교통정보 표출 옵션입니다.
 				},
 				success:function(response){
-					console.log("경로그린다");
-					console.log(response);
 					prtcl = response;
 					// 결과 출력
 					var innerHtml ="";
@@ -88,7 +82,8 @@ $(function(){
 					var taxiFare = " 예상 택시 요금 : "+$intRate[0].getElementsByTagName("tmap:taxiFare")[0].childNodes[0].nodeValue+"원";	
 
 					$("#result").text(tDistance+tTime+tFare+taxiFare);
-					
+					markerStartLayer.clearMarkers();
+					markerEndLayer.clearMarkers();
 					//5. 경로탐색 결과 Line 그리기
 					var routeLayer = new Tmap.Layer.Vector("route");//벡터 레이어 생성
 					var trafficColors = {
@@ -102,18 +97,13 @@ $(function(){
 							
 					};    
 					var kmlForm = new Tmap.Format.KML(trafficColors).readTraffic(prtcl);
-					console.log(kmlForm);
 					routeLayer = new Tmap.Layer.Vector("vectorLayerID"); //백터 레이어 생성
 					routeLayer.addFeatures(kmlForm); //교통정보를 백터 레이어에 추가   
 					
 					map.addLayer(routeLayer); // 지도에 백터 레이어 추가
-					console.log("ㄸ떠떠떠떠떠떠떠떠"+map);
-					console.log(map);
 					// 6. 경로탐색 결과 반경만큼 지도 레벨 조정
 					map.zoomToExtent(routeLayer.getDataExtent());
-					
-				
-				
+
 			},
 			error:function(request,status,error){
 				console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -135,10 +125,8 @@ $(function(){
 	var end_ypos;
 	//출발지 주소검색
 	$("#start").focus().on("click", function(event) {
-		console.log('이벤트 시작');
 		$(".contents").hide();
 		if ($(this).val() == "") {
-			console.log('입력값 없어');
 			return false;
 		}
 		$(this).autocomplete("search");
@@ -151,7 +139,6 @@ $(function(){
 				}
 				return;
 			}
-			console.log('에이작스 시작할께')
 			//데이터 요청
 			$.ajax({
 				url : "http://202.8.161.50:9191/suggest",
@@ -159,7 +146,6 @@ $(function(){
 				cache : false,
 				data : {query : query},
 				success : function(data) {
-					console.log('에이작스 성공')
 					searched = data.query;
 					response(data.values);
 				}
@@ -168,7 +154,6 @@ $(function(){
 		minLength : 1,
 		delay : 300,
 		select : function(event, ui) {
-			console.log('데이터 저장할께')
 			//얻어온 데이터 지정한 위치에 출력
 			var ssido = ui.item.ssido.toString();
 			var jibun = ui.item.jibun.toString();
@@ -190,20 +175,16 @@ $(function(){
 			return false; // false: leave input value, true: resert input value
 		}
 	}).autocomplete("instance")._renderItem = function(ul, item) {
-		console.log('자동완성 그린다')
 		//얻은 데이터로 자동완성 그리기
 		item.jibunTX = item.ssido + " " + item.jibun + " " + item.jibunno + (item.buildname.length > 0 ? " " + item.buildname : "");
 		item.jibunHL = S9HL.highlight(item.jibunTX, searched);
-
 		return $("<li>").append("<jbn>지번</jbn> ").append(item.jibunHL).appendTo(ul);
 	};
 	
 	//도착지 주소검색
 	$("#end").focus().on("click", function(event) {
-		console.log('이벤트 시작2');
 		$(".contents").hide();
 		if ($(this).val() == "") {
-			console.log('입력값 없어2');
 			return false;
 		}
 		$(this).autocomplete("search");
@@ -216,7 +197,6 @@ $(function(){
 				}
 				return;
 			}
-			console.log('에이작스 시작할께2')
 			//데이터 요청
 			$.ajax({
 				url : "http://202.8.161.50:9191/suggest",
@@ -224,7 +204,6 @@ $(function(){
 				cache : false,
 				data : {query : query},
 				success : function(data) {
-					console.log('에이작스 성공2')
 					searched = data.query;
 					response(data.values);
 				}
@@ -233,7 +212,6 @@ $(function(){
 		minLength : 1,
 		delay : 300,
 		select : function(event, ui) {
-			console.log('데이터 저장할께2')
 			//얻어온 데이터 지정한 위치에 출력
 			var ssido = ui.item.ssido.toString();//시,도
 			var jibun = ui.item.jibun.toString();//지번
@@ -255,11 +233,9 @@ $(function(){
 			return false; // false: leave input value, true: resert input value
 		}
 	}).autocomplete("instance")._renderItem = function(ul, item) {
-		console.log('자동완성 그린다2')
 		//얻은 데이터로 자동완성 그리기
 		item.jibunTX = item.ssido + " " + item.jibun + " " + item.jibunno + (item.buildname.length > 0 ? " " + item.buildname : "");
 		item.jibunHL = S9HL.highlight(item.jibunTX, searched);
-
 		return $("<li>").append("<jbn>지번</jbn> ").append(item.jibunHL).appendTo(ul);
 	};
 
