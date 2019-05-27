@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<script>
 		if("${noti}"!=""){
-			theIcon = "<c:url value='/resources/images/notifi.png'/>";
+			theIcon = "<c:url value='/resources/images/Aran.png'/>";
 			Notification.requestPermission(function (result) {
 		        //요청을 거절하면,
 		        if (result === 'denied') {
@@ -12,7 +12,14 @@
 		        //요청을 허용하면,
 		        else {
 		        	console.log("시작");
-		    		var message = "${noti_body}"		    
+		        	var message;
+		        	if("${noti_count}"!="") {
+		        		message = "${noti_body}"+"\r\n외 ${noti_count}개의 일정이 있습니다.";
+		        	}
+		        	else {
+		        		message = "${noti_body}";
+		        	}
+		    		
 		            var options = {
 		                body: message,
 		                icon: theIcon

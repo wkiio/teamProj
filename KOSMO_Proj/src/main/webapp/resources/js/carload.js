@@ -1,4 +1,9 @@
 
+var s_xpos = document.getElementById('start_ypos');
+var s_ypos = document.getElementById('start_xpos');
+//도착위치 위도,경도 얻기
+var e_xpos = document.getElementById('end_ypos');
+var e_ypos = document.getElementById('end_xpos');
 // 1. 지도 띄우기
 map = new Tmap.Map({
 	div : 'map_div',
