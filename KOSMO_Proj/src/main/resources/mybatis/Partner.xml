@@ -6,6 +6,8 @@
 
 <mapper namespace="mybatis.Partner">
 
-	
+	<select id="partnerOne" resultType="com.kosmo.baby.service.PartnerDTO" parameterType="java.util.Map">
+		select * from partner_members where id=#{id}
+	</select>
 
 </mapper>

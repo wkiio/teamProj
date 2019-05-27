@@ -153,5 +153,3 @@
 			</div>
 		</section>
 		<!-- End Our Service Area -->
-
-		

@@ -36,6 +36,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/BabyFair.xml" />
 		<mapper resource="mybatis/Review.xml"/>
 		<mapper resource="mybatis/GuestBook.xml" />
+		<mapper resource="mybatis/Partner.xml" />
 	</mappers>
 
 </configuration>

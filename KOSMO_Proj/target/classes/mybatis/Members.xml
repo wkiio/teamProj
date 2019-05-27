@@ -31,7 +31,7 @@
 		
 	<!-- 카풀 인원수 -->
 	<select id="carmemberCount" resultType="int">
-		select count(*) from members where Partnerstatus = 1; 
+		select count(*) from members where Partnerstatus = 2; 
 	</select>  
 	
 	
@@ -43,7 +43,7 @@
 		<if test="partnerstatus==1"> ALL </if>
 			INTO members VALUES(#{id},#{pwd},#{name},#{addr},#{email},#{tel},#{photo},#{authkey},0,#{partnerstatus},default)
 		<if test="partnerstatus==1"> 
-			INTO partner_members values(SEQ_PARTNER_MEMBERS.nextval,#{id},#{carnumber},#{cartype},#{career},'0',0)
+			INTO partner_members values(SEQ_PARTNER_MEMBERS.nextval,#{id},#{carnumber},#{cartype},#{career})
 			select * from dual</if>
 	</insert>
 	
@@ -55,6 +55,11 @@
    <delete id="memberdelete" parameterType="java.util.Map">
       delete from members where id=#{id}
    </delete>
+   
+   <!-- 관리자 페이지에서 카풀 승낙을 누를때 실행하는 쿼리문 -->
+   <update id="partnerOK" parameterType="java.util.Map">
+   		UPDATE members set partnerstatus='2' where id=#{inputid}
+   </update>
    
   	 <!-- 마이페이지 비밀번호 체크용 -->
    <select id="mypageCheck" parameterType="java.util.Map" resultType="int">

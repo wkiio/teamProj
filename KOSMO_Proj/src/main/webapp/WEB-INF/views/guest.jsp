@@ -3,6 +3,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/template/isMember.jsp"%>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<sec:authorize access="isAuthenticated()">
+      <sec:authentication property="principal.username" var="commentid" />
+</sec:authorize>
+
 
 <!-- include libraries(jQuery, bootstrap) -->
 <link
@@ -209,8 +213,15 @@
                            + comment['gComment'] + '</span></div>';
                      commentsString += "<span style='color:black;margin-left:50px;'>"
                            + comment['gPostdate'] + "</span>";
+                           
+                     if("${commentid}" ==comment['id']){     	 
                      commentsString += "<a href='#recomment'><span class='reply' title='"+comment['gNo']+"' style='cursor:pointer;color:black;'>  답변  </span></a><span class='commentDelete' title='"+comment['gNo']+"' style='cursor:pointer;color:black;'>삭제</span>";
+                     }
+                     else{
+                    	 commentsString += "<a href='#recomment'><span class='reply' title='"+comment['gNo']+"' style='cursor:pointer;color:black;'>  답변  </span></a>"
+                     }
                      commentsString += "</p></div>";
+                     
                   });
 
       $('#comments').html(commentsString);

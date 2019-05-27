@@ -332,7 +332,7 @@
                 </div>
                <div class="form-group">
                     <label for="inputName">링크(URL)</label>
-                    <input type="text" class="form-control123" id="inputUrl">
+                    <input type="text" class="form-control" id="inputUrl">
                 </div>
                 <div class="form-group">
                     <label for="inputName">썸네일주소</label>

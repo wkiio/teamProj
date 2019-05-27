@@ -6,6 +6,9 @@ import java.util.Map;
 public interface ReservationService {
 	//목록용
 	List<ReservationDTO> selectList(Map map);
+	//이전 과거 목록용
+	List<ReservationDTO> previous(Map map);
+	
 	
 	//검색용
 	ReservationDTO selectOne(Map map);

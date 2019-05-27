@@ -88,5 +88,11 @@ public class MembersDAO implements MembersService{
 	public MembersDTO findPwd(Map map) {
 		return template.selectOne("findPwd",map);
 	}
+
+	@Override
+	public int partnerOK(Map map) {
+		
+		return template.update("partnerOK",map);
+	}
 	
 }

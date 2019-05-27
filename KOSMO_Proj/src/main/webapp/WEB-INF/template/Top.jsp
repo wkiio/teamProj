@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -87,6 +88,103 @@
                     <div class="mobile-menu d-block d-lg-none">
                     	<div class="logo">
                     		<a href="index.html"><img src="resources/images/Aran1.png" alt="logo" style="height:100px"></a>
+                    	</div>
+                    	<a class="minicart-trigger" href="#">
+                    		<i class="fa fa-shopping-basket"></i>
+                    	</a>
+                    </div>
+                    <!-- Mobile Menu -->
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+<sec:authorize access="isAuthenticated()">
+      <sec:authentication property="principal.username" var="id" />
+</sec:authorize>
+
+	<header id="header" class="jnr__header header--one clearfix">
+			<!-- Start Header Top Area -->
+			<div class="junior__header__top">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-7 col-lg-6 col-sm-12">
+							<div class="jun__header__top__left">
+								<ul class="top__address d-flex justify-content-start align-items-center flex-wrap flex-lg-nowrap flex-md-nowrap">
+									<li><i class="fa fa-envelope"></i><a href="#">csj_910226@gmail.com</a></li>
+									<li><i class="fa fa-phone"></i><span>관리자 번호:</span><a href="#">010-9781-7521</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-5 col-lg-6 col-sm-12">
+							<div class="jun__header__top__right">
+								<ul class="accounting d-flex justify-content-lg-end justify-content-md-end justify-content-start align-items-center">
+									<%-- 로그인 시큐리티 추가 --%>
+									<sec:authorize access="isAnonymous()">
+									<li><a href="login_page.kosmo">로그인</a></li>
+									<li><a href="sign_up_page.kosmo">회원가입</a></li>
+									</sec:authorize>
+									<sec:authorize access="isAuthenticated()">
+									<li style="margin-right: 10px;"><span>${id }님</span></li>
+				        			<li style="margin-right: 10px;"><a href="javascript:logout()">로그아웃</a></li>
+									</sec:authorize>
+								</ul>
+							</div>
+						</div>
+					</div>
+>>>>>>> branch 'master5' of https://github.com/wkiio/teamProj.git
+				</div>
+			</div>
+			<!-- Start Mainmenu Area -->
+			<div class="mainmenu__wrapper bg__cat--1 poss-relative header_top_line sticky__header">
+				<div class="container">
+					<div class="row d-none d-lg-flex">
+						<div class="col-sm-4 col-md-6 col-lg-2 order-1 order-lg-1">
+							<div class="logo">
+								<a href="index.kosmo">
+									<img src="resources/images/Aran1.png" alt="logo images" style="height:100px">
+								</a>
+							</div>
+						</div>
+						<div class="col-sm-4 col-md-3 col-lg-10 order-2 order-lg-2">
+							<div class="mainmenu__wrap">
+								<nav class="mainmenu__nav">
+                                    <ul class="mainmenu">
+                                        <li class="drop"><a href="index.kosmo">메인</a>
+											<ul class="dropdown__menu">
+                                                <li><a href="word.kosmo">베스트검색어</a></li>                                                
+                                            </ul>
+                                        </li>
+                                        <li class="drop"><a href="serviceclick.kosmo">서비스</a>
+                                        <ul class="dropdown__menu">
+                                                <li><a href="Carindex.kosmo">이동리스트</a></li>
+                                                <li><a href="aaabbb.kosmo">지도검색</a></li>                                            
+                                            </ul>
+                                        </li>
+                                        <li class="drop"><a href="calendar.kosmo">육아달력</a></li>
+                                        <li class="drop"><a href="babyinfo.kosmo">육아정보</a></li>
+                                        <li class="drop"><a href="blookChain.kosmo">검증</a></li>
+                                        <li class="drop"><a href="guestbook.kosmo">방명록</a></li>
+                                        <li class="drop"><a href="#">마이페이지</a>
+                                            <ul class="dropdown__menu">
+                                                <li><a href="mypage_one.kosmo">개인정보</a></li>
+                                                <li><a href="Carreservation.kosmo">예약현황</a></li>                                                
+                                            </ul>
+                                        </li>   
+                                        	<c:set var="loginid" value="${id}" />
+										<c:if test="${loginid == 'admin'}">
+											<li><a href="admin_index.kosmo">관리자페이지</a></li>
+										</c:if>  
+                                    </ul>
+                                </nav>
+							</div>
+						</div>						
+					</div>
+					<!-- Mobile Menu -->
+                    <div class="mobile-menu d-block d-lg-none">
+                    	<div class="logo">
+                    		<a href="index.html"><img src="resources/images/Aran1.png" alt="logo" style="height:50px"></a>
                     	</div>
                     	<a class="minicart-trigger" href="#">
                     		<i class="fa fa-shopping-basket"></i>

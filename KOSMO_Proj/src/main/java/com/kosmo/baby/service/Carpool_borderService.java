@@ -6,6 +6,7 @@ import java.util.Map;
 public interface Carpool_borderService {
 	//게시판 목록용
 	List<Carpool_borderDTO> selectList(Map map);
+	
 	//관리자 페이지 목록
 	int adminInsert(Map map);
 	//이 사람이 일반유저인가 제휴유저인가 판단한다

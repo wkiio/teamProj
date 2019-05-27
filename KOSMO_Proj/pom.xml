@@ -234,7 +234,13 @@
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.6</version>
-		</dependency>		
+		</dependency>
+		<!-- google vision ai -->		
+		<dependency>
+		  <groupId>com.google.cloud</groupId>
+		  <artifactId>google-cloud-vision</artifactId>
+		  <version>1.61.0</version>
+		</dependency>
 	</dependencies>
     <build>
         <plugins>

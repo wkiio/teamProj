@@ -55,6 +55,12 @@ public class ReservationServiceimpl implements ReservationService{
 	public List<ReservationDTO> selectScore(Map map) {
 		return dao.selectScore(map);
 	}
+
+	@Override
+	public List<ReservationDTO> previous(Map map) {
+		System.out.println("ㄴㄷㄱ퍛데ㅣㅑㅡ"+map);
+		return dao.previous(map);
+	}
 	
 	
 

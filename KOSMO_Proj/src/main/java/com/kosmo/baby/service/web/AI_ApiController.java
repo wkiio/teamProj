@@ -1,6 +1,7 @@
 package com.kosmo.baby.service.web;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kosmo.baby.command.QuickstartSample;
 import com.kosmo.baby.service.AiApi;
 import com.kosmo.baby.service.impl.MsApi;
 import com.kosmo.baby.service.impl.NaverSearchApi;
@@ -34,6 +36,9 @@ public class AI_ApiController {
 	@Resource(name="msApi")
 	private MsApi ms_api;
 	
+	@Resource(name="quickstartSample")
+	private QuickstartSample google_ai;
+	
 	/*
 	String path = req.getServletContext().getRealPath("/Upload");
 	File file = new File(path+File.separator+req.getParameter("filename"));*/
@@ -41,7 +46,7 @@ public class AI_ApiController {
 	@ResponseBody
 	@RequestMapping(value="/gotoAI.kosmo" , produces="text/html; charset=UTF-8")
 	public String ai_Api(@RequestParam Map map,HttpServletRequest req,
-			HttpServletResponse resp) {
+			HttpServletResponse resp) throws IOException {
 		
 		String file = (String) map.get("filepath");	
 		System.out.println("filepath :" + file);
@@ -82,7 +87,12 @@ public class AI_ApiController {
 		JSONObject jsonObj1 =  (JSONObject) jsonObj.get("description");
 		System.out.println("jsonObj1.toJSONString() : " + jsonObj1.toJSONString());
 		
-		return jsonObj1.toJSONString();
+		google_ai.label(fileRealPath);		
+		google_ai.web(fileRealPath);
+		
+		System.out.println("구글??????:" +  google_ai.getGoogle_api());
+		
+		return google_ai.getGoogle_api();
 		//return jsonObj1.toJSONString();
 	}
 	 
