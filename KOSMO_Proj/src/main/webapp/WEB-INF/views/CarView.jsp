@@ -296,7 +296,7 @@ $('#resbutton').click(function(){
 		 $('#signed').val(r); 
 		 $('.carviewform').submit();
 	  });     */
-	    
+	$('.carviewform').submit();
 
 });
 
