@@ -121,7 +121,7 @@
 								<h2>차량 등록증 및 운전면허증</h2>
 								<div class="form-label-group">
 									<div class="input-group">
-										<input type="text" id="carnumber" name="carnumber" class="form-control" placeholder="사진파일" required>
+										<input type="text" id="carnumber" name="carnumber" class="form-control" placeholder="차량 등록증 또는 운전면허증" required>
 									<div class="input-group-append">
 										<a id="carnumber_upload" class="btn btn-singup" data-target="#carnumber" style="color: white">사진 업로드</a>
 									</div>
@@ -157,6 +157,30 @@
 		      </form>
 		      <div class="modal-footer">		        
 		        <button type="button" class="btn btn-primary" id="clickbutton_modal" data-dismiss="modal">확인</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		<div class="modal fade" id="carnumbermodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:9000" >
+		  <div class="modal-dialog" role="document" >
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">사진 등록하기</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <form enctype="myltipart/form-data" >
+		      	<div class="modal-body">
+               		<div class="form-group">
+                  	  <input type="file" name="carnumberinput" class="form-control123" id="carnumberinput">
+                    	<small></small>
+               	 	</div>
+		      	</div>
+		      </form>
+		      <div class="modal-footer">		        
+		        <button type="button" class="btn btn-primary" id="clickbutton_modal2" data-dismiss="modal">확인</button>
 		      </div>
 		    </div>
 		  </div>
@@ -286,6 +310,36 @@ function getname(obj)
 	         }    		 
     	 });
     	 $('#photo').val(filename); 
+        	 
+      }); 
+     
+		 //사진업로드 눌렀을
+     $('#carnumber_upload').click(function(){
+        $('#carnumbermodal').modal();
+     });
+     
+     $('#clickbutton_modal2').click(function(){
+    	 filename = document.getElementById("carnumberinput").files[0].name; 
+    	 fileobject = document.getElementById("carnumberinput").files[0];
+    	 console.log(fileobject);
+    	 
+    	 var formData = new FormData();
+    	 formData.append("carnumberinput",$("input[name=carnumberinput]")[0].files[0]);
+    	 console.log(formData); 
+    	 //$("#photo").replaceWith( $("#photoinput").clone(true) );
+    	 
+    	 $.ajax({
+    		 url : "imageupload.kosmo?${_csrf.parameterName}=${_csrf.token}",
+    		 processData: false,
+             contentType: false,
+	         data: formData,
+	         type: 'POST',
+	         dataType : 'text',
+	         success : function(data){
+	        	 console.log("받음");
+	         }    		 
+    	 });
+    	 $('#carnumber').val(filename); 
         	 
       }); 
 		

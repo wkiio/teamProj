@@ -123,8 +123,7 @@ public class MembersController {
 		System.out.println("받아온 파일이름" + rhhh.getFile("photoinput"));
 		System.out.println(map);
 		getImageFile = rhhh.getFile("photoinput");
-		
-	
+		getImageFile = rhhh.getFile("carnumberinput");
 		
 		return "gg";
 	}
@@ -135,12 +134,13 @@ public class MembersController {
 	public String singup(@RequestParam Map map,UploadCommand cmd, MultipartHttpServletRequest rhhh,
 			HttpServletRequest req,	
 			@RequestParam(required=false) String career,@RequestParam(required=false) String cartype) throws Exception{
-		
 		System.out.println("map: " + map);
 		
+		////파일 업로드 시작
+		
+		//증명사진 올리는 코드
 		MultipartFile ff = getImageFile;
 		System.out.println("ff: " + ff);
-
 		//경로찾기
 		System.out.println("??? ::" + servletContext.getRealPath("/"));
 		String phisicalPath=req.getServletContext().getRealPath("/resources/memberPhoto");
@@ -152,13 +152,28 @@ public class MembersController {
 		String newFileName=FileUpDownUtils.getNewFileName(phisicalPath, ff.getOriginalFilename());
 		File file = new File(phisicalPath+File.separator+newFileName);
 		System.out.println("vxcbdfg:" + file.toPath());
+		
 		//3]업로드 처리		
 		ff.transferTo(file);
-		
 		map.put("photo", file.toString() );
+
 		
+		//차량등록증 또는 운전면허증을 올리는 코드
+		MultipartFile nn = getImageFile;
+		System.out.println("nn:" + nn);
 		
-		//파일업로드 끝
+		System.out.println("??? ::" + servletContext.getRealPath("/"));
+		String phisicalPath2=req.getServletContext().getRealPath("/resources/carnumber");
+		System.out.println("phisicalPath:" + phisicalPath2);
+		
+		String newFileName2=FileUpDownUtils.getNewFileName(phisicalPath2, nn.getOriginalFilename());
+		File file2 = new File(phisicalPath2+File.separator+newFileName2);
+		System.out.println("carnumber :" + file2.toPath());
+		
+		nn.transferTo(file2);
+		map.put("carnumber", file2.toString());
+		
+		////파일업로드 끝
 		
 		//telfront는 010, 011같은 selectbox
 		//telback은 유저가 입력한 전화번호

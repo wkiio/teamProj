@@ -317,16 +317,21 @@ z-index : -10;
                          <input type="hidden" class="form-control" id="inputid" name="inputid" value=""/>
                           <div class="input-group mb-3">
                           <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">이인간의 이름</span>
+                           <img id="carnumberimg" src="" title="사진" alt="안나와" class="picture" style="width:100%">
                           </div>
-                          <input type="text" class="form-control" id="partnerid" readonly>
                           
                      </div>
                      <div class="input-group">
                           <div class="input-group-prepend">
-                            <span class="input-group-text">차량등록번호</span>
+                            <span class="input-group-text">아이디</span>
                           </div>
-                          <input type="text" class="form-control" id="partnernumber" readonly>
+                          <input type="text" class="form-control" id="partnerid" readonly>
+                     </div>
+                     <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">차종</span>
+                          </div>
+                          <input type="text" class="form-control" id="partnertype" readonly>
                      </div>
                        
                   
@@ -475,7 +480,8 @@ z-index : -10;
 	                	  console.log(partnertype);
 	                	  $('#partnerid').val(id);
 	                	  $('#inputid').val(id);
-	                	  $('#partnertype').val(partnernumber);
+	                	  $('#partnertype').val(partnertype);
+	                	  $('#carnumberimg').prop("src","<c:url value='/resources/carnumber/"+partnernumber+"'/>")
 	                  }
 	                  
 
