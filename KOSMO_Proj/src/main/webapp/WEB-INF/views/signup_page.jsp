@@ -329,7 +329,7 @@ function getname(obj)
     	 //$("#photo").replaceWith( $("#photoinput").clone(true) );
     	 
     	 $.ajax({
-    		 url : "imageupload.kosmo?${_csrf.parameterName}=${_csrf.token}",
+    		 url : "imageupload2.kosmo?${_csrf.parameterName}=${_csrf.token}",
     		 processData: false,
              contentType: false,
 	         data: formData,

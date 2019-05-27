@@ -123,9 +123,18 @@ public class MembersController {
 		System.out.println("받아온 파일이름" + rhhh.getFile("photoinput"));
 		System.out.println(map);
 		getImageFile = rhhh.getFile("photoinput");
-		getImageFile = rhhh.getFile("carnumberinput");
 		
 		return "gg";
+	}
+	@ResponseBody
+	@RequestMapping("/imageupload2.kosmo")
+	public String nn(@RequestParam Map map,UploadCommand cmd, HttpServletRequest req,MultipartFile file,MultipartHttpServletRequest rhhh)
+	{
+		System.out.println("받아온 파일이름" + rhhh.getFile("carnumberinput"));
+		System.out.println(map);
+		getImageFile = rhhh.getFile("carnumberinput");
+		
+		return "pp";
 	}
 	
 	
