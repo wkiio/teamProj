@@ -449,9 +449,9 @@ document.addEventListener('DOMContentLoaded', function() {
 						<div class='form-group'>
 							<label style="display: block;">알림 설정</label>
 							<div>
-								<label class="radio-inline"><input type="radio" name="optradio" value="0"> 알림 없음</label>
-								<label class="radio-inline"><input type="radio" name="optradio" value="1"> 알림 1회</label>
-								<label class="radio-inline"><input type="radio" name="optradio" value="2"> 계속 알림</label>
+								<label class="radio-inline"><input type="radio" name="noti" value="0"> 알림 없음</label>
+								<label class="radio-inline"><input type="radio" name="noti" value="1"> 알림 1회</label>
+								<label class="radio-inline"><input type="radio" name="noti" value="2"> 계속 알림</label>
 							</div>
 						</div>
 						<div id="imgdiv1" class='form-group' style="display: none;">
@@ -528,9 +528,9 @@ document.addEventListener('DOMContentLoaded', function() {
 						<div class='form-group'>
 							<label style="display: block;">알림 설정</label>
 							<div>
-								<label class="radio-inline"><input type="radio" name="modifoptradio"> 알림 없음</label>
-								<label class="radio-inline"><input type="radio" name="modifoptradio"> 알림 1회</label>
-								<label class="radio-inline"><input type="radio" name="modifoptradio"> 계속 알림</label>
+								<label class="radio-inline"><input type="radio" name="modifnoti" value="0"> 알림 없음</label>
+								<label class="radio-inline"><input type="radio" name="modifnoti" value="1"> 알림 1회</label>
+								<label class="radio-inline"><input type="radio" name="modifnoti" value="2"> 계속 알림</label>
 							</div>
 						</div>
 						<div class='form-group'>

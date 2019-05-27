@@ -1,11 +1,10 @@
-var map;
 $(function(){
 //////////////지도
 	// map 생성
 	// Tmap.map을 이용하여, 지도가 들어갈 div, 넓이, 높이를 설정합니다.
 	var marker_s;
 	var marker_e;
-	map = new Tmap.Map({div:'map_div', // map을 표시해줄 div
+	var map = new Tmap.Map({div:'map_div', // map을 표시해줄 div
 							width:'100%',  // map의 width 설정
 							height:'400px' // map의 height 설정
 	}); 

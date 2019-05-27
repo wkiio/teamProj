@@ -20,11 +20,11 @@
 	</select>
 	
 	<select id="notifi" parameterType="java.util.Map" resultType="CalenderDTO">
-		SELECT * FROM calender WHERE id=#{id} AND Startdate LIKE #{today} || '%'
+		SELECT * FROM calender WHERE id=#{id} AND Startdate LIKE '%' || #{today} || '%'
 	</select>
 	
 	<insert id="calinput" parameterType="java.util.Map">
-		INSERT INTO calender VALUES(SEQ_Calender.NEXTVAL,#{caltitle},#{startdate},#{enddate},#{calcontent},#{type},#{id})
+		INSERT INTO calender VALUES(SEQ_Calender.NEXTVAL,#{caltitle},#{startdate},#{enddate},#{calcontent},#{type},#{noti},#{id})
 		<selectKey keyProperty="no" resultType="Integer" order="AFTER">
 			SELECT SEQ_Calender.CURRVAL FROM dual
 		</selectKey>
@@ -32,7 +32,7 @@
 	
 	<update id="calupdate" parameterType="java.util.Map">
 		UPDATE calender SET title=#{modiftitle}, startdate=#{modifstartStr}, enddate=#{modifendStr},
-		 content=#{modifcontent}, type=#{modiftype} WHERE cal_no=#{modifyEventId}
+		 content=#{modifcontent}, type=#{modiftype}, notification=#{modifnoti} WHERE cal_no=#{modifyEventId}
 	</update>
 	
 	
