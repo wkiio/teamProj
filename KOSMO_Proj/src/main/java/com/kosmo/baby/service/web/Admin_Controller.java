@@ -198,8 +198,9 @@ public class Admin_Controller {
 		model.addAttribute("partnertype",partner.getCarType());
 		JSONObject re = new JSONObject();
 		re.put("partnerid", partner.getId());
-		re.put("partnernumber", partner.getCarNumber());
 		re.put("partnertype", partner.getCarType());
+		re.put("partnernumber",partner.getCarNumber().split("carnumber")[1].substring(1));
+		System.out.println("사진경로:" + partner.getCarNumber().split("carnumber")[1].substring(1));
 		System.out.println("partnertype: " +partner.getCarType());
 		return re.toJSONString();
 	}
