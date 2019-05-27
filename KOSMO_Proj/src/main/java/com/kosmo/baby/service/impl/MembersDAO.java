@@ -91,8 +91,8 @@ public class MembersDAO implements MembersService{
 
 	@Override
 	public int partnerOK(Map map) {
-		template.update("partnerOK",map);
-		return 0;
+		
+		return template.update("partnerOK",map);
 	}
 	
 }

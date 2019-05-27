@@ -39,5 +39,11 @@ public class PartnerDAO implements PartnerService{
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public PartnerDTO partnerOne(Map map) {
+		// TODO Auto-generated method stub
+		return template.selectOne("partnerOne", map);
+	}
 	
 }

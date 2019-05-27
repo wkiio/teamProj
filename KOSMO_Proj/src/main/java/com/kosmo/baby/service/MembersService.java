@@ -24,7 +24,7 @@ public interface MembersService {
 	int carMember(Map map);
 	//관리자가 카풀승낙을 누르기용
 	int partnerOK(Map map);
-	
+
 	//입력수정삭제용
 	int delete(Map map);
 	int insert(Map map);

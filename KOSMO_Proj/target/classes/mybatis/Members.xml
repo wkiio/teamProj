@@ -49,7 +49,7 @@
 	
 	<!-- 관리자페이지 회원관리용 -->
    <select id="selectList" parameterType="java.util.Map" resultType="MembersDTO">
-      SELECT * FROM members m JOIN partner_members p ON m.id = p.id
+      SELECT * FROM members
    </select>
    	<!-- 관리자 페이지 삭제용 -->
    <delete id="memberdelete" parameterType="java.util.Map">
@@ -58,7 +58,7 @@
    
    <!-- 관리자 페이지에서 카풀 승낙을 누를때 실행하는 쿼리문 -->
    <update id="partnerOK" parameterType="java.util.Map">
-   		UPDATE members set partnerstatus='2' where id=#{id}
+   		UPDATE members set partnerstatus='2' where id=#{inputid}
    </update>
    
   	 <!-- 마이페이지 비밀번호 체크용 -->

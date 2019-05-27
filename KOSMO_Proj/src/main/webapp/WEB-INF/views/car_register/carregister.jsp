@@ -258,6 +258,7 @@ $(function(){
 			$('.carinput_form').submit();
 		});     
 		 */
+		 $('.carinput_form').submit();
 		console.log('============');
 
 	});

@@ -4,6 +4,14 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<style>
+body > div.modal-backdrop.fade.show{
+z-index : -10;
+}
+
+
+</style>
+
 
 <head>
     <!-- Required meta tags-->
@@ -206,7 +214,7 @@
         <!-- END MENU SIDEBAR-->
 
         <!-- PAGE CONTAINER-->
-        <div class="page-container">
+        <div class="page-container" >
             <!-- HEADER DESKTOP-->
             <header class="header-desktop">
                 <div class="section__content section__content--p30">
@@ -229,10 +237,7 @@
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
-                                                    <a href="#">
-                                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                                    </a>
-                                                </div>
+                                                  </div>
                                                 <div class="content">
                                                     <h5 class="name">
                                                         <a href="#">john doe</a>
@@ -269,7 +274,7 @@
             <!-- HEADER DESKTOP-->
 
             <!-- MAIN CONTENT-->
-            <div class="main-content">
+            <div class="main-content" >
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="row">
@@ -295,6 +300,45 @@
                            </tr>                     
                         </thead>
                      </table>
+                     
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" style="margin-top: 100px">
+            <div class="modal-dialog" role="document" >
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h5 class="modal-title" id="exampleModalLabel">승인절차</h5>
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+                 </button>
+               </div>
+               
+               <div class="modal-body" >
+                     <form class="carriewform" action="partnerOK.kosmo" method="post">
+                         <input type="hidden" class="form-control" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                         <input type="hidden" class="form-control" id="inputid" name="inputid" value=""/>
+                          <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">이인간의 이름</span>
+                          </div>
+                          <input type="text" class="form-control" id="partnerid" readonly>
+                          
+                     </div>
+                     <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">차량등록번호</span>
+                          </div>
+                          <input type="text" class="form-control" id="partnernumber" readonly>
+                     </div>
+                       
+                  
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">거절</button>
+                    <button type="submit" class="btn btn-primary btngrade">승인</button>
+                  </div>
+                </form> 
+                </div>        
+             </div>
+           </div>
+         </div>
                             
                             
                             
@@ -302,7 +346,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="copyright">
-                                    <p>시발 아란 프로젝트 <a href="https://colorlib.com">개같은 아란</a>.</p>
+                                    <p>아란 프로젝트</p>
                                 </div>
                             </div>
                         </div>
@@ -346,6 +390,7 @@
     <script>
      
     $(document).ready(function() {
+    	
         $('#dataTable3').DataTable({
          ajax: {
            data : {"${_csrf.parameterName}" : "${_csrf.token}"}, 
@@ -379,6 +424,7 @@
            ]         
            });
        });//document.ready
+       
          $(function() {
             var ss;
             var sa;
@@ -401,21 +447,45 @@
 	                  dataType : "json",
 	                  success:function(){
 	                     $("#dataTable3").DataTable().ajax.reload();   
+	                    
+	                    
 	                  }
 	
 	               });
                }
               }
               else{
-            	  
-            	  console.log("확인하는거");
-            	  
+            	  $.ajax({
+	                  type : "POST",
+	                  url : "/baby/partnerOne.kosmo",
+	                  data : {
+	                     'id' : name,"${_csrf.parameterName}" : "${_csrf.token}"
+	                  },
+	                  dataType : "json",
+	                  success: function(data){
+	                	  console.log(data);
+	                	  console.log("받아오는 아이디값 : " + "${partnernumber}");
+	                	  console.log("받아오는 아이디값 : " + "${partnertype}");
+	                	  console.log("성공");
+	                	  var id = data['partnerid'];
+	                	  var partnernumber = data['partnernumber']
+	                	  var partnertype = data['partnertype']
+	                	  console.log(id);
+	                	  console.log(partnernumber);
+	                	  console.log(partnertype);
+	                	  $('#partnerid').val(id);
+	                	  $('#inputid').val(id);
+	                	  $('#partnertype').val(partnernumber);
+	                  }
+	                  
+
+            	});
+            	  $("#exampleModal").modal();  
               }
-
-            });
-
-            
+        	
+         	});
          });
+       
        
 </script>
     

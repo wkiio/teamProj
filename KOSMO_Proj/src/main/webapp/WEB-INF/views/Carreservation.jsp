@@ -271,6 +271,7 @@ $('.btnsubmit').click(function(){
      
    /* $('#done').val("ㅁㄴㅇㅁㄴㅇㅁㄴㅇㄴㅁㅇ");
    $('.carviewform').submit(); */
+   $('.carviewform').submit();
 }); 
 
 var nono;
@@ -327,6 +328,7 @@ $('.starR').click(function(){
           $('#reviewed').val(r);
           $('.carriewform').submit();
       });      */
+      $('.carriewform').submit();
       
        
 /*          message.getSign(6,function(e,r){

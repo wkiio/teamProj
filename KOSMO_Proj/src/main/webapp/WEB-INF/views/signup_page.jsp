@@ -118,10 +118,17 @@
 								<label class="checkbox-inline"><input type="radio" id="cartype" name="cartype" value="소형차">소형차</label>
 								<label class="checkbox-inline"><input type="radio" id="cartype" name="cartype" value="중형차">중형차</label>
 								<label class="checkbox-inline"><input type="radio" id="cartype" name="cartype" value="대형차">대형차</label>
-								<h2>차 번호</h2>
-								<input type="text" id="carnumber" name="carnumber" class="form-control"  placeholder="차 번호를 입력하세요">
-								<small>&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;카풀 매칭시 이용자에게 알려주어 도달 시 찾기 용이하게 합니다.</small>
+								<h2>차량 등록증 및 운전면허증</h2>
+								<div class="form-label-group">
+									<div class="input-group">
+										<input type="text" id="carnumber" name="carnumber" class="form-control" placeholder="사진파일" required>
+									<div class="input-group-append">
+										<a id="carnumber_upload" class="btn btn-singup" data-target="#carnumber" style="color: white">사진 업로드</a>
+									</div>
+								</div>
+								<small>&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;본인의 차량등록증 또는 운전면허증의 사진을 올려주시기 바랍니다.</small>
 							</div>
+						</div>
 						</div>
 						<input type="hidden" value="0" name="partnerstatus" id="partnerstatus"/>
 						<button class="btn btn-lg btn-singup btn-block text-uppercase" type="submit" id="clickmember">회원 가입</button>

@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmo.baby.service.MembersDTO;
+import com.kosmo.baby.service.PartnerDTO;
 import com.kosmo.baby.service.ReservationDTO;
 import com.kosmo.baby.service.ReservationService;
 import com.kosmo.baby.service.impl.Baby_borderServiceimpl;
 import com.kosmo.baby.service.impl.Carpool_borderServiceimpl;
 import com.kosmo.baby.service.impl.Chart_DAO;
 import com.kosmo.baby.service.impl.MembersServiceimpl;
+import com.kosmo.baby.service.impl.PartnerServiceimpl;
 import com.kosmo.baby.service.impl.ReservationServiceimpl;
 import com.kosmo.baby.service.impl.VisitCountServiceimpl;
 
@@ -50,9 +52,14 @@ public class Admin_Controller {
 	@Resource(name="chart_DAO")
 	private Chart_DAO chart_DAO;	
 	
+	@Resource(name="partnerServiceimpl")
+	private PartnerServiceimpl partnerService;	
+	
 	//서비스 주입
 	@Resource(name="carpool_borderServiceimpl")
 	private Carpool_borderServiceimpl carpool_borderServiceimpl;
+	
+	//서비스 주입
 	
 
 	@RequestMapping("/admin_index.kosmo")
@@ -133,7 +140,7 @@ public class Admin_Controller {
 				record.put("PARTNERSTATUS","O");
 			}
 			else if(dto.getPartnerstatus().equals("1")) {
-				record.put("PARTNERSTATUS","<button class='btn btn-sm ' style='background-color:#fc466b; text-align: center; color:white'>확인</button>");
+				record.put("PARTNERSTATUS","<button class='btn btn-sm ' id='partnerOK' style='background-color:#fc466b; text-align: center; color:white'>확인</button>");
 			}
 			else {
 				record.put("PARTNERSTATUS","X");
@@ -168,9 +175,33 @@ public class Admin_Controller {
 	}
 
 	@RequestMapping("/partnerOK")
-	public String partnerOK(@RequestParam Map map) {
-		memberService.partnerOK(map);
-		return null;
+	public String partnerOK(@RequestParam Map map,Model model) {
+		System.out.println("mapmapmapmapmapmapmapmapmapmapmapmapmapmapmapmapmap : "+map.get("inputid"));
+		int partner = memberService.partnerOK(map);
+		
+		if(partner==1) {
+			System.out.println("잘되네요");
+			model.addAttribute("partnerok","승인이 완료되었습니다.");
+		}
+		else {
+			System.out.println("못했습니다.");
+		}
+		return "forward:memberTable.kosmo";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/partnerOne.kosmo", produces="text/html; charset=UTF-8")
+	public String partnerOne(@RequestParam Map map,Model model) {
+		PartnerDTO partner = partnerService.partnerOne(map);
+		model.addAttribute("partnerid",partner.getId());
+		model.addAttribute("partnernumber",partner.getCarNumber());
+		model.addAttribute("partnertype",partner.getCarType());
+		JSONObject re = new JSONObject();
+		re.put("partnerid", partner.getId());
+		re.put("partnernumber", partner.getCarNumber());
+		re.put("partnertype", partner.getCarType());
+		System.out.println("partnertype: " +partner.getCarType());
+		return re.toJSONString();
 	}
 	
 	
