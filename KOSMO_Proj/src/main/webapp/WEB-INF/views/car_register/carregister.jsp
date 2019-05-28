@@ -166,7 +166,6 @@
 		</div>
 		<div id="initmap">
 			<div id="map_div"></div>
-			<p id="result"></p>
 		</div>
 		<!-- div class="col">
 			<div id="map" class="box_map"></div>
