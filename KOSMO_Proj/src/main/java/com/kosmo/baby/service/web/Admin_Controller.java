@@ -192,6 +192,7 @@ public class Admin_Controller {
 	@ResponseBody
 	@RequestMapping(value="/partnerOne.kosmo", produces="text/html; charset=UTF-8")
 	public String partnerOne(@RequestParam Map map,Model model) {
+		System.out.println("wwwwwwwwwwwwwwwwwwwwwwwwwww : "+map.get("id"));		
 		PartnerDTO partner = partnerService.partnerOne(map);
 		model.addAttribute("partnerid",partner.getId());
 		model.addAttribute("partnernumber",partner.getCarNumber());
@@ -199,6 +200,7 @@ public class Admin_Controller {
 		JSONObject re = new JSONObject();
 		re.put("partnerid", partner.getId());
 		re.put("partnertype", partner.getCarType());
+		re.put("partnername", partner.getName());
 		re.put("partnernumber",partner.getCarNumber().split("carnumber")[1].substring(1));
 		System.out.println("사진경로:" + partner.getCarNumber().split("carnumber")[1].substring(1));
 		System.out.println("partnertype: " +partner.getCarType());

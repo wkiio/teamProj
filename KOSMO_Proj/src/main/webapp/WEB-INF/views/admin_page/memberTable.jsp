@@ -329,6 +329,12 @@ z-index : -10;
                      </div>
                      <div class="input-group">
                           <div class="input-group-prepend">
+                            <span class="input-group-text">이름</span>
+                          </div>
+                          <input type="text" class="form-control" id="partnername" readonly>
+                     </div>
+                     <div class="input-group">
+                          <div class="input-group-prepend">
                             <span class="input-group-text">차종</span>
                           </div>
                           <input type="text" class="form-control" id="partnertype" readonly>
@@ -452,10 +458,7 @@ z-index : -10;
 	                  dataType : "json",
 	                  success:function(){
 	                     $("#dataTable3").DataTable().ajax.reload();   
-	                    
-	                    
 	                  }
-	
 	               });
                }
               }
@@ -475,12 +478,14 @@ z-index : -10;
 	                	  var id = data['partnerid'];
 	                	  var partnernumber = data['partnernumber']
 	                	  var partnertype = data['partnertype']
+	                	  var partnername = data['partnername']
 	                	  console.log(id);
 	                	  console.log(partnernumber);
 	                	  console.log(partnertype);
 	                	  $('#partnerid').val(id);
 	                	  $('#inputid').val(id);
 	                	  $('#partnertype').val(partnertype);
+	                	  $('#partnername').val(partnername);
 	                	  $('#carnumberimg').prop("src","<c:url value='/resources/carnumber/"+partnernumber+"'/>")
 	                  }
 	                  

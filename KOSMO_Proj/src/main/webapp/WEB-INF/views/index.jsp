@@ -13,7 +13,7 @@
 		        else {
 		        	console.log("시작");
 		        	var message;
-		        	if("${noti_count}"!="") {
+		        	if("${noti_count}"!=""&&"${noti_count}"!="0") {
 		        		message = "${noti_body}"+"\r\n외 ${noti_count}개의 일정이 있습니다.";
 		        	}
 		        	else {

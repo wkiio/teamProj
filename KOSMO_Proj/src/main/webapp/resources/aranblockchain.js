@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
-var contractAddress = "0x6890cc1f3a0cc68499e51c1b69f37eeb47a17ef0";
-var abi =[
+var contractAddress = "0x82473a2e8e9f5aca44527c19df3ffdf6f02acea1";
+var abi = [
 	{
 		"constant": true,
 		"inputs": [],

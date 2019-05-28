@@ -17,7 +17,7 @@
 <mapper namespace="mybatis.Carpool_border">
 	<!-- 요기 안에다 쿼리문 작성하시면 됩니다 -->
 	<insert id="carInsert" parameterType="java.util.Map">
-		INSERT INTO CARPOOL_BORDER VALUES(SEQ_carpool_border.NEXTVAL,#{startpoint},#{endpoint},
+		INSERT INTO CARPOOL_BORDER VALUES(SEQ_carpool_border.nextval,#{startpoint},#{endpoint},
 		#{type},#{content},#{start_xpos},#{start_ypos},#{end_xpos},#{end_ypos},
 		#{id},#{carseat},#{time},#{price},default,#{opened},0,0,0)
 	</insert>

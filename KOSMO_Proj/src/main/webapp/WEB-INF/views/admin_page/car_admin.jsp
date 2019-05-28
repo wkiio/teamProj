@@ -384,7 +384,7 @@ section{
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="overview-wrap">
-                                    <h2 class="title-1">회원 관리</h2>
+                                    <h2 class="title-1">카풀 예약 관리</h2>
                                    <!--  <button class="au-btn au-btn-icon au-btn--blue">
                                         <i class="zmdi zmdi-plus"></i>add item</button> -->
                                 </div>
@@ -397,10 +397,7 @@ section{
 								<nav class="nav nav-tabs" id="nav-tab" role="tablist" >
 									<a class="nav-item nav-link active" id="nav-home-tab"
 										data-toggle="tab" href="#nav-home" role="tab"
-										aria-controls="home" aria-expanded="true">현재 예약</a> <a
-										class="nav-item nav-link" id="nav-profile-tab"
-										data-toggle="tab" href="#nav-profile" role="tab"
-										aria-controls="profile" aria-expanded="false">완료 예약</a>
+										aria-controls="home" aria-expanded="true">예약 관리</a>
 								</nav>
 								<div class="tab-content" id="nav-tabContent">
 									<div class="tab-pane fade active show" id="nav-home"

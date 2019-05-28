@@ -139,6 +139,10 @@ public class HomeController {
 	public String blookchain() {
 		return "blockChain.tiles";
 	}
+	@RequestMapping("/link.kosmo")
+	public String link() {
+		return "link.tiles";
+	}
 
 	
 

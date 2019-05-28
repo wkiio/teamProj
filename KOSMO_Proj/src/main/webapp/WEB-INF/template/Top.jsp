@@ -54,18 +54,21 @@
 								<nav class="mainmenu__nav">
                                     <ul class="mainmenu">
                                         <li class="drop"><a href="index.kosmo">메인</a>
-											<ul class="dropdown__menu">
-                                                <li><a href="word.kosmo">베스트검색어</a></li>                                                
-                                            </ul>
                                         </li>
                                         <li class="drop"><a href="serviceclick.kosmo">서비스</a>
                                         <ul class="dropdown__menu">
+                                        		<li><a href="word.kosmo">베스트검색어</a></li> 
                                                 <li><a href="Carindex.kosmo">이동리스트</a></li>
                                                 <li><a href="aaabbb.kosmo">지도검색</a></li>                                            
                                             </ul>
                                         </li>
                                         <li class="drop"><a href="calendar.kosmo">육아달력</a></li>
-                                        <li class="drop"><a href="babyinfo.kosmo">육아정보</a></li>
+                                        <li class="drop"><a href="#">육아정보</a>
+                                       	 	<ul class="dropdown__menu">
+                                                <li><a href="babyinfo.kosmo">육아 동영상</a></li>
+                                                <li><a href="link.kosmo">정보 사이트</a></li>                                                
+                                            </ul>
+                                            </li>
                                         <li class="drop"><a href="blookChain.kosmo">검증</a></li>
                                         <li class="drop"><a href="guestbook.kosmo">방명록</a></li>
                                         <li class="drop"><a href="#">마이페이지</a>
@@ -73,7 +76,7 @@
                                                 <li><a href="mypage_one.kosmo">개인정보</a></li>
                                                 <li><a href="Carreservation.kosmo">예약현황</a></li>                                                
                                             </ul>
-                                        </li>   
+                                        </li>
                                         	<c:set var="loginid" value="${id}" />
 										<c:if test="${loginid == 'admin'}">
 											<li><a href="admin_index.kosmo">관리자페이지</a></li>
@@ -86,7 +89,7 @@
 					<!-- Mobile Menu -->
                     <div class="mobile-menu d-block d-lg-none">
                     	<div class="logo">
-                    		<a href="index.html"><img src="resources/images/Aran1.png" alt="logo" style="height:50px"></a>
+                    		<a href="index.kosmo"><img src="resources/images/Aran1.png" alt="logo" style="height:50px"></a>
                     	</div>
                     	<a class="minicart-trigger" href="#">
                     		<i class="fa fa-shopping-basket"></i>

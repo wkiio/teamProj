@@ -5,11 +5,16 @@ public class PartnerDTO {
 	private String carnumber;
 	private String cartype;
 	private String carseat;
-	private String totalscore;
-	private String totalcount;
 	private String id;
+	private String name;
 	
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getPno() {
 		return pno;
 	}
@@ -34,18 +39,7 @@ public class PartnerDTO {
 	public void setCarSeat(String carSeat) {
 		this.carseat = carSeat;
 	}
-	public String getTotalScore() {
-		return totalscore;
-	}
-	public void setTotalScore(String totalScore) {
-		this.totalscore = totalScore;
-	}
-	public String getTotalCount() {
-		return totalcount;
-	}
-	public void setTotalCount(String totalCount) {
-		this.totalcount = totalCount;
-	}
+
 	public String getId() {
 		return id;
 	}

@@ -166,7 +166,7 @@ public class MembersController {
 		ff.transferTo(file);
 		map.put("photo", file.toString() );
 
-		
+		if(map.get("partnerstatus").equals("1")) {
 		//차량등록증 또는 운전면허증을 올리는 코드
 		MultipartFile nn = getImageFile;
 		System.out.println("nn:" + nn);
@@ -181,6 +181,7 @@ public class MembersController {
 		
 		nn.transferTo(file2);
 		map.put("carnumber", file2.toString());
+		}
 		
 		////파일업로드 끝
 		

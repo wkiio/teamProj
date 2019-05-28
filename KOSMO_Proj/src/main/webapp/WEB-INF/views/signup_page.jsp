@@ -42,7 +42,8 @@
 						
 						<div class="form-label-group">
 							<div class="input-group">
-								<input type="text" id="photo" name="photo" class="form-control" placeholder="사진파일" required>		
+								<input type="text" id="photo" name="photo" class="form-control" placeholder="사진파일" required>
+								<label for="photo">사진파일</label>		
 								<div class="input-group-append">
 									<a id="photo_upload" class="btn btn-singup" data-target="#photo" style="color:white">사진 업로드</a>
 								</div>
@@ -121,7 +122,8 @@
 								<h2>차량 등록증 및 운전면허증</h2>
 								<div class="form-label-group">
 									<div class="input-group">
-										<input type="text" id="carnumber" name="carnumber" class="form-control" placeholder="차량 등록증 또는 운전면허증" required>
+										<input type="text" id="carnumber" name="carnumber" class="form-control" placeholder="차량 등록증 또는 운전면허증">
+										<label for="carnumber">차량 등록증 또는 운전면허증</label>
 									<div class="input-group-append">
 										<a id="carnumber_upload" class="btn btn-singup" data-target="#carnumber" style="color: white">사진 업로드</a>
 									</div>
@@ -259,8 +261,8 @@ function getname(obj)
 		        $('#pwd').val('').focus();
 		        return false;
 		    }    
-		    var checkNumber = password.search(/[0-9]/g);
-		    var checkEnglish = password.search(/[a-z]/ig);
+		    var checkNumber = pwd.search(/[0-9]/g);
+		    var checkEnglish = pwd.search(/[a-z]/ig);
 		    if(checkNumber <0 || checkEnglish <0){
 		        alert("숫자와 영문자를 혼용하여야 합니다.");
 		        $('#pwd').val('').focus();

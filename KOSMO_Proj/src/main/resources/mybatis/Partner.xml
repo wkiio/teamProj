@@ -7,7 +7,7 @@
 <mapper namespace="mybatis.Partner">
 
 	<select id="partnerOne" resultType="com.kosmo.baby.service.PartnerDTO" parameterType="java.util.Map">
-		select * from partner_members where id=#{id}
+		select p.id,cartype,carnumber,name from partner_members p JOIN members m ON p.id = m.id where p.id=#{id}
 	</select>
 
 </mapper>

@@ -40,10 +40,11 @@ import com.kosmo.baby.service.impl.VisitCountServiceimpl;
 public class FCM_Controller {
 	@RequestMapping("/sendPush.kosmo")
 	public String sendPush(HttpServletRequest request, Model model) {
+		//d8ojoQfYuT0:APA91bHFyr7Zh629nFqDbRqxq1DDzJT8ym7k_TodA-d3dDzpB6wq0a4ad-u7LiuBBBev1K6R35ts_ArM-CaIAmXgff0MEqKTDc0EJ6HJnoca6K1NdYzkpkk-7VnAvZPxldToGBKYA9X9
 		System.out.println("sendPush.......");
-		String token = "eSKQoPf5xDQ:APA91bHEze0IR3jKEMei-Yov_5mWQgc3ufGWJqtnlL1-xM6Rll43-uP2Mf1SlCbCDZJdRKyTxLN2zRINMUmad6q9OX4qzDzZAjfjXjJH5k7vedjbYD6R24r0PXCI2zoHEVSRz0Ow5naL"; // 서버에 저장된 토큰 가져오기
-		String title = "Reservation";
-		String content = "Reservation Registration";
+		String token = "d8ojoQfYuT0:APA91bHFyr7Zh629nFqDbRqxq1DDzJT8ym7k_TodA-d3dDzpB6wq0a4ad-u7LiuBBBev1K6R35ts_ArM-CaIAmXgff0MEqKTDc0EJ6HJnoca6K1NdYzkpkk-7VnAvZPxldToGBKYA9X9"; // 서버에 저장된 토큰 가져오기
+		String title = "예약";
+		String content = "예약이 성립되었습니다!";
 		try {
 			title   = URLEncoder.encode(title  ,"UTF-8"); // 한글깨짐으로 URL인코딩해서 보냄
 			content = URLEncoder.encode(content,"UTF-8");
@@ -61,9 +62,9 @@ public class FCM_Controller {
 	@RequestMapping("/sendPush2.kosmo")
 	public String sendPush2(HttpServletRequest request, Model model) {
 		System.out.println("sendPush.......");
-		String token = "eSKQoPf5xDQ:APA91bHEze0IR3jKEMei-Yov_5mWQgc3ufGWJqtnlL1-xM6Rll43-uP2Mf1SlCbCDZJdRKyTxLN2zRINMUmad6q9OX4qzDzZAjfjXjJH5k7vedjbYD6R24r0PXCI2zoHEVSRz0Ow5naL"; // 서버에 저장된 토큰 가져오기
-		String title = "Contract";
-		String content = "Contract completion";
+		String token = "d8ojoQfYuT0:APA91bHFyr7Zh629nFqDbRqxq1DDzJT8ym7k_TodA-d3dDzpB6wq0a4ad-u7LiuBBBev1K6R35ts_ArM-CaIAmXgff0MEqKTDc0EJ6HJnoca6K1NdYzkpkk-7VnAvZPxldToGBKYA9X9"; // 서버에 저장된 토큰 가져오기
+		String title = "계약 완료";
+		String content = "계약이 완료 되었습니다! 평가를 작성해주세요!";
 		try {
 			title   = URLEncoder.encode(title  ,"UTF-8"); // 한글깨짐으로 URL인코딩해서 보냄
 			content = URLEncoder.encode(content,"UTF-8");
@@ -79,7 +80,7 @@ public class FCM_Controller {
 	}
 
 	private ResponseEntity<String> sendHttp(String token, String title, String content){
-
+		System.out.println("sendPush GHOOGOGOG.......");
 		RestTemplate template = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders(); 
 		headers.setContentType(MediaType.APPLICATION_JSON);
