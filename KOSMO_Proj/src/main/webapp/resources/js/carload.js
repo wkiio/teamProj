@@ -37,10 +37,6 @@ var icon = new Tmap.IconHtml("<img src='http://tmapapis.sktelecom.com/upload/tma
 var marker_e = new Tmap.Marker(new Tmap.LonLat(e_xpos.value, e_ypos.value).transform("EPSG:4326", "EPSG:3857"), icon);
 markerEndLayer.addMarker(marker_e);
 
-//경유지 마커 제거
-markerWaypointLayer.clearMarkers();
-markerWaypointLayer2.clearMarkers();
-
 //4. 경로 탐색 API 사용요청
 var startX = s_xpos.value;
 var startY = s_ypos.value;

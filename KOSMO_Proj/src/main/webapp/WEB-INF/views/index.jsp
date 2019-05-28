@@ -38,7 +38,7 @@
 		
 	</script>
 	<!-- Strat Slider Area -->
-		<div class="slide__carosel owl-carousel owl-theme">
+		<div class="slide__carosel owl-carousel owl-theme" style="display:none;">
 			<div class="slider__area slider--two bg-pngimage--1  d-flex fullscreen justify-content-start align-items-center">
 				<div class="container">
 					<div class="row">
