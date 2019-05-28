@@ -72,7 +72,7 @@ public class CalenderController {
 			else if(dto.getType().equals("행사")) {
 				record.put("color", "#a00196");
 			}
-			
+			record.put("className", dto.getNotification());
 			record.put("description", dto.getContent());
 			collections.add(record);
 		}

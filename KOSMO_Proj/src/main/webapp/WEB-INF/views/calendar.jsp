@@ -143,8 +143,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	            	else{
 	            		str = info.endStr.substr(0,info.endStr.length-2)+inv
 	            	}
-	            	$('#startStr').val(info.startStr)
-	            	$('#endStr').val(str)
+	            	$('#startStr').val(info.startStr);
+	            	$('#endStr').val(str);
 
 	      		}
 
@@ -205,6 +205,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						end: $('#endStr').val(),
 						description: $('#calcontent').val(),
 						color: color,
+						className: $('.notif[checked="checked"]').val()
 					});
 				}
 				else{
@@ -215,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
 						end: $('#endStr').val().concat('T'.concat($('#endTime').val())),
 						description: $('#calcontent').val(),
 						color: color,
+						className: $('.notif[checked="checked"]').val()
 					});
 				}
 
@@ -255,6 +257,11 @@ document.addEventListener('DOMContentLoaded', function() {
 			case "#5ebc00": $('#modiftype').val("예방접종"); break;
 			case "#2f00bc": $('#modiftype').val("약속"); break;
 			case "#a00196": $('#modiftype').val("행사"); break;
+		}
+		switch(info.event.classNames[0]){
+			case "0": $('#moti1').prop("checked","checked"); break;
+			case "1": $('#moti2').prop("checked","checked"); break;
+			case "2": $('#moti3').prop("checked","checked"); break;
 		}
 		$('#modifcontent').val(info.event.extendedProps.description);
 		$('#modifcontent').summernote({
@@ -449,9 +456,9 @@ document.addEventListener('DOMContentLoaded', function() {
 						<div class='form-group'>
 							<label style="display: block;">알림 설정</label>
 							<div>
-								<label class="radio-inline"><input type="radio" name="noti" value="0"> 알림 없음</label>
-								<label class="radio-inline"><input type="radio" name="noti" value="1"> 알림 1회</label>
-								<label class="radio-inline"><input type="radio" name="noti" value="2"> 계속 알림</label>
+								<label class="radio-inline"><input class="notif" type="radio" name="noti" value="0"> 알림 없음</label>
+								<label class="radio-inline"><input class="notif" type="radio" name="noti" value="1"> 알림 1회</label>
+								<label class="radio-inline"><input class="notif" type="radio" name="noti" value="2"> 계속 알림</label>
 							</div>
 						</div>
 						<div id="imgdiv1" class='form-group' style="display: none;">
@@ -528,9 +535,9 @@ document.addEventListener('DOMContentLoaded', function() {
 						<div class='form-group'>
 							<label style="display: block;">알림 설정</label>
 							<div>
-								<label class="radio-inline"><input type="radio" name="modifnoti" value="0"> 알림 없음</label>
-								<label class="radio-inline"><input type="radio" name="modifnoti" value="1"> 알림 1회</label>
-								<label class="radio-inline"><input type="radio" name="modifnoti" value="2"> 계속 알림</label>
+								<label class="radio-inline"><input id="moti1" type="radio" name="modifnoti" value="0"> 알림 없음</label>
+								<label class="radio-inline"><input id="moti2"  type="radio" name="modifnoti" value="1"> 알림 1회</label>
+								<label class="radio-inline"><input id="moti3"  type="radio" name="modifnoti" value="2"> 계속 알림</label>
 							</div>
 						</div>
 						<div class='form-group'>

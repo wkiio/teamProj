@@ -100,8 +100,8 @@
 						<div class="form-group" id="partnerCarseat" style="display: none;">
 							<label for="carseat" class="col-form-label purpose">카시트: </label> 
 							<div class="col">					
-								<select	class="form-control" id="carseat" name="carseat">
-									<option>있어요</option>
+								<select	class="form-control" id="fs1" name="ff">
+									<option id="f1">있어요</option>
 									<option>없어요</option>
 								</select>
 							</div>
@@ -109,8 +109,8 @@
 						<div class="form-group" id="nomalCarseat"  style="display: none;">
 							<label for="carseat" class="col-form-label purpose">카시트: </label> 
 							<div class="col">					
-								<select	class="form-control" id="carseat" name="carseat">
-									<option>필요</option>
+								<select	class="form-control" id="ss1" name="ss">
+									<option id="s1">필요</option>
 									<option>불필요</option>
 								</select>
 							</div>
@@ -143,6 +143,7 @@
 							<label for="point" class="col-form-label pay">금액: </label>
 							<div class="col">
 								<input type="text" id="price" name="price" class="form-control" placeholder="금액 입력해주세요" value="${list.price }" required/>
+								<p id="result"></p>
 							</div>
 						</div>
 						<div class="form-group">
@@ -219,20 +220,30 @@ var tHash;
 $(function(){
 	  if($('#type').val()=="타세요"){
 	      $('#partnerCarseat').css("display", "inline");
+	      $('#ss1').prop("name","nonohe");
+	      $('#fs1').prop("name","carseat");
+	      $('#f1').attr("selected",true)
 	   }
 	   else{
 	      $('#nomalCarseat').css("display", "inline");
+	      $('#fs1').prop("name","nonohe");
+	      $('#ss1').prop("name","carseat");
+	      $('#s1').attr("selected",true)
 	   }
 	   $('#type').change(function(){
 	      if($(this).val()=="타세요"){
 	         $('#partnerCarseat').css("display", "inline");
 	         $('#nomalCarseat').css("display", "none");
-	         $('#partnerCarseat > #carseat > option:nth-child(1)').attr("selected",true)
+	         $('#ss1').prop("name","nonohe");
+	         $('#fs1').prop("name","carseat");
+	         $('#f1').attr("selected",true)
 	      }
 	      else{
 	         $('#partnerCarseat').css("display", "none");
 	         $('#nomalCarseat').css("display", "inline");
-	         $('#nomalCarseat > #carseat > option:nth-child(1)').attr("selected",true)
+	         $('#fs1').prop("name","nonohe");
+	         $('#ss1').prop("name","carseat");
+	         $('#s1').attr("selected",true)
 	         
 	         
 	      }

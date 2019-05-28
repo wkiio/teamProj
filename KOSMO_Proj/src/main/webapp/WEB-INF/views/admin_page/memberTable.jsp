@@ -316,8 +316,8 @@ z-index : -10;
                          <input type="hidden" class="form-control" name="${_csrf.parameterName}" value="${_csrf.token}" />
                          <input type="hidden" class="form-control" id="inputid" name="inputid" value=""/>
                           <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                           <img id="carnumberimg" src="" title="사진" alt="안나와" class="picture" style="width:100%">
+                          <div class="input-group-prepend" style="height:250px;">
+                           <img id="carnumberimg" src="" title="사진" alt="사진" class="picture" style="width:100%">
                           </div>
                           
                      </div>

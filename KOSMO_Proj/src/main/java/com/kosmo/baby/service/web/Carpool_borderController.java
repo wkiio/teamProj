@@ -45,6 +45,7 @@ public class Carpool_borderController {
 	@RequestMapping("/Carinsert.kosmo")
 	public String carinsert(@RequestParam Map map,Model model,Authentication auth)throws Exception{
 		UserDetails user = (UserDetails)auth.getPrincipal();
+		System.out.println(map);
 		map.put("id", user.getUsername());
 		carservice.insert(map);
 		System.out.println("인풋끝");
